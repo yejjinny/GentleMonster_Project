@@ -1,0 +1,226 @@
+@charset "UTF-8";
+.account .edit-wrap {
+    padding: 45px 0 0;
+}
+.edit-wrap, .register-wrap {
+    text-align: left;
+    padding: 0 20px;
+    width: 100%;
+}
+.text_l {
+    text-align: left;
+}
+div, p, a {
+    word-break: keep-all;
+}
+.account .head {
+    margin-bottom: 45px;
+}
+
+@media (min-width: 768px){
+.account .head .title, .account .page_nav .title, .topnav .topnav-left .title {
+    font-size: 13px;
+}}
+.font--en.font--14 {
+    font-size: 15px;
+}
+[hidden], template {
+    display: none;
+}
+.wish-list #product-list.product-list-colunm4 {
+    margin-bottom: -50px;
+}
+#product-list.product-list-colunm4 {
+    padding: 0;
+    text-align: left;
+    margin-top: 20px;
+}
+#product-list {
+    position: relative;
+}
+#product-list {
+    overflow: hidden;
+}
+.product-list-colunm4 .product-list__wrapper {
+    margin-left: -24px;
+    width: calc(100% + 48px);
+}
+.inline {
+    font-size: 0;
+}
+ul, ol {
+    list-style: none;
+}
+.product-list-colunm4 .product-list__wrapper li {
+    width: calc(25% - 48px);
+    margin: 0 24px 50px;
+}
+.product-list__wrapper li {
+    /* width: calc(20% - 12px); */
+    /* margin: 0 6px 12px; */
+    /* -webkit-transition: width 0.6s ease, margin 0.6s ease; */
+    -ms-transition: width 0.6s ease, margin 0.6s ease;
+    transition: width 0.6s ease, margin 0.6s ease;
+}
+.wish-list .product-list__wrapper .product__image-wrapper {
+    max-height: 431px;
+    overflow: hidden;
+}
+.product__image-wrapper {
+    position: relative;
+    background: #ededed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product__image-wrapper:before {
+    content: '';
+    display: block;
+    padding-bottom: 135.5%;
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+html, body, a, a:hover {
+    color: #343434;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+.product__image-wrapper img {
+    max-height: 100%;
+}
+img {
+    display: block;
+    width: 100%;
+}
+.product__info {
+    padding: 20px 0 29px;
+}
+.relative {
+    position: relative;
+}
+.clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical > .btn-group:before, .btn-group-vertical > .btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-footer:before, .modal-footer:after {
+    display: table;
+    content: " ";
+}
+.product__spec {
+    max-width: 93%;
+}
+
+.wish-list .product__info .product__spec .product__link .product__price {
+    line-height: 19px;
+}
+.wish-list .product__info .product__spec .product__link .product__name {
+    margin: 0 0 4px;
+    line-height: 19px;
+}
+.product__price {
+    min-height: 29px;
+}
+.font--13 {
+    font-size: 13px;
+}
+.font--rg {
+    font-weight: normal;
+}
+.font--kr {
+    font-family: "Unica77LLWeb","SDGothicNeo", sans-serif;
+    word-break: keep-all;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.product__cart__btn {
+    margin-top: 13px;
+}
+.gm-component__spinner-container {
+    position: relative;
+}
+.btn-black {
+    /* border: none; */
+    background: #000 !important;
+    color: #fff;
+}
+.btn, .button {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    line-height: 40px;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0px;
+}
+.btn {
+    display: inline-block;
+    /* padding: 6px 12px; */
+    margin-bottom: 0;
+    /* font-size: 14px; */
+    font-weight: normal;
+    /* line-height: 1.42857143; */
+    /* text-align: center; */
+    white-space: nowrap;
+    vertical-align: middle;
+    /* cursor: pointer; */
+    /* -webkit-user-select: none; */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* background-image: none; */
+    border: 1px solid transparent;
+    /* border-radius: 4px; */
+}
+.btn.font--kr, .font--kr.button {
+    font-family: "SDGothicNeo";
+}
+.product-share {
+    margin-top: 20px;
+}
+.wish-list .product-share .product__wish__btn {
+    line-height: 18px;
+    display:table;
+    margin: 0 auto;
+}
+.font--13 {
+    font-size: 13px;
+}
+.font--rg {
+    font-weight: normal;
+}
+.product__wish__btn .btn-close {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin: 4px 0 0 8px;
+    vertical-align: top;
+    background: url(https://web-resource.gentlemonster.com/assets/img/icon/closexbutton.svg) no-repeat 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+span.cart-text.font--kr.font--13.font--rg {
+    color: white;
+}
