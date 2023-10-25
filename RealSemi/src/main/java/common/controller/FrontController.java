@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 		urlPatterns = { "*.gm" }, 
 		initParams = {
 				@WebInitParam(	name = "propertyConfig", 
-								value = "C:/NCS/workspace_jsp/TempSemi/src/main/webapp/WEB-INF/Command.properties", 
+								value = "C:/git/RealSemi/RealSemi/src/main/webapp/WEB-INF/Command.properties", 
 								description = "*.gm 에 대한 클래스의 매핑파일"
 							 ) 
 					}
