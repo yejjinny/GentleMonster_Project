@@ -57,13 +57,13 @@ public class CartDAO_imple implements CartDAO {
 
 	// 쇼핑백 버튼 및 쇼핑백 자세히 보기 버튼을 눌렀을 경우 (/cart/cart.up)
 	@Override
-	public List<CartVO> getCartList(Map<String, Integer> paraMap) throws SQLException {
+	public List<CartVO> getCartList(int memberId) throws SQLException {
 		List<CartVO> cartList = new ArrayList<>();
 
 		try {
 			conn = ds.getConnection();
 
-			String sql = "select cartId, fk_productDetailId, productGroupName||' '||frameColorEng as productName,  price, quantity, mainImageFile "
+			String sql = "select cartId, fk_productDetailId, productGroupName||' '||frameColorEng as productName,  price, quantity, mainImageFile, stock "
 					+ "from " + "tbl_cart c " + "join tbl_member m on " + "c.fk_memberId = m.memberId "
 					+ "join tbl_productDetail pd on " + "c.fk_productDetailId = pd.productDetailId "
 					+ "join tbl_productGroup pg on " + "pg.productGroupId = pd.fk_productGroupId "
@@ -71,7 +71,7 @@ public class CartDAO_imple implements CartDAO {
 					+ "order by c.registerday";
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, paraMap.get("memberId"));
+			pstmt.setInt(1, memberId);
 
 			rs = pstmt.executeQuery();
 
@@ -82,6 +82,7 @@ public class CartDAO_imple implements CartDAO {
 				cvo.setProductName(rs.getString("productName"));
 				cvo.setPrice(rs.getLong("price"));
 				cvo.setQuantity(rs.getInt("quantity"));
+				cvo.setStock(rs.getInt("stock"));
 				cvo.setMainImageFile(rs.getString("mainImageFile"));
 
 				cartList.add(cvo);
@@ -176,7 +177,10 @@ public class CartDAO_imple implements CartDAO {
 			String sql = "select cartId from tbl_cart where fk_memberId = ? and fk_productDetailId = ?";
 
 			pstmt = conn.prepareStatement(sql);
-
+			
+			pstmt.setString(1, paraMap.get("memberId"));
+			pstmt.setString(2, paraMap.get("productDetailId"));
+			
 			rs = pstmt.executeQuery();
 
 			// pstmt 재사용 위해 파라미터 제거
@@ -186,6 +190,9 @@ public class CartDAO_imple implements CartDAO {
 				// 이미 쇼핑백에 같은 상품이 있으니 수량 업데이트 필요
 
 				sql = "update tbl_cart set quantity = quantity + 1 where cartId = ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				
 				pstmt.setString(1, rs.getString("cartId"));
 
 				num = pstmt.executeUpdate();

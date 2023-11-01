@@ -17,7 +17,6 @@ public class CartAddAction extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
-
 		if (session.getAttribute("loginUser") != null) {
 			// 로그인한 유저일 경우
 
@@ -34,10 +33,17 @@ public class CartAddAction extends AbstractController {
 				int num = dao.addCartItem(paraMap);
 
 				if (num == 1) {
-					// 추가처리가 완료되었을 경우 쇼핑백 화면으로 갈 수 있도록 한다
+					// 추가처리가 완료되었을 경우 원래 화면으로 갈 수 있도록 한다
 
-					super.setRedirect(true);
-					super.setViewPage(req.getContextPath() + "/cart/cart.gm");
+					String message = "쇼핑백에 추가하였습니다.";
+					String loc = "javascript:history.back()";
+					req.setAttribute("message", message);
+					req.setAttribute("loc", loc);
+					
+					session.setAttribute("cartList", dao.getCartList(((MemberVO) session.getAttribute("loginUser")).getMemberId()));
+					
+					super.setRedirect(false);
+					super.setViewPage("/jsp/common/msg.jsp");
 
 				} else {
 					// 추가처리가 실패했을 경우

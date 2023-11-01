@@ -7,6 +7,7 @@ public class CartVO {
 	private long price;               //가격
 	private int quantity;             //수량
 	private String mainImageFile;     //대표사진이미지
+	private int stock;                //재고
 	
 	public int getCartId() {
 		return cartId;
@@ -43,6 +44,12 @@ public class CartVO {
 	}
 	public void setMainImageFile(String mainImageFile) {
 		this.mainImageFile = mainImageFile;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	
 }

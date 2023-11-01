@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import cart.model.CartDAO;
 import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
+import member.domain.MemberVO;
 
 public class CartDeleteAction extends AbstractController {
 
@@ -52,7 +53,9 @@ public class CartDeleteAction extends AbstractController {
 					
 					jsonObj.put("isDelete", isDelete);
 				}
-
+				
+				session.setAttribute("cartList", dao.getCartList(((MemberVO) session.getAttribute("loginUser")).getMemberId()));
+				
 				// jsonObj를 설정한다
 				req.setAttribute("json", jsonObj.toString());
 				super.setRedirect(false);

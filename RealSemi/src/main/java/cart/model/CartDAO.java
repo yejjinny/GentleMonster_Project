@@ -8,7 +8,7 @@ import cart.domain.CartVO;
 
 public interface CartDAO {
 	//쇼핑백 버튼 및 쇼핑백 자세히 보기 버튼을 눌렀을 경우
-	List<CartVO> getCartList(Map<String, Integer> paraMap) throws SQLException;
+	List<CartVO> getCartList(int memberId) throws SQLException;
 	
 	//삭제하기 버튼을 눌렀을 경우
 	int deleteCartItem(Map<String, String> paraMap) throws SQLException;
