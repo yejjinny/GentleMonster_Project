@@ -25,30 +25,50 @@ public class MemberInfoEditToPwdAction extends AbstractController{
 		 * String memberId = req.getParameter("memberId"); System.out.println("toa: "+
 		 * memberId );
 		 */
-		String memberId = req.getParameter("memberIdd"); 
-		System.out.println("toad: "+ memberId );
+		
 	     
 	      
 	      HttpSession session = req.getSession();
 	      MemberVO loginUserr = (MemberVO)session.getAttribute("loginUser");
 	      
+	      String memberId = req.getParameter("memberIdd"); 
+			//System.out.println("toad: "+ memberId );
 	      
-	      
-	      
-	      if( Integer.toString( loginUserr.getMemberId()).equals(memberId)  ) {
-	    	  // 로그인한 사용자가 자신의 정보를 수정하는 경우
-	    	  
-	    	 // request.setAttribute("userid", userid);
 
-		      //super.setRedirect(false);
-	    	  super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify01.jsp");
-	    	  
-	    	   
+			String method=req.getMethod(); //"GET" 또는 "POST"
+			
+			if("POST".equalsIgnoreCase(method)) { 
 				
-		      //super.setViewPage("/WEB-INF/member/memberEdit.jsp");
-		     
-	     }
+				 if( Integer.toString( loginUserr.getMemberId()).equals(memberId)  ) {
+			    	  // 로그인한 사용자가 자신의 정보를 수정하는 경우
+			    	  
+			    	 // request.setAttribute("userid", userid);
+
+				      //super.setRedirect(false);
+			    	  super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify01.jsp");
+			    	 
+			    	   
+						
+				      //super.setViewPage("/WEB-INF/member/memberEdit.jsp");
+				     
+			     }
+			      
+				
+			}  
+			else {
+				// POST 방식이 아니라면
+				
+				String message = "비정상적인 경로로 들어왔습니다.";
+			      String loc = "javascript:history.back()";
+			      
+			      req.setAttribute("message", message);
+			      req.setAttribute("loc", loc);
+			      
+			   //   super.setRedirect(false);
+			      super.setViewPage("/jsp/common/msg.jsp");
+			}
 	      
+	     
 		/*
 		if (session.getAttribute("loginUser") != null) {
 			//로그인 했을 경우

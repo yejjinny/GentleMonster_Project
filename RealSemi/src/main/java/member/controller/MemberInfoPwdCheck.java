@@ -1,5 +1,8 @@
 package member.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,13 +28,20 @@ public class MemberInfoPwdCheck extends AbstractController {
 			// $("input#userid").val()  의 값을 받아온다.
 			String memberId=req.getParameter("memberId");
 			
-			System.out.println("확인용 pwd java-->"+pwd );
-			System.out.println("확인용 memberId java-->"+memberId );
+			//System.out.println("확인용 pwd java-->"+pwd );
+			//System.out.println("확인용 memberId java-->"+memberId );
+			 
+			
+			 Map<String, String> paraMap= new HashMap<>();
+			 paraMap.put("pwd", pwd);
+			 paraMap.put("memberId", memberId);
+			 
 			 
 			   MemberDAO mado= new MemberDAO_imple();
 			   
-			   boolean isExists=mado.selectPwdCheck(memberId,pwd);
-			   System.out.println("json isExists-->"+ isExists ); 
+			   //boolean isExists=mado.selectPwdCheck(memberId,pwd);
+			   boolean isExists=mado.selectPwdCheck(paraMap);
+			   //System.out.println("json isExists-->"+ isExists ); 
 			   
 			   
 			   JSONObject jsonObj= new JSONObject(); //{}
@@ -49,6 +59,18 @@ public class MemberInfoPwdCheck extends AbstractController {
 			  super.setViewPage("/jsp/common/jsonview.jsp");
 			  
 		 }
+		 else {
+				// POST 방식이 아니라면
+				
+				String message = "비정상적인 경로로 들어왔습니다.";
+			      String loc = "javascript:history.back()";
+			      
+			      req.setAttribute("message", message);
+			      req.setAttribute("loc", loc);
+			      
+			   //   super.setRedirect(false);
+			      super.setViewPage("/jsp/common/msg.jsp");
+		}
 		
 
 	}
