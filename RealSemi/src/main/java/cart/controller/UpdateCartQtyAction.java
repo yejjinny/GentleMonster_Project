@@ -13,6 +13,7 @@ import cart.domain.CartVO;
 import cart.model.CartDAO;
 import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
+import member.domain.MemberVO;
 
 public class UpdateCartQtyAction extends AbstractController {
 
@@ -60,6 +61,7 @@ public class UpdateCartQtyAction extends AbstractController {
 				// jsonObj를 설정한다
 				req.setAttribute("json", jsonObj.toString());
 				
+				session.setAttribute("cartList", dao.getCartList(((MemberVO) session.getAttribute("loginUser")).getMemberId()));
 				super.setRedirect(false);
 				super.setViewPage("/jsp/common/jsonview.jsp");
 				

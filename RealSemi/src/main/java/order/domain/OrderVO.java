@@ -15,8 +15,11 @@ public class OrderVO {
 	private String productName;      //상품명
 	private long price;              //가격
 	private int quantity;            //수량
-	private long amount;              //총 금액
+	private long amount;             //총 금액
 	private String mainImageFile;    //대표사진이미지
+	private Long rno;                //인덱스 번호
+	private String orderStatus;      //주문현황
+	private String orderDay;         //주문일자
 	
 	
 	public int getAddressBookId() {
@@ -114,6 +117,24 @@ public class OrderVO {
 	}
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+	public Long getRno() {
+		return rno;
+	}
+	public void setRno(Long rno) {
+		this.rno = rno;
+	}
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+	public String getOrderDay() {
+		return orderDay;
+	}
+	public void setOrderDay(String orderDay) {
+		this.orderDay = orderDay;
 	}
 	
 	

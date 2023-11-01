@@ -56,7 +56,7 @@ public class OrderAddressAction extends AbstractController {
 				}
 				
 				// 주문, 결제하는 동안 유저가 결제하기 버튼을 눌렀을 당시의 카트정보를 계속 사용하기 때문에 세션에 등록해둔다
-				session.setAttribute("cartList", cdao.getCartList(paraMap));
+				session.setAttribute("cartList", cdao.getCartList(((MemberVO) session.getAttribute("loginUser")).getMemberId()));
 				req.setAttribute("addressList", addressList);
 				
 				

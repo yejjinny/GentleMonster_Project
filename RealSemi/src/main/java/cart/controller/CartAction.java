@@ -1,6 +1,5 @@
 package cart.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +23,7 @@ public class CartAction extends AbstractController {
 		// 테스트용 코드 시작
 
 		MemberVO loginUser = new MemberVO();
+
 		loginUser.setEmail("hi@naver.com");
 		loginUser.setMemberId(1234);
 
@@ -35,16 +35,12 @@ public class CartAction extends AbstractController {
 		if (session.getAttribute("loginUser") != null) {
 			// 로그인 했을 경우
 
-			// dao에 전달할 값을 설정한다
-			Map<String, Integer> paraMap = new HashMap<>();
-			paraMap.put("memberId", ((MemberVO) session.getAttribute("loginUser")).getMemberId());
-
 			// 유저의 로그인 정보 바탕으로 쇼핑백에 등록된 상품 꺼내오기
 			CartDAO dao = new CartDAO_imple();
-			List<CartVO> cartList = dao.getCartList(paraMap);
+			List<CartVO> cartList = dao.getCartList(((MemberVO) session.getAttribute("loginUser")).getMemberId());
 
 			req.setAttribute("cartList", cartList);
-			
+
 			super.setRedirect(false);
 			super.setViewPage("/jsp/cart/cart.jsp");
 
@@ -61,7 +57,8 @@ public class CartAction extends AbstractController {
 			super.setRedirect(false);
 			super.setViewPage("/jsp/common/msg.jsp");
 
-		} // end of if (session.getAttribute("loginUser") != null) -----------------------------------------------------
+		} // end of if (session.getAttribute("loginUser") != null)
+			// -----------------------------------------------------
 
 	}
 
