@@ -16,8 +16,8 @@ public class MemberInfoEditAction extends AbstractController {
 
 		MemberVO loginUser = new MemberVO();
 		loginUser.setEmail("hi@naver.com");
-		loginUser.setPwd("1234");
-		loginUser.setMemberId(1234);
+		loginUser.setPwd("Qwer1234$");
+		loginUser.setMemberId(2);
 		loginUser.setFamilyName("홍");
 		loginUser.setLastName("길동");
 		loginUser.setBirth("19990127");
@@ -27,12 +27,49 @@ public class MemberInfoEditAction extends AbstractController {
 		session.setAttribute("loginUser", loginUser);
 		
 		 
+		
+		String method=req.getMethod(); //"GET" 또는 "POST"
+		
+		if("GET".equalsIgnoreCase(method)) {
+			
+			
+			if (session.getAttribute("loginUser") != null) {
+				 
+				 
+				
+				 super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo.jsp");
+				 
+			 }
+			 else {
+				   //로그인을 안했으면
+				   String message="계정설정을 하기 위해서는 먼저 로그인을 하세요!!";
+				   String loc="javascript:history.back()";
+				   
+				   req.setAttribute("message", message);
+				   req.setAttribute("loc", loc);
+				   
+				   super.setRedirect(false);
+				   super.setViewPage("/jsp/common/jsonview.jsp");
+				   
+				   
+			   }
+			
+			
+		}
+		else {
+			// GET 방식이 아니라면
+			
+			String message = "비정상적인 경로로 들어왔습니다.";
+		      String loc = "javascript:history.back()";
+		      
+		      req.setAttribute("message", message);
+		      req.setAttribute("loc", loc);
+		      
+		   //   super.setRedirect(false);
+		      super.setViewPage("/jsp/common/msg.jsp");
+		}
 		 
-		 if (session.getAttribute("loginUser") != null) {
-			 
-			 super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo.jsp");
-			 
-		 }
+		 
 	/*
 		if (session.getAttribute("loginUser") != null) {
 			//로그인 했을 경우

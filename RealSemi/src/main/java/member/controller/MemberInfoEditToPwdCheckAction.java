@@ -26,34 +26,42 @@ public class MemberInfoEditToPwdCheckAction extends AbstractController {
 		//String userid =(String) req.getAttribute("userid");
 		//System.out.println("확인: "+userid);
 		
-		
-		String check_password_pw =req.getParameter("check_password_pw");
-		 MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		 
-		 
-		 
-		//System.out.println("확인 loginUser.getMemberId(): "+loginUser.getMemberId() );
-		//System.out.println("확인: "+check_password_pw);
-		
-		
 
-		//Map<String, Integer> paraMap = new HashMap<>();
-		//paraMap.put("memberId", loginUser.getMemberId());
-		//paraMap.put("pwd", pwd);
-		 
-		/*
-		 * Map<String, String> paraMap = new HashMap<>(); paraMap.put("memberId",
-		 * Integer.toString(loginUser.getMemberId() ) ); paraMap.put("pwd",
-		 * check_password_pw);
-		 * 
-		 * MemberDAO mdao= new MemberDAO_imple();
-		 */
-		//System.out.println("memberId: "+Integer.toString(loginUser.getMemberId() ));
-		//boolean IsMemberInfoEditPwdCheck = mdao.selectPwdCheck(paraMap);
+		//안쓰는 클래스
+		String method=req.getMethod(); //"GET" 또는 "POST"
 		
-		//super.setRedirect(false);
-		super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify02.jsp");
-		
+		//if("POST".equalsIgnoreCase(method)) { 
+			
+			
+			String check_password_pw =req.getParameter("check_password_pw");
+			 MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+			 
+			 
+			 
+			//System.out.println("확인 loginUser.getMemberId(): "+loginUser.getMemberId() );
+			//System.out.println("확인: "+check_password_pw);
+			
+			
+
+			//Map<String, Integer> paraMap = new HashMap<>();
+			//paraMap.put("memberId", loginUser.getMemberId());
+			//paraMap.put("pwd", pwd);
+			 
+			/*
+			 * Map<String, String> paraMap = new HashMap<>(); paraMap.put("memberId",
+			 * Integer.toString(loginUser.getMemberId() ) ); paraMap.put("pwd",
+			 * check_password_pw);
+			 * 
+			 * MemberDAO mdao= new MemberDAO_imple();
+			 */
+			//System.out.println("memberId: "+Integer.toString(loginUser.getMemberId() ));
+			//boolean IsMemberInfoEditPwdCheck = mdao.selectPwdCheck(paraMap);
+			
+			//super.setRedirect(false);
+			super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify02.jsp");
+			
+			
+		//}
 		
 	}
 
