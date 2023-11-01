@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import common.controller.AbstractController;
+import frameColor.domain.FrameColorVO;
+import lenseColor.domain.LenseColorVO;
+import material.domain.MaterialVO;
 import member.domain.MemberVO;
 import product.domain.ProductVO;
 import product.model.ProductDAO;
@@ -23,25 +26,36 @@ public class ProductAction extends AbstractController {
 
 		HttpSession session = req.getSession();
 		MemberVO loginUser = new MemberVO();
-	      loginUser.setEmail("hi@naver.com");
-	      loginUser.setMemberId(1234);
+		loginUser.setEmail("hi@naver.com");
+		loginUser.setMemberId(1234);
 
-
-	      session.setAttribute("loginUser", loginUser);
+		session.setAttribute("loginUser", loginUser);
 
 		if (!"GET".equalsIgnoreCase(method)) {
-			// GET 방식으로 넘어온 것이 아니라면
+			ProductDAO pdao = new ProductDAO_imple();
+			
+			Map<String, Integer> paraMap = new HashMap<>();
+			paraMap.put("categoryId", Integer.parseInt(req.getParameter("categoryId")));
+			
+			// 필터 결과 갖고오기
+			String[] frame_color = req.getParameterValues("frame_color");
+			String[] lens_color = req.getParameterValues("lens_color");
+			String[] materials = req.getParameterValues("materials");
+			String[] gender = req.getParameterValues("gender");
+			String[] order = req.getParameterValues("order");
+			Map<String, String[]> paraArrMap = new HashMap<>();
 
-			String message = "비정상적인 경로로 들어왔습니다.";
-			String loc = "javascript:history.back()";
+			paraArrMap.put("frame_color", frame_color);
 
-			req.setAttribute("message", message);
-			req.setAttribute("loc", loc);
+			paraArrMap.put("lens_color", lens_color);
 
+			paraArrMap.put("materials", materials);
+
+			List<ProductVO> filterList = pdao.getfilterlist(paraMap, paraArrMap);
+			req.setAttribute("filterList", filterList);
+			
 			super.setRedirect(false);
-			super.setViewPage("/jsp/common/msg.jsp");
-
-			return;
+			super.setViewPage("/jsp/sunglasses/sunglasses_viewAll.jsp");
 
 		} else {
 			// GET 방식으로 들어왔을 경우
@@ -52,8 +66,8 @@ public class ProductAction extends AbstractController {
 			// 선글라스 대표사진, 이름, 가격 알아오기
 			Map<String, Integer> paraMap = new HashMap<>();
 			paraMap.put("categoryId", Integer.parseInt(req.getParameter("categoryId")));
-			if(session.getAttribute("loginUser") != null) {
-				paraMap.put("memberId", ((MemberVO)session.getAttribute("loginUser")).getMemberId());
+			if (session.getAttribute("loginUser") != null) {
+				paraMap.put("memberId", ((MemberVO) session.getAttribute("loginUser")).getMemberId());
 			}
 			List<ProductVO> productList = pdao.getProductList(paraMap);
 			req.setAttribute("productList", productList);
@@ -63,11 +77,20 @@ public class ProductAction extends AbstractController {
 			req.setAttribute("sunglassesCount", sunglassesCount);
 
 			// 선글라스 전체 개수 알아오기
-			int sunglassesnumber = pdao.allViewList("1");
-			req.setAttribute("sunglassesnumber", sunglassesnumber);
+			int sunglassesNumber = pdao.allViewList(paraMap);
+			req.setAttribute("sunglassesNumber", sunglassesNumber);
 
-			
-			
+			// 프레임컬러렌즈 이름 가져오기
+			List<FrameColorVO> getFrameColor = pdao.getFrameColor(paraMap);
+			req.setAttribute("getFrameColor", getFrameColor);
+
+			// 렌즈컬러렌즈 이름 가져오기
+			List<LenseColorVO> getLenseColor = pdao.getLenseColor(paraMap);
+			req.setAttribute("getLenseColor", getLenseColor);
+
+			// 소재 이름 가져오기
+			List<MaterialVO> getMaterial = pdao.getMaterial(paraMap);
+			req.setAttribute("getMaterial", getMaterial);
 
 			/*
 			 * Object loginUserObj = session.getAttribute("loginUser");
@@ -75,12 +98,16 @@ public class ProductAction extends AbstractController {
 			 * if (loginUserObj != null) { MemberVO loginUser = (MemberVO) loginUserObj;
 			 * paraMap.put("memberId", loginUser.getMemberId()); }
 			 */
+
+			if ("1".equals(req.getParameter("categoryId"))) {
+			    setViewPage("/jsp/sunglasses/sunglasses_viewAll.jsp");
+			}
+			if ("2".equals(req.getParameter("categoryId"))) {
+				setViewPage("/jsp/glasses/glasses_viewAll.jsp");
+			}
 			
 			
 			
-			
-			super.setRedirect(false);
-			super.setViewPage("/jsp/sunglasses/sunglasses_viewAll.jsp");
 
 		}
 
