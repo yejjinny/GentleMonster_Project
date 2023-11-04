@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+.notice__title {
+    font-family: "GM_C", "Noto Sans", Helvetica, Arial, sans-serif !important;
+    font-size: 14px;
+    line-height: 21px;
+}
+.notice__header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+[data-lang=kr] .notice__txt {
+    word-break: keep-all;
+}
+.notice__txt {
+    margin-bottom: 22px;
+}
+.notice__updated, .notice__txt {
+    font-size: 13px;
+    line-height: 21px;
+    word-break: break-word;
+}
+.legal__table {
+    width: 100%;
+    margin: 16px 0;
+    border: 1px solid #707070;
+}
+.legal__table td:nth-of-type(1) {
+    width: 24%;
+}
+.legal__table td:not(:last-child) {
+    border-right: 1px solid #707070;
+}
+.legal__table td {
+    border-bottom: 1px solid #707070;
+}
+.legal__table th, .legal__table td {
+    padding: 7.5px 15px;
+    vertical-align: baseline;
+}
+table th, table .legal__table td, .legal__table table td, table td {
+    border: 1px solid #000;
+}
+.legal__table td:nth-of-type(2) {
+    width: 66.5%;
+}
+.legal__table td:nth-of-type(3) {
+    width: 9.5%;
+}
+.legal__table td {
+    border-bottom: 1px solid #707070;
+}
+.legal__table th, .legal__table td {
+    padding: 7.5px 15px;
+    vertical-align: baseline;
+}
+table th, table .legal__table td, .legal__table table td, table td {
+    border: 1px solid #000;
+}
