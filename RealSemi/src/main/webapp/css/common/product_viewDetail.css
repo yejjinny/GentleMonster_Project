@@ -1,0 +1,560 @@
+@charset "UTF-8";
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */ 
+/* 공식사이트에서 복붙한 것 시작 */
+
+/* 상품 사진(왼쪽 영역) 시작 */
+
+html:not(.page--main, .page--stories-detail, .page--list) .container_sq {
+    margin-bottom: 200px;
+}
+.container_sq {
+    margin-top: 0;
+    padding-top: 0;
+}
+.container_sq {
+    /* padding-top: 80px; */
+    width: 100%;
+    min-height: 787px;
+    height: auto;
+}
+div, p, a {
+    word-break: keep-all;
+}
+html, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, form, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    /* font-size: 100%; */
+    /* vertical-align: top; */
+    background: transparent;
+    word-break: break-all;
+}
+
+* {
+    box-sizing: border-box;
+    line-height: normal;
+}
+
+
+.detail.layout-container {
+    position: relative;
+    min-height: 1400px;
+}
+.layout-container {
+    padding: 0 20px;
+}
+
+
+.flex {
+    display: flex;
+}
+
+@media (max-width: 1680px){
+.detail-imgs {
+    width: calc(100% - 470px);
+}}
+.detail-imgs {
+    /* margin-top: 72px; */
+    width: calc(100% - 636px);
+    overflow: hidden;
+}
+
+.relative {
+    position: relative;
+}
+
+@media (min-width: 768px){
+.detail-imgs__wrapper {
+    display: block;
+}}
+
+.inline {
+    font-size: 0;
+}
+
+
+.detail-imgs__item {
+    overflow: hidden;
+    width: calc(50% - 16px);
+    margin: 0 16px 16px 0;
+}
+
+
+.inline > * {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.detail-imgs__content {
+    width: 0;
+    height: 0;
+    background-color: #ededed;
+    /* padding: 135.135135135135135% 100% 0 0; */
+    padding: 143.14% 100% 0 0;
+}
+
+.detail-imgs__image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 100%;
+    transform: translate(-50%, -50%);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+img {
+    vertical-align: middle;
+}
+
+img {
+    border: 0;
+}
+
+
+@media (min-width: 768px){
+.product-colors--mobile {
+    display: none;
+}}
+
+.product-colors {
+    overflow: hidden;
+}
+
+
+.product-colors__list:not(:empty) {
+    margin-bottom: 39px;
+}
+
+.product-colors__list {
+    width: calc(100% + 4px);
+    margin: 0 0 0 -2px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+
+.product-colors__item:hover, .product-colors__item.on {
+    border-color: #000;
+}
+
+.product-colors__item {
+    width: calc(25% - 4px);
+    margin: 0 2px 4px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: border-color 0.6s ease;
+}
+
+.product-colors__link {
+    display: block;
+    width: 0;
+    height: 0;
+    padding: 100% 100% 0 0;
+    background-color: #ededed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+}
+
+html, body, a, a:hover {
+    color: #343434;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a {
+    background: transparent;
+}
+
+
+/* 상품 사진(왼쪽 영역) 끝 */
+
+
+
+/* 상품 설명(오른쪽 영역) 시작 */
+
+@media (max-width: 1680px){
+.product-info {
+    width: 406px;
+    padding: 0 16px 0 84px;
+}}
+.product-info {
+    width: 616px;
+    box-sizing: border-box;
+    margin-top: 100px;
+    padding: 0 126px 0 155px;
+}
+
+.product__blue-light {
+    color: #449ce8;
+    margin-bottom: 12px;
+}
+.font--11 {
+    font-size: 11px;
+}
+.font--rg {
+    font-weight: normal;
+}
+
+.product-info__top {
+    margin-bottom: 38px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+.clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical > .btn-group:before, .btn-group-vertical > .btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-footer:before, .modal-footer:after {
+    display: table;
+    content: " ";
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+
+
+.product-name {
+    width: 67%;
+}
+.word-break--kr, .word-break--kr * {
+    word-break: keep-all;
+}
+
+.word-break, .word-break * {
+    word-break: break-word;
+}
+
+.font--20 {
+    font-size: 20px;
+}
+.font--bd {
+    font-weight: 700;
+}
+
+.font--kr {
+    font-family: "Unica77LLWeb","SDGothicNeo", sans-serif;
+    word-break: keep-all;
+}
+
+h1, .h1 {
+    font-size: 36px;
+}
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+h1 {
+    margin: 0.67em 0;
+    font-size: 2em;
+}
+
+
+
+.product-price {
+    margin-left: auto;
+    text-align: right;
+}
+.font--15 {
+    font-size: 15px;
+}
+.font--md, .font--en.font--bd {
+    font-weight: 500;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.clearfix:after, .container:after, .container-fluid:after, .row:after, .form-horizontal .form-group:after, .btn-toolbar:after, .btn-group-vertical > .btn-group:after, .nav:after, .navbar:after, .navbar-header:after, .navbar-collapse:after, .pager:after, .panel-body:after, .modal-footer:after {
+    clear: both;
+}
+
+
+.product-desc {
+    line-height: 25px;
+    margin-bottom: 37px;
+}
+
+.font--13 {
+    font-size: 13px;
+}
+
+.detail__btn-wrap {
+    padding: 2px 0 24px;
+}
+
+.detail__btn {
+    margin-top: 10px;
+}
+
+.btn-ui--black {
+    background: #000;
+    color: #fff;
+}
+.btn-ui {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 29px !important;
+    border: 1px solid #000 !important;
+    /* color: #000; */
+    height: 56px;
+    line-height: 54px;
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    background: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+button {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    letter-spacing: 0em;
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+.gm-component__spinner-wrapper {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.gm-component__spinner.dark, .gm-component__spinner.dark::before, .gm-component__spinner.dark::after, .gm-component__spinner--dark, .gm-component__spinner--dark::before, .gm-component__spinner--dark::after {
+    -webkit-animation-name: gm-component__spinner--dark;
+    animation-name: gm-component__spinner--dark;
+}
+
+
+.gm-component__spinner {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #acacac;
+    color: #acacac;
+    -webkit-animation: gm-component__spinner 0.9s infinite;
+    animation: gm-component__spinner 0.9s infinite;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+    transform: translate(-4px, -4px);
+}
+
+.service-info {
+    margin-bottom: 31.5px;
+}
+.service-info {
+    line-height: 1.82;
+    display: table;
+    margin: 1px auto 20.5px;
+}
+
+.detail-info__top {
+    border-top: 1px solid #e0e0e0;
+}
+
+.detail-info__subject {
+    text-indent: 8px;
+    line-height: 64px;
+    height: 64px;
+    cursor: pointer;
+}
+
+.detail-info__arrow {
+    right: 14px;
+}
+.n-arrow--up {
+    margin-top: -1px;
+    transform: rotate(225deg) translate(-50%);
+}
+
+.n-arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    border: solid #000;
+    border-width: 0px 2px 2px 0;
+    padding: 3.3px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transition: all 0.6s ease;
+    transform-origin: left;
+}
+
+.detail-info__content {
+    display: none;
+    padding: 10px 30px 19px 8px;
+}
+
+.detail-info__txt {
+    display: block;
+    line-height: 26px;
+    letter-spacing: -0.101px;
+}
+
+.detail-info__txt p {
+    line-height: inherit;
+    letter-spacing: inherit;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+span.detail-info__txt--bullet {
+    display: block;
+}
+
+
+.detail-info__txt--bullet {
+    position: relative;
+    padding-left: 13px;
+}
+
+
+.detail-info__txt--bullet.non-bllet::before {
+    content: "";
+}
+.detail-info__txt--bullet::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+}
+.non-bllet::before {
+    content: "none";
+}
+
+
+
+#boxing-system-trigger {
+    display: block;
+    cursor: pointer;
+}
+
+#boxing-system-trigger span {
+    display: block;
+    line-height: 26px;
+    text-decoration: underline !important;
+    border-bottom: 0 !important;
+    text-underline-offset: 4px;
+}
+
+
+.atag-line {
+    border-bottom: 1px solid #343434 !important;
+    text-decoration: none !important;
+}
+
+.n-arrow--down {
+    margin-top: -6px;
+    transform: rotate(45deg) translate(-50%);
+}
+
+.detail-info__row:not(:last-child) {
+    margin-bottom: 26px;
+}
+
+
+.font--14 {
+    font-size: 14px;
+}
+
+
+
+/* 상품 설명(오른쪽 영역) 끝 */
+
+/* 공식사이트에서 복붙한 것 끝 */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */ 
+
+
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */  
+/* 내가 만든 CSS 시작 */
+
+#button-checkout > button > span {
+	color: white;
+}
+
+
+
+
+
+/* 에진 추가 */
+.n-arrow--down {
+    margin-top: -6px;
+    -webkit-transform: rotate(45deg) translate(-50%);
+    transform: rotate(45deg) translate(-50%);
+}
