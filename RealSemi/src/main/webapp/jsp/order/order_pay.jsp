@@ -67,7 +67,7 @@ String ctxPath = request.getContextPath();
 									<p class="text-box line-height25 font--kr font--13 font--rg">배송주소</p>
 									<div class="text-box mttype02">
 										<p class="font--kr font--13 font--rg">${sessionScope.addressOne.familyName}${sessionScope.addressOne.lastName}</p>
-										<p class="font--kr font--13 font--rg">${sessionScope.addressOne.address}${sessionScope.addressOne.detailAddress}</p>
+										<p class="font--kr font--13 font--rg">${sessionScope.addressOne.address} ${sessionScope.addressOne.detailAddress}</p>
 										<p class="font--kr font--13 font--rg">${sessionScope.addressOne.postCode}</p>
 									</div>
 								</div>
