@@ -15,7 +15,7 @@ public interface WishDAO {
 	List<WishVO> getWishList(Map<String, Integer> paraMap) throws SQLException;
 	
 	// 삭제하기 버튼을 눌렀을 경우
-	int deleteCartItem(Map<String, String> paraMap) throws SQLException;
+	int deleteWishItem(Map<String, String> paraMap) throws SQLException;
 	
 	// 위시리스트에 담기 버튼을 눌렀을 경우
 	int addWishItem(Map<String, String> paraMap) throws SQLException;

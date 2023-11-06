@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 
 import common.controller.AbstractController;
+import member.domain.MemberVO;
 import wish.model.WishDAO;
 import wish.model.WishDAO_imple;
 
@@ -30,6 +31,9 @@ public class DeleteWishItemAction extends AbstractController {
 				// dao에 전달할 값을 설정한다
 				Map<String, String> paraMap = new HashMap<>();
 				paraMap.put("wishId", request.getParameter("wishId"));
+				paraMap.put("memberId",String.valueOf(((MemberVO)session.getAttribute("loginUser") ).getMemberId()));
+				paraMap.put("productDetailId", request.getParameter("productDetailId"));
+				
 				
 				// 삭제 되었는지에 대한 변수 true = 삭제완료 / false = 삭제실패
 				boolean isDelete = false;
@@ -39,7 +43,10 @@ public class DeleteWishItemAction extends AbstractController {
 				
 				// 유저가 선택한 카트 아이템 삭제 처리
 				WishDAO wdao = new WishDAO_imple();
-				int num = wdao.deleteCartItem(paraMap);
+				int num = wdao.deleteWishItem(paraMap);
+				
+				System.out.println(num);
+				System.out.println(request.getParameter("productDetailId"));
 				
 				if (num == 1) {
 					// 삭제 되었을 경우

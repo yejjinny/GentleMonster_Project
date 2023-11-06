@@ -125,13 +125,13 @@
 	<div class="modal-box__wrapper">
 		<div class="modal-box__contents">
 			<div class="find-pwd-kr">
-				<button type="button" class="close" data-dismiss="modal" onclick="thisclose();" >&times;</button>
+				<!-- <button type="button" class="close" data-dismiss="modal" onclick="thisclose();" >&times;</button> -->
 				<p class="font--kr font--13 font--rg">계정에 연결된 이메일을 입력하시면 비밀번호를 재설정하실 수 있습니다.</p>
 				<div class="flex flex-row font--kr font--13 font--rg margin_b32">
 					<input type="text" class="input-box-style input-find-pwd padding_10" name="email" id="" placeholder="이메일을 입력해주세요.">
 					<button type="button" id="btnRequestLink" class="btn-black button-auth-number font--kr font--13 font--rg" >링크 받기</button>
 				</div>
-				<a href="<%= ctxPath%>/register/memberRegister.gm" class="link font--kr font--13 font--rg" data-category="account" data-action="sign_up_click" data-label="normal_signup">회원가입</a>
+				<%-- <a href="<%= ctxPath%>/register/memberRegister.gm" class="link font--kr font--13 font--rg" data-category="account" data-action="sign_up_click" data-label="normal_signup">회원가입</a> --%>
 				
 				<!-- 카카오 로그인 -->
 				<!--  

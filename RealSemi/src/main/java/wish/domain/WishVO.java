@@ -8,7 +8,8 @@ public class WishVO {
 	private String productName;       	// 상품명
 	private long price;               	// 가격
 	private String mainImageFile;     	// 대표사진이미지
-
+	
+	private int stock;					// 재고
 	
 	/////////////////////////////////////////////////////
 	
@@ -25,11 +26,12 @@ public class WishVO {
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;
 	}
-	public int getProductdetailId() {
+	
+	public int getProductDetailId() {
 		return productDetailId;
 	}
-	public void setProductdetailId(int productdetailId) {
-		this.productDetailId = productdetailId;
+	public void setProductDetailId(int productDetailId) {
+		this.productDetailId = productDetailId;
 	}
 	public String getProductName() {
 		return productName;
@@ -48,6 +50,12 @@ public class WishVO {
 	}
 	public void setMainImageFile(String mainImageFile) {
 		this.mainImageFile = mainImageFile;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	
 	

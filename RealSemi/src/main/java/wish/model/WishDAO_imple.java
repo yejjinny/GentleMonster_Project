@@ -89,7 +89,7 @@ public class WishDAO_imple implements WishDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = " select wishId, fk_productDetailId, productGroupName||' '||frameColorEng as productName, price, mainImageFile "
+			String sql = " select wishId, fk_productDetailId, productGroupName||' '||frameColorEng as productName, price, mainImageFile, stock "
 					   + " from tbl_wishlist w "
 					   + " join tbl_member m on w.fk_memberId = m.memberId "
 					   + " join tbl_productDetail pd on w.fk_productDetailId = pd.productDetailId "
@@ -107,11 +107,12 @@ public class WishDAO_imple implements WishDAO {
 			while (rs.next()) {
 				WishVO wvo = new WishVO();
 				wvo.setWishId(rs.getInt("wishid"));
-				wvo.setProductdetailId(rs.getInt("fk_productDetailId"));
+				wvo.setProductDetailId(rs.getInt("fk_productDetailId"));
 				wvo.setProductName(rs.getString("productName"));
 				wvo.setPrice(rs.getLong("price"));
 				wvo.setMainImageFile(rs.getString("mainImageFile"));
-
+				wvo.setStock(rs.getInt("stock"));
+				
 				wishList.add(wvo);
 			} // end of while(rs.next())
 
@@ -125,27 +126,43 @@ public class WishDAO_imple implements WishDAO {
 
 	// 삭제하기 버튼을 눌렀을 경우
 	@Override
-	public int deleteCartItem(Map<String, String> paraMap) throws SQLException {
+	public int deleteWishItem(Map<String, String> paraMap) throws SQLException {
 		
 		int num = 0;
 		try {
-			conn = ds.getConnection();
+			if(paraMap.get("productDetailId") == null) {
+				conn = ds.getConnection();
+	
+				String sql = " delete from tbl_wishlist "
+						   + " where wishId = ? ";
+				
+				pstmt = conn.prepareStatement(sql);
+	
+				pstmt.setString(1, paraMap.get("wishId"));
+				
+	
+				num = pstmt.executeUpdate();
+			}
+			else {
+				conn = ds.getConnection();
 
-			String sql = " delete from tbl_wishlist "
-					   + " where wishId = ? ";
-			
-			pstmt = conn.prepareStatement(sql);
+				String sql = " delete from tbl_wishlist "
+						   + " where fk_memberId = ? and fk_productDetailId = ? ";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, paraMap.get("memberId"));
+				pstmt.setString(2, paraMap.get("productDetailId"));
 
-			pstmt.setString(1, paraMap.get("wishId"));
-
-			num = pstmt.executeUpdate();
+				num = pstmt.executeUpdate();	
+			}
 
 		} finally {
 			close();
 		}
 
 		return num;
-	}// end of public int deleteCartItem(Map<String, String> paraMap) throws SQLException --------
+	}// end of public int deleteWishItem(Map<String, String> paraMap) throws SQLException --------
 
 
 	// 위시리스트에 담기 버튼을 눌렀을 경우
@@ -155,6 +172,7 @@ public class WishDAO_imple implements WishDAO {
 		int num = 0;
 		
 		try {
+			
 			conn = ds.getConnection();
 
 			// 이미 같은 상품이 위시리스트에 등록되어있는지 확인용
