@@ -78,7 +78,7 @@ public class PwdFindAction extends AbstractController {
 					
 					// 세션불러오기
 					HttpSession session = request.getSession();
-					session.setAttribute("certification_code", certification_code); // 발급한 인증코드를 세션에 저장시킴.
+			//		session.setAttribute("certification_code", certification_code); // 발급한 인증코드를 세션에 저장시킴.
 					request.setAttribute("certification_code", certification_code); 
 					
 				} catch(Exception e) {

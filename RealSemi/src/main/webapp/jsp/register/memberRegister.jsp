@@ -11,8 +11,7 @@
 <link rel="stylesheet" href="<%=ctxPath%>/css/register/memberRegister.css">
 
 <script type="text/javascript" src="<%= ctxPath%>/js/jquery-3.7.1.min.js"></script>
-<%-- <script type="text/javascript" src="<%= ctxPath%>/js/register/memberRegister.js"></script> --%>
-<script type="text/javascript" src="<%= ctxPath%>/js/register/real.js"></script>
+<script type="text/javascript" src="<%= ctxPath%>/js/register/memberRegister.js"></script>
 
 <title>GENTLE MONSTER Official Site</title>
 
@@ -23,101 +22,113 @@
 	<div>
 		<div class="center_wrap account contentswrap register max_width_440" style="min-height: 963">
 			<div class="register-wrap">
-				<form id="fregisterform" name="fregisterform" action="https://www.gentlemonster.com/kr/customer/create_account" onsubmit="return fregisterform_submit(this);" method="post" enctype="multipart/form-data" autocomplete="off">
-					
+				
+				<form id="memberRegisterFrm" name="memberRegisterFrm" action="<%= ctxPath%>/register/memberRegister.gm" method="post">	
+				
 					<input type="hidden" name="w" value=""> <input type="hidden" name="url" value="register_new.html"> <input type="hidden" name="agree" value=""> <input type="hidden" name="agree2" value=""> <input type="hidden" name="cert_type" value=""> <input type="hidden" name="flag" value=""> <input type="hidden" name="is_begin_checkout" value="">
 					<p class="register-title font--kr font--15 font--bd account-font-kr">신규 회원가입</p>
 					
 					<!-- 이메일 -->
 					<div id="mbEmail" class="input-box">
 						<p class="input-label font--kr font--13 font--rg">이메일 주소</p>
-						<input type="text" name="email" id="email" class="font--kr font--12 font--rg rg-input input-box-style" style="letter-spacing: 0em;"> 
+						<input type="text" name="email" id="email" class="requiredInfo font--kr font--12 font--rg rg-input input-box-style" style="letter-spacing: 0em;"> 
+						<button type="button" id="emailCheck" class="btn-info">이메일 중복확인</button><br>
+						<span id="emailCheckResult"></span>
 						<span class="error font--kr font--11 font--rg">필수 입력란 입니다.</span>
 					</div>
 					
 					<!-- 이메일 확인 -->
 					<div id="mbEmail" class="input-box">
 						<p class="input-label font--kr font--13 font--rg">이메일 주소 확인</p>
-						<input type="text" name="email_check" id="email_check" class="font--kr font--12 font--rg rg-input input-box-style" style="letter-spacing: 0em;" onkeyup="register_autovalid_check('email_check_form',this.value)"> 
+						<input type="text" name="email_check" id="email_check" class="requiredInfo font--kr font--12 font--rg rg-input input-box-style" style="letter-spacing: 0em;">
 						<span class="error font--kr font--11 font--rg">필수 입력란 입니다.</span>
 					</div>
 					
 					<!-- 비밀번호 -->
 					<div id="mbPw" class="input-box">
 						<p class="input-label font--kr font--13 font--rg">비밀번호</p>
-						<input type="password" name="mb_password" id="password" class="font--kr font--13 font--rg rg-input input-pwd input-box-style" onkeyup="register_autovalid_check('password_validation',this.value)"> 
+						<input type="password" name="pwd" id="pwd" class="requiredInfo font--kr font--13 font--rg rg-input input-pwd input-box-style" >
 						<span class="error font--kr font--11 font--rg">필수 입력란 입니다.</span>
+						<!--  
 						<button type="button" class="show-pwd" id="show-pwd" onclick="clickPasswordEye(this, $('#password'))">
 							<span class="viewpass eye-slash"></span>
 						</button>
+						-->
 					</div>
 					
 					<!-- 비밀번호 확인 -->
 					<div id="mbPwRe" class="input-box">
 						<p class="input-label font--kr font--13 font--rg">비밀번호 확인</p>
-						<input type="password" name="mb_password_re" id="password_re" class="font--kr font--13 font--rg rg-input input-pwd input-box-style" onkeyup="register_autovalid_check('password_form',this.value)"> 
+						<input type="password" name="pwd_re" id="pwd_re" class="requiredInfo font--kr font--13 font--rg rg-input input-pwd input-box-style" >
 						<span class="error font--kr font--11 font--rg">필수 입력란 입니다.</span>
+						<!--
 						<button type="button" class="show-pwd" id="show-pwd-re" onclick="clickPasswordEye(this, $('#password_re'))">
 							<span class="viewpass eye-slash"></span>
 						</button>
+						-->
 					</div>
-					
+				
+				<!--  	
 					<div id="pw_pattern" style="display: none" class="ruletxt-box">
 						<div class="font--rg" style="font-size: 13px;">다음을 활용한 보안 비밀번호를 사용하시기 바랍니다.</div>
 						<div style="margin: 14px 0px 15px 0px; color: gray">
-							<p id="length_8" class="font--kr font--13 font--rg">최소 8자 이상</p>
+							<p id="length_8" class="font--kr font--13 font--rg">최소 8자 이상 15자 이하</p>
 							<p id="capital_1" class="font--kr font--13 font--rg">최소 1개의 대문자 사용</p>
 							<p id="special_chactor_1" class="font--kr font--13 font--rg">최소 1개의 특수문자 사용</p>
 							<p id="number_1" class="font--kr font--13 font--rg">최소 1개의 숫자 사용</p>
 						</div>
 					</div>
-					
+				-->	
 					
 					<!-- 성별 -->
 					<div class="field_info info_mtzero">
 						<div class="input-box">
 							<label for="mbGender" class="input-label font--kr font--13 font--rg">성별 (선택)</label>
 							<div id="mbGender" class="select-box">
+								<!--  
 								<div class="pc-select">
 									<span class="current height_40"> 성별을 선택해 주세요 </span>
 									<div class="option-list">
 										<div class="list-inner">
 											<ul>
-												<li data-value="M">남성</li>
-												<li data-value="F">여성</li>
+												<li data-value="1">남성</li>
+												<li data-value="2">여성</li>
 											</ul>
 										</div>
 									</div>
 								</div>
-								<select class="mo-select rg-input font--kr font--13" name="mb_sex" id="mb_gender">
-									<option value="" selected="" disabled="">성별을 선택해 주세요</option>
-									<option value="M">남성</option>
-									<option value="F">여성</option>
+								-->
+								<select class="mo-select rg-input font--kr font--13" name="gender" id="mb_gender">
+									<option value="3" selected="">성별을 선택해 주세요</option>
+									<option value="1">남성</option>
+									<option value="2">여성</option>
 								</select>
 								<span class="error font--kr font--11 font--rg">필수 입력란 입니다.</span>
 							</div>
-						</div>
-					 
+						</div>					 
+					  	
 					 
 						<!-- 이름 -->
 						<div id="mbName" class="box-group box-group-child-2">
 							<div class="input-box">
 								<p class="input-label font--kr font--13 font--rg">성</p>
-								<input type="text" name="mb_lname"
-									class="font--kr font--13 font--rg rg-input input-box-style"
+								<input type="text" name="familyName" id="familyName"
+									class="requiredInfo font--kr font--13 font--rg rg-input input-box-style"
 									maxlength="2"
-									onkeyup="register_autovalid_check('lname_form',this.value)">
-								<span class="alert font--kr font--11" data-alert="필수 입력란 입니다."></span>
+									>
+								<span class="error font--kr font--11">필수 입력란 입니다.</span>
 							</div>
 							<div class="input-box">
 								<p class="input-label font--kr font--13 font--rg">이름</p>
-								<input type="text" name="mb_fname"
-									class="font--kr font--13 font--rg rg-input input-box-style"
+								<input type="text" name="lastName" id="lastName"
+									class="requiredInfo font--kr font--13 font--rg rg-input input-box-style"
 									maxlength="6"
-									onkeyup="register_autovalid_check('fname_form',this.value)">
-								<span class="alert font--kr font--11" data-alert="필수 입력란 입니다."></span>
+									>
+								<span class="error font--kr font--11">필수 입력란 입니다.</span>
 							</div>
 						</div>
+						
+						
 						<!-- 생년월일 -->
 						<div class="box-group box-group-child-3">
 							<label class="input-label font--kr font--13 font--rg">
@@ -129,11 +140,12 @@
 							$getYear = intval($register_data['mb_birth_year'] ?? '');
 							?-->
 							<div id="birthYear" class="select-box">
+								<!--  
 								<div class="pc-select">
 									<span class="current height_40"> </span>
 									<div class="option-list">
 										<div class="list-inner">
-											<ul>
+											<ul>											
 												<li data-year="2007">2007</li>
 												<li data-year="2006">2006</li>
 												<li data-year="2005">2005</li>
@@ -225,9 +237,10 @@
 										</div>
 									</div>
 								</div>
-								<select class="mo-select rg-input font--13 font--kr"
+								-->
+								<select class="requiredInfo mo-select rg-input font--13 font--kr"
 									name="mb_birth_year" id="mb_birth_year">
-									<option value="">년</option>
+									<option value="">년</option>  
 									<option value="2007">2007</option>
 									<option value="2006">2006</option>
 									<option value="2005">2005</option>
@@ -315,27 +328,28 @@
 									<option value="1923">1923</option>
 									<option value="1922">1922</option>
 									<option value="1921">1921</option>
-								</select> <span class="alert font--kr font--11 font--rg"
-									data-alert="필수 입력란 입니다."></span>
+								</select> 
+								<span class="error font--kr font--11 font--rg">필수 입력란 입니다.</span>
 							</div>
 							<!--// 년 -->
 							<!-- 월 -->
 							<div id="birthMonth" class="select-box">
+								<!--  
 								<div class="pc-select">
 									<span class="current height_40 font--kr font--13 font--rg">
 									</span>
 									<div class="option-list">
 										<div class="list-inner">
 											<ul>
-												<li data-month="1">1</li>
-												<li data-month="2">2</li>
-												<li data-month="3">3</li>
-												<li data-month="4">4</li>
-												<li data-month="5">5</li>
-												<li data-month="6">6</li>
-												<li data-month="7">7</li>
-												<li data-month="8">8</li>
-												<li data-month="9">9</li>
+												<li data-month="01">01</li>
+												<li data-month="02">02</li>
+												<li data-month="03">03</li>
+												<li data-month="04">04</li>
+												<li data-month="05">05</li>
+												<li data-month="06">06</li>
+												<li data-month="07">07</li>
+												<li data-month="08">08</li>
+												<li data-month="09">09</li>
 												<li data-month="10">10</li>
 												<li data-month="11">11</li>
 												<li data-month="12">12</li>
@@ -343,42 +357,44 @@
 										</div>
 									</div>
 								</div>
-								<select class="mo-select rg-input font--kr font--13 font--rg"
+								-->
+								<select class="requiredInfo mo-select rg-input font--kr font--13 font--rg"
 									name="mb_birth_month" id="mb_birth_month">
 									<option value="">월</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
 									<option value="10">10</option>
 									<option value="11">11</option>
 									<option value="12">12</option>
-								</select> <span class="alert font--kr font--11 font--rg"
-									data-alert="필수 입력란 입니다."></span>
+								</select> 
+								<span class="error font--kr font--11 font--rg">필수 입력란 입니다.</span>
 							</div>
 							<!--// 월 -->
 							<!-- 일 -->
 							<div id="birthDay" class="select-box">
+								<!--  
 								<div class="pc-select">
 									<span class="current height_40 font--kr font--13 font--rg">
 									</span>
 									<div class="option-list">
 										<div class="list-inner">
 											<ul class="font--kr font--13">
-												<li data-day="1">1</li>
-												<li data-day="2">2</li>
-												<li data-day="3">3</li>
-												<li data-day="4">4</li>
-												<li data-day="5">5</li>
-												<li data-day="6">6</li>
-												<li data-day="7">7</li>
-												<li data-day="8">8</li>
-												<li data-day="9">9</li>
+												<li data-day="01">01</li>
+												<li data-day="02">02</li>
+												<li data-day="03">03</li>
+												<li data-day="04">04</li>
+												<li data-day="05">05</li>
+												<li data-day="06">06</li>
+												<li data-day="07">07</li>
+												<li data-day="08">08</li>
+												<li data-day="09">09</li>
 												<li data-day="10">10</li>
 												<li data-day="11">11</li>
 												<li data-day="12">12</li>
@@ -405,18 +421,19 @@
 										</div>
 									</div>
 								</div>
-								<select class="mo-select rg-input font--kr font--13 font--rg"
+								-->
+								<select class="requiredInfo mo-select rg-input font--kr font--13 font--rg"
 									name="mb_birth_day" id="mb_birth_day">
 									<option value="">일</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
 									<option value="10">10</option>
 									<option value="11">11</option>
 									<option value="12">12</option>
@@ -439,81 +456,94 @@
 									<option value="29">29</option>
 									<option value="30">30</option>
 									<option value="31">31</option>
-								</select> <span class="alert font--kr font--11 font--rg"
-									data-alert="필수 입력란 입니다."></span>
+								</select> 
+								<span class="error font--kr font--11 font--rg">필수 입력란 입니다.</span>
 							</div>
 							<!--// 일 -->
 						</div>
 					</div>
 
-						<!-- 약관(개인정보 처리 방침) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<!-- 약관(개인정보 처리 방침) -->
 					<div class="agreement agreement-group group_mttype01">
-						<div class="input-box input-box-check" style="visibility: visible">
+						<div class="input-box">
 							<label for="check_all">
 								<input type="checkbox" class="terms_all rg-input" id="check_all" name="check_all" value="T">
-								<div class="input-box-check-layer"></div>
+								<!-- <div class="input-box-check-layer"></div> -->
 								<span class="font--kr font--13 font--rg">전체 동의</span>
 							</label>
 						</div>
 						<!-- 한국 -->
-						<div class="input-box input-box-check">
+						<div class="input-box">
 							<label for="age">
-								<input type="checkbox" class="terms rg-input" id="age" name="age" value="T" data-required="" aria-required="true" aria-invalid="false">
-								<div class="input-box-check-layer"></div>
+								<input type="checkbox" class="terms rg-input" id="agreement_age" name="agreement_age" >
+								<!-- <div class="input-box-check-layer"></div> -->
 								<span class="font--kr font--13 font--rg"> [필수] 만 14세 이상입니다 </span>
 							</label>
 						</div>
-						<div class="input-box input-box-check">
+						
+						<div class="input-box">
 							<label for="terms">
-								<input type="checkbox" class="terms rg-input" id="terms" name="terms" value="T" data-required="" aria-required="true" aria-invalid="false">
-								<div class="input-box-check-layer"></div>
+								<input type="checkbox" class="terms rg-input" id="agreement_terms" name="terms" value="T" data-required="" aria-required="true" aria-invalid="false">
+								<!-- <div class="input-box-check-layer"></div> -->
 								<span class="font--kr font--13 font--rg"> <a style="text-decoration: none" target="_blank" href="https://www.gentlemonster.com/kr/legal/terms">
 										<u class="atag-line display-unset">[필수] 이용약관 동의 </u>
 									</a>
 								</span>
 							</label>
 						</div>
-						<div class="input-box input-box-check">
+						<div class="input-box">
 							<label for="privacy_policy">
-								<input type="checkbox" class="terms rg-input" id="privacy_policy" name="privacy_policy" value="T" data-required="" aria-required="true" aria-invalid="false">
-								<div class="input-box-check-layer"></div>
+								<input type="checkbox" class="terms rg-input" id="agreement_privacy_policy" name="privacy_policy" value="T" data-required="" aria-required="true" aria-invalid="false">
+								<!-- <div class="input-box-check-layer"></div> -->
 								<span class="font--kr font--13 font--rg"> <a style="text-decoration: none;" target="_blank" href="https://www.gentlemonster.com/kr/legal/privacy_collect?case=account_register">
 										<u class="atag-line display-unset">[필수] 개인정보 수집 및 이용 동의</u>
 									</a>
 								</span>
 							</label>
 						</div>
-						<div class="input-box input-box-check">
+						<div class="input-box">
 							<label for="marketing_check">
-								<input type="checkbox" class="terms terms--marketing rg-input" id="marketing_check" name="marketing_check" value="T">
-								<div class="input-box-check-layer"></div>
+								<input type="checkbox" class="terms terms--marketing rg-input" id="agreement_marketing_check" name="marketing_check" value="T">
+								<!-- <div class="input-box-check-layer"></div> -->
 								<span class="font--kr font--13 font--rg"> <a style="text-decoration: none;" target="_blank" href="https://www.gentlemonster.com/kr/legal/privacy_collect_marketing?case=account_register">
 										<u class="atag-line display-unset">[선택] 마케팅 목적 개인정보 수집 및 이용 동의</u>
 									</a>
 								</span>
 							</label>
 						</div>
-						<div class="input-box input-box-check">
+						<div class="input-box">
 							<label for="marketing_info">
-								<input type="checkbox" class="terms terms--marketing rg-input" id="marketing_info" name="marketing_info" value="T">
-								<div class="input-box-check-layer"></div>
+								<input type="checkbox" class="terms terms--marketing rg-input" id="agreement_marketing_info" name="marketing_info" value="T">
+								<!-- <div class="input-box-check-layer"></div> -->
 								<span class="font--kr font--13 font--rg"> <a style="text-decoration: none;" target="_blank" href="https://www.gentlemonster.com/kr/legal/marketing_consent">
 										<u class="atag-line display-unset">[선택] 마케팅 정보 수신 및 활용 동의</u>
 									</a>
 								</span>
 							</label>
 						</div>
-						
-
-
-
 					</div>
+					
 					<!-- D :: 카카오 플러스 친구 -->
 					<div class="register-submit-wrap button-group section-row">
-						<button type="button" class="button font--kr font--13 font--rg" onclick="location.href='<%= ctxPath%>/jsp/common/index.jsp'">
+						<button type="button" class="button font--kr font--13 font--rg" onclick="location.href='<%= ctxPath%>/index.gm'">
 							취소
 						</button>
-						<button type="button" class="login_bt button button-primary gm-component__spinner-container font--kr font--13 font--rg" id="btn_dd" accesskey="s">
+						<button type="button" id="btn_memberRegister" class="login_bt button button-primary gm-component__spinner-container font--kr font--13 font--rg" accesskey="s" onclick="goRegister()" >
 							<div class="cart-loading gm-component__spinner-wrapper">
 								<div class="gm-component__spinner dark"></div>
 							</div>
@@ -521,12 +551,11 @@
 						</button>
 					</div>
 				</form>
+				
 			</div>
 		</div>
 	</div>
 
-	<!-- <script src="https://www.gentlemonster.com/kr/assets/js/lib/libphonenumber-js/libphonenumber-mobile.js" defer=""></script>
-	<script src="https://www.gentlemonster.com/kr/assets/js/bluebird.min.js" defer=""></script> -->
 </div>
 
 

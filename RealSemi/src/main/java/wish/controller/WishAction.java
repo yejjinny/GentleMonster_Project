@@ -35,12 +35,13 @@ public class WishAction extends AbstractController {
 		
 	// 임시용 코드 시작
 		MemberVO loginUser = new MemberVO();
+		/*
 		loginUser.setEmail("ganada@gmail.com");
 		loginUser.setMemberId(3);
-
+		 */
 		HttpSession session = request.getSession();
 
-		session.setAttribute("loginUser", loginUser);
+	//	session.setAttribute("loginUser", loginUser);
 	// 임시용 코드 끝
 
 		

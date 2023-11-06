@@ -13,6 +13,16 @@ $(document).ready(function() {
 	*/
 
 	
+   $("button.addCartWish").each(function() {
+      $(this).click(function() {
+         let id = $(this).attr("id");
+         let productDetailId = id.substr(11, id.length);
+
+         const frm = $("form#addCartItem"+productDetailId);
+         frm.submit();
+
+      })
+   })
 
 
 	
