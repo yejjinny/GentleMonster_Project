@@ -24,6 +24,9 @@ svg#레이어_1 {
 
 	border: none !important;
 }
+
+
+
 /* 아래는 공식사이트에서 복붙한 것 */
 
 /* 카테고리 시작 */
@@ -1875,3 +1878,8 @@ input[type=checkbox]:checked ~ .input-box-check-layer:after {
     transform: translate(-50%, -50%);
 }
 
+
+/* 내가 추가한 것 */
+span.category__thumbnail:hover {
+	border: solid 1px  #000 !important;
+}

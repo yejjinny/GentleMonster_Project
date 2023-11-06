@@ -52,18 +52,53 @@ String ctxPath = request.getContextPath();
 				class="category__container jsCategory on swiper-container-horizontal"
 				data-break="9999">
 				<ul class="category__list  inline text-center">
+				<c:if test="${not empty requestScope.allView}">
 					<li
 						class="category__item category__item--View all relative swiper-slide current"
 						data-sub-category="NjE=" data-sub-category-all-view=""
 						data-category-name="전체보기" data-sub-category-url-key="view-all">
-						<a href="<%= ctxPath %>/product/product.gm?categoryId=2" class="category__link"
+						<a href="<%= ctxPath %>/product/product.gm?categoryId=2&allView=2" class="category__link"
 						onclick="return delCurrentScroll();" data-category="category"
 						data-action="view-all"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/안경_카테고리_01전체보기.jpg"
+								src="<%=ctxPath%>/image/glasses/category/1.jpg"
 								alt="" class="category__img"></span> <span
 							class="category__name font--kr font--11 font--md">전체보기</span>
 					</a>
 					</li>
+				</c:if>	
+				<c:if test="${empty requestScope.allView}">
+					<li
+						class="category__item category__item--View all relative swiper-slide"
+						data-sub-category="NjE=" data-sub-category-all-view=""
+						data-category-name="전체보기" data-sub-category-url-key="view-all">
+						<a href="<%= ctxPath %>/product/product.gm?categoryId=2&allView=2" class="category__link"
+						onclick="return delCurrentScroll();" data-category="category"
+						data-action="view-all"> <span class="category__thumbnail"><img
+								src="<%=ctxPath%>/image/glasses/category/1.jpg"
+								alt="" class="category__img"></span> <span
+							class="category__name font--kr font--11 font--md">전체보기</span>
+					</a>
+					</li>
+				</c:if>	
+				
+				
+				
+				
+				<c:if test="${not empty requestScope.bestSeller}">
+					<li
+						class="category__item category__item--View all relative swiper-slide current"
+						data-sub-category="NjI=" data-sub-category-all-view=""
+						data-category-name="베스트셀러" data-sub-category-url-key="bestsellers">
+						<a href="<%= ctxPath %>/product/category.gm?bestSeller=1&categoryId=2" class="category__link"
+						onclick="return delCurrentScroll();" data-category="category"
+						data-action="bestsellers"> <span class="category__thumbnail"><img
+								src="<%=ctxPath%>/image/glasses/category/2.jpg"
+								alt="" class="category__img"></span> <span
+							class="category__name font--kr font--11 font--md">베스트셀러</span>
+					</a>
+					</li>
+				</c:if>	
+				<c:if test="${empty requestScope.bestSeller}">
 					<li
 						class="category__item category__item--View all relative swiper-slide"
 						data-sub-category="NjI=" data-sub-category-all-view=""
@@ -71,71 +106,167 @@ String ctxPath = request.getContextPath();
 						<a href="<%= ctxPath %>/product/category.gm?bestSeller=1&categoryId=2" class="category__link"
 						onclick="return delCurrentScroll();" data-category="category"
 						data-action="bestsellers"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/안경_카테고리_02베스트셀러.jpg"
+								src="<%=ctxPath%>/image/glasses/category/2.jpg"
 								alt="" class="category__img"></span> <span
 							class="category__name font--kr font--11 font--md">베스트셀러</span>
 					</a>
 					</li>
+				</c:if>	
+				
+				
+				
+				<c:if test="${not empty requestScope.isBluelight}">
 					<li
-						class="category__item category__item--View all relative swiper-slide"
+						class="category__item category__item--View all relative swiper-slide current"
 						data-sub-category="NjQ=" data-sub-category-all-view=""
 						data-category-name="블루라이트 차단"
 						data-sub-category-url-key="blue-light-lenses"><a href="<%= ctxPath %>/product/category.gm?isBluelight=1&categoryId=2"
 						class="category__link" onclick="return delCurrentScroll();"
 						data-category="category" data-action="blue-light-lenses"> <span
 							class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/안경_카테고리_03블루라이트차단.jpg"
+								src="<%=ctxPath%>/image/glasses/category/3.jpg"
 								alt="" class="category__img"></span> <span
 							class="category__name font--kr font--11 font--md">블루라이트 차단</span>
 					</a></li>
+				</c:if>	
+				<c:if test="${empty requestScope.isBluelight}">
+						<li
+							class="category__item category__item--View all relative swiper-slide"
+							data-sub-category="NjQ=" data-sub-category-all-view=""
+							data-category-name="블루라이트 차단"
+							data-sub-category-url-key="blue-light-lenses"><a href="<%= ctxPath %>/product/category.gm?isBluelight=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="blue-light-lenses"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/3.jpg"
+									alt="" class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">블루라이트 차단</span>
+						</a></li>
+				</c:if>	
+				
+				
+				<c:if test="${not empty requestScope.isTint}">
+						<li
+							class="category__item category__item--View all relative swiper-slide current"
+							data-sub-category="MTcw" data-sub-category-all-view="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
+							data-category-name="틴트 렌즈"
+							data-sub-category-url-key="tinted-lenses"><a href="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="tinted-lenses"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/4.jpg"
+									alt="" class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">틴트 렌즈</span>
+						</a></li>
+				</c:if>		
+				<c:if test="${empty requestScope.isTint}">
+						<li
+							class="category__item category__item--View all relative swiper-slide"
+							data-sub-category="MTcw" data-sub-category-all-view="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
+							data-category-name="틴트 렌즈"
+							data-sub-category-url-key="tinted-lenses"><a href="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="tinted-lenses"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/4.jpg"
+									alt="" class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">틴트 렌즈</span>
+						</a></li>
+				</c:if>	
+				
+				
+				
+				
+				
+				<c:if test="${not empty requestScope.isGift}">
+						<li
+							class="category__item category__item--View all relative swiper-slide current"
+							data-sub-category="MTU5" data-sub-category-all-view=""
+							data-category-name="선물추천" data-sub-category-url-key="gifts">
+							<a href="<%= ctxPath %>/product/category.gm?isGift=1&categoryId=2" class="category__link"
+							onclick="return delCurrentScroll();" data-category="category"
+							data-action="gifts"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/5.jpg"
+									alt="" class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">선물추천</span>
+						</a>
+						</li>
+				</c:if>
+				<c:if test="${empty requestScope.isGift}">
+						<li
+							class="category__item category__item--View all relative swiper-slide"
+							data-sub-category="MTU5" data-sub-category-all-view=""
+							data-category-name="선물추천" data-sub-category-url-key="gifts">
+							<a href="<%= ctxPath %>/product/category.gm?isGift=1&categoryId=2" class="category__link"
+							onclick="return delCurrentScroll();" data-category="category"
+							data-action="gifts"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/5.jpg"
+									alt="" class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">선물추천</span>
+						</a>
+						</li>
+				</c:if>
+				
+				
+				<c:if test="${not empty requestScope.square}">
 					<li
-						class="category__item category__item--View all relative swiper-slide"
-						data-sub-category="MTcw" data-sub-category-all-view="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
-						data-category-name="틴트 렌즈"
-						data-sub-category-url-key="tinted-lenses"><a href="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
-						class="category__link" onclick="return delCurrentScroll();"
-						data-category="category" data-action="tinted-lenses"> <span
-							class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/안경_카테고리_04틴트렌즈.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">틴트 렌즈</span>
-					</a></li>
-					<li
-						class="category__item category__item--View all relative swiper-slide"
-						data-sub-category="MTU5" data-sub-category-all-view=""
-						data-category-name="선물추천" data-sub-category-url-key="gifts">
-						<a href="<%= ctxPath %>/product/category.gm?isGift=1&categoryId=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="gifts"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/안경_카테고리_05선물추천.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">선물추천</span>
-					</a>
-					</li>
-					<li
-						class="category__item category__item--View all relative swiper-slide"
+						class="category__item category__item--View all relative current swiper-slide"
 						data-sub-category="Njc=" data-sub-category-all-view=""
 						data-category-name="사각 프레임" data-sub-category-url-key="square">
-						<a href="<%= ctxPath %>/product/category.gm?frameId=1&categoryId=2" class="category__link"
+						<a href="<%= ctxPath %>/product/category.gm?square=1&categoryId=2" class="category__link"
 						onclick="return delCurrentScroll();" data-category="category"
 						data-action="square"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/안경_카테고리_06사각프레임.jpg"
+								src="<%=ctxPath%>/image/glasses/category/6.jpg"
 								alt="" class="category__img"></span> <span
 							class="category__name font--kr font--11 font--md">사각 프레임</span>
 					</a>
 					</li>
+				</c:if>
+				<c:if test="${empty requestScope.square}">
 					<li
 						class="category__item category__item--View all relative swiper-slide"
+						data-sub-category="Njc=" data-sub-category-all-view=""
+						data-category-name="사각 프레임" data-sub-category-url-key="square">
+						<a href="<%= ctxPath %>/product/category.gm?square=1&categoryId=2" class="category__link"
+						onclick="return delCurrentScroll();" data-category="category"
+						data-action="square"> <span class="category__thumbnail"><img
+								src="<%=ctxPath%>/image/glasses/category/6.jpg"
+								alt="" class="category__img"></span> <span
+							class="category__name font--kr font--11 font--md">사각 프레임</span>
+					</a>
+					</li>
+				</c:if>
+				
+				
+				
+				<c:if test="${not empty requestScope.round}">	
+					<li
+						class="category__item category__item--View all relative current swiper-slide"
 						data-sub-category="Njg=" data-sub-category-all-view=""
 						data-category-name="원형 프레임" data-sub-category-url-key="round">
-						<a href="<%= ctxPath %>/product/category.gm?frameId=3&categoryId=2" class="category__link"
+						<a href="<%= ctxPath %>/product/category.gm?round=3&categoryId=2" class="category__link"
 						onclick="return delCurrentScroll();" data-category="category"
 						data-action="round"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/안경_카테고리_07원형프레임.jpg"
+								src="<%=ctxPath%>/image/glasses/category/7.jpg"
 								alt="" class="category__img"></span> <span
 							class="category__name font--kr font--11 font--md">원형 프레임</span>
 					</a>
 					</li>
+				</c:if>	
+				<c:if test="${empty requestScope.round}">	
+					<li
+						class="category__item category__item--View all relative swiper-slide"
+						data-sub-category="Njg=" data-sub-category-all-view=""
+						data-category-name="원형 프레임" data-sub-category-url-key="round">
+						<a href="<%= ctxPath %>/product/category.gm?round=3&categoryId=2" class="category__link"
+						onclick="return delCurrentScroll();" data-category="category"
+						data-action="round"> <span class="category__thumbnail"><img
+								src="<%=ctxPath%>/image/glasses/category/7.jpg"
+								alt="" class="category__img"></span> <span
+							class="category__name font--kr font--11 font--md">원형 프레임</span>
+					</a>
+					</li>
+				</c:if>	
 				</ul>
 				<span class="swiper-notification" aria-live="assertive"
 					aria-atomic="true"></span> <span class="swiper-notification"
@@ -428,7 +559,7 @@ String ctxPath = request.getContextPath();
 									data-sub-image="<%=ctxPath%>${productVo.mainImageFile}">
 									<a
 										class="product__link product-image-swiper__wrapper swiper-wrapper"
-										id="8NX8YBQ7JSZW" href="<%= ctxPath %>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
+										id="8NX8YBQ7JSZW" href=""
 										product-name="${productVo.productName}"
 										product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
 										product-bluelight="Blue Light Protection"
@@ -460,7 +591,7 @@ String ctxPath = request.getContextPath();
 								<div class="product__info relative">
 									<div class="clearfix">
 										<div class="product__spec float-left">
-											<a class="product__link" id="product_8NX8YBQ7JSZW" href="<%= ctxPath %>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
+											<a class="product__link" id="product_8NX8YBQ7JSZW" href=""
 												product-name="${productVo.productName}"
 												product-sku="8NX8YBQ7JSZW"
 												product-price="${productVo.price}" data-category="ecommerce"

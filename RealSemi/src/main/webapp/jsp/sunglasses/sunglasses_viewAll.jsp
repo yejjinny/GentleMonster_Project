@@ -54,85 +54,184 @@ String ctxPath = request.getContextPath();
 				data-break="9999">
 				<ul class="category__list swiper-wrapper inline text-center"
 					style="transform: translate3d(0px, 0px, 0px);">
-					<li
-						class="category__item category__item--View all relative swiper-slide current swiper-slide-visible swiper-slide-active"
-						data-sub-category="NDY=" data-sub-category-all-view=""
-						data-category-name="전체보기" data-sub-category-url-key="view-all"
-						style="width: 98px;"><a href="<%= ctxPath %>/product/product.gm?categoryId=1" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="view-all"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/sunglasses/category/1.jpg" alt=""
-								class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">전체보기</span>
-					</a></li>
-					<li
-						class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
-						data-sub-category="NDg=" data-sub-category-all-view=""
-						data-category-name="베스트셀러" data-sub-category-url-key="bestsellers"
-						style="width: 98px;"><a href="<%= ctxPath %>/product/category.gm?bestSeller=1&categoryId=1" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="bestsellers"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/sunglasses/category/2.jpg" alt=""
-								class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">베스트셀러</span>
-					</a></li>
-					<li
-						class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
-						data-sub-category="NTM=" data-sub-category-all-view=""
-						data-category-name="틴트 렌즈"
-						data-sub-category-url-key="tinted-lenses" style="width: 98px;">
-						<a href="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=1" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="tinted-lenses"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/sunglasses/category/3.jpg" alt=""
-								class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">틴트 렌즈</span>
-					</a>
-					</li>
-					<li
-						class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
-						data-sub-category="MTU3" data-sub-category-all-view=""
-						data-category-name="선물추천" data-sub-category-url-key="gifts"
-						style="width: 98px;"><a href="<%= ctxPath %>/product/category.gm?isGift=1&categoryId=1"/product/category.gm?isGift=1" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="gifts"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/sunglasses/category/4.jpg" alt=""
-								class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">선물추천</span>
-					</a></li>
-					<li
-						class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
-						data-sub-category="NTc=" data-sub-category-all-view=""
-						data-category-name="사각 프레임" data-sub-category-url-key="square"
-						style="width: 98px;"><a href="<%= ctxPath %>/product/category.gm?frameId=1&categoryId=1" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="square"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/sunglasses/category/5.jpg" alt=""
-								class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">사각 프레임</span>
-					</a></li>
-					<li
-						class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
-						data-sub-category="NTk=" data-sub-category-all-view=""
-						data-category-name="캣아이 프레임" data-sub-category-url-key="cat-eye"
-						style="width: 98px;"><a href="<%= ctxPath %>/product/category.gm?frameId=2&categoryId=1" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="cat-eye"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/sunglasses/category/6.jpg" alt=""
-								class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">캣아이 프레임</span>
-					</a></li>
-					<li
-						class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
-						data-sub-category="NTU=" data-sub-category-all-view=""
-						data-category-name="원형 프레임" data-sub-category-url-key="round"
-						style="width: 98px;"><a href="<%= ctxPath %>/product/category.gm?frameId=3&categoryId=1" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="round"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/sunglasses/category/7.jpg" alt=""
-								class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">원형 프레임</span>
-					</a></li>
+					<c:if test="${not empty requestScope.allView}">
+
+						<li id="allList"
+							class="category__item category__item--View all relative swiper-slide current swiper-slide-visible swiper-slide-active"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/product.gm?categoryId=1&allView=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/1.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">전체보기</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.allView}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible swiper-slide-active"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/product.gm?categoryId=1&allView=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/1.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">전체보기</span>
+						</a></li>
+					</c:if>
+
+					<c:if test="${not empty requestScope.bestSeller}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible current"
+							style="width: 98px; border-color: #000;"><a
+							href="<%=ctxPath%>/product/category.gm?bestSeller=1&categoryId=1"
+							class="category__link" data-category="category"
+							data-action="bestsellers"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/2.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">베스트셀러</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.bestSeller}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?bestSeller=1&categoryId=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/2.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">베스트셀러</span>
+						</a></li>
+					</c:if>
+
+
+					<c:if test="${not empty requestScope.isTint}">
+						<li
+							class="category__item category__item--View all relative current swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/3.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">틴트 렌즈</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.isTint}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/3.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">틴트 렌즈</span>
+						</a></li>
+					</c:if>
+
+
+
+
+					<c:if test="${not empty requestScope.isGift}">
+						<li
+							class="category__item category__item--View all relative current swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?isGift=1&categoryId=1"
+							/product/category.gm?isGift=1 " class="category__link"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/4.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">선물추천</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.isGift}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?isGift=1&categoryId=1"
+							/product/category.gm?isGift=1 " class="category__link"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/4.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">선물추천</span>
+						</a></li>
+					</c:if>
+
+
+
+					<c:if test="${not empty requestScope.square}">
+						<li
+							class="category__item category__item--View all relative current swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?square=1&categoryId=1"
+							class="category__link" data-category="category"
+							data-action="square"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/5.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">사각 프레임</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.square}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?square=1&categoryId=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/5.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">사각 프레임</span>
+						</a></li>
+					</c:if>
+
+
+
+
+					<c:if test="${not empty requestScope.cateye}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible current"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?cateye=2&categoryId=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/6.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">캣아이 프레임</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.cateye}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?cateye=2&categoryId=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/6.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">캣아이 프레임</span>
+						</a></li>
+					</c:if>
+
+
+
+
+
+					<c:if test="${not empty requestScope.round}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible current"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?round=3&categoryId=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/7.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">원형 프레임</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.round}">
+						<li
+							class="category__item category__item--View all relative swiper-slide swiper-slide-visible"
+							style="width: 98px;"><a
+							href="<%=ctxPath%>/product/category.gm?round=3&categoryId=1"
+							class="category__link"> <span class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/sunglasses/category/7.jpg"
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">원형 프레임</span>
+						</a></li>
+					</c:if>
 				</ul>
 				<span class="swiper-notification" aria-live="assertive"
 					aria-atomic="true"></span> <span class="swiper-notification"
@@ -171,9 +270,7 @@ String ctxPath = request.getContextPath();
 		<div class="list-btn content-top__right inline float-right">
 			<c:if test="${empty requestScope.isCategorySearch}">
 				<button data-toggle="modal" data-target="#filterModal" type="button"
-					class="filter-toggle inline jsFilterBtn " data-category="filter"
-					data-action="click_filter_open" data-label="filter_open"
-					aria-label="Open Filter Popup" aria-expanded="false">
+					class="filter-toggle inline jsFilterBtn ">
 					<span class="filter-toggle__icon relative"> <span
 						class="filter-toggle__bar filter-toggle__bar--first"></span> <span
 						class="filter-toggle__bar filter-toggle__bar--second"></span>
@@ -185,9 +282,6 @@ String ctxPath = request.getContextPath();
 	</div>
 
 
-	<!-- Filter popup -->
-
-	<!--// Filter popup -->
 </div>
 
 
@@ -209,7 +303,7 @@ String ctxPath = request.getContextPath();
 			<div class="modal-body">
 				<form name="filterFrm">
 					<div class="filter-popup__inner">
-					<input type="hidden" name="categoryId" value="1" />
+						<input type="hidden" name="categoryId" value="1" />
 
 						<!-- Filter content -->
 						<div class="filter-popup__content clearfix">
@@ -225,12 +319,14 @@ String ctxPath = request.getContextPath();
 								</button>
 								<div id="frame_color-list" class="filter" style="">
 									<ul class="filter__list inline">
-										<c:forEach var="frameColorVo" items="${requestScope.getFrameColor}" varStatus="status">
+										<c:forEach var="frameColorVo"
+											items="${requestScope.getFrameColor}" varStatus="status">
 											<li class="filter__item filter__item--inline relative">
 												<label for="frame_color[]_${status.index}"
 												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 													<input type="checkbox" name="frame_color" class="n-radio "
-													value="${frameColorVo.frameColorId}" id="frame_color[]_${status.index}">
+													value="${frameColorVo.frameColorId}"
+													id="frame_color[]_${status.index}">
 													<div class="input-box-check-layer"></div>${frameColorVo.frameColorKor}
 											</label>
 											</li>
@@ -250,17 +346,20 @@ String ctxPath = request.getContextPath();
 								</button>
 								<div id="lens_color-list" class="filter" style="">
 									<ul class="filter__list inline">
-									 <c:forEach var="lenseColorVo" items="${requestScope.getLenseColor}" varStatus="status">	
-										<li class="filter__item filter__item--inline relative">
-											<label for="lens_color[]_${status.index}"
-											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
-												<input type="checkbox" name="lens_color" class="n-radio "
-												value="${lenseColorVo.lenseColorId}" id="lens_color[]_${status.index}">
-												<div class="input-box-check-layer"></div> ${lenseColorVo.lenseColorKor}
-										</label>
-										</li>
+										<c:forEach var="lenseColorVo"
+											items="${requestScope.getLenseColor}" varStatus="status">
+											<li class="filter__item filter__item--inline relative">
+												<label for="lens_color[]_${status.index}"
+												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
+													<input type="checkbox" name="lens_color" class="n-radio "
+													value="${lenseColorVo.lenseColorId}"
+													id="lens_color[]_${status.index}">
+													<div class="input-box-check-layer"></div>
+													${lenseColorVo.lenseColorKor}
+											</label>
+											</li>
 										</c:forEach>
-										
+
 									</ul>
 								</div>
 							</div>
@@ -275,19 +374,22 @@ String ctxPath = request.getContextPath();
 								</button>
 								<div id="materials-list" class="filter" style="">
 									<ul class="filter__list inline">
-									  <c:forEach var="materialVo" items="${requestScope.getMaterial}" varStatus="status">	
-										<li class="filter__item filter__item--inline relative"
-											data-category="filter" data-action="소재" data-label="아세테이트">
-											<label for="materials[]_${status.index}"
-											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
-												<input type="checkbox" name="materials" class="n-radio "
-												value="${materialVo.materialId}" id="materials[]_${status.index}">
-												<div class="input-box-check-layer"></div> ${materialVo.materialName}
-										</label>
-										</li>
-									  </c:forEach>	
-										
-								
+										<c:forEach var="materialVo"
+											items="${requestScope.getMaterial}" varStatus="status">
+											<li class="filter__item filter__item--inline relative"
+												data-category="filter" data-action="소재" data-label="아세테이트">
+												<label for="materials[]_${status.index}"
+												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
+													<input type="checkbox" name="materials" class="n-radio "
+													value="${materialVo.materialId}"
+													id="materials[]_${status.index}">
+													<div class="input-box-check-layer"></div>
+													${materialVo.materialName}
+											</label>
+											</li>
+										</c:forEach>
+
+
 									</ul>
 								</div>
 							</div>
@@ -341,7 +443,8 @@ String ctxPath = request.getContextPath();
 								</button>
 								<div id="filter_sort-list" class="filter" style="">
 									<ul class="filter__list inline">
-										<li class="filter__item filter__item-sort relative"><label for="order_newest"
+										<li class="filter__item filter__item-sort relative"><label
+											for="order_newest"
 											class="filter__label n-label font--kr font--12 font--rg">
 												<input type="radio" name="order"
 												class="n-radio n-radio--once " value="registerDay Desc"
@@ -349,7 +452,8 @@ String ctxPath = request.getContextPath();
 												class="filter__checkbox n-checkbox n-checkbox--radio"></span>
 												신상품순
 										</label></li>
-										<li class="filter__item filter__item-sort relative"><label for="order_low_price"
+										<li class="filter__item filter__item-sort relative"><label
+											for="order_low_price"
 											class="filter__label n-label font--kr font--12 font--rg">
 												<input type="radio" name="order"
 												class="n-radio n-radio--once " value="price Asc"
@@ -367,9 +471,9 @@ String ctxPath = request.getContextPath();
 												class="filter__checkbox n-checkbox n-checkbox--radio"></span>
 												높은가격순
 										</label></li>
-									
+
 									</ul>
-									
+
 								</div>
 							</div>
 							<!--// Filter : Sort -->
@@ -378,14 +482,15 @@ String ctxPath = request.getContextPath();
 						<div class="filter-popup__bottom inline text-right">
 							<button type="button"
 								class="filter-btn font--kr font--14 font--bd js-filter-form-reset jsFilterReset">
-								초기화 <span class="selected-count font--kr js-filter-count jsSelectedCount"></span>
+								초기화 <span
+									class="selected-count font--kr js-filter-count jsSelectedCount"></span>
 							</button>
 							<button type="button" id="filterSubmitBtn"
 								class="filter-btn filter-btn--black btn-ui--black gm-component__spinner-container font--kr font--14 font--bd">
 								<div class="gm-component__spinner-wrapper">
 									<div class="gm-component__spinner dark"></div>
 								</div>
-								<span class="result-count <?= $font ?> js-filter-result-count">상품보기</span> 
+								<span class="result-count <?= $font ?> js-filter-result-count">상품보기</span>
 							</button>
 						</div>
 					</div>
@@ -401,10 +506,7 @@ String ctxPath = request.getContextPath();
 
 <!-- <메인메뉴> -->
 <c:if test="${not empty requestScope.productList}">
-	<div id="product-list" data-infinite-scroll="" data-is-loading="false"
-		data-is-append="false" data-is-last-page="false" data-page-index="1"
-		data-limit="20" data-category="NDQ=" data-sub-category="NDY="
-		data-sub-category-url-key="view-all" data-sub-category-all-view="">
+	<div id="product-list">
 
 		<ul id="filter-selected-result" class="product-list__wrapper inline"
 			role="list" aria-live="polite">
@@ -421,11 +523,7 @@ String ctxPath = request.getContextPath();
 									data-sub-image="https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_2.jpg,https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_3.jpg,https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_4.jpg">
 									<a
 										class="product__link product-image-swiper__wrapper swiper-wrapper"
-										id="TW2WM9BHAYSR" href="<%= ctxPath %>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
-										product-name="${productVo.productName}"
-										product-sku="TW2WM9BHAYSR" product-price=""
-										data-category="ecommerce" data-action="select_item"
-										tabindex="-1" aria-hidden="true">
+										href="수정필" product-name="${productVo.productName}">
 										<div class="product-image-swiper__slide swiper-slide">
 											<div class="product__image-wrapper">
 												<img data-src="" alt=""
@@ -437,27 +535,26 @@ String ctxPath = request.getContextPath();
 									<div
 										class="product-image-swiper__button product-image-swiper__button--prev swiper-button-prev"
 										product-name="${productVo.productName}"
-										product-sku="TW2WM9BHAYSR" product-price="${productVo.price}"
-										data-category="carousel" data-action="click_left"
-										data-label="view-all"></div>
+										product-price="${productVo.price}"></div>
 									<div
 										class="product-image-swiper__button product-image-swiper__button--next swiper-button-next"
 										product-name="${productVo.productName}"
-										product-sku="TW2WM9BHAYSR" product-price="${productVo.price}"
-										data-category="carousel" data-action="click_right"
-										data-label="view-all"></div>
+										product-price="${productVo.price}"></div>
 								</div>
 								<div class="product__info relative">
 									<div class="clearfix">
 										<div class="product__spec float-left">
-											<a class="product__link" id="product_TW2WM9BHAYSR" href="<%= ctxPath %>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
+											<a class="product__link" id="product_TW2WM9BHAYSR" href="수정필"
 												product-name="${productVo.productName}"
-												product-sku="TW2WM9BHAYSR"
 												product-price="${productVo.price}" data-category="ecommerce"
 												data-action="select_item">
 												<p class="product__blue-glasses font--kr font--11 font--rg"></p>
 												<p class="product__name font--kr font--13 font--bd">${productVo.productName}</p>
-												<p class="product__price font--en font--12 font--rg"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productVo.price}" />원</p>
+												<p class="product__price font--en font--12 font--rg">
+													<fmt:formatNumber type="number" maxFractionDigits="3"
+														value="${productVo.price}" />
+													원
+												</p>
 												<p class="product__colors">
 													+<span class="color-count">${count.count}</span> Colors
 												</p>
@@ -465,11 +562,13 @@ String ctxPath = request.getContextPath();
 										</div>
 
 										<c:if test="${productVo.isWish eq 1}">
-											<button class="product__wish float-right jsBtnWish on">
+											<button class="product__wish float-right jsBtnWish on"
+												onclick="goDelete(${productVo.productDetailId});">
 										</c:if>
 
 										<c:if test="${productVo.isWish eq 0}">
-											<button class="product__wish float-right jsBtnWish">
+											<button class="product__wish float-right jsBtnWish"
+												onclick="goAdd(${productVo.productDetailId});">
 										</c:if>
 										<svg version="1.1" baseProfile="basic" id="레이어_1"
 											xmlns="http://www.w3.org/2000/svg"

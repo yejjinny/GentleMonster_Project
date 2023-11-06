@@ -1600,3 +1600,9 @@ input[type=checkbox]:checked ~ .input-box-check-layer:after {
     transform: translate(-50%, -50%);
 }
 
+/* 내가 추가한 것 */
+span.category__thumbnail:hover {
+	border: solid 1px  #000 !important;
+}
+
+
