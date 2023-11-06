@@ -65,9 +65,7 @@ String ctxPath = request.getContextPath();
 							<input type="password" class="input-pwd width_100 padding_10 font--kr font--13 font--rg" name="reg_mb_password_old" id="reg_mb_password_old" size="20" maxlength="20">
 							<span id="nowPwdCheck" style="color:white;"   class="font--kr font--13 font--rg">필수 입력란 입니다.</span>
 							 
-							<!-- <button type="button" class="show-pwd" id="show-pwd-old" onclick="clickPasswordEye(this, $('#reg_mb_password_old'))">
-								<span class="viewpass eye-slash"></span>
-							</button> -->
+						 
 							<span class="_alert font--kr font--11 font--rg" data-alert="This field is required."></span>
 						</div>
 						<div class="input-box font--kr font--13 font--rg">
@@ -75,9 +73,7 @@ String ctxPath = request.getContextPath();
 							<input type="password" class="input-pwd padding_10 font--kr font--13 font--rg" name="mb_password" id="mb_password" size="20" maxlength="20">
 							<span id="pwdCheck" style="color:white;"   class="font--kr font--13 font--rg">비밀번호 형식을 확인하세요.</span>
 							 
-							<!-- <button type="button" class="show-pwd" id="show-pwd-new" onclick="clickPasswordEye(this, $('#mb_password'))">
-								<span class="viewpass eye-slash"></span>
-							</button> -->
+							 
 							<span class="_alert font--kr font--11 font--rg" data-alert="This field is required."></span>
 						</div>
 						<div class="input-box font--kr font--13 font--rg">
@@ -86,9 +82,7 @@ String ctxPath = request.getContextPath();
 							 <span id="confirmCheck" style="color:white;"   class="font--kr font--13 font--rg">일치하는 비밀번호를 입력하세요.</span>
 							 
 							
-							<!-- <button type="button" class="show-pwd" id="show-pwd-new-confirm" onclick="clickPasswordEye(this, $('#confirm_mb_password'))">
-								<span class="viewpass eye-slash"></span>
-							</button> -->
+							 
 							<span class="_alert font--kr font--11 font--rg" data-alert="This field is required."></span>
 						</div>
 						<div class="pw-condition-box" id="pw_pattern">

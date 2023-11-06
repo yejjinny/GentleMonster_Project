@@ -28,7 +28,7 @@ public class AddressBookAddAction extends AbstractController {
 			
 			req.setAttribute("memberId", memberId);
 			
-			//System.out.println("memberId=>"+memberId);
+			 
 			
 			super.setRedirect(false);
 			super.setViewPage("/jsp/member/addressBook/addAddressBook.jsp");

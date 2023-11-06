@@ -16,11 +16,11 @@ public class MemberInfoDeleteAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
+		 
 
 
 		HttpSession session = req.getSession();
-		String method=req.getMethod(); //"GET" 또는 "POST"
+		String method=req.getMethod();  
 		
 		
 		if("GET".equalsIgnoreCase(method)) {
@@ -32,7 +32,7 @@ public class MemberInfoDeleteAction extends AbstractController {
 				      
 					int memberId = loginUser.getMemberId();
 					
-					//System.out.println("memberId=>"+memberId);
+					 
 					
 					 MemberDAO mado= new MemberDAO_imple();
 					 

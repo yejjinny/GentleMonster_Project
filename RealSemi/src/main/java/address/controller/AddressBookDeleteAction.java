@@ -28,7 +28,7 @@ public class AddressBookDeleteAction extends AbstractController {
 			
 			
 			String addressbookid = req.getParameter("addressbookid");
-			//System.out.println("addressbookid=>" +addressbookid);
+			 
 			
 			
 			AddressDAO dao= new AddressDAO_imple();
@@ -41,20 +41,17 @@ public class AddressBookDeleteAction extends AbstractController {
 				
 				if(result==1) { //삭제 업데이트가 완
 					
-					boolean isExists =true;//=mado.selectPwdCheck(memberId,pwd);
-					   //System.out.println("json isExists-->"+ isExists ); 
+					boolean isExists =true; 
+					    
 					   
 					   
-					   JSONObject jsonObj= new JSONObject(); //{}
+					   JSONObject jsonObj= new JSONObject();  
 					   jsonObj.put("isExists", isExists); 
-					   //{"isExists":true } 혹은{"isExists":false }
+					    
 					   
-					   String json= jsonObj.toString(); //문자열형태인 "{"isExists":true }"
-					   //혹은"{"isExists":false }" 으로 만들어준다 //System.out.println("확인용-- json--<"+ json);
-					   
-					   //System.out.println("json-->"+json );
+					   String json= jsonObj.toString();  
 					  req.setAttribute("json", json);
-					  //req.setAttribute("json", jsonObj);
+					  
 					 
 					  //super.setRedirect(false); 
 					  super.setViewPage("/jsp/common/jsonview.jsp");
@@ -64,9 +61,7 @@ public class AddressBookDeleteAction extends AbstractController {
 				
 			}catch(SQLException e) {
 				
-				//message="SQL구문 에러발생";
-				//loc=  "javascript:history.back()";//자바스크립트를 이용한 이전페이지로 이동
-				
+				 
 				e.printStackTrace();
 			}
 			

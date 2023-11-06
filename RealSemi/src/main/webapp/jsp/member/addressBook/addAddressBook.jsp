@@ -131,23 +131,7 @@ String ctxPath = request.getContextPath();
 							<div class="agreement-group font--kr font--13 font--rg">
 								<div class="input-box input-box-check">
 									<label for="is_set_default"> <input type="hidden" id="addrDefaultCheck" name="addrDefaultCheck" value="0" /> <input type="checkbox" id="is_set_default" name="is_set_default" class="input-box-check checklistagree">
-										<div class="input-box-check-layer"></div> <span class="font--kr font--13 font--rg">기본 배송지로 지정</span> <%-- 
-										 	<input type="checkbox" id="is_set_default" name="is_set_default" class="checklistagree" checked="checked" style="border: 1px solid rgb(0, 0, 0);">
-										
-											 <div style="display:flex">
-										
-												<div style="  border:solid 2px black;   border-radius: 5px;   display:inline-block;   ">
-													<button type="button" id="btnDefault" style="background-color: white;   height:100%; color:white;    " >버튼</button>
-													
-												</div>
-											 
-												 <div>
-												 	&nbsp; 
-													<span class="font--kr font--13 font--rg">기본 배송지로 지정</span>																								 
-												 </div>	
-												  																						 								  
-											</div>
-													--%>
+										<div class="input-box-check-layer"></div> <span class="font--kr font--13 font--rg">기본 배송지로 지정</span> 
 									</label>
 								</div>
 							</div>

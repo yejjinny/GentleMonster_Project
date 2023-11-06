@@ -13,9 +13,9 @@ public class MemberToChangePwdAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
+		 
 		HttpSession session = req.getSession();
-		String method=req.getMethod(); //"GET" 또는 "POST"
+		String method=req.getMethod();  
 		
 		 if (session.getAttribute("loginUser") != null) {
 			 

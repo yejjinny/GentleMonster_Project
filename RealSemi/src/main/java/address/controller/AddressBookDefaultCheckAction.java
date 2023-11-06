@@ -30,11 +30,10 @@ public class AddressBookDefaultCheckAction extends AbstractController {
 			
 			MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 			int memberId = loginUser.getMemberId();
-			//---------------------------------------------------
+			 
 			String fk_memberid=req.getParameter("fk_memberid");						
 			String addressbookid=req.getParameter("addressbookid");
-			//System.out.println("fk_memberid => "+ fk_memberid);
-			//System.out.println("addressbookid => "+ addressbookid);
+			 
 			
 			 Map<String, String> paraMap= new HashMap<>();
 			 paraMap.put("fk_memberid", fk_memberid);
@@ -46,7 +45,7 @@ public class AddressBookDefaultCheckAction extends AbstractController {
 			 
 			 if(result==1) { //기본배송지 업뎃에 성공한 경우
 				 
-				 //System.out.println("성공");
+				 
 				 Map<String, String> paraMap2= new HashMap<>();
 				 paraMap2.put("memberId", Integer.toString(memberId));
 				 
@@ -68,12 +67,7 @@ public class AddressBookDefaultCheckAction extends AbstractController {
 					 
 				 }
 			 }
-			 //List<AddressVO> addressList= dao.selectAddressLists(paraMap);
 			 
-			
-			//-----------------------
-			//super.setRedirect(false);
-			//super.setViewPage("/jsp/member/addressBook/addressBook.jsp"); 
 		}
 		else {
 			//POST 방식이 아니라면
