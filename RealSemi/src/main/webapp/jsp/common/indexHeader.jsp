@@ -136,7 +136,7 @@ pinterest
 										<a href="<%=ctxPath%>/product/product.gm?categoryId=2" data-category="navigation" data-action="glasses" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd" onclick="return delCurrentScroll();">안경</a>
 									</li>
 									<li class="n-nav__item">
-										<a href="수정필" data-category="navigation" data-action="styles" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">스타일</a>
+										<a href="<%=ctxPath%>/style/style.gm" data-category="navigation" data-action="styles" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">스타일</a>
 									</li>
 									<li class="n-nav__item">
 										<a href="<%= ctxPath %>/store/store.gm" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">매장보기</a>
@@ -178,9 +178,23 @@ pinterest
 								</div>
 							</div>
 							<div class="n-header__right float-left clearfix relative">
-								<div class="n-header__account n-header__pc float-left" id="loginBtn">
+								
+								<%-- 로그인 _ 민경--%>
+								<c:if test="${empty sessionScope.loginUser}">
+									<div class="n-header__account n-header__pc float-left" id="loginBtn">
+										<a href="<%=ctxPath%>/register/login.gm" data-category="navigation" data-action="login" data-label="main-menu" class="n-header__link font--kr font--13 font--md" id="loginBtn"> 로그인 </a>
+									</div>
+								</c:if>
+								<c:if test="${not empty sessionScope.loginUser}">
+									<div class="n-header__account n-header__pc float-left" id="loginBtn">
+										<a href="<%=ctxPath%>/member/memberInfoViewAll.gm" data-category="navigation" data-action="login" data-label="main-menu" class="n-header__link font--kr font--13 font--md" id="loginBtn"> 회원정보 </a>
+									</div>
+								</c:if>
+								<%-- 로그인 _ 민경--%>
+								
+								<%-- <div class="n-header__account n-header__pc float-left" id="loginBtn">
 									<a href="<%= ctxPath %>/register/login.gm" data-category="navigation" data-action="login" data-label="main-menu" class="n-header__link font--kr font--13 font--md" id="loginBtn"> 로그인 </a>
-								</div>
+								</div> --%>
 								<div class="n-header__cart float-left relative">
 									<button data-toggle="modal" data-target="#cartModal" type="button">
 										<span class="n-header__cart-icon"> <svg stroke="#545454" version="1.2" baseProfile="tiny" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" xml:space="preserve" aria-label="cart">
@@ -219,95 +233,6 @@ pinterest
 		</div>
 	</div>
 
-
-
-
-
-
-
-
-
-
-	<!-- <!-- search popup (검색창) -->
-	<!-- <div class="n-search-popup">
-		default content
-		<div class="n-search-popup__content clearfix" id="top_search_section" aria-hidden="true" role="listbox" aria-labelledby="top_search_section">
-			<div class="n-search-popup__right float-right">
-				<div class="n-search-popup__title font--kr font--13 font--md">다양한 컬렉션을 만나보세요</div>
-				<div class="collection-cate">
-					<ul class="collection-cate__list inline">
-						<li class="collection-cate__item text-center"><a href="수정필">
-								<div class="collection-cate__thumb">
-									<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-sun-all.jpg" alt="선글라스-Sunglasses" class="collection-cate__img">
-								</div>
-								<div class="collection-cate__name font--kr font--11 font--md">선글라스</div>
-						</a></li>
-						<li class="collection-cate__item text-center"><a href="수정필">
-								<div class="collection-cate__thumb">
-									<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-opt-all.jpg" alt="안경-Glasses" class="collection-cate__img">
-								</div>
-								<div class="collection-cate__name font--kr font--11 font--md">안경</div>
-						</a></li>
-						<li class="collection-cate__item text-center"><a href="수정필">
-								<div class="collection-cate__thumb">
-									<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-sun-best.jpg" alt="베스트셀러-Sunglasses" class="collection-cate__img">
-								</div>
-								<div class="collection-cate__name font--kr font--11 font--md">베스트셀러</div>
-						</a></li>
-						<li class="collection-cate__item text-center"><a href="수정필">
-								<div class="collection-cate__thumb">
-									<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-opt-bluelight.jpg" alt="블루라이트 차단-Glasses" class="collection-cate__img">
-								</div>
-								<div class="collection-cate__name font--kr font--11 font--md">블루라이트 차단</div>
-						</a></li>
-						<li class="collection-cate__item text-center"><a href="수정필">
-								<div class="collection-cate__thumb">
-									<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-sun-cateye.jpg" alt="캣아이 프레임-Sunglasses" class="collection-cate__img">
-								</div>
-								<div class="collection-cate__name font--kr font--11 font--md">캣아이 프레임</div>
-						</a></li>
-						<li class="collection-cate__item text-center"><a href="수정필">
-								<div class="collection-cate__thumb">
-									<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-sun-oval.jpg" alt="원형 프레임-Sunglasses" class="collection-cate__img">
-								</div>
-								<div class="collection-cate__name font--kr font--11 font--md">원형 프레임</div>
-						</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="gm-component__spinner-wrapper">
-			<div class="gm-component__spinner"></div>
-		</div>
-		// default content
-	</div>
-	<div class="n-search-popup-bg jsSearchBG"></div>
-	<button type="button" class="n-search-popup-close close-btn jsSearchClose" aria-label="Close Search Dialog"></button>
-	// search popup
-
-
-
-
-
-
-
-
-
-
-
-
-	카트 
-	<div class="cart_section_popup popup_wrap cart-layer">
-		<div class="close_minicart">
-			<span></span>
-		</div>
-		<div class="cart_section_popup_inner font--en">
-			<div id="modal_title_cart" class="font--bd font--kr font--14">쇼핑백</div>
-			<form name="frmcart" id="frmcart" class="cart_product_kr " method="post" action="수정필"></form>
-		</div>
-	</div>
-	<div class="overflow_minicart"></div>
-	// 카트  -->
 
 
 
@@ -365,7 +290,7 @@ pinterest
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/product.gm?categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-sun-all.jpg" alt="선글라스-Sunglasses" class="collection-cate__img">
+												<img src="<%= ctxPath %>/image/sunglasses/category/1.jpg" alt="선글라스-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">선글라스</div>
 										</a>
@@ -373,7 +298,7 @@ pinterest
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/product.gm?categoryId=2">
 											<div class="collection-cate__thumb">
-												<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-opt-all.jpg" alt="안경-Glasses" class="collection-cate__img">
+												<img src="<%= ctxPath %>/image/glasses/category/1.jpg" alt="안경-Glasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">안경</div>
 										</a>
@@ -381,15 +306,15 @@ pinterest
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?bestSeller=1&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-sun-best.jpg" alt="베스트셀러-Sunglasses" class="collection-cate__img">
+												<img src="<%= ctxPath %>/image/sunglasses/category/2.jpg" alt="베스트셀러-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">베스트셀러</div>
 										</a>
 									</li>
 									<li class="collection-cate__item text-center">
-										<a href="<%=ctxPath%>/product/category.gm?isBlueLight=1&categoryId=1">
+										<a href="<%=ctxPath%>/product/category.gm?isBlueLight=1&categoryId=2">
 											<div class="collection-cate__thumb">
-												<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-opt-bluelight.jpg" alt="블루라이트 차단-Glasses" class="collection-cate__img">
+												<img src="<%= ctxPath %>/image/glasses/category/3.jpg" alt="블루라이트 차단-Glasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">블루라이트 차단</div>
 										</a>
@@ -397,7 +322,7 @@ pinterest
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?frameId=2&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-sun-cateye.jpg" alt="캣아이 프레임-Sunglasses" class="collection-cate__img">
+												<img src="<%= ctxPath %>/image/sunglasses/category/6.jpg" alt="캣아이 프레임-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">캣아이 프레임</div>
 										</a>
@@ -405,7 +330,7 @@ pinterest
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?frameId=3&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="https://www-prd-kr.gentlemonster.com/media/catalog/category/gm-category-sun-oval.jpg" alt="원형 프레임-Sunglasses" class="collection-cate__img">
+												<img src="<%= ctxPath %>/image/sunglasses/category/7.jpg" alt="원형 프레임-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">원형 프레임</div>
 										</a>
@@ -492,43 +417,6 @@ pinterest
 											</div>
 										</c:forEach>
 									</c:if>
-									<%-- 									<c:if test="${not empty requestScope.cartList}">
-										<c:forEach var="cartVo" items="${requestScope.cartList}" varStatus="status">
-
-											<div class="cart_item font--11 font--md">
-												<div class="cart_product_img">
-													<!-- 상품 상세화면으로 이동용  -->
-													<a href="수정필?productDetailId">
-														<img src="<%= ctxPath %>${cartVo.mainImageFile}" alt="" title="">
-													</a>
-												</div>
-
-												<div class="cart_product_info">
-													<div class="cart_product_name font--kr font--12 font--bd">${cartVo.productName}</div>
-													<div class="cart_price">
-														<span class="mini_cart_item_total_price font--kr font--12 font--rg">
-															<input type="hidden" value="${cartVo.price}" id="cartPrice${cartVo.cartId}" />
-															<fmt:formatNumber type="number" maxFractionDigits="3" value="${cartVo.price}" />
-															원
-														</span>
-													</div>
-
-
-													<div class="cart_product_etc headerCart">
-														<div class="field">
-															<button type="button" class="subtract_qty" onclick="goUpdateModal(${cartVo.cartId}, ${cartVo.quantity}, 'subtract');">-</button>
-															<!-- readonly 확인 -->
-															<input type="number" class="input_qty font--kr font--12 font--rg" id="cartQuantity${cartVo.cartId}" value="${cartVo.quantity}" min="1" max="10" readonly="false">
-															<button type="button" class="add_qty" onclick="goUpdateModal(${cartVo.cartId}, ${cartVo.quantity}, 'add');">+</button>
-														</div>
-													</div>
-												</div>
-												<div id="remove_item">
-													<button type="button" class="remove_item font--kr font--12 font--rg" onclick="goDeleteModal(${cartVo.cartId});">삭제</button>
-												</div>
-											</div>
-										</c:forEach>
-									</c:if> --%>
 									<%-- end of 쇼핑백 상세내용 (유저의 쇼핑백 정보가 있을 경우) --%>
 
 

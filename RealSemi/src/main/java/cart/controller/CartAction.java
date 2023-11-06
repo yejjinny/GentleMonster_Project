@@ -12,24 +12,16 @@ import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
 
+/**
+ *  작성자 신예진
+ *  쇼핑백 Controller
+ */
 public class CartAction extends AbstractController {
 
-	// 쇼핑백 버튼 및 쇼핑백 자세히 보기 버튼을 눌렀을 경우 (/cart/cart.up)
+	// 쇼핑백 버튼 및 쇼핑백 자세히 보기 버튼을 눌렀을 경우
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
-		// 테스트용 코드 시작
-
-		MemberVO loginUser = new MemberVO();
-
-		loginUser.setEmail("forServletTest@gmail.com");
-		loginUser.setFullName("신예진");
-		loginUser.setMemberId(1234);
-
 		HttpSession session = req.getSession();
-
-		session.setAttribute("loginUser", loginUser);
-		// 테스트용 코드 끝
 
 		if (session.getAttribute("loginUser") != null) {
 			// 로그인 했을 경우
@@ -48,7 +40,7 @@ public class CartAction extends AbstractController {
 
 			String message = "쇼핑백은 로그인 한 후 이용해주세요. 로그인 화면으로 이동합니다.";
 			// path 수정필
-			String loc = req.getContextPath() + "/login/login.gm";
+			String loc = req.getContextPath() + "/register/login.gm";
 
 			req.setAttribute("message", message);
 			req.setAttribute("loc", loc);
@@ -56,8 +48,7 @@ public class CartAction extends AbstractController {
 			super.setRedirect(false);
 			super.setViewPage("/jsp/common/msg.jsp");
 
-		} // end of if (session.getAttribute("loginUser") != null)
-			// -----------------------------------------------------
+		} // end of if (session.getAttribute("loginUser") != null) -----------------------------------------------------
 
 	}
 

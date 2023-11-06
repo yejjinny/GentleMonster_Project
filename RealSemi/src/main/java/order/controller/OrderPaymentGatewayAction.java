@@ -13,6 +13,10 @@ import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
 
+/**
+ * 작성자 신예진 
+ * 상품 주문_2 결제 기능 관련 Controller
+ */
 public class OrderPaymentGatewayAction extends AbstractController {
 
 	@Override
@@ -64,7 +68,7 @@ public class OrderPaymentGatewayAction extends AbstractController {
 			
 			String message = "주문은 로그인 한 후 이용해주세요. 로그인 화면으로 이동합니다.";
 			// 수정필
-			String loc = req.getContextPath() + "/login/login.gm";
+			String loc = req.getContextPath() + "/register/login.gm";
 
 			req.setAttribute("message", message);
 			req.setAttribute("loc", loc);

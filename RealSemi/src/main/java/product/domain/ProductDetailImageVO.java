@@ -1,9 +1,12 @@
 package product.domain;
 
+/**
+ * 작성자 신예진
+ */
 public class ProductDetailImageVO {
-	private int productDetailId;
-	private String imageFile;
-	private int position;
+	private int productDetailId;      // 상품상세Id
+	private String imageFile;         // 이미지파일 경로
+	private int position;             // 순서
 	
 	public int getPosition() {
 		return position;

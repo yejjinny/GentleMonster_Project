@@ -1,25 +1,28 @@
 package order.domain;
 
+/**
+ * 작성자 신예진 
+ */
 public class OrderVO {
-	private String orderId;          //주문번호 (주문id)
-	private int addressBookId;       //주소록id
-	private int fk_memberId;         //회원id
-	private String familyName;       //성
-	private String lastName;         //이름
-	private String fullName;         //풀네임
-	private String tel;              //전화번호
-	private String address;          //주소
-	private String detailAddress;    //상세주소
-	private String postCode;         //우편번호
-	private int isDefaultAddr;       //기본배송지 여부
-	private String productName;      //상품명
-	private long price;              //가격
-	private int quantity;            //수량
-	private long amount;             //총 금액
-	private String mainImageFile;    //대표사진이미지
-	private Long rno;                //인덱스 번호
-	private String orderStatus;      //주문현황
-	private String orderDay;         //주문일자
+	private String orderId;          // 주문번호 (주문id)
+	private int addressBookId;       // 주소록id
+	private int fk_memberId;         // 회원id
+	private String familyName;       // 성
+	private String lastName;         // 이름
+	private String fullName;         // 풀네임
+	private String tel;              // 전화번호
+	private String address;          // 주소
+	private String detailAddress;    // 상세주소
+	private String postCode;         // 우편번호
+	private int isDefaultAddr;       // 기본배송지 여부
+	private String productName;      // 상품명
+	private long price;              // 가격
+	private int quantity;            // 수량
+	private long amount;             // 총 금액
+	private String mainImageFile;    // 대표사진이미지
+	private Long rno;                // 인덱스 번호
+	private String orderStatus;      // 주문현황
+	private String orderDay;         // 주문일자
 	
 	
 	public int getAddressBookId() {

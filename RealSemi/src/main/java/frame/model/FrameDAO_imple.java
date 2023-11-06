@@ -15,9 +15,12 @@ import javax.sql.DataSource;
 import cart.domain.CartVO;
 import frame.domain.FrameVO;
 
+/**
+ * 작성자 신예진
+ */
 public class FrameDAO_imple implements FrameDAO {
 
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -55,7 +58,8 @@ public class FrameDAO_imple implements FrameDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 프레임 정보 취득
 	@Override
 	public List<FrameVO> getFrameList() throws SQLException {
 		List<FrameVO> frameList = new ArrayList<>();

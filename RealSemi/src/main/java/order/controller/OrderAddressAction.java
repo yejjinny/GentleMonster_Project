@@ -18,6 +18,10 @@ import order.domain.OrderVO;
 import order.model.OrderDAO;
 import order.model.OrderDAO_imple;
 
+/**
+ * 작성자 신예진 
+ * 상품 주문_1 배송정보 입력 관련 Controller
+ */
 public class OrderAddressAction extends AbstractController {
 
 	@Override
@@ -95,7 +99,7 @@ public class OrderAddressAction extends AbstractController {
 			//로그인한 유저가 아닐 경우
 			String message = "주문은 로그인 한 후 이용해주세요. 로그인 화면으로 이동합니다.";
 			// 수정필
-			String loc = req.getContextPath() + "/login/login.gm";
+			String loc = req.getContextPath() + "/register/login.gm";
 
 			req.setAttribute("message", message);
 			req.setAttribute("loc", loc);

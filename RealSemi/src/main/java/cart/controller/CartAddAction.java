@@ -12,11 +12,16 @@ import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
 
+/**
+ * 작성자 신예진
+ * 쇼핑백 상품추가 Controller
+ */
 public class CartAddAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
+		
 		if (session.getAttribute("loginUser") != null) {
 			// 로그인한 유저일 경우
 
@@ -39,11 +44,6 @@ public class CartAddAction extends AbstractController {
 							dao.getCartList(((MemberVO) session.getAttribute("loginUser")).getMemberId()));
 
 					super.setRedirect(true);
-					/*
-					 * super.setViewPage(req.getContextPath() +
-					 * "/product/productDetail.gm?productDetailId=" +
-					 * req.getParameter("productDetailId"));
-					 */					
 					super.setViewPage(req.getHeader("referer"));
 
 				} else {
@@ -69,15 +69,14 @@ public class CartAddAction extends AbstractController {
 
 				super.setRedirect(false);
 				super.setViewPage("/jsp/common/msg.jsp");
-			} // end of if ("POST".equalsIgnoreCase(req.getMethod()))
-				// ---------------------------------------------------
+			} // end of if ("POST".equalsIgnoreCase(req.getMethod())) ---------------------------------------------------
 
 		} else {
 			// 로그인하지 않았을 경우
 
 			String message = "쇼핑백에 추가는 로그인 한 후 이용해주세요. 로그인 화면으로 이동합니다.";
 			// 수정필
-			String loc = req.getContextPath() + "/login/login.gm";
+			String loc = req.getContextPath() + "/register/login.gm";
 
 			req.setAttribute("message", message);
 			req.setAttribute("loc", loc);
@@ -85,8 +84,7 @@ public class CartAddAction extends AbstractController {
 			super.setRedirect(false);
 			super.setViewPage("/jsp/common/msg.jsp");
 
-		} // end of if (session.getAttribute("loginUser") != null)
-			// -----------------------------------------------------------------------
+		} // end of if (session.getAttribute("loginUser") != null) -----------------------------------------------------------------------
 
 	}
 

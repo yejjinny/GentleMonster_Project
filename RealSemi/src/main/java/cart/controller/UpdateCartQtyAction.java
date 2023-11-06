@@ -15,6 +15,10 @@ import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
 
+/**
+ * 작성자 신예진
+ * 쇼핑백 상품 수량수정 Controller
+ */
 public class UpdateCartQtyAction extends AbstractController {
 
 	@Override
@@ -84,7 +88,7 @@ public class UpdateCartQtyAction extends AbstractController {
 			
 			String message = "쇼핑백은 로그인 한 후 이용해주세요. 로그인 화면으로 이동합니다.";
 			// 수정필
-			String loc = req.getContextPath() + "/login/login.gm";
+			String loc = req.getContextPath() + "/register/login.gm";
 
 			req.setAttribute("message", message);
 			req.setAttribute("loc", loc);

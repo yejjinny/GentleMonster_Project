@@ -1,8 +1,11 @@
 package category.domain;
 
+/**
+ * 작성자 신예진
+ */
 public class CategoryVO {
-	private int categoryId;
-	private String categoryName;
+	private int categoryId;           // 카테고리Id (1: 선글라스, 2: 안경 등) 
+	private String categoryName;      // 카테고리명
 	
 	public int getCategoryId() {
 		return categoryId;
