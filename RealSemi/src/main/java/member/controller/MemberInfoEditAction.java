@@ -17,28 +17,9 @@ public class MemberInfoEditAction extends AbstractController {
 
 		HttpSession session = req.getSession();
  
-		/* 테스트 코드
-		  MemberVO loginUser = new MemberVO();
-		  
-			
-			  loginUser.setEmail("hi@naver.com"); 
-			  loginUser.setPwd("Qwer1234$");
-			
-		  
-		  loginUser.setMemberId(1112);
-		  
-			
-			 loginUser.setFamilyName("홍"); 
-			 loginUser.setLastName("길동");
-			 loginUser.setBirth("19990127");
-			 loginUser.setGender(2); //여자
-			
-	  
-		  session.setAttribute("loginUser", loginUser);
 		 
-		테스트 코드끝 */ 
 		
-		String method=req.getMethod(); //"GET" 또는 "POST"
+		String method=req.getMethod();   
 		
 		if("GET".equalsIgnoreCase(method)) {
 			

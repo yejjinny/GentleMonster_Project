@@ -22,37 +22,19 @@ public class MemberInfoEditToPwdCheckAction extends AbstractController {
 		 
 		HttpSession session = req.getSession();
 		
-		//((MemberVO) session.getAttribute("loginUser")).getPwd();
-		//System.out.println("확이뇨 : "+((MemberVO) session.getAttribute("loginUser")).getMemberId());
-		//String userid =(String) req.getAttribute("userid");
-		//System.out.println("확인: "+userid);
-		
+		 
 
 		//안쓰는 클래스
-		String method=req.getMethod(); //"GET" 또는 "POST"
-		
-		//if("POST".equalsIgnoreCase(method)) { 
+		String method=req.getMethod();  
 			
-			
-			String check_password_pw =req.getParameter("check_password_pw");
-			 MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-			 
-			 
-			 
-			//System.out.println("확인 loginUser.getMemberId(): "+loginUser.getMemberId() );
-			//System.out.println("확인: "+check_password_pw);
-			
-			
+		String check_password_pw =req.getParameter("check_password_pw");
+		 MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 
+		
+		//super.setRedirect(false);
+		super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify02.jsp");
+		
 		 
-			//System.out.println("memberId: "+Integer.toString(loginUser.getMemberId() ));
-			//boolean IsMemberInfoEditPwdCheck = mdao.selectPwdCheck(paraMap);
-			
-			//super.setRedirect(false);
-			super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify02.jsp");
-			
-			
-		//}
 		
 	}
 

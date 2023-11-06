@@ -24,8 +24,8 @@ public class MemberInfoEditEndAction extends AbstractController {
 	
 		HttpSession session = req.getSession();
 
-		//session.setAttribute("loginUser", loginUser);
-		String method=req.getMethod(); //"GET" 또는 "POST"
+		 
+		String method=req.getMethod();  
 		
 		if("POST".equalsIgnoreCase(method)) {
 			
@@ -36,17 +36,13 @@ public class MemberInfoEditEndAction extends AbstractController {
 			String email = req.getParameter("email");
 			int gender= Integer.parseInt(req.getParameter("gender") )  ;
 			
-			//System.out.println("확인용email_test : "+email);
-			//System.out.println("확인용gender : "+gender);
-			//System.out.println("loginUser.getMemberId()r : "+ Integer.toString( loginUser.getMemberId()  )   );
-			
+			 
 			
 		
 		 
 		
 		
-		
-		//loginUser.getEmail().equals(email)
+	 
 			
 			 if(session.getAttribute("loginUser") != null) {
 		    	  // 로그인한 사용자가 자신의 정보를 수정하는 경우
@@ -63,9 +59,9 @@ public class MemberInfoEditEndAction extends AbstractController {
 							loginUser.setMemberId(memberId);
 							loginUser.setEmail(email);
 							loginUser.setGender(gender);
-							//session.getAttribute("loginUser")
+							 
 							
-							// MemberVO loginUser = new MemberVO(); 
+						 
 							  
 							//밑의 코드는 안해도 되는데 혹시나 싶어 다시 set.
 							  loginUser.setPwd(loginUser.getPwd());
@@ -85,49 +81,30 @@ public class MemberInfoEditEndAction extends AbstractController {
 							  session.setAttribute("loginUser", loginUser);
 							  
 							  //--------------------------------
-							 boolean isExists =true;//=mado.selectPwdCheck(memberId,pwd);
-							   //System.out.println("json isExists-->"+ isExists ); 
-							   
-							   
-							   JSONObject jsonObj= new JSONObject(); //{}
-							   jsonObj.put("isExists", isExists); 
-							   //{"isExists":true } 혹은{"isExists":false }
-							   
-							   String json= jsonObj.toString(); //문자열형태인 "{"isExists":true }"
-							   //혹은"{"isExists":false }" 으로 만들어준다 //System.out.println("확인용-- json--<"+ json);
+							 boolean isExists =true; 
 							  
-							   //System.out.println("json-->"+json );
+							   
+							   
+							   JSONObject jsonObj= new JSONObject();  
+							   jsonObj.put("isExists", isExists); 
+							   
+							   
+							   String json= jsonObj.toString();  
+							   
 							  req.setAttribute("json", json);
-							  //req.setAttribute("json", jsonObj);
+							   
 							 
 							  //super.setRedirect(false); 
 							  super.setViewPage("/jsp/common/jsonview.jsp");
 							
-							//session 에 저장된 loginuser 를 변경된 사용자의 정보값으로 변경해야 한다.
-							
-							/*
-							 * 
-							 * HttpSession session = request.getSession(); MemverVO loginuser = (MemverVO)
-							 * session.getAttribute("loginuser");
-							 * 
-							 * loginuser.setName(name); loginuser.setPwd(pwd); loginuser.setEmail(email);
-							 * loginuser.setMobile(mobile); loginuser.setPostcode(postcode);
-							 * loginuser.setAddress(address); loginuser.setDetailaddress(detailaddress);
-							 * loginuser.setExtraaddress(extraaddress);
-							 * 
-							 */
-							//message="회원정보 수정 성공";
-							//loc=request.getContextPath() +  "/index.up";//시작페이지로 이동한다.
-							
+							 
 							
 							
 						}
 						
 					}catch(SQLException e) {
 						
-						//message="SQL구문 에러발생";
-						//loc=  "javascript:history.back()";//자바스크립트를 이용한 이전페이지로 이동
-						
+						 
 						e.printStackTrace();
 					}
 					

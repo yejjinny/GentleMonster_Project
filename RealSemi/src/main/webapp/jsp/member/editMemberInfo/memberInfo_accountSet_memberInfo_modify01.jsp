@@ -27,7 +27,7 @@ String ctxPath = request.getContextPath();
 <%-- 본문 --%>
 <div class="container_sq">
 
-	<!-- <div class="main_page contentswrap center_wrap account edit kr container-1350"> -->
+	 
 	<div class="check_pass contentswrap center_wrap account edit kr container-1350">
 
 		<!-- 회원정보 Category 시작-->
@@ -60,7 +60,7 @@ String ctxPath = request.getContextPath();
 		<!-- 회원정보 Category 끝-->
 
 
-		<%-- 계정설정 본문 시작  action="<%=ctxPath%>/member/memberInfoEditToPwdCheck.gm" --%>
+		<%-- 계정설정 본문 시작   --%>
 		<form name="EditToCheckFrm" >
 			<div class="contentswrap_top center_wrap">
 				<div class="edit-wrap text_l">

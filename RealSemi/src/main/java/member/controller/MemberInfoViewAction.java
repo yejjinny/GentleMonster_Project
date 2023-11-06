@@ -14,7 +14,7 @@ public class MemberInfoViewAction extends AbstractController {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 
-		String method=req.getMethod(); //"GET" 또는 "POST"
+		String method=req.getMethod();  
 		
 		if("GET".equalsIgnoreCase(method)) {
 		 super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo.jsp");

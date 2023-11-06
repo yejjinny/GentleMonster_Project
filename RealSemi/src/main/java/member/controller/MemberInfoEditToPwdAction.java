@@ -17,17 +17,7 @@ public class MemberInfoEditToPwdAction extends AbstractController{
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		/*
-		 * MemberVO loginUser = new MemberVO(); loginUser.setEmail("hi@naver.com");
-		 * loginUser.setPwd("1234"); loginUser.setMemberId(1235);
-		 * 
-		 * HttpSession session = req.getSession();
-		 * 
-		 * session.setAttribute("loginUser", loginUser);
-		 * 
-		 * String memberId = req.getParameter("memberId"); System.out.println("toa: "+
-		 * memberId );
-		 */
+		 
 		
 	     
 	      
@@ -35,24 +25,23 @@ public class MemberInfoEditToPwdAction extends AbstractController{
 	      MemberVO loginUserr = (MemberVO)session.getAttribute("loginUser");
 	      
 	      String memberId = req.getParameter("memberIdd"); 
-			//System.out.println("toad: "+ memberId );
+			 
 	      
 
-			String method=req.getMethod(); //"GET" 또는 "POST"
+			String method=req.getMethod();  
 			
 			if("POST".equalsIgnoreCase(method)) { 
 				
 				 if( Integer.toString( loginUserr.getMemberId()).equals(memberId)  ) {
 			    	  // 로그인한 사용자가 자신의 정보를 수정하는 경우
 			    	  
-			    	 // request.setAttribute("userid", userid);
+			    	  
 
 				      //super.setRedirect(false);
 			    	  super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify01.jsp");
 			    	 
 			    	   
-						
-				      //super.setViewPage("/WEB-INF/member/memberEdit.jsp");
+					 
 				     
 			     }
 			      

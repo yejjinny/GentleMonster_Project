@@ -20,7 +20,7 @@ public class AddressBookEditAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
+		 
 
 		HttpSession session = req.getSession();
 		String method=req.getMethod(); //"GET" 또는 "POST"
@@ -39,55 +39,39 @@ public class AddressBookEditAction extends AbstractController {
 					String address=req.getParameter("address");
 					String detailaddress=req.getParameter("detailaddress");
 					String isdefaultaddr=req.getParameter("addrDefaultCheck");
+				 
+					 Map<String, String> paraMap= new HashMap<>();
+					 paraMap.put("addressbookid", addressbookid);
+					 paraMap.put("fk_memberid", fk_memberid);
+					 paraMap.put("familyname", familyname);
+					 paraMap.put("lastname", lastname);
+					 paraMap.put("tel", tel);
+					 paraMap.put("postcode", postcode);
+					 paraMap.put("address", address);
+					 paraMap.put("detailaddress", detailaddress);
+					 paraMap.put("isdefaultaddr", isdefaultaddr);
+					 
+					 AddressDAO dao= new AddressDAO_imple();
+					 
+					
+					 
+					 int result = dao.updateEditAddress(paraMap);
+					 
+					 if(result==1) { //기존 주소 수정에 성공한 경우
+						 System.out.println("수정성공");
+						 
+						 Map<String, String> paraMapList= new HashMap<>();
+						 paraMapList.put("memberId", fk_memberid);
 							
-					//String is_set_default=req.getParameter("is_set_default");
-					//System.out.println("확인용:is_set_default +>"+is_set_default);
-					//System.out.println("확인용:addressbookid +>"+addressbookid);
-					//  System.out.println("확인용:fk_memberid +>"+fk_memberid);
-					/*
-					 * System.out.println("확인용:lname +>"+familyname);
-					 * System.out.println("확인용:pname +>"+lastname);
-					 * System.out.println("확인용:mb_tel +>"+tel);
-					 * System.out.println("확인용:edit_pcode +>"+postcode);
-					 * System.out.println("확인용:address1 +>"+address);
-					 * System.out.println("확인용:address2 +>"+detailaddress);
-					 * System.out.println("확인용:addrDefaultCheck +>"+isdefaultaddr);
-					 * 
-					 */ 
-					//System.out.println("확인용:addrDefaultCheck +>"+isdefaultaddr);
-						 Map<String, String> paraMap= new HashMap<>();
-						 paraMap.put("addressbookid", addressbookid);
-						 paraMap.put("fk_memberid", fk_memberid);
-						 paraMap.put("familyname", familyname);
-						 paraMap.put("lastname", lastname);
-						 paraMap.put("tel", tel);
-						 paraMap.put("postcode", postcode);
-						 paraMap.put("address", address);
-						 paraMap.put("detailaddress", detailaddress);
-						 paraMap.put("isdefaultaddr", isdefaultaddr);
+						 List<AddressBookVO> addressList= dao.selectAddressLists(paraMapList);
 						 
-						 AddressDAO dao= new AddressDAO_imple();
+						 req.setAttribute("addressList", addressList);
 						 
-						
-						 
-						 int result = dao.updateEditAddress(paraMap);
-						 
-						 if(result==1) { //기존 주소 수정에 성공한 경우
-							 System.out.println("수정성공");
-							 
-							 Map<String, String> paraMapList= new HashMap<>();
-							 paraMapList.put("memberId", fk_memberid);
-								
-							 List<AddressBookVO> addressList= dao.selectAddressLists(paraMapList);
-							 
-							 req.setAttribute("addressList", addressList);
-							 
-							 super.setRedirect(false);
-							 super.setViewPage("/jsp/member/addressBook/addressBook.jsp");
-						 }
-					  
-					 ///super.setRedirect(false);
-					//super.setViewPage("/jsp/member/addressBook/EditAddressBook.jsp");
+						 super.setRedirect(false);
+						 super.setViewPage("/jsp/member/addressBook/addressBook.jsp");
+					 }
+				  
+				 
 				 
 			 }
 			 else {

@@ -118,8 +118,7 @@ public class AddressDAO_imple implements AddressDAO {
 				 
 				AddressList.add(avo);
 				
-				//System.out.println("rs.getString(\"familyname\") :=>"+rs.getString("familyname"));
-				//System.out.println("확인ㅇ용: =>"+avo.getAddress());
+				 
 				
 			} //end of while( rs.next() ) -----------------------------
 			 
@@ -161,13 +160,12 @@ public class AddressDAO_imple implements AddressDAO {
 			
 			rs=pstmt.executeQuery();
 			
-			isExists = rs.next(); //행이 있으면(중복된 userid)  true 
-						//행이 없으면(사용가능한 userid)  false
+			isExists = rs.next();  
 			
 			//---------------------
 			if(isExists ) { //기본배송지가 존재하는 경우
 				
-				//conn=ds.getConnection();
+				 
 				int defaultAddr=rs.getInt("addressbookid");
 				
 				  sql= " update tbl_addressbook set isdefaultaddr=0  "
@@ -182,7 +180,7 @@ public class AddressDAO_imple implements AddressDAO {
 				pstmt.executeUpdate();
 		
 				 
-				//result = pstmt.executeUpdate();
+				 
 				
 			}
 			
@@ -305,13 +303,12 @@ public class AddressDAO_imple implements AddressDAO {
 				
 				rs=pstmt.executeQuery();
 				
-				isExists = rs.next(); //행이 있으면(중복된 userid)  true 
-							//행이 없으면(사용가능한 userid)  false
+				isExists = rs.next();  
 				
 				//---------------------
 				if(isExists ) { //기본배송지가 존재하는 경우
 					
-					//conn=ds.getConnection();
+					 
 					int defaultAddr=rs.getInt("addressbookid");
 					
 					  sql= " update tbl_addressbook set isdefaultaddr=0  "
@@ -326,7 +323,7 @@ public class AddressDAO_imple implements AddressDAO {
 					pstmt.executeUpdate();
 			
 					 
-					//result = pstmt.executeUpdate();
+					 
 					
 				}
 				
@@ -439,13 +436,12 @@ public class AddressDAO_imple implements AddressDAO {
 				
 				rs=pstmt.executeQuery();
 				
-				isExists = rs.next(); //행이 있으면(중복된 userid)  true 
-							//행이 없으면(사용가능한 userid)  false
+				isExists = rs.next(); 
 				
 				//---------------------
 				if(isExists ) { //기본배송지가 존재하는 경우
 					
-					//conn=ds.getConnection();
+					 
 					int defaultAddr=rs.getInt("addressbookid");
 					
 					  sql= " update tbl_addressbook set isdefaultaddr=0  "
@@ -460,7 +456,7 @@ public class AddressDAO_imple implements AddressDAO {
 					pstmt.executeUpdate();
 			
 					 
-					//result = pstmt.executeUpdate();
+				 
 					
 				}
 				

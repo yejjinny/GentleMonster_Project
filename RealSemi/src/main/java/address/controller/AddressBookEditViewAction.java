@@ -23,12 +23,12 @@ public class AddressBookEditViewAction extends AbstractController {
 			
 			
 			String addressbookid =req.getParameter("addressbookid");
-			//System.out.println(" addressbookid =>"+addressbookid);
+			 
 			
 			AddressDAO dao= new AddressDAO_imple();
 			
 			AddressBookVO editAvo= dao.selectEditAddrView(addressbookid);
-			//MemverVO loginuser=  mdao.selectOneMember(paraMap);
+			 
 			
 			if(editAvo != null ) {
 				

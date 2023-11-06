@@ -20,19 +20,7 @@
 		  
 		  $("input#btnAddVal").val("push");
 		  
-		 // alert("ddsd");
 		  
-      // 주소를 쓰기가능 으로 만들기
-      //$("input#edit_address").removeAttr("readonly");
-        
-        // 참고항목을 쓰기가능 으로 만들기
-        //$("input#yae_detailAddress").removeAttr("readonly");
-        
-        // 주소를 활성화 시키기
-   //   $("input#address").removeAttr("disabled");
-        
-        // 참고항목을 활성화 시키기
-    //  $("input#extraAddress").removeAttr("disabled");
       
       new daum.Postcode({
             oncomplete: function(data) {
@@ -67,31 +55,29 @@
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
                     $("input#edit_detailAddress").val(extraAddr);
-                    //document.getElementById("yae_detailAddress").value = extraAddr;
+                     
                 
                 } else {
 					$("input#edit_detailAddress").val('');
-                    //document.getElementById("yae_detailAddress").value = '';
+                     
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                //document.getElementById('edit_postcode').value = data.zonecode;
+                 
                 $("input#edit_pcode").val(data.zonecode);
                  
                 
                 $("input#edit_address").val(addr);
-                //document.getElementById("yae_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                //document.getElementById("yae_detailAddress").focus();
+                
+               
+                
             }
         }).open();
         
         // 주소를 읽기전용(readonly) 로 만들기
         $("input#edit_address").attr("readonly", true);
         
-        //alert($("input#edit_pcode").val());
-        // 참고항목을 읽기전용(readonly) 로 만들기
-        //$("input#edit_detailAddress").attr("readonly", true);
+        
         
 		  
 		  
@@ -103,9 +89,9 @@
 
 function goEdit(){
 	
-	//alert("확인d버튼");
+	 
 	const btn= $("input#btnAddVal").val();
-	//alert(	 $("input#addrDefaultCheck").val());
+	 
 	if(btn=="push"){
 		
 		

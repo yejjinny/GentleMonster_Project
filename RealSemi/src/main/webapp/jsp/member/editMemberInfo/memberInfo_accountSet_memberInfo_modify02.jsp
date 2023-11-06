@@ -23,7 +23,7 @@ String ctxPath = request.getContextPath();
 <%-- 본문 시작 --%>
 <div class="container_sq">
 
-	<!-- 	<div class="main_page contentswrap center_wrap account edit kr container-1350"> -->
+ 
 	<div class="edit_profile contentswrap center_wrap account edit kr container-1350">
 
 		<!-- 회원정보 Category 시작-->
@@ -78,7 +78,7 @@ String ctxPath = request.getContextPath();
 				</div>
 
 				<div class="center-content center-content--wide">
-				<%--  action="memberInfoEditEnd.gm" method="post"  --%>
+			 
 					<form name="fmemberconfirm"   >
 						<input type="hidden" name="mb_id" value=""> <input type="hidden" name="w" value="u">
 						<!-- 이메일 -->

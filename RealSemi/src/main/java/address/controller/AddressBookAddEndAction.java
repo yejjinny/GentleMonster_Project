@@ -21,7 +21,7 @@ public class AddressBookAddEndAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
+		 
 
 		
 		HttpSession session = req.getSession();
@@ -42,21 +42,7 @@ public class AddressBookAddEndAction extends AbstractController {
 					String address=req.getParameter("address");
 					String detailaddress=req.getParameter("detailaddress");
 					String isdefaultaddr=req.getParameter("addrDefaultCheck");
-					//System.out.println("확인용:addrDefaultCheck +>"+isdefaultaddr);
-					
-					//System.out.println("확인용:addressbookid +>"+addressbookid);
-					/*
-					 * System.out.println("확인용:memberId +>"+memberId);
-					 * 
-					 * System.out.println("확인용:lname +>"+familyname);
-					 * System.out.println("확인용:pname +>"+lastname);
-					 * System.out.println("확인용:mb_tel +>"+tel);
-					 * System.out.println("확인용:edit_pcode +>"+postcode);
-					 * System.out.println("확인용:address1 +>"+address);
-					 * System.out.println("확인용:address2 +>"+detailaddress);
-					 * System.out.println("확인용:addrDefaultCheck +>"+isdefaultaddr);
-					 * 
-					 */
+					 
 					 
 					 Map<String, String> paraMap= new HashMap<>();
 				 
@@ -76,7 +62,7 @@ public class AddressBookAddEndAction extends AbstractController {
 					 int result = dao.insertNewAddress(paraMap);
 					 
 					 if(result==1) { //새로운 주소 추가에 성공한 경우
-						// System.out.println("추가성공");
+						 
 						 
 						 Map<String, String> paraMapList= new HashMap<>();
 						 paraMapList.put("memberId", Integer.toString(memberId));

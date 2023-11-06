@@ -25,7 +25,7 @@ public class MemberChangePwdAction extends AbstractController {
 
 
 		HttpSession session = req.getSession();
-		String method=req.getMethod(); //"GET" 또는 "POST"
+		String method=req.getMethod();  
 		
 		if (session.getAttribute("loginUser") != null) {
 			
@@ -39,8 +39,7 @@ public class MemberChangePwdAction extends AbstractController {
 			      
 				int memberId = loginUser.getMemberId();
 				
-				//System.out.println("reg_mb_password_old+>"+reg_mb_password_old);
-				//System.out.println("password+>"+password);
+				 
 				MemberDAO mao= new MemberDAO_imple();
 				
 				 Map<String, String> paraMap= new HashMap<>();
@@ -55,19 +54,16 @@ public class MemberChangePwdAction extends AbstractController {
 					if(result==1) { //삭제 업데이트가 완
 						
 						boolean isExists =true; 
-						   //System.out.println("json isExists-->"+ isExists ); 
 						   
 						   
-						   JSONObject jsonObj= new JSONObject(); //{}
+						   
+						   JSONObject jsonObj= new JSONObject();  
 						   jsonObj.put("isExists", isExists); 
-						   //{"isExists":true } 혹은{"isExists":false }
+						    
 						   
-						   String json= jsonObj.toString(); //문자열형태인 "{"isExists":true }"
-						   //혹은"{"isExists":false }" 으로 만들어준다 //System.out.println("확인용-- json--<"+ json);
-						   
-						   //System.out.println("json-->"+json );
+						   String json= jsonObj.toString();  
 						  req.setAttribute("json", json);
-						  //req.setAttribute("json", jsonObj);
+						 
 						 
 						  //super.setRedirect(false); 
 						  super.setViewPage("/jsp/common/jsonview.jsp");
@@ -76,21 +72,15 @@ public class MemberChangePwdAction extends AbstractController {
 					else { ////사용자가 입력한 비밀번호가 현재 로그인한 사용자비밀번호와 같지 않아서 비번 업뎃 실패한경우
 						
 
-						boolean isExists =false;//=mado.selectPwdCheck(memberId,pwd);
-						   //System.out.println("json isExists-->"+ isExists ); 
+						boolean isExists =false; 
 						   
-						   
-						   JSONObject jsonObj= new JSONObject(); //{}
+						   JSONObject jsonObj= new JSONObject();  
 						   jsonObj.put("isExists", isExists); 
-						   //{"isExists":true } 혹은{"isExists":false }
 						   
-						   String json= jsonObj.toString(); //문자열형태인 "{"isExists":true }"
-						   //혹은"{"isExists":false }" 으로 만들어준다 //System.out.println("확인용-- json--<"+ json);
 						   
-						   //System.out.println("json-->"+json );
+						   String json= jsonObj.toString();  
 						  req.setAttribute("json", json);
-						  //req.setAttribute("json", jsonObj);
-						 
+						  
 						  //super.setRedirect(false); 
 						  super.setViewPage("/jsp/common/jsonview.jsp");
 						
@@ -100,9 +90,7 @@ public class MemberChangePwdAction extends AbstractController {
 					
 				}catch(SQLException e) {
 					
-					//message="SQL구문 에러발생";
-					//loc=  "javascript:history.back()";//자바스크립트를 이용한 이전페이지로 이동
-					
+					 
 					e.printStackTrace();
 				}
 			}

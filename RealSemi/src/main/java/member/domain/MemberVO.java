@@ -118,13 +118,13 @@ public class MemberVO {
 	
 	//---예인추가
 	public String getBirthYear() {
-		return birth.substring(0,4);
+		return birth.substring(2,4);
 	}
 	public String getBirthMonth() {
-		return birth.substring(4,6);
+		return birth.substring(5,7);
 	}
 	public String getBirthDay() {
-		return birth.substring(6,8);
+		return birth.substring(8,10);
 	}
 	//--
 	public String getGenderVal() {
