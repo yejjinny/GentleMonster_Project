@@ -23,27 +23,20 @@ public class IndexController extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		MemberVO loginUser = new MemberVO();
-		loginUser.setEmail("hi@naver.com");
-		loginUser.setMemberId(1234);
-
 		HttpSession session = request.getSession();
-		session.setAttribute("loginUser", loginUser);
 
 		if ("GET".equalsIgnoreCase(request.getMethod())) {
 			// GET으로 들어왔을 경우 = index.jsp 보여주기
 
-			// 인덱스에서 보여줄 상품 이미지 가져오는 처리
-			
 			if(session.getAttribute("loginUser") != null) {
 				CartDAO cdao = new CartDAO_imple();
 				
 				session.setAttribute("cartList", cdao.getCartList(((MemberVO) session.getAttribute("loginUser")).getMemberId()));
 			}
 			
-			
 			super.setRedirect(false);
 			super.setViewPage("/jsp/common/index.jsp");
+			
 		} else {
 			// POST로 들어왔을 경우 = index.jsp에서 인덱스용 이미지 파일 가져올 경우
 
