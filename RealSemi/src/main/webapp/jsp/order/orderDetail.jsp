@@ -33,7 +33,7 @@ String ctxPath = request.getContextPath();
 					<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--15 font--rg"> 위시리스트 </a>
 				</li>
 				<li class="page_menu_item link_item  ">
-					<a href="" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
+					<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
 				</li>
 				<li class="page_menu_item link_item  ">
 					<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--15 font--rg"> 주문 </a>
@@ -65,16 +65,9 @@ String ctxPath = request.getContextPath();
 					<div class="ordercancel-items">
 						<div class="ordercancel-item-list">
 
-
-
-							<c:forEach var="orderDetailVo" items="${requestScope.orderDetailList}" varStatus="status">
+							<c:forEach var="orderDetailVo" items="${requestScope.orderDetailList}">
 
 								<div class="ordercancel-item">
-									<input type="hidden" class="ordercancel-price" value="310000">
-									<input type="hidden" class="sku" value="9F9VZTIUFM4E">
-									<input type="hidden" class="qty" value="1">
-									<input type="hidden" class="uid" value="MTUyMjgz">
-
 									<div class="item-position font--kr font--13 font--bd">주문 1</div>
 									<div class="item-info-box">
 										<div class="item-image">
@@ -98,13 +91,6 @@ String ctxPath = request.getContextPath();
 								</div>
 
 							</c:forEach>
-
-
-
-
-
-
-
 
 						</div>
 						<div class="items-button btn-mttype01" hidden="">

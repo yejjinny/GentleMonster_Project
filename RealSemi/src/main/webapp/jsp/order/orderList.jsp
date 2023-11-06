@@ -31,7 +31,7 @@ String ctxPath = request.getContextPath();
 					<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--15 font--rg"> 위시리스트 </a>
 				</li>
 				<li class="page_menu_item link_item  ">
-					<a href="" class="font--kr font--15 font--rg"> 계정 설정 </a>
+					<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--15 font--rg"> 계정 설정 </a>
 				</li>
 				<li class="page_menu_item link_item  selected">
 					<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--15 font--rg"> 주문 </a>
@@ -39,7 +39,7 @@ String ctxPath = request.getContextPath();
 			</ul>
 			<div class="topnav-right">
 				<div class="page_menu_item link_item">
-					<a class="font--kr font--15 font--rg" data-category="account" data-action="logout_click" data-label="" href="https://www.gentlemonster.com/kr/customer/logout">로그아웃</a>
+					<a class="font--kr font--15 font--rg" href="수정필">로그아웃</a>
 				</div>
 			</div>
 		</div>
@@ -86,12 +86,6 @@ String ctxPath = request.getContextPath();
 						<div class="noOrderHistory">주문하신 상품이 존재하지 않습니다</div>
 					</c:if>
 				</div>
-
-
-
-
-
-
 
 				<div class="orderListPagination">
 					<nav>

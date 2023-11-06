@@ -324,3 +324,13 @@ i, cite, em, var, address, dfn {
 .order-status {
     line-height: 25px;
 }
+h2.order-number.font--kr.font--15.font--md {
+    font-weight: bold;
+}
+
+span.order-title-text.font--15.font--md {
+    font-weight: bold;
+}
+.item-position.font--kr.font--13.font--bd {
+    margin-bottom: 10px;
+}

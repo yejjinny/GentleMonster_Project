@@ -11,9 +11,9 @@ import common.controller.AbstractController;
 import member.domain.MemberVO;
 import order.model.OrderDAO;
 import order.model.OrderDAO_imple;
+
 /**
- * 작성자 신예진 
- * 주문내역 Controller
+ * 작성자 신예진 주문내역 Controller
  */
 public class OrderListAction extends AbstractController {
 
@@ -58,65 +58,64 @@ public class OrderListAction extends AbstractController {
 
 				paraMap.put("pageNum", currentPageNo);
 
-				
 				req.setAttribute("orderList", odao.getPersonalOrderList(paraMap));
-				
+
 				String pageBar = "";
 
-				int blockSize = 10;
-				// blockSize는 블럭(토막)당 보여지는 페이지 번호의 갯수이다.
+				if (totalPage > 0) {
 
-				int loop = 1;
-				// loop는 1부터 증가하여 1개 블럭을 이루는 페이지 번호의 개수 (지금은 10개)까지만 증가하는 용도이다.
+					int blockSize = 10;
+					// blockSize는 블럭(토막)당 보여지는 페이지 번호의 갯수이다.
 
-				// ==== !!! 다음은 pageNo 구하는 공식이다. !!! ==== //
-				int pageNo = ((Integer.parseInt(currentPageNo) - 1) / blockSize) * blockSize + 1;
-				// pageNo는 페이지바에서 보여지는 첫번째 번호이다.
+					int loop = 1;
+					// loop는 1부터 증가하여 1개 블럭을 이루는 페이지 번호의 개수 (지금은 10개)까지만 증가하는 용도이다.
 
-				// **** [맨처음][이전] 만들기 ***** ///
-				// pageNo ==> 11
+					// ==== !!! 다음은 pageNo 구하는 공식이다. !!! ==== //
+					int pageNo = ((Integer.parseInt(currentPageNo) - 1) / blockSize) * blockSize + 1;
+					// pageNo는 페이지바에서 보여지는 첫번째 번호이다.
 
-				pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo=1'><<</a></li>";
+					// **** [맨처음][이전] 만들기 ***** ///
+					// pageNo ==> 11
 
-				if (pageNo != 1) {
-					pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo=" + (pageNo - 1)
-							+ "'><</a></li>";
-				}
+					pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo=1'><<</a></li>";
 
-				while (!(loop > blockSize || pageNo > totalPage)) {
-
-					if (pageNo == Integer.parseInt(currentPageNo)) {
-						pageBar += "<li class='page-item active'><a class='page-link' href='#'>" + pageNo + "</a></li>";
-					} else {
-						pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo="
-								+ pageNo + "'>" + pageNo + "</a></li>";
+					if (pageNo != 1) {
+						pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo=" + (pageNo - 1) + "'><</a></li>";
 					}
-					loop++; 
 
-					pageNo++;
+					while (!(loop > blockSize || pageNo > totalPage)) {
 
-				} // end of while-------------------
+						if (pageNo == Integer.parseInt(currentPageNo)) {
+							pageBar += "<li class='page-item active'><a class='page-link' href='#'>" + pageNo
+									+ "</a></li>";
+						} else {
+							pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo="
+									+ pageNo + "'>" + pageNo + "</a></li>";
+						}
+						loop++;
 
-				// **** [다음][마지막] 만들기 ***** ///
-				// pageNo ==> 11
-				if (pageNo <= totalPage) {
-					pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo=" + pageNo + "'>></a></li>";
+						pageNo++;
+
+					} // end of while-------------------
+
+					// **** [다음][마지막] 만들기 ***** ///
+					// pageNo ==> 11
+					if (pageNo <= totalPage) {
+						pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo="
+								+ pageNo + "'>></a></li>";
+					}
+					pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo="
+							+ totalPage + "'>>></a></li>";
 				}
-				pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?currentPageNo=" + totalPage + "'>>></a></li>";
-
 				req.setAttribute("pageBar", pageBar);
 				/// **** ==== 페이지바 만들기 끝 =====/// ***
-				
-				
-				
-				
+
 				super.setRedirect(false);
 				super.setViewPage("/jsp/order/orderList.jsp");
-				
-				
+
 			} else {
 				// POST로 들어온 경우 = 잘못된 경로로 들어온 경우
-				
+
 				String message = "잘못된 경로입니다. 인덱스 화면으로 이동합니다.";
 				String loc = req.getContextPath() + "/index.gm";
 

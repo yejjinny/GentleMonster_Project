@@ -19,7 +19,7 @@ String ctxPath = request.getContextPath();
 			<div class="content-wrap order_text_left">
 				<div class="head order_m_b75">
 					<p class="font--kr font--15 font--bd order_p_b28">주문 확인</p>
-					<p class="font--kr font--13 font--rg order_line_height">주문해주셔서 감사합니다. 아래의 주문 상세 내역을 확인해주세요.</p>
+					<p class="font--kr font--13 font--rg order_line_height">주문해주셔서 감사합니다.<br> 주문내용을 이메일로 보내드렸습니다.<br> 아래의 주문 상세 내역을 확인해주세요.</p>
 
 					<div class="action">
 						<a class="button font--kr font--rg font--13" href="수정필">내 계정으로 가기</a>
@@ -64,12 +64,6 @@ String ctxPath = request.getContextPath();
 								<th class="subtotal font--kr font--13 font--md order_line_height">소계</th>
 							</tr>
 
-
-
-
-
-
-
 							<c:forEach var="orderVo" items="${requestScope.orderDetailList}">
 
 								<tr class="font--kr font--13 font--md order_line_height" style="vertical-align: top;">
@@ -89,14 +83,6 @@ String ctxPath = request.getContextPath();
 								</tr>
 
 							</c:forEach>
-
-
-
-
-
-
-
-
 
 
 						</tbody>

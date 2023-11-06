@@ -14,8 +14,7 @@ import order.model.OrderDAO;
 import order.model.OrderDAO_imple;
 
 /**
- * 작성자 신예진
- * 관리자용 전체주문목록 Controller
+ * 작성자 신예진 관리자용 전체주문목록 Controller
  */
 public class OrderListAction extends AbstractController {
 
@@ -26,7 +25,7 @@ public class OrderListAction extends AbstractController {
 		if (session.getAttribute("loginUser") != null
 				&& ((MemberVO) session.getAttribute("loginUser")).getGrade() == 2) {
 			// 로그인 및 관리자등급일 경우
-			
+
 			// orderList.jsp의 select option 값 설정
 			Map<String, String> orderSearchResultMap = new LinkedHashMap<>();
 			orderSearchResultMap.put("", "정렬");
@@ -36,7 +35,7 @@ public class OrderListAction extends AbstractController {
 			orderSearchResultMap.put("orderDayDown", "주문일자 내림차순");
 			orderSearchResultMap.put("fullNameUp", "주문자명 오름차순");
 			orderSearchResultMap.put("fullNameDown", "주문자명 내림차순");
-			
+
 			// orderList.jsp의 select option 값 설정
 			Map<String, String> searchCategoryMap = new LinkedHashMap<>();
 			searchCategoryMap.put("", "검색대상");
@@ -52,7 +51,7 @@ public class OrderListAction extends AbstractController {
 				// GET으로 들어왔을 경우 = 정상적으로 들어왔을 경우 = 초기화면 or 검색 or 페이징
 
 				OrderDAO odao = new OrderDAO_imple();
-				
+
 				// 유저가 입력한 검색값을 설정한다
 				String colName = req.getParameter("searchCategory");
 				String value = req.getParameter("searchOrderInput");
@@ -64,10 +63,10 @@ public class OrderListAction extends AbstractController {
 					// 유저가 검색값을 입력하지 않았을 경우 혹은 잘못된 검색값을 입력하였을 경우
 					colName = "";
 				}
-				
+
 				if (order == null || (!"orderIdUp".equals(order) && !"orderIdDown".equals(order)
-						&& !"orderDayUp".equals(order) && !"orderDayDown".equals(order)
-						&& !"fullNameUp".equals(order) && !"fullNameDown".equals(order))) {
+						&& !"orderDayUp".equals(order) && !"orderDayDown".equals(order) && !"fullNameUp".equals(order)
+						&& !"fullNameDown".equals(order))) {
 					// 유저가 검색값을 입력하지 않았을 경우 혹은 잘못된 검색값을 입력하였을 경우
 					order = "";
 				}
@@ -101,7 +100,7 @@ public class OrderListAction extends AbstractController {
 					// 유저가 검색하지 않았을 경우 혹은 검색어에 빈 값을 설정하였을 경우
 					value = "";
 				}
-				
+
 				// dao에 파라미터로 넘겨줄 값을 설정한다
 				Map<String, String> paraMap = new HashMap<>();
 				paraMap.put("colName", colName);
@@ -144,60 +143,62 @@ public class OrderListAction extends AbstractController {
 
 				String pageBar = "";
 
-				int blockSize = 10;
-				// blockSize는 블럭(토막)당 보여지는 페이지 번호의 갯수이다.
+				if (totalPage > 0) {
 
-				int loop = 1;
-				// loop는 1부터 증가하여 1개 블럭을 이루는 페이지 번호의 개수 (지금은 10개)까지만 증가하는 용도이다.
+					int blockSize = 10;
+					// blockSize는 블럭(토막)당 보여지는 페이지 번호의 갯수이다.
 
-				// ==== !!! 다음은 pageNo 구하는 공식이다. !!! ==== //
-				int pageNo = ((Integer.parseInt(currentPageNo) - 1) / blockSize) * blockSize + 1;
-				// pageNo는 페이지바에서 보여지는 첫번째 번호이다.
+					int loop = 1;
+					// loop는 1부터 증가하여 1개 블럭을 이루는 페이지 번호의 개수 (지금은 10개)까지만 증가하는 용도이다.
 
-				// **** [맨처음][이전] 만들기 ***** ///
-				// pageNo ==> 11
+					// ==== !!! 다음은 pageNo 구하는 공식이다. !!! ==== //
+					int pageNo = ((Integer.parseInt(currentPageNo) - 1) / blockSize) * blockSize + 1;
+					// pageNo는 페이지바에서 보여지는 첫번째 번호이다.
 
-				pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?searchCategory=" + req.getParameter("searchCategory") 
-						+ "&searchOrderInput=" + value 
-						+ "&orderSearchResult=" + req.getParameter("orderSearchResult")
-						+ "&currentPageNo=1'><<</a></li>";
+					// **** [맨처음][이전] 만들기 ***** ///
+					// pageNo ==> 11
 
-				if (pageNo != 1) {
 					pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?searchCategory=" + req.getParameter("searchCategory") 
 							+ "&searchOrderInput=" + value 
 							+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
-							+ "&currentPageNo=" + (pageNo - 1) + "'>[이전]</a></li>";
-				}
+							+ "&currentPageNo=1'><<</a></li>";
 
-				while (!(loop > blockSize || pageNo > totalPage)) {
-
-					if (pageNo == Integer.parseInt(currentPageNo)) {
-						pageBar += "<li class='page-item active'><a class='page-link' href='#'>" + pageNo + "</a></li>";
-					} else {
+					if (pageNo != 1) {
 						pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?searchCategory=" + req.getParameter("searchCategory") 
 								+ "&searchOrderInput=" + value
 								+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
-								+ "&currentPageNo=" + pageNo + "'>" + pageNo + "</a></li>";
+								+ "&currentPageNo=" + (pageNo - 1) + "'>[이전]</a></li>";
 					}
-					loop++; 
 
-					pageNo++;
+					while (!(loop > blockSize || pageNo > totalPage)) {
 
-				} // end of while-------------------
+						if (pageNo == Integer.parseInt(currentPageNo)) {
+							pageBar += "<li class='page-item active'><a class='page-link' href='#'>" + pageNo + "</a></li>";
+						} else {
+							pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?searchCategory=" + req.getParameter("searchCategory") 
+									+ "&searchOrderInput=" + value
+									+ "&orderSearchResult=" + req.getParameter("orderSearchResult")
+									+ "&currentPageNo=" + pageNo + "'>" + pageNo + "</a></li>";
+						}
+						loop++;
 
-				// **** [다음][마지막] 만들기 ***** ///
-				// pageNo ==> 11
-				if (pageNo <= totalPage) {
+						pageNo++;
+
+					} // end of while-------------------
+
+					// **** [다음][마지막] 만들기 ***** ///
+					// pageNo ==> 11
+					if (pageNo <= totalPage) {
+						pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?searchCategory=" + req.getParameter("searchCategory")
+								+ "&searchOrderInput=" + value
+								+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
+								+ "&currentPageNo=" + pageNo + "'>[다음]</a></li>";
+					}
 					pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?searchCategory=" + req.getParameter("searchCategory") 
 							+ "&searchOrderInput=" + value 
 							+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
-							+ "&currentPageNo=" + pageNo + "'>[다음]</a></li>";
+							+ "&currentPageNo=" + totalPage + "'>>></a></li>";
 				}
-				pageBar += "<li class='page-item'><a class='page-link' href='orderList.gm?searchCategory=" + req.getParameter("searchCategory") 
-						+ "&searchOrderInput=" + value 
-						+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
-						+ "&currentPageNo=" + totalPage + "'>>></a></li>";
-
 				req.setAttribute("pageBar", pageBar);
 				/// **** ==== 페이지바 만들기 끝 =====/// ***
 
@@ -207,7 +208,7 @@ public class OrderListAction extends AbstractController {
 
 				super.setRedirect(false);
 				super.setViewPage("/jsp/admin/orderList.jsp");
-				
+
 			} else {
 				// POST로 들어왔을 경우 = 잘못된 경로로 들어왔을 경우
 
