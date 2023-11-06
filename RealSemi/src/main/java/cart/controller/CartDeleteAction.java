@@ -14,6 +14,10 @@ import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
 
+/**
+ * 작성자 신예진
+ * 쇼핑백 상품삭제 Controller
+ */
 public class CartDeleteAction extends AbstractController {
 
 	@Override
@@ -22,7 +26,6 @@ public class CartDeleteAction extends AbstractController {
 
 		if (session.getAttribute("loginUser") != null) {
 			// 로그인 되어있을 경우
-			
 			
 			if ("POST".equalsIgnoreCase(req.getMethod())) {
 				//POST로 들어왔을 경우 = 정상적인 경로로 들어왔을 경우

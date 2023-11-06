@@ -1,5 +1,8 @@
 package cart.domain;
 
+/**
+ * 작성자 신예진
+ */
 public class CartVO {
 	private int cartId;               //카트아이디
 	private int productDetailId;      //상품디테일아이디

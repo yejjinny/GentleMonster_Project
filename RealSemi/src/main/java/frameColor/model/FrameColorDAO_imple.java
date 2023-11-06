@@ -15,8 +15,11 @@ import javax.sql.DataSource;
 import frame.domain.FrameVO;
 import frameColor.domain.FrameColorVO;
 
+/**
+ * 작성자 신예진
+ */
 public class FrameColorDAO_imple implements FrameColorDAO {
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -54,7 +57,8 @@ public class FrameColorDAO_imple implements FrameColorDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 프레임컬러 정보 취득
 	@Override
 	public List<FrameColorVO> getFrameColorList() throws SQLException {
 		List<FrameColorVO> frameColorList = new ArrayList<>();

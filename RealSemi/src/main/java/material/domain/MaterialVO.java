@@ -1,8 +1,11 @@
 package material.domain;
 
+/**
+ * 작성자 신예진
+ */
 public class MaterialVO {
-	private int materialId;
-	private String materialName;
+	private int materialId;          // 소재Id
+	private String materialName;     // 소재명
 	
 	public int getMaterialId() {
 		return materialId;

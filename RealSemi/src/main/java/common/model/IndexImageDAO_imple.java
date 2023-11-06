@@ -14,8 +14,11 @@ import javax.sql.DataSource;
 
 import product.domain.ProductVO;
 
+/**
+ * 작성자 신예진
+ */
 public class IndexImageDAO_imple implements IndexImageDAO {
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -52,7 +55,8 @@ public class IndexImageDAO_imple implements IndexImageDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 인덱스에 보여줄 상품 취득
 	@Override
 	public List<ProductVO> getIndexImageList() throws SQLException {
 

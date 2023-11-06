@@ -36,25 +36,15 @@ import product.domain.ProductVO;
 import product.model.ProductDAO;
 import product.model.ProductDAO_imple;
 
-/*@MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 50, // 50메가
-		maxRequestSize = 1024 * 1024 * 50 * 5 // 50메가 5개까지
-)*/
+/**
+ * 작성자 신예진
+ * 관리자용 상품등록 Controller
+ */
 public class AddProductAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// 테스트용 코드 시작
-
-		MemberVO loginUser = new MemberVO();
-
-		loginUser.setEmail("admin@naver.com");
-		loginUser.setMemberId(1111);
-		loginUser.setGrade(2);
-
 		HttpSession session = req.getSession();
-
-		session.setAttribute("loginUser", loginUser);
-		// 테스트용 코드 끝
 
 		if (session.getAttribute("loginUser") != null
 				&& ((MemberVO) session.getAttribute("loginUser")).getGrade() == 2) {

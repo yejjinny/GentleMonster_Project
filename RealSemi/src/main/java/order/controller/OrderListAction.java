@@ -1,8 +1,6 @@
 package order.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,25 +9,17 @@ import javax.servlet.http.HttpSession;
 
 import common.controller.AbstractController;
 import member.domain.MemberVO;
-import order.domain.OrderVO;
 import order.model.OrderDAO;
 import order.model.OrderDAO_imple;
-
+/**
+ * 작성자 신예진 
+ * 주문내역 Controller
+ */
 public class OrderListAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// 테스트용 코드 시작
-
-		MemberVO loginUser = new MemberVO();
-
-		loginUser.setEmail("hi@naver.com");
-		loginUser.setMemberId(1234);
-
 		HttpSession session = req.getSession();
-
-		session.setAttribute("loginUser", loginUser);
-		// 테스트용 코드 끝
 
 		if (session.getAttribute("loginUser") != null) {
 			// 로그인 했을 경우

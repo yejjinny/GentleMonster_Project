@@ -6,9 +6,12 @@ import java.util.Map;
 
 import product.domain.ProductVO;
 
+/**
+ * 작성자 신예진
+ */
 public interface SearchDAO {
 	
-	// 유저의 검색결과값을 돌려준다
+	// 유저의 검색어를 토대로 한 검색 결과 취득
 	List<ProductVO> searchKeyword(Map<String, String> paraMap) throws SQLException;
 
 }

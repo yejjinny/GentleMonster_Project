@@ -18,6 +18,10 @@ import order.domain.OrderVO;
 import order.model.OrderDAO;
 import order.model.OrderDAO_imple;
 
+/**
+ * 작성자 신예진 
+ * 상품 주문_1 배송정보 입력 관련 Controller
+ */
 public class OrderAddressAction extends AbstractController {
 
 	@Override

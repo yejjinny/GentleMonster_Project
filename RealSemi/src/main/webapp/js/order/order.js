@@ -62,6 +62,7 @@ $(document).ready(function() {
 
 		// 배송주소, 우편번호 값 지우기 및 버튼 변경
 		$("input[name='mb_address']").val("");
+		$("input[name='mb_address_sub']").val("");
 		$("input[name='mb_zipcode']").val("");
 		$("button.search_button").css("display", "block");
 		$("button.delete_button").css("display", "none");

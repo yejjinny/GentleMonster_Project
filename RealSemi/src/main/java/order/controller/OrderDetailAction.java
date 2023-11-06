@@ -13,21 +13,15 @@ import order.domain.OrderVO;
 import order.model.OrderDAO;
 import order.model.OrderDAO_imple;
 
+/**
+ * 작성자 신예진 
+ * 주문 상세 Controller
+ */
 public class OrderDetailAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// 테스트용 코드 시작
-
-		MemberVO loginUser = new MemberVO();
-
-		loginUser.setEmail("hi@naver.com");
-		loginUser.setMemberId(1234);
-
 		HttpSession session = req.getSession();
-
-		session.setAttribute("loginUser", loginUser);
-		// 테스트용 코드 끝
 
 		if (session.getAttribute("loginUser") != null) {
 			// 로그인 했을 경우
@@ -36,11 +30,13 @@ public class OrderDetailAction extends AbstractController {
 				// POST로 들어온 경우 = 정상적으로 들어온 경우
 
 				OrderDAO odao = new OrderDAO_imple();
-
+				
+				// dao에 넘겨줄 값을 저장한다
 				Map<String, String> paraMap = new HashMap<>();
 				paraMap.put("memberId", String.valueOf(((MemberVO) session.getAttribute("loginUser")).getMemberId()));
 				paraMap.put("orderId", req.getParameter("orderId"));
-
+				
+				// 유저가 선택한 주문정보와 그 상세정보를 저장한다.
 				req.setAttribute("orderOne", odao.getPersonalOrderOne(paraMap));
 				req.setAttribute("orderDetailList", odao.getPersonalOrderDetail(paraMap));
 

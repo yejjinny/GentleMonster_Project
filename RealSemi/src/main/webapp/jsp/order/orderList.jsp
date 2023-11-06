@@ -11,7 +11,6 @@ String ctxPath = request.getContextPath();
 <link rel="stylesheet" href="<%=ctxPath%>/css/order/orderList.css">
 <title>GENTLE MONSTER Official Site</title>
 <jsp:include page="../common/header.jsp" />
-<script src="<%=ctxPath%>/js/order/orderList.js"></script>
 
 
 <div class="container_sq">
@@ -70,9 +69,11 @@ String ctxPath = request.getContextPath();
 											<div class="order-date font--kr font--13 font--rg">${orderVo.orderDay}</div>
 										</div>
 										<div class="order-actions">
-											<form name="orderDetailFrm">
-												<input hidden="" name="orderId" value="${orderVo.orderId}">
-												<button class="text_hover_main action view-order font--kr font--13 font--rg" type="button">주문 상세보기</button>
+											<form id="orderDetailFrm${orderVo.orderId}" method="post" action="<%=ctxPath%>/order/orderDetail.gm">
+												<input type="hidden" name="orderId" value="${orderVo.orderId}">
+												<input type="submit" id="button${orderVo.orderId}" value = "주문 상세보기" class="text_hover_main action view-order font--kr font--13 font--rg">
+<%-- 												<button type="button" id="button${orderVo.orderId}" class="text_hover_main action view-order font--kr font--13 font--rg">주문 상세보기</button> --%>
+
 											</form>
 										</div>
 									</div>
@@ -81,8 +82,8 @@ String ctxPath = request.getContextPath();
 
 						</c:forEach>
 					</c:if>
-					
-					
+
+
 					<c:if test="${empty requestScope.orderList}">
 						<div class="noOrderHistory">주문하신 상품이 존재하지 않습니다</div>
 					</c:if>

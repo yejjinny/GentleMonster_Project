@@ -15,6 +15,10 @@ import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
 
+/**
+ * 작성자 신예진
+ * 쇼핑백 상품 수량수정 Controller
+ */
 public class UpdateCartQtyAction extends AbstractController {
 
 	@Override

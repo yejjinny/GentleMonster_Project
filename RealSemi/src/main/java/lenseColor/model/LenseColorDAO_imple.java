@@ -12,11 +12,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import frameColor.domain.FrameColorVO;
 import lenseColor.domain.LenseColorVO;
 
+/**
+ * 작성자 신예진
+ */
 public class LenseColorDAO_imple implements LenseColorDAO {
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -54,7 +56,8 @@ public class LenseColorDAO_imple implements LenseColorDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 렌즈컬러 정보 취득
 	@Override
 	public List<LenseColorVO> getLenseColorList() throws SQLException {
 		List<LenseColorVO> lenseColorList = new ArrayList<>();
