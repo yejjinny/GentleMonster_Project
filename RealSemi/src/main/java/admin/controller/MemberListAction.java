@@ -13,22 +13,15 @@ import member.domain.MemberVO;
 import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 
+/**
+ * 작성자 신예진
+ * 관리자용 회원목록 Controller
+ */
 public class MemberListAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// 테스트용 코드 시작
-
-		MemberVO loginUser = new MemberVO();
-
-		loginUser.setEmail("admin@naver.com");
-		loginUser.setMemberId(1111);
-		loginUser.setGrade(2);
-
 		HttpSession session = req.getSession();
-
-		session.setAttribute("loginUser", loginUser);
-		// 테스트용 코드 끝
 
 		if (session.getAttribute("loginUser") != null
 				&& ((MemberVO) session.getAttribute("loginUser")).getGrade() == 2) {
@@ -168,12 +161,15 @@ public class MemberListAction extends AbstractController {
 				// pageNo ==> 11
 				
 				pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory")
-						+ "&searchMemberInput=" + value + "&orderSearchResult=" + req.getParameter("orderSearchResult") + "&currentPageNo=1'><<</a></li>";
+						+ "&searchMemberInput=" + value 
+						+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
+						+ "&currentPageNo=1'><<</a></li>";
 
 				if (pageNo != 1) {
-					pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory="
-							+ req.getParameter("searchCategory") + "&searchMemberInput=" + value + "&orderSearchResult=" + req.getParameter("orderSearchResult") + "&currentPageNo="
-							+ (pageNo - 1) + "'>[이전]</a></li>";
+					pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory") 
+							+ "&searchMemberInput=" + value
+							+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
+							+ "&currentPageNo=" + (pageNo - 1) + "'>[이전]</a></li>";
 				}
 
 				while (!(loop > blockSize || pageNo > totalPage)) {
@@ -181,9 +177,10 @@ public class MemberListAction extends AbstractController {
 					if (pageNo == Integer.parseInt(currentPageNo)) {
 						pageBar += "<li class='page-item active'><a class='page-link' href='#'>" + pageNo + "</a></li>";
 					} else {
-						pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory="
-								+ req.getParameter("searchCategory") + "&searchMemberInput=" + value + "&orderSearchResult=" + req.getParameter("orderSearchResult") + "&currentPageNo="
-								+ pageNo + "'>" + pageNo + "</a></li>";
+						pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory")
+								+ "&searchMemberInput=" + value 
+								+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
+								+ "&currentPageNo=" + pageNo + "'>" + pageNo + "</a></li>";
 					}
 					loop++; // 1 2 3 4 5 6 7 8 9 10
 
@@ -198,13 +195,15 @@ public class MemberListAction extends AbstractController {
 				// **** [다음][마지막] 만들기 ***** ///
 				// pageNo ==> 11
 				if (pageNo <= totalPage) {
-					pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory="
-							+ req.getParameter("searchCategory") + "&searchMemberInput=" + value + "&orderSearchResult=" + req.getParameter("orderSearchResult") + "&currentPageNo="
-							+ pageNo + "'>[다음]</a></li>";
+					pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory")
+							+ "&searchMemberInput=" + value 
+							+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
+							+ "&currentPageNo=" + pageNo + "'>[다음]</a></li>";
 				}
 				pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory")
-						+ "&searchMemberInput=" + value + "&orderSearchResult=" + req.getParameter("orderSearchResult") + "&currentPageNo=" + totalPage
-						+ "'>>></a></li>";
+						+ "&searchMemberInput=" + value 
+						+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
+						+ "&currentPageNo=" + totalPage + "'>>></a></li>";
 
 				req.setAttribute("pageBar", pageBar);
 				/// **** ==== 페이지바 만들기 끝 =====/// ***
@@ -243,8 +242,7 @@ public class MemberListAction extends AbstractController {
 			super.setRedirect(false);
 			super.setViewPage("/jsp/common/msg.jsp");
 
-		} // end of if (session.getAttribute("loginUser") != null)
-			// -----------------------------------------------------
+		} // end of if (session.getAttribute("loginUser") != null) -----------------------------------------------------
 
 	}
 

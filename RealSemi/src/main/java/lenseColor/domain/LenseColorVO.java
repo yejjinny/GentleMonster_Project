@@ -1,10 +1,12 @@
 package lenseColor.domain;
 
+/**
+ * 작성자 신예진
+ */
 public class LenseColorVO {
-	private int lenseColorId;
-	private String lenseColorEng;
-	private String lenseColorKor;
-	
+	private int lenseColorId;        // 렌즈컬러Id
+	private String lenseColorEng;    // 렌즈컬러 영문
+	private String lenseColorKor;    // 렌즈컬러 한글
 	
 	public int getLenseColorId() {
 		return lenseColorId;

@@ -12,11 +12,14 @@ import product.domain.ProductVO;
 import product.model.ProductDAO;
 import product.model.ProductDAO_imple;
 
+/**
+ * 작성자 신예진
+ * 상품 상세화면 Controller 
+ */
 public class ProductDetailAction extends AbstractController{
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		HttpSession session = req.getSession();
 		
 		if("GET".equalsIgnoreCase(req.getMethod())) {
 			// GET으로 들어온 경우 = 정상적으로 들어온 경우 = 상품 전체보기에서 상품을 클릭하였을 경우

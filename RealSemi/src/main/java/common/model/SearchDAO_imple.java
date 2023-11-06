@@ -15,8 +15,11 @@ import javax.sql.DataSource;
 
 import product.domain.ProductVO;
 
+/**
+ * 작성자 신예진
+ */
 public class SearchDAO_imple implements SearchDAO {
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -54,7 +57,8 @@ public class SearchDAO_imple implements SearchDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 유저의 검색어를 토대로 한 검색 결과 취득
 	@Override
 	public List<ProductVO> searchKeyword(Map<String, String> paraMap) throws SQLException {
 		List<ProductVO> productList = new ArrayList<>();

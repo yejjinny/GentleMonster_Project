@@ -15,8 +15,11 @@ import javax.sql.DataSource;
 import lenseColor.domain.LenseColorVO;
 import material.domain.MaterialVO;
 
+/**
+ * 작성자 신예진
+ */
 public class MaterialDAO_imple implements MaterialDAO {
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -54,7 +57,8 @@ public class MaterialDAO_imple implements MaterialDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 소재 정보 취득
 	@Override
 	public List<MaterialVO> getMaterialList() throws SQLException {
 		List<MaterialVO> materialList = new ArrayList<>();

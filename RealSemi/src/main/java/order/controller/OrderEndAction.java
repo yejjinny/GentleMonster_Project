@@ -18,11 +18,16 @@ import order.domain.OrderVO;
 import order.model.OrderDAO;
 import order.model.OrderDAO_imple;
 
+/**
+ * 작성자 신예진 
+ * 상품 주문_3 주문확인 Controller
+ */
 public class OrderEndAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
+		
 		if (session.getAttribute("loginUser") != null) {
 			// 로그인 했을 경우
 
@@ -62,9 +67,6 @@ public class OrderEndAction extends AbstractController {
 				// 주문 내역 불러오기
 				OrderVO ovo = odao.getOrderCompleteList(paraMap);
 				List<OrderVO> orderDetailList = odao.getPersonalOrderDetail(paraMap);
-				
-				System.out.println("고객님 : " + ((MemberVO)session.getAttribute("loginUser")).getFullName());
-				
 				
 				////////////////////////////////////////////////////////
 				boolean sendMailSuccess = false; // 메일이 정상적으로 전송되었는지 유무를 알아오기 위한 용도
@@ -276,8 +278,7 @@ public class OrderEndAction extends AbstractController {
 					GoogleMail mail = new GoogleMail();
 
 					try {
-						mail.send_certification_code("pangjjinny@naver.com", orderData);
-						//mail.send_certification_code(((MemberVO)session.getAttribute("loginUser")).getEmail(), orderData);
+						mail.send_certification_code(((MemberVO)session.getAttribute("loginUser")).getEmail(), orderData);
 						sendMailSuccess = true; // 메일 전송 성공했음을 기록함
 					} catch (Exception e) {
 						//메일 전송이 실패한 경우

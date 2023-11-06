@@ -18,8 +18,11 @@ import cart.domain.CartVO;
 import member.domain.MemberVO;
 import order.domain.OrderVO;
 
+/**
+ * 작성자 신예진 
+ */
 public class OrderDAO_imple implements OrderDAO {
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -66,8 +69,10 @@ public class OrderDAO_imple implements OrderDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "select " + "addressbookId, a.familyName, a.lastName, address, isDefaultAddr "
-					+ "from tbl_addressbook a " + "join tbl_member m on " + "a.fk_memberId = m.memberId "
+			String sql = "select " 
+					+ "addressbookId, a.familyName, a.lastName, address, isDefaultAddr "
+					+ "from tbl_addressbook a "
+					+ "join tbl_member m on " + "a.fk_memberId = m.memberId "
 					+ "where fk_memberId = ? and a.isDeleted = 0 " + "order by a.registerday";
 
 			pstmt = conn.prepareStatement(sql);
@@ -102,8 +107,11 @@ public class OrderDAO_imple implements OrderDAO {
 
 			String sql = "select "
 					+ "addressbookId, fk_memberId, a.familyName, a.lastName, tel, address, detailAddress, "
-					+ "postCode, isDefaultAddr " + "from tbl_addressbook a " + "join tbl_member m on "
-					+ "a.fk_memberId = m.memberId " + "where fk_memberId = ? and a.isDeleted = 0 and addressbookId = ? "
+					+ "postCode, isDefaultAddr " 
+					+ "from tbl_addressbook a " 
+					+ "join tbl_member m on "
+					+ "a.fk_memberId = m.memberId " 
+					+ "where fk_memberId = ? and a.isDeleted = 0 and addressbookId = ? "
 					+ "order by a.registerday";
 
 			pstmt = conn.prepareStatement(sql);
@@ -288,7 +296,7 @@ public class OrderDAO_imple implements OrderDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "select ceil( count(*) / 1 ) from tbl_order ";
+			String sql = "select ceil( count(*) / 1 ) from tbl_order";
 
 			String colName = paraMap.get("colName");
 			String searchKeyword = paraMap.get("value");
@@ -305,7 +313,6 @@ public class OrderDAO_imple implements OrderDAO {
 					&& (searchKeyword != null && !searchKeyword.trim().isEmpty())) {
 				pstmt.setString(1, searchKeyword);
 			}
-			System.out.println("total : " + sql);
 			rs = pstmt.executeQuery();
 
 			rs.next();
@@ -325,21 +332,29 @@ public class OrderDAO_imple implements OrderDAO {
 
 		try {
 			conn = ds.getConnection();
-			// 수정필
+
 			String sql = "select " + "rno, "
 					+ "orderId, case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송완료' end as orderStatus, "
 					+ "orderDay, fk_memberId, name, amount, productName "
-					+ "from " + "tbl_order o " + "join " + "(" + "WITH t AS ( " + "SELECT fk_orderId, "
+					+ "from " 
+					+ "tbl_order o " + "join " 
+					+ "(" 
+					+ "WITH t AS ( " 
+					+ "SELECT fk_orderId, "
 					+ "MIN(productGroupName || ' ' || frameColorEng) AS productName, COUNT(*) CNT "
 					+ "FROM tbl_orderDetail od "
 					+ "join tbl_productDetail pd on od.fk_productDetailId = pd.productDetailId "
 					+ "join tbl_productGroup pg on pd.fk_productGroupId = pg.productGroupId "
-					+ "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId " + "GROUP BY fk_orderId " + ") "
-					+ "SELECT row_number() over (order by fk_orderId desc) as rno, " + "fk_orderId, "
-					+ "CASE WHEN CNT = 1 " + "		THEN productName "
+					+ "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId " 
+					+ "GROUP BY fk_orderId " + ") "
+					+ "SELECT row_number() over (order by fk_orderId desc) as rno, " 
+					+ "fk_orderId, "
+					+ "CASE WHEN CNT = 1 "
+					+ "		THEN productName "
 					+ "     ELSE productName || ' 포함 ' || CAST(CNT || '건' AS VARCHAR(20)) END AS productName "
-					+ "FROM t " + ") v " + "on o.orderId = v.fk_orderId "
-					+ "where rno between ((? * 1) - 0) and (? * 1)";
+					+ "FROM t " + ") v "
+					+ "on o.orderId = v.fk_orderId "
+					+ "where rno between ((? * 10) - 9) and (? * 10)";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -379,22 +394,33 @@ public class OrderDAO_imple implements OrderDAO {
 			String searchKeyword = paraMap.get("value");
 			String order = paraMap.get("order");
 
-			// 수정필
-			String sql = "select " + "rno, o.orderId, " + "case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송완료' end as orderStatus, "
-					+ "orderDay, memberId, o.name, amount, productName " + "from " + "tbl_order o " + "join " + "( "
+			String sql = "select " 
+					+ "rno, o.orderId, " 
+					+ "case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송완료' end as orderStatus, "
+					+ "orderDay, memberId, o.name, amount, productName "
+					+ "from " 
+					+ "tbl_order o " 
+					+ "join " 
+					+ "( "
 					+ "WITH t AS ( "
 					+ "SELECT o.fk_memberId as memberid, fk_orderId as orderId, to_char(orderDay, 'yyyy/mm/dd') as orderDay, "
 					+ "orderStatus, name, MIN(productGroupName || ' ' || frameColorEng) AS productName, "
-					+ "COUNT(*) CNT " + "FROM tbl_order o join tbl_orderDetail od on o.orderId = od.fk_orderId "
+					+ "COUNT(*) CNT " 
+					+ "FROM tbl_order o join tbl_orderDetail od on o.orderId = od.fk_orderId "
 					+ "join tbl_productDetail pd on od.fk_productDetailId = pd.productDetailId "
 					+ "join tbl_productGroup pg on pd.fk_productGroupId = pg.productGroupId "
 					+ "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId "
-					+ "GROUP BY fk_orderId, o.fk_memberId, to_char(orderDay, 'yyyy/mm/dd'), orderStatus, name " + ") "
+					+ "GROUP BY fk_orderId, o.fk_memberId, to_char(orderDay, 'yyyy/mm/dd'), orderStatus, name " 
+					+ ") "
 					+ "SELECT row_number() over (order by " + order + ") as rno, orderId, memberId, name, "
-					+ "CASE WHEN CNT = 1 " + "			 THEN productName "
+					+ "CASE WHEN CNT = 1 " 
+					+ "			 THEN productName "
 					+ "          ELSE productName || ' 포함 ' || CAST(CNT || '건' AS VARCHAR(20)) END AS productName "
-					+ "FROM t " + "where " + colName + " like '%'|| ? ||'%' " + ") v " + "on o.orderId = v.orderId "
-					+ "where rno between ((? * 1) - 0 ) and (? * 1)";
+					+ "FROM t " 
+					+ "where " + colName + " like '%'|| ? ||'%' " 
+					+ ") v " 
+					+ "on o.orderId = v.orderId "
+					+ "where rno between ((? * 10) - 9) and (? * 10)";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -456,7 +482,6 @@ public class OrderDAO_imple implements OrderDAO {
 
 		try {
 			conn = ds.getConnection();
-			// 수정필
 			String sql = "select "
 					+ "rno," + "orderId, orderDay, orderStatus, quantity, mainImageFile "
 					+ "from "
@@ -509,7 +534,6 @@ public class OrderDAO_imple implements OrderDAO {
 
 		try {
 			conn = ds.getConnection();
-			// 수정필
 			String sql = "select "
 					+ "rno, orderId, orderDay, amount "
 					+ "from "
@@ -548,12 +572,14 @@ public class OrderDAO_imple implements OrderDAO {
 
 		try {
 			conn = ds.getConnection();
-			// 수정필
-			String sql = "select " + "orderId, to_char(orderDay,'yyyy/mm/dd') as orderDay, "
+			String sql = "select " 
+					+ "orderId, to_char(orderDay,'yyyy/mm/dd') as orderDay, "
 					+ "case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송완료' end as orderStatus, "
 					+ "sum(quantity) as quantity, amount, "
-					+ "name, address, detailAddress, postCode " + "from tbl_order o "
-					+ "join tbl_orderDetail od on o.orderId = od.fk_orderId " + "where fk_memberId = ? and orderId = ? "
+					+ "name, address, detailAddress, postCode " 
+					+ "from tbl_order o "
+					+ "join tbl_orderDetail od on o.orderId = od.fk_orderId "
+					+ "where fk_memberId = ? and orderId = ? "
 					+ "group by orderId, orderDay, orderStatus, amount, name, address, detailAddress, postCode ";
 
 			pstmt = conn.prepareStatement(sql);
@@ -588,7 +614,6 @@ public class OrderDAO_imple implements OrderDAO {
 
 		try {
 			conn = ds.getConnection();
-			// 수정필
 			String sql = "select "
 					+ "productGroupName || ' ' || frameColorEng as productName, "
 					+ "od.price, od.quantity, mainImageFile "

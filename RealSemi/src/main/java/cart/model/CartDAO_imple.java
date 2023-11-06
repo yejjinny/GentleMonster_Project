@@ -15,8 +15,11 @@ import javax.sql.DataSource;
 
 import cart.domain.CartVO;
 
+/**
+ * 작성자 신예진
+ */
 public class CartDAO_imple implements CartDAO {
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -55,7 +58,7 @@ public class CartDAO_imple implements CartDAO {
 		}
 	}
 
-	// 쇼핑백 버튼 및 쇼핑백 자세히 보기 버튼을 눌렀을 경우 (/cart/cart.up)
+	// 쇼핑백 버튼 및 쇼핑백 자세히 보기 버튼을 눌렀을 경우
 	@Override
 	public List<CartVO> getCartList(int memberId) throws SQLException {
 		List<CartVO> cartList = new ArrayList<>();
@@ -115,7 +118,8 @@ public class CartDAO_imple implements CartDAO {
 
 		return num;
 	}
-
+	
+	// 수량 +- 버튼을 눌렀을 경우
 	@Override
 	public CartVO updateCartQty(Map<String, String> paraMap) throws SQLException {
 		int num = 0;
@@ -166,7 +170,8 @@ public class CartDAO_imple implements CartDAO {
 
 		return cvo;
 	}
-
+	
+	// 쇼핑백에 추가하기 버튼을 눌렀을 경우
 	@Override
 	public int addCartItem(Map<String, String> paraMap) throws SQLException {
 		int num = 0;

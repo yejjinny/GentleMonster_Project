@@ -10,11 +10,14 @@ import address.model.AddressDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
 
+/**
+ * 작성자 신예진 
+ * 상품 주문_2 결제 화면 관련 Controller
+ */
 public class OrderPaymentAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
 		HttpSession session = req.getSession();
 
 		if (session.getAttribute("loginUser") != null) {

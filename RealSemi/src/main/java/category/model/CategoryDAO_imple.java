@@ -15,8 +15,11 @@ import javax.sql.DataSource;
 import cart.domain.CartVO;
 import category.domain.CategoryVO;
 
+/**
+ * 작성자 신예진
+ */
 public class CategoryDAO_imple implements CategoryDAO {
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
+	private DataSource ds;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -54,7 +57,8 @@ public class CategoryDAO_imple implements CategoryDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 카테고리 정보 취득
 	@Override
 	public List<CategoryVO> getCategoryList() throws SQLException {
 		List<CategoryVO> categoryList = new ArrayList<>();

@@ -13,6 +13,10 @@ import cart.model.CartDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
 
+/**
+ * 작성자 신예진 
+ * 상품 주문_2 결제 기능 관련 Controller
+ */
 public class OrderPaymentGatewayAction extends AbstractController {
 
 	@Override
