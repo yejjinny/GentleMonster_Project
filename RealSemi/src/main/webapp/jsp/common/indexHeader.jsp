@@ -8,47 +8,12 @@ String ctxPath = request.getContextPath();
 <!DOCTYPE html>
 <html xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:website="http://ogp.me/ns/website" lang="en" itemscope="" itemtype="http://schema.org/WebPage" data-lang="kr" data-device="windows" data-browser="chrome" class="page--kr page--main page--TempSemi page--ful.jsp" style="--header: 0px; --currentHeader: 52px; --headerOffsetTop: 0px; --deviceRatioHeightToWidth: 1.5490848585690515; --deviceRatioWidthToHeight: 0.6455424274973147; --vh: 9.31px; --inside-bottom-offset: 0px;">
 <head>
-<!-- <meta charset="UTF-8">
-<meta http-equiv="content-type" content="text/html;charset=utf-8">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<meta name="description" content="젠틀몬스터 공식 온라인 스토어에서 다양한 스타일의 선글라스, 안경 및 최신 협업 컬렉션을 만나보세요.">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.gentlemonster.com/kr/">
-수정필 
-<meta property="og:title" content="GENTLE MONSTER 공식 홈페이지">
-<meta property="og:description" content="젠틀몬스터 공식 온라인 스토어에서 다양한 스타일의 선글라스, 안경 및 최신 협업 컬렉션을 만나보세요.">
-<meta property="og:image" content="https://web-resource.gentlemonster.com/assets/stories/overwatch2/img/common/open_graph.jpg">
-<meta name="msapplication-TileImage" content="https://web-resource.gentlemonster.com/assets/img/favicon/ms-icon-144x144.png">
-썸네일 수정필 
-
-<meta name="author" content="GENTLE MONSTER">
-<meta name="robots" content="INDEX, FOLLOW">
-
-<meta name="copyright" content="Copyrights © GENTLE MONSTER  All Rights Reserved">
-<meta name="naver-site-verification" content="6bb0fce6688e682bf8aeb984ba03a46cef97e0cc">
-네이버 사이트 등록 여부 수정필
-
-pinterest
-<meta name="p:domain_verify" content="78201ec6a8abfcecfa9feef6ad261351">
-
-이쪽 먼 소린지 이해가 잘 안됨 확인필
-<meta itemprop="name" content="Gentle Monster">
-<meta itemprop="url" content="https://www.gentlemonster.com/kr/">
-
-<meta name="google" content="notranslate">
-<meta name="msvalidate.01" content="1894314A09C74472BDBFFE9DA0D3947E">
-<meta http-equiv="x-dns-prefetch-control" content="on"> -->
 
 <!-- css관련 -->
 <link rel="stylesheet" href="<%=ctxPath%>/css/help/ful.css">
 <link rel="stylesheet" href="<%=ctxPath%>/css/help/style.css">
 <link rel="stylesheet" href="<%=ctxPath%>/css/help/common.css">
 <link rel="stylesheet" href="<%=ctxPath%>/css/help/main.css">
-<%-- <link rel="stylesheet" href="<%=ctxPath%>/css/help/visualize.css">
- --%>
 
 <link rel="icon" href="<%=ctxPath%>/image/gm-logo.png"/>
 <link rel="apple-touch-icon" href="<%=ctxPath%>/image/gm-logo.png"/>
@@ -58,29 +23,6 @@ pinterest
 
 
 
-
-<!-- <link rel="dns-prefetch" href="//code.jquery.com">
-<link rel="dns-prefetch" href="//netdna.bootstrapcdn.com">
-<link rel="dns-prefetch" href="//cdnjs.cloudflare.com"> -->
-
-<!-- <script>
-	/* 무슨 의미인지 확인해야할 것 같음 */
-	$(document).ready(function() {
-		$('body').css('overflow-x', 'hidden');
-		$('.wh').height($(window).height() + 40);
-
-		var bag_on = "off";
-		$('#bag_btn').on('touchstart', function() {
-			if (bag_on == "off") {
-				sidebag_open();
-			}
-		});
-	});
-
-	$(window).resize(function() {
-		$('.wh').height($(window).height() + 40);
-	});
-</script> -->
 <script>
 	window._php = {};
 	_php.lang = "KR";
@@ -168,13 +110,6 @@ pinterest
                                 				<rect x="21.2" y="20.7" transform="matrix(0.787 -0.617 0.617 0.787 -10.2878 18.6108)" width="1.2" height="7.1"></rect>
                             			</svg>
 									</button>
-									<!-- <div class="n-search__inner">
-										search form
-										<form class="n-search__form" name="search_form" action="수정필">
-											<input class="n-search__input font--kr font--13 font--md jsHeaderSearch" type="text" placeholder="검색어를 입력하세요" data-category="navigation" data-action="search" data-label="search" aria-label="검색어를 입력하세요" name="term" data-validate="required" role="combobox" autocomplete="off" aria-autocomplete="list" aria-owns="hot-keyword__list" aria-expanded="false" aria-controls="top_search_section"> <span id="search-announce" class="hidden" aria-live="assertive"></span>
-										</form>
-										// search form
-									</div> -->
 								</div>
 							</div>
 							<div class="n-header__right float-left clearfix relative">
@@ -192,9 +127,6 @@ pinterest
 								</c:if>
 								<%-- 로그인 _ 민경--%>
 								
-								<%-- <div class="n-header__account n-header__pc float-left" id="loginBtn">
-									<a href="<%= ctxPath %>/register/login.gm" data-category="navigation" data-action="login" data-label="main-menu" class="n-header__link font--kr font--13 font--md" id="loginBtn"> 로그인 </a>
-								</div> --%>
 								<div class="n-header__cart float-left relative">
 									<button data-toggle="modal" data-target="#cartModal" type="button">
 										<span class="n-header__cart-icon"> <svg stroke="#545454" version="1.2" baseProfile="tiny" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" xml:space="preserve" aria-label="cart">
@@ -213,13 +145,6 @@ pinterest
 										</span>
 									</button>
 								</div>
-								<!-- <button type="button" class="n-header__search n-header__mo float-left jsHeaderSearch" data-category="navigation" data-action="search" data-label="search" aria-expanded="false" aria-controls="top_search_section" aria-label="Search" tabindex="">
-									<svg stroke="#ffffff" version="1.1" baseProfile="basic" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" xml:space="preserve">
-                                		<path d="M13.5,24.1c-5.8,0-10.6-4.8-10.6-10.6S7.7,2.9,13.5,2.9s10.6,4.8,10.6,10.6S19.3,24.1,13.5,24.1z M13.5,4.1
-                                				c-5.2,0-9.4,4.2-9.4,9.4c0,5.2,4.2,9.4,9.4,9.4c5.2,0,9.4-4.2,9.4-9.4C22.9,8.3,18.7,4.1,13.5,4.1z"></path>
-                                		<rect x="21.2" y="20.7" transform="matrix(0.787 -0.617 0.617 0.787 -10.2878 18.6108)" width="1.2" height="7.1"></rect>
-                            		</svg>
-								</button> -->
 								<button type="button" id="aside-btn_menu_open" class="n-header__mo relative float-left jsAsideBtn" data-category="navigation" data-action="menu-open" data-label="menu open" aria-expanded="false" aria-controls="mobile-menu-div" aria-label="Global Menu">
 									<span class="aside-btn"> <span class="aside-btn__bar aside-btn__bar--first"></span> <span class="aside-btn__bar aside-btn__bar--second"></span> <span class="aside-btn__bar aside-btn__bar--third"></span>
 									</span>

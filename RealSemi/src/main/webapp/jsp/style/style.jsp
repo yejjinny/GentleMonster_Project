@@ -117,11 +117,6 @@ String ctxPath = request.getContextPath();
 					</div>
 					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 				</div>
-
-				 <!-- Modal footer -->
-				<!--<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
-				</div> -->
 			</div>
 		</div>
 	</div>

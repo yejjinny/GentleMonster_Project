@@ -75,13 +75,6 @@ String ctxPath = request.getContextPath();
                                 <rect x="21.2" y="20.7" transform="matrix(0.787 -0.617 0.617 0.787 -10.2878 18.6108)" width="1.2" height="7.1"></rect>
                             </svg>
 									</button>
-									<!-- <div class="n-search__inner">
-										search form
-										<form class="n-search__form" name="search_form" action="수정필">
-											<input class="n-search__input font--kr font--13 font--md jsHeaderSearch" type="text" placeholder="검색어를 입력하세요" data-category="navigation" data-action="search" data-label="search" aria-label="검색어를 입력하세요" name="term" data-validate="required" role="combobox" autocomplete="off" aria-autocomplete="list" aria-owns="hot-keyword__list" aria-expanded="false" aria-controls="top_search_section"> <span id="search-announce" class="hidden" aria-live="assertive"></span>
-										</form>
-										// search form
-									</div> -->
 								</div>
 							</div>
 							<div class="n-header__right float-left clearfix relative">

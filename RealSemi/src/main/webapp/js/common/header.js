@@ -1,7 +1,6 @@
 
 $(document).ready(function() {
 	/* 쇼핑백 모달 화면 위한 처리 ------------------------------------------------------*/
-	//getCartList();
 
 	const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 	const origin = window.location.origin;
@@ -34,10 +33,7 @@ $(document).ready(function() {
 
 
 	$(document).on("change", "input.input_qty", function() {
-		console.log("hello")
 		//수량 변화시 값도 변경되어야한다 
-		//$('span#mini_cart_item_total_price' + text.cartId).html(addComma(text.price * text.quantity) + "원");
-
 		$("span.cartItemTotalPrice").each(function() {
 			let id = $(this).attr("id")
 			let cartId = Number(id.substr("mini_cart_item_total_price".length, id.length));
@@ -84,26 +80,6 @@ $(document).ready(function() {
 
 
 /* 쇼핑백 모달 화면 관련 -----------------------------------------------------------------------------------------------------------*/
-
-
-/* 쇼핑백 정보를 가져오는 함수*/
-/*function getCartList() {
-	const pathname = "/" + window.location.pathname.split("/")[1] + "/";
-	const origin = window.location.origin;
-	const contextPath = origin + pathname;
-	
-	 쇼핑백 상품정보를 가져온다 
-	$.ajax({
-		url: contextPath + "cart/cart.gm",
-		type: "post",
-		async: true,
-		error: function(request, status, error) {
-			alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
-		}
-	});
-
-}*/
-
 
 /* 쇼핑백 모달에서 삭제하기 버튼을 눌렀을 경우 */
 function goDeleteModal(cartId) {
@@ -186,7 +162,6 @@ function goUpdateModal(cartId, action) {
 
 				/* cart.jsp 수정*/
 				if ($("input#cartTotalPrice" + cartId).length != 0) {
-					console.log("hi")
 					$("input#cartTotalPrice" + cartId).val(text.price * text.quantity);
 					$("span#cartTotalPriceSpan" + cartId).html(addComma(text.price * text.quantity) + "원");
 
@@ -198,10 +173,7 @@ function goUpdateModal(cartId, action) {
 					const summaryPrice = $("span.checkout-summary-price");
 					summaryPrice.html(" " + addComma(calculateAmount()) + "원 ");
 
-
 				}
-
-
 
 
 			} else {

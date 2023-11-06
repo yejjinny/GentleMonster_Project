@@ -159,14 +159,6 @@ String ctxPath = request.getContextPath();
 								</label>
 							</div>
 
-							<!-- <div class="input-box input-box-check mbtype01" style="display: none">
-								<label for="privacy-policy-hidden"> <input type="checkbox" id="privacy-policy-hidden" name="privacy_policy" value="T">
-									<div class="input-box-check-layer"></div> <span class="font--kr font--13  font--rg">
-										<button type="button" class="link" data-toggle="modal" data-target="#legalModal">이용약관</button>,
-										<button type="button" class="link" data-toggle="modal" data-target="#privacyModal">개인정보 수집 및 이용</button> 에 동의합니다. (필수)
-								</span>
-								</label>
-							</div> -->
 						</div>
 
 						<div class="button-group button-group-layout-side-reverse btngroup-mttype01 checkout_t48">

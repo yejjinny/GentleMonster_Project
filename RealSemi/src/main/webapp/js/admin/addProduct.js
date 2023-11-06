@@ -197,21 +197,7 @@ $(document).ready(function() {
 			$("#frameColor > option:selected").prop("selected", false);
 			$("#lenseColor > option:selected").prop("selected", false);
 			/* end of 기존에 입력해뒀던 상품의 값을 초기화 한다*/
-
-			/*
-						$("input:radio[name='frame']").attr("disabled", false);
-						$("input:radio[name='frame']").prop("checked", false);
-						$("input:radio[name='material']").attr("disabled", false);
-						$("input:radio[name='material']").prop("checked", false);*/
 		}
-
-
-
-
-
-
-
-
 	})
 
 
@@ -840,11 +826,8 @@ $(document).ready(function() {
 
 		fileReader.readAsDataURL(input_file.files[0]); //FileReader.readAsDataURL() --> 파일을 읽고, result속성에 파일을 나타내는 URL을 저장 시켜준다.
 		fileReader.onload = function(event) { // FileReader.onload --> 파일 읽기 완료 성공시에만 작동하도록 하는 것임.
-
 			imageFile.find("img.previewImg").attr("src", fileReader.result);
 		};
-
-
 	}); 
 	/* end of 제품이미지 또는 추가이미지 파일을 선택하면 화면에 이미지를 미리 보여주기 구현하기 */
 	
