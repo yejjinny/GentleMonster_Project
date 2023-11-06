@@ -15,8 +15,8 @@ String ctxPath = request.getContextPath();
 <link rel="stylesheet" href="<%=ctxPath%>/css/help/common.css">
 <link rel="stylesheet" href="<%=ctxPath%>/css/help/main.css">
 
-<link rel="icon" href="<%=ctxPath%>/image/gm-logo.png"/>
-<link rel="apple-touch-icon" href="<%=ctxPath%>/image/gm-logo.png"/>
+<link rel="icon" href="<%=ctxPath%>/image/gm-logo.png" />
+<link rel="apple-touch-icon" href="<%=ctxPath%>/image/gm-logo.png" />
 
 
 
@@ -59,7 +59,7 @@ String ctxPath = request.getContextPath();
 				<div class="n-header-container kr jsScrollHeight jsNHeaderCont noti-scroll-header">
 					<div class="n-header__inner relative n-header--bg-null n-header--bg-white" data-header-color="white">
 						<div class="n-header__logo float-left">
-							<a href="<%= ctxPath %>/index.gm" aria-label="Gentle Monster" style="display: block">
+							<a href="<%=ctxPath%>/index.gm" aria-label="Gentle Monster" style="display: block">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 166 15.9">
                             <path
 										d="M7.3 5.3V4.1c0-1.3-.6-1.9-2.1-1.9-1.6 0-2.2.6-2.2 1.9v7.7c0 1.3.5 1.9 2.1 1.9 1.5 0 2.2-1 2.2-2.5V9.4H4.8V7.2h5.5v8.5H7.7v-1.2c-.5.7-1.4 1.5-3.5 1.5C1.5 16 0 14.9 0 11.3V4.8C0 1.3 2.1 0 5.2 0c3 0 5.1 1.4 5.1 4.1v1.2h-3zm14.9-5v2.3h-6v3.9h5.4v2.2h-5.4v4.7h6v2.3h-9V.3h9zm13.5 0v15.3H32L28 3.9v11.7h-3V.3h3.7l4 11.6V.3h3zm12.5 0v2.3h-3.8v13.1h-3V2.6h-3.8V.3h10.6zm4.9 13.1H59v2.3h-8.9V.3h3v13.1zM69.9.3v2.3h-6v3.9h5.4v2.2h-5.4v4.7h6v2.3h-9V.3h9zM91 .3v15.3h-3V3.9l-2.6 11.8H83L80.5 3.8v11.9h-3V.3h4.2L84.2 12 86.7.3H91zM104.1 5v5.9c0 3.7-1.8 5-5.1 5s-5.1-1.2-5.1-5V5c0-3.7 1.8-5 5.1-5s5.1 1.3 5.1 5zm-3-.7c0-1.6-.6-2.1-2.1-2.1-1.6 0-2.1.5-2.1 2.1v7.4c0 1.6.6 2 2.1 2 1.6 0 2.1-.5 2.1-2V4.3zm16.7-4v15.3h-3.7l-4-11.7v11.7h-3V.3h3.7l4 11.6V.3h3zm12.3 3.6v.9h-3V4c0-1.3-.2-1.8-1.7-1.8-1.4 0-1.7.6-1.7 1.6 0 .9.2 1.3 1 1.8l2.9 1.9c1.6 1 2.5 1.6 2.5 4.4 0 2.7-1.8 4-4.7 4-3.5 0-4.9-1.2-4.9-4v-1.3h3v1.1c0 1.6.5 2 1.9 2s1.7-.6 1.7-1.7-.2-1.5-1.2-2.2L123 7.9c-1.8-1.2-2.4-1.8-2.4-4 0-1.9 1.1-3.8 4.7-3.8 3.7-.1 4.8 1.5 4.8 3.8M142.2.3v2.3h-3.8v13.1h-3V2.6h-3.8V.3h10.6zm10.9 0v2.3h-6v3.9h5.4v2.2h-5.4v4.7h6v2.3h-9V.3h9zm12.4 10.2v3.3c0 .8.2 1.5.6 1.9H163c-.3-.4-.5-1.1-.5-1.9v-3.3c0-1.2-.5-1.6-1.6-1.6h-2.1v6.8h-3V.3h5.5c4 0 4.5 2.2 4.5 4.3 0 1.7-.9 2.9-3.1 3.3 1.9.1 2.8 1.1 2.8 2.6zm-4.6-3.9c1.6 0 1.9-.7 1.9-2s-.2-2-1.9-2h-2.1v4h2.1z"
@@ -81,19 +81,19 @@ String ctxPath = request.getContextPath();
 										<a href="<%=ctxPath%>/style/style.gm" data-category="navigation" data-action="styles" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">스타일</a>
 									</li>
 									<li class="n-nav__item">
-										<a href="<%= ctxPath %>/store/store.gm" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">매장보기</a>
+										<a href="<%=ctxPath%>/store/store.gm" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">매장보기</a>
 									</li>
 
 									<%-- 관리자 _ 민경 --%>
 									<c:if test="${sessionScope.loginUser.grade == 2}">
-										<li class="n-nav__item" >
-											<a href="<%=ctxPath%>/admin/memberList.gm" style="color : blue !important;" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">회원목록</a>
+										<li class="n-nav__item">
+											<a href="<%=ctxPath%>/admin/memberList.gm" style="color: blue !important;" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">회원목록</a>
 										</li>
 										<li class="n-nav__item">
-											<a href="<%=ctxPath%>/admin/addProduct.gm" style="color : blue !important;" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">상품등록</a>
+											<a href="<%=ctxPath%>/admin/addProduct.gm" style="color: blue !important;" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">상품등록</a>
 										</li>
 										<li class="n-nav__item">
-											<a href="<%=ctxPath%>/admin/orderList.gm" style="color : blue !important;" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">전체주문목록</a>
+											<a href="<%=ctxPath%>/admin/orderList.gm" style="color: blue !important;" data-category="navigation" data-action="stores" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd">전체주문목록</a>
 										</li>
 									</c:if>
 									<%-- 관리자 끝 --%>
@@ -113,7 +113,7 @@ String ctxPath = request.getContextPath();
 								</div>
 							</div>
 							<div class="n-header__right float-left clearfix relative">
-								
+
 								<%-- 로그인 _ 민경--%>
 								<c:if test="${empty sessionScope.loginUser}">
 									<div class="n-header__account n-header__pc float-left" id="loginBtn">
@@ -126,27 +126,32 @@ String ctxPath = request.getContextPath();
 									</div>
 								</c:if>
 								<%-- 로그인 _ 민경--%>
-								
+
 								<div class="n-header__cart float-left relative">
 									<button data-toggle="modal" data-target="#cartModal" type="button">
-										<span class="n-header__cart-icon"> <svg stroke="#545454" version="1.2" baseProfile="tiny" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" xml:space="preserve" aria-label="cart">
+										<span class="n-header__cart-icon">
+											<svg stroke="#545454" version="1.2" baseProfile="tiny" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" xml:space="preserve" aria-label="cart">
 	                                        	<path d="M20.7,8.9c0.1-1.3,0.1-4.5-1.7-6.5c-1-1.1-2.3-1.6-3.9-1.6c-1.7,0-3,0.6-3.9,1.6c-1.7,2-1.8,5.2-1.7,6.5H3.6v19.8h22.9V8.9
 	                                        			H20.7z M12,3.3c0.7-0.8,1.7-1.2,3-1.2c1.3,0,2.3,0.4,3,1.2c1.5,1.7,1.5,4.6,1.4,5.7h-8.9C10.6,7.9,10.5,5,12,3.3z M25.2,27.6H4.8
 	                                        			V10.1h20.5V27.6z"></path>
                                     		</svg>
-                                    		<c:if test="${not empty sessionScope.cartList}">
-													<c:set var="cartCnt" value="0" />
-													<c:forEach var="cartVo" items="${sessionScope.cartList}">
-														<c:set var="cartCnt" value="${cartCnt+cartVo.quantity}" />
-													</c:forEach>
-													<span class="cart-count tab_cart_btn font--kr font--md"> <c:out value="${cartCnt}" />
-													</span>
-												</c:if>
+											<c:if test="${not empty sessionScope.cartList}">
+												<c:set var="cartCnt" value="0" />
+												<c:forEach var="cartVo" items="${sessionScope.cartList}">
+													<c:set var="cartCnt" value="${cartCnt+cartVo.quantity}" />
+												</c:forEach>
+												<span class="cart-count tab_cart_btn font--kr font--md">
+													<c:out value="${cartCnt}" />
+												</span>
+											</c:if>
 										</span>
 									</button>
 								</div>
 								<button type="button" id="aside-btn_menu_open" class="n-header__mo relative float-left jsAsideBtn" data-category="navigation" data-action="menu-open" data-label="menu open" aria-expanded="false" aria-controls="mobile-menu-div" aria-label="Global Menu">
-									<span class="aside-btn"> <span class="aside-btn__bar aside-btn__bar--first"></span> <span class="aside-btn__bar aside-btn__bar--second"></span> <span class="aside-btn__bar aside-btn__bar--third"></span>
+									<span class="aside-btn">
+										<span class="aside-btn__bar aside-btn__bar--first"></span>
+										<span class="aside-btn__bar aside-btn__bar--second"></span>
+										<span class="aside-btn__bar aside-btn__bar--third"></span>
 									</span>
 								</button>
 							</div>
@@ -177,7 +182,8 @@ String ctxPath = request.getContextPath();
 				<div class="modal-body">
 					<form name="searchFrm" class="searchFrm">
 						<div class="searchFrmWrap" class="font--kr">
-							<input type="text" style="display: none;" /> <input class="font--kr" type="text" name="search" id="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+							<input type="text" style="display: none;" />
+							<input class="font--kr" type="text" name="search" id="search" placeholder="검색어를 입력하세요" autocomplete="off" />
 							<button type="button" class="searchBtn">
 								<svg stroke="#000000" version="1.1" baseProfile="basic" id="레이어_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" xml:space="preserve">
 	                                <path d="M13.5,24.1c-5.8,0-10.6-4.8-10.6-10.6S7.7,2.9,13.5,2.9s10.6,4.8,10.6,10.6S19.3,24.1,13.5,24.1z M13.5,4.1
@@ -215,7 +221,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/product.gm?categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/sunglasses/category/1.jpg" alt="선글라스-Sunglasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/sunglasses/category/1.jpg" alt="선글라스-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">선글라스</div>
 										</a>
@@ -223,7 +229,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/product.gm?categoryId=2">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/glasses/category/1.jpg" alt="안경-Glasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/glasses/category/1.jpg" alt="안경-Glasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">안경</div>
 										</a>
@@ -231,7 +237,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?bestSeller=1&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/sunglasses/category/2.jpg" alt="베스트셀러-Sunglasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/sunglasses/category/2.jpg" alt="베스트셀러-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">베스트셀러</div>
 										</a>
@@ -239,7 +245,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?isBlueLight=1&categoryId=2">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/glasses/category/3.jpg" alt="블루라이트 차단-Glasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/glasses/category/3.jpg" alt="블루라이트 차단-Glasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">블루라이트 차단</div>
 										</a>
@@ -247,7 +253,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?frameId=2&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/sunglasses/category/6.jpg" alt="캣아이 프레임-Sunglasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/sunglasses/category/6.jpg" alt="캣아이 프레임-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">캣아이 프레임</div>
 										</a>
@@ -255,7 +261,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?frameId=3&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/sunglasses/category/7.jpg" alt="원형 프레임-Sunglasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/sunglasses/category/7.jpg" alt="원형 프레임-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">원형 프레임</div>
 										</a>
@@ -320,9 +326,10 @@ String ctxPath = request.getContextPath();
 													<div class="cart_product_name font--kr font--12 font--bd">${cartVo.productName}</div>
 													<div class="cart_price">
 														<span class="mini_cart_item_total_price font--kr font--12 font--rg">
-														 <input type="hidden" value="${cartVo.price * cartVo.quantity}" name="price_total" id="price${cartVo.cartId}" /> 
-															<span  id="mini_cart_item_total_price${cartVo.cartId}"> 
-																<fmt:formatNumber type="number" maxFractionDigits="3" value="${cartVo.price * cartVo.quantity}" /> 원
+															<input type="hidden" value="${cartVo.price * cartVo.quantity}" name="price_total" id="price${cartVo.cartId}" />
+															<span id="mini_cart_item_total_price${cartVo.cartId}">
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${cartVo.price * cartVo.quantity}" />
+																원
 															</span>
 														</span>
 													</div>
@@ -372,17 +379,29 @@ String ctxPath = request.getContextPath();
 									<div class="cart_total_box">
 										<div class="cart_shipping">
 											<div class="cart_subtotal font--13 font--md font--kr" style="position: inherit !important; border-top: none;">
-												<span class="cart_label font--kr">배송비</span> <span class="cart_shipping font--kr">무료</span>
+												<span class="cart_label font--kr">배송비</span>
+												<span class="cart_shipping font--kr">무료</span>
 											</div>
 										</div>
 										<div class="cart_total">
 											<div class="cart_subtotal font--13 font--md" style="position: inherit !important;">
-												<span class="cart_label font--kr font--13 font--rg">합계</span> <span class="cart_amount font--kr font--13 font--rg"></span>
+												<span class="cart_label font--kr font--13 font--rg">합계</span>
+												<span class="cart_amount font--kr font--13 font--rg"></span>
 											</div>
 										</div>
 										<div class="cart_btn_group">
 											<div class="btn_item cart_popup_btn font--rg font--11">
-												<button class="cartOrderBtnHeader cart-layer__btn font--kr font--12 font--rg" type="submit">결제하기</button>
+												<%-- 쇼핑백 상세내용 (유저의 쇼핑백 정보가 있을 경우) --%>
+												<c:if test="${not empty sessionScope.cartList}">
+													<button class="cartOrderBtnHeader cart-layer__btn font--kr font--12 font--rg" type="submit">결제하기</button>
+												</c:if>
+												<%-- end of 쇼핑백 상세내용 (유저의 쇼핑백 정보가 있을 경우) --%>
+												
+												<%-- 쇼핑백 상세내용 (유저의 쇼핑백 정보가 없을 경우) --%>
+												<c:if test="${empty sessionScope.cartList}">
+													<button class="cartOrderBtnHeader cart-layer__btn font--kr font--12 font--rg" type="submit" disabled>결제하기</button>
+												</c:if>
+												<%-- end of 쇼핑백 상세내용 (유저의 쇼핑백 정보가 없을 경우) --%>
 											</div>
 											<div class="btn_item cart_popup_btn">
 												<a class="cart-layer__btn cart-layer__btn--white font--kr font--rg font--12" href="<%=ctxPath%>/cart/cart.gm" data-category="ecommerce&quot;" data-action="view_cart">자세히 보기</a>

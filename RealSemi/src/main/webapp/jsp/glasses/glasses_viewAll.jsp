@@ -559,7 +559,7 @@ String ctxPath = request.getContextPath();
 									data-sub-image="<%=ctxPath%>${productVo.mainImageFile}">
 									<a
 										class="product__link product-image-swiper__wrapper swiper-wrapper"
-										id="8NX8YBQ7JSZW" href=""
+										id="8NX8YBQ7JSZW" href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
 										product-name="${productVo.productName}"
 										product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
 										product-bluelight="Blue Light Protection"
