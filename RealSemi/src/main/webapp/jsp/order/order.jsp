@@ -102,9 +102,6 @@ String ctxPath = request.getContextPath();
 											<%-- end of 주소록 등록된 거 있는지 여부확인 (존재한다면 실행) --%>
 										</ul>
 
-
-										<!-- 얜 어따쓰는지 모르겠음  수정필-->
-										<!-- <button type="button" id="selectedAddress" onclick="changeAddress(this)" hidden=""></button> -->
 									</div>
 
 								</div>
@@ -173,12 +170,6 @@ String ctxPath = request.getContextPath();
 										</span>
 										</label>
 									</div>
-									<!-- <div class="input-box input-box-check mbtype01" style="display: none">
-										<label for="privacy-policy-hidden"> <input type="checkbox" id="privacy-policy-hidden" name="privacy_policy" value="T">
-											<div class="input-box-check-layer"></div> <span class="font--kr font--13  font--rg"> <a class="link" target="_blank" href="수정필">이용약관</a>, <a class="link" target="_blank" href="수정필">개인정보처리방침</a>에 동의합니다. (필수)
-										</span>
-										</label>
-									</div> -->
 								</div>
 							</div>
 						</section>

@@ -1,29 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <footer class="footer w_o_w_footer">
 	<div class="footer_nav">
-		<!-- <div class="footer_section">
-					<div class="footer_section_title footer_section_mobile_title">
-						<button class="font--kr font--13 font--bd" type="button">
-							고객 서비스 <span>+</span>
-						</button>
-					</div>
-					<div class="footer_group">
-						<ul class="footer_items">
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="contact-us" data-label="customer-service" href="https://www.gentlemonster.com/kr/customercare/contact"> 문의 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="shipping" data-label="customer-service" href="https://www.gentlemonster.com/kr/customercare/shipping"> 배송 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="service" data-label="customer-service" href="https://www.gentlemonster.com/kr/customercare/service"> 서비스 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="return" data-label="customer-service" href="https://www.gentlemonster.com/kr/customercare/return"> 교환 및 반품 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="track-your-order" data-label="customer-service" href="https://www.gentlemonster.com/kr/bbs/order_guest"> 주문조회 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="order-cancel" data-label="customer-service" href="https://www.gentlemonster.com/kr/customercare/order_cancel"> 주문취소 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="pickup-service" data-label="customer-service" href="https://www.gentlemonster.com/kr/customercare/pickup_service"> 매장 픽업 서비스 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="repair-service-guide" data-label="customer-service" href="https://www.gentlemonster.com/kr/productservice/faq"> 수리서비스 가이드 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="product-guide" data-label="customer-service" href="https://www.gentlemonster.com/kr/customercare/productcare"> 제품 사용 가이드 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="product-certification" data-label="legal-area" href="https://www.gentlemonster.com/kr/customercare/certification"> 정품 인증 </a></li>
-							<li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="faq" data-label="legal-area" href="https://www.gentlemonster.com/kr/faq/account"> FAQ </a></li>
-						</ul>
-					</div> 
-	
-			</div>-->
 		<div class="footer_section">
 			<div class="footer_section_title footer_section_mobile_title">
 				<button class="font--kr font--13 font--bd" type="button">
@@ -96,7 +73,6 @@
                         </svg>
 		</p>
 
-		<!-- <p class="font_title">© 2023 GENTLE MONSTER</p> -->
 		<div>
 			<div class="font--kr">
 				<sapn class="font--kr">주) 아이아이컴바인드</sapn>
@@ -147,31 +123,9 @@
 				<img src="https://web-resource.gentlemonster.com/assets/img/guarantee/image2.jpg" alt="">
 			</div>
 
-			<!-- Modal footer -->
-			<!-- <div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
-			</div> -->
 		</div>
 	</div>
 </div>
 
-
-
-
-
-
-
-
-
-<!-- <div class="guarantee-modal modal-box" id="2e05cb87-6c8f-4462-8fdf-2bb325922fbc" role="dialog" tabindex="-1" aria-modal="false" aria-hidden="true">
-	<div class="modal-box__wrapper">
-		<div class="modal-box__contents">
-			<img src="https://web-resource.gentlemonster.com/assets/img/guarantee/image1.jpg" alt=""> <img src="https://web-resource.gentlemonster.com/assets/img/guarantee/image2.jpg" alt="">
-		</div>
-		<button type="button" class="modal-box__close" data-close=""></button>
-	</div>
-	<div class=" modal-box__dim" data-close=""></div>
-	<div class=" modal-box__dim" data-close=""></div>
-</div> -->
 </body>
 </html>

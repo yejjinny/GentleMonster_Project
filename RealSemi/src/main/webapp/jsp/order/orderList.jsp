@@ -72,8 +72,6 @@ String ctxPath = request.getContextPath();
 											<form id="orderDetailFrm${orderVo.orderId}" method="post" action="<%=ctxPath%>/order/orderDetail.gm">
 												<input type="hidden" name="orderId" value="${orderVo.orderId}">
 												<input type="submit" id="button${orderVo.orderId}" value = "주문 상세보기" class="text_hover_main action view-order font--kr font--13 font--rg">
-<%-- 												<button type="button" id="button${orderVo.orderId}" class="text_hover_main action view-order font--kr font--13 font--rg">주문 상세보기</button> --%>
-
 											</form>
 										</div>
 									</div>

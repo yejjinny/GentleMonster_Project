@@ -3,21 +3,6 @@ $(document).ready(function() {
 	const origin = window.location.origin;
 	const contextPath = origin + pathname;
 
-	//fnChangeImage();
-	/* index 화면에 보여질 상품관련 처리 ----------------------------------------------------------- */
-
-
-
-	/*setInterval(function() {
-		$("a.productDetail").forEach(function(item, index) {
-			item.css("display", "none");
-		});
-		imageLoop(productDetailId, mainImageFile);
-	}, 5000);*/
-
-
-
-
 	$.ajax({
 		url: contextPath + "index.gm",
 		type: "post",

@@ -95,9 +95,6 @@ String ctxPath = request.getContextPath();
 											</div>
 										</div>
 									</div>
-									<!-- <div class="cancel_comment">
-										<textarea class="c_comment font--kr font--13 font--rg" name="c_comment" placeholder="취소 및 반품 사유를 입력해주세요."></textarea>
-									</div> -->
 								</div>
 
 							</c:forEach>

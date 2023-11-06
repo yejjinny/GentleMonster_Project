@@ -3,8 +3,6 @@ $(document).ready(function() {
 	const origin = window.location.origin;
 	const contextPath = origin + pathname;
 
-
-
 	/* totalAmount 처리하기 */
 	const totalAmount = $("span.totalAmount");
 	totalAmount.html(" " + addComma(calculateAmount()) + "원 ");
@@ -27,8 +25,6 @@ $(document).ready(function() {
 			/* redirect */
 			$(location).attr("href", contextPath + "order/orderAddress.gm");
 		}
-
-
 	}); // end of $("button.cartOrderBtn").click(function(){}) -----------------------
 
 
@@ -117,8 +113,6 @@ function goUpdate(cartId, action) {
 				const summaryPrice = $("span.checkout-summary-price");
 				summaryPrice.html(" " + addComma(calculateAmount()) + "원 ");
 				
-				
-				
 				$("input.input_qty").trigger("change");
 				
 				
@@ -132,9 +126,6 @@ function goUpdate(cartId, action) {
 			alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
 		}
 	});
-	
-	
-	
 	
 	
 }; // end of function goUpdate(cartId, qty, action) -------------------------------------------------------------------------------------------------------
