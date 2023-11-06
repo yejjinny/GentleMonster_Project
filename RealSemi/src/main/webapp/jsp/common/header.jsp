@@ -185,7 +185,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/product.gm?categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/sunglasses/category/1.jpg" alt="선글라스-Sunglasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/sunglasses/category/1.jpg" alt="선글라스-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">선글라스</div>
 										</a>
@@ -193,7 +193,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/product.gm?categoryId=2">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/glasses/category/1.jpg" alt="안경-Glasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/glasses/category/1.jpg" alt="안경-Glasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">안경</div>
 										</a>
@@ -201,7 +201,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?bestSeller=1&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/sunglasses/category/2.jpg" alt="베스트셀러-Sunglasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/sunglasses/category/2.jpg" alt="베스트셀러-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">베스트셀러</div>
 										</a>
@@ -209,7 +209,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?isBlueLight=1&categoryId=2">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/glasses/category/3.jpg" alt="블루라이트 차단-Glasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/glasses/category/3.jpg" alt="블루라이트 차단-Glasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">블루라이트 차단</div>
 										</a>
@@ -217,7 +217,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?frameId=2&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/sunglasses/category/6.jpg" alt="캣아이 프레임-Sunglasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/sunglasses/category/6.jpg" alt="캣아이 프레임-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">캣아이 프레임</div>
 										</a>
@@ -225,7 +225,7 @@ String ctxPath = request.getContextPath();
 									<li class="collection-cate__item text-center">
 										<a href="<%=ctxPath%>/product/category.gm?frameId=3&categoryId=1">
 											<div class="collection-cate__thumb">
-												<img src="<%= ctxPath %>/image/sunglasses/category/7.jpg" alt="원형 프레임-Sunglasses" class="collection-cate__img">
+												<img src="<%=ctxPath%>/image/sunglasses/category/7.jpg" alt="원형 프레임-Sunglasses" class="collection-cate__img">
 											</div>
 											<div class="collection-cate__name font--kr font--11 font--md">원형 프레임</div>
 										</a>
@@ -355,7 +355,19 @@ String ctxPath = request.getContextPath();
 										</div>
 										<div class="cart_btn_group">
 											<div class="btn_item cart_popup_btn font--rg font--11">
-												<button class="cartOrderBtnHeader cart-layer__btn font--kr font--12 font--rg" type="submit">결제하기</button>
+												
+												<%-- 쇼핑백 상세내용 (유저의 쇼핑백 정보가 있을 경우) --%>
+												<c:if test="${not empty sessionScope.cartList}">
+													<button class="cartOrderBtnHeader cart-layer__btn font--kr font--12 font--rg" type="submit">결제하기</button>
+												</c:if>
+												<%-- end of 쇼핑백 상세내용 (유저의 쇼핑백 정보가 있을 경우) --%>
+												
+												<%-- 쇼핑백 상세내용 (유저의 쇼핑백 정보가 없을 경우) --%>
+												<c:if test="${empty sessionScope.cartList}">
+													<button class="cartOrderBtnHeader cart-layer__btn font--kr font--12 font--rg" type="submit" disabled>결제하기</button>
+												</c:if>
+												<%-- end of 쇼핑백 상세내용 (유저의 쇼핑백 정보가 없을 경우) --%>
+												
 											</div>
 											<div class="btn_item cart_popup_btn">
 												<a class="cart-layer__btn cart-layer__btn--white font--kr font--rg font--12" href="<%=ctxPath%>/cart/cart.gm" data-category="ecommerce&quot;" data-action="view_cart">자세히 보기</a>

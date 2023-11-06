@@ -523,7 +523,7 @@ String ctxPath = request.getContextPath();
 									data-sub-image="https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_2.jpg,https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_3.jpg,https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_4.jpg">
 									<a
 										class="product__link product-image-swiper__wrapper swiper-wrapper"
-										href="수정필" product-name="${productVo.productName}">
+										href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}" product-name="${productVo.productName}">
 										<div class="product-image-swiper__slide swiper-slide">
 											<div class="product__image-wrapper">
 												<img data-src="" alt=""
