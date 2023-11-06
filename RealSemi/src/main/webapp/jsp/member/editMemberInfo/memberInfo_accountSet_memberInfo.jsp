@@ -37,14 +37,14 @@ String ctxPath = request.getContextPath();
 				</div>
 			</div>
 			<ul class="page_menu_items page_menu_pc_items">
-				<li class="page_menu_item link_item  selected">
+				<li class="page_menu_item link_item  ">
 					<a href="<%=ctxPath%>/member/memberInfoViewAll.gm" class="font--kr font--15 font--rg"> 전체보기 </a>
 				</li>
 				<li class="page_menu_item link_item  ">
 					<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--15 font--rg"> 위시리스트 </a>
 				</li>
-				<li class="page_menu_item link_item  ">
-					<a href="" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
+				<li class="page_menu_item link_item  selected">
+					<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
 				</li>
 				<li class="page_menu_item link_item  ">
 					<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--15 font--rg"> 주문 </a>
@@ -136,27 +136,28 @@ String ctxPath = request.getContextPath();
 		      
 		      <!-- Modal body -->
 		      <div class="modal-body">
-			      <p class="list-title font--kr font--13 font--rg">회원탈퇴 전 유의사항을 확인해 주세요</p>
+			     <!--  <p class="list-title font--kr font--13 font--rg">회원탈퇴 전 유의사항을 확인해 주세요</p> -->
 			      
 			      
-			      <ul class="list">
-						<li class="font--kr font--13 font--rg">부정 이용을 방지하기 위하여 회원탈퇴 후 48시간 이내로 재가입이 불가합니다.  (단, 간편가입 회원은 즉시 재가입 가능합니다.)</li>
-						<li class="font--kr font--13 font--rg">탈퇴 즉시 개인정보가 삭제되고 어떠한 방법으로도 복원할 수 없습니다.</li>
-						<li class="font--kr font--13 font--rg">교환/반품/환불 및 사후처리(A/S) 등을 위하여 전자상거래 등에서의 소비자보호에 관한 법률에 의거해 일정 기간동안 보관 후 파기됩니다.</li>
+			      <ul class="list list-group list-group-flush    ">
+			      		<li class="font--kr font--13 font--rg m-2    ">회원탈퇴 전 유의사항을 확인해 주세요</li>
+						<li class="font--kr font--13 font--rg m-2    ">부정 이용을 방지하기 위하여 회원탈퇴 후 48시간 이내로 재가입이 불가합니다.  (단, 간편가입 회원은 즉시 재가입 가능합니다.)</li>
+						<li class="font--kr font--13 font--rg m-2   ">탈퇴 즉시 개인정보가 삭제되고 어떠한 방법으로도 복원할 수 없습니다.</li>
+						<li class="font--kr font--13 font--rg m-2   ">교환/반품/환불 및 사후처리(A/S) 등을 위하여 전자상거래 등에서의 소비자보호에 관한 법률에 의거해 일정 기간동안 보관 후 파기됩니다.</li>
 					</ul>
 					
 					<input type="hidden" id="addrDefaultCheck" name="addrDefaultCheck" value="0"/>	
 										 
 					<div style="display:flex">
 				
-						<div style="  border:solid 2px black;   border-radius: 5px;   display:inline-block;   ">
+						<!-- <div style="  border:solid 2px black;   border-radius: 5px;   display:inline-block;   ">
 							<button type="button" id="btnDefault" style="background-color: white;   height:100%; color:white;    " >버튼</button>
 							
-						</div>
+						</div> -->
 					 
 						 <div>
-						 	&nbsp; 
-							<span class="font--kr font--13 font--rg">위 유의사항을 모두 확인하였고, 회원탈퇴에 동의합니다.</span>																						 
+						 	 
+							<span class="font--kr font--13 font--rg  m-2 ">위 유의사항을 모두 확인하였고, 회원탈퇴에 동의합니다.</span>																						 
 						 </div>																							 								  
 					</div>
 
@@ -173,6 +174,7 @@ String ctxPath = request.getContextPath();
 		      		<button type="button"   data-dismiss="modal" class="btn btn-white btn-close font--kr font--13 font--rg">취소</button>
 		        	<button type="button"  id="talCheck" class="btn btn-white margin_l10 font--kr font--13 font--rg">확인</button>
 		    
+		    		 
 		      	</div>
 		       </div>
 		       

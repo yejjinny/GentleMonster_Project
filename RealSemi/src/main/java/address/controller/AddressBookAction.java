@@ -13,7 +13,10 @@ import address.model.AddressDAO;
 import address.model.AddressDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
-
+/*
+ * 작성자 윤예인
+ * 계정설정-주소록 Controller
+ */
 public class AddressBookAction extends AbstractController {
 
 	@Override
@@ -47,6 +50,7 @@ public class AddressBookAction extends AbstractController {
 
 				} else { // 등록된 주소가 있을 경우
 
+					//System.out.println("확인용 주소목록: "+ addressList.get(0).getLastName());
 					req.setAttribute("addressList", addressList);
 
 					super.setRedirect(false);

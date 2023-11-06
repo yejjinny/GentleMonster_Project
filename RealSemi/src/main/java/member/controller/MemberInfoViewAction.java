@@ -4,7 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.controller.AbstractController;
-
+/*
+ * 작성자 윤예인
+ * 계정설정-회원정보 Controller
+ */
 public class MemberInfoViewAction extends AbstractController {
 
 	@Override

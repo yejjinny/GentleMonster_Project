@@ -6,7 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import common.controller.AbstractController;
 import member.domain.MemberVO;
-
+/*
+ * 작성자 윤예인
+ * 계정설정-주소록 Controller
+ */
 public class AddressBookAddAction extends AbstractController {
 
 	@Override

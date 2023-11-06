@@ -18,7 +18,7 @@ String ctxPath = request.getContextPath();
 
 <%-- header --%>
 <jsp:include page="../../common/header.jsp" />
-<script type="text/javascript" src="<%=ctxPath%>/js/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify02.js"></script>
+<script type="text/javascript" src="<%=ctxPath%>/js/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify2.js"></script>
  
 <%-- 본문 시작 --%>
 <div class="container_sq">
@@ -41,7 +41,7 @@ String ctxPath = request.getContextPath();
 					<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--15 font--rg"> 위시리스트 </a>
 				</li>
 				<li class="page_menu_item link_item selected">
-					<a href="" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
+					<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
 				</li>
 				<li class="page_menu_item link_item">
 					<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--15 font--rg"> 주문 </a>
@@ -120,12 +120,12 @@ String ctxPath = request.getContextPath();
 						<!-- 이름 -->
 						<div class="box-group box-group-child-2">
 							<div class="input-box font--kr font--13">
-								<label class="input-label font--kr font--13 font--rg">성</label>
-								<input type="text" class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_lname" id="login_id" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.familyName}"> <span class="alert" data-alert=""></span>
+								<label class="input-label font--kr font--13 font--rg ">성</label>
+								<input type="text" style="   border-color: #e0e0e0 !important;   color: #888 !important; " class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_lname" id="login_id" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.familyName}"> <span class="alert" data-alert=""></span>
 							</div>
 							<div class="input-box font--kr font--13">
 								<label class="input-label font--kr font--13 font--rg">이름</label>
-								<input type="text" class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_fname" id="login_id" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.lastName}"> <span class="alert" data-alert=""></span>
+								<input type="text" style="   border-color: #e0e0e0 !important;   color: #888 !important; " class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_fname" id="login_id" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.lastName}"> <span class="alert" data-alert=""></span>
 							</div>
 						</div>
 						<!-- 생년월일 -->
@@ -134,15 +134,15 @@ String ctxPath = request.getContextPath();
 							<div class="box-group box-group-child-2">
 								<!-- 년 -->
 								<div class="input-box font--kr font--13">
-									<input type="text" class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_birth_year" id="mb_birth_year" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.birthYear}"> <span class="alert" data-alert=""></span>
+									<input type="text" style="   border-color: #e0e0e0 !important;   color: #888 !important; " class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_birth_year" id="mb_birth_year" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.birthYear}"> <span class="alert" data-alert=""></span>
 								</div>
 								<!-- 월 -->
 								<div class="input-box font--kr font--13">
-									<input type="text" class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_birth_month" id="mb_birth_month" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.birthMonth}"> <span class="alert" data-alert=""></span>
+									<input type="text" style="   border-color: #e0e0e0 !important;   color: #888 !important; " class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_birth_month" id="mb_birth_month" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.birthMonth}"> <span class="alert" data-alert=""></span>
 								</div>
 								<!-- 일 -->
 								<div class="input-box font--kr font--13">
-									<input type="text" class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_birth_day" id="mb_birth_day" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.birthDay}"> <span class="alert" data-alert=""></span>
+									<input type="text" style="   border-color: #e0e0e0 !important;   color: #888 !important; " class="width_100 input_grey padding_10 font--kr font--13 font--rg unchangable" name="mb_birth_day" id="mb_birth_day" readonly="" size="20" maxlength="20" value="${sessionScope.loginUser.birthDay}"> <span class="alert" data-alert=""></span>
 								</div>
 							</div>
 						</div>

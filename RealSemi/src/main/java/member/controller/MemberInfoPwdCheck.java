@@ -12,6 +12,10 @@ import common.controller.AbstractController;
 import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 
+/*
+ * 작성자 윤예인
+ * 계정설정-회원정보 Controller
+ */
 public class MemberInfoPwdCheck extends AbstractController {
 
 	@Override
@@ -62,6 +66,7 @@ public class MemberInfoPwdCheck extends AbstractController {
 		 else {
 				// POST 방식이 아니라면
 				
+			 
 				String message = "비정상적인 경로로 들어왔습니다.";
 			      String loc = "javascript:history.back()";
 			      
@@ -70,6 +75,9 @@ public class MemberInfoPwdCheck extends AbstractController {
 			      
 			   //   super.setRedirect(false);
 			      super.setViewPage("/jsp/common/msg.jsp");
+			      
+			
+			 
 		}
 		
 

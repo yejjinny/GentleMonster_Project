@@ -8,7 +8,10 @@ import common.controller.AbstractController;
 import member.domain.MemberVO;
 import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
-
+/*
+ * 작성자 윤예인
+ * 계정설정-회원정보 Controller
+ */
 public class MemberInfoDeleteAction extends AbstractController {
 
 	@Override

@@ -13,7 +13,10 @@ import address.model.AddressDAO;
 import address.model.AddressDAO_imple;
 import common.controller.AbstractController;
 import member.domain.MemberVO;
-
+/*
+ * 작성자 윤예인
+ * 계정설정-주소록 Controller
+ */
 public class AddressBookAddEndAction extends AbstractController {
 
 	@Override

@@ -13,7 +13,10 @@ import member.domain.MemberVO;
 
 import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
-
+/*
+ * 작성자 윤예인
+ * 계정설정-회원정보 Controller
+ */
 public class MemberInfoEditEndAction extends AbstractController {
 
 	@Override
@@ -49,18 +52,39 @@ public class MemberInfoEditEndAction extends AbstractController {
 		    	  // 로그인한 사용자가 자신의 정보를 수정하는 경우
 				 try {
 					 
-					 	MemberVO member=new MemberVO(memberId, email,gender  );
+					 	MemberVO member=new MemberVO(memberId, email,gender  ); //생성자
 						
 						MemberDAO mdao = new MemberDAO_imple();
 						
 						int n = mdao.updateEditMember(member);
 						
 						if(n==1) {
-							
+							//------------------------------------------
 							loginUser.setMemberId(memberId);
 							loginUser.setEmail(email);
 							loginUser.setGender(gender);
+							//session.getAttribute("loginUser")
 							
+							// MemberVO loginUser = new MemberVO(); 
+							  
+							//밑의 코드는 안해도 되는데 혹시나 싶어 다시 set.
+							  loginUser.setPwd(loginUser.getPwd());
+							  
+							  loginUser.setFamilyName(loginUser.getFamilyName()); 
+							  loginUser.setLastName(loginUser.getLastName());
+							  loginUser.setBirth(loginUser.getBirth());
+							  
+							  //-----
+							  loginUser.setGrade(loginUser.getGrade());
+							  loginUser.setIsDeleted(loginUser.getIsDeleted());
+							  loginUser.setRegisterDay(loginUser.getRegisterDay());
+							  loginUser.setUpdateDay(loginUser.getUpdateDay());
+							  loginUser.setFullName(loginUser.getFullName());
+							  loginUser.setRno(loginUser.getRno());
+						  
+							  session.setAttribute("loginUser", loginUser);
+							  
+							  //--------------------------------
 							 boolean isExists =true;//=mado.selectPwdCheck(memberId,pwd);
 							   //System.out.println("json isExists-->"+ isExists ); 
 							   
@@ -71,7 +95,7 @@ public class MemberInfoEditEndAction extends AbstractController {
 							   
 							   String json= jsonObj.toString(); //문자열형태인 "{"isExists":true }"
 							   //혹은"{"isExists":false }" 으로 만들어준다 //System.out.println("확인용-- json--<"+ json);
-							   
+							  
 							   //System.out.println("json-->"+json );
 							  req.setAttribute("json", json);
 							  //req.setAttribute("json", jsonObj);
@@ -142,114 +166,7 @@ public class MemberInfoEditEndAction extends AbstractController {
 		      super.setViewPage("/jsp/common/msg.jsp");
 		}
 		
-		//-------------------------
-		/*
-		 * if(loginUser.getEmail().equals(email)) { // 로그인한 사용자가 자신의 정보를 수정하는 경우
-		 * 
-		 * 
-		 * } else { // 로그인한 사용자가 다른 사용자의 정보를 수정하려고 시도하는 경우
-		 * 
-		 * }
-		 */
-		 
-		//----------------------------
-
-		   //MemberDAO mado= new MemberDAO_imple();
-		   
-			/*
-			 * 
-			 * boolean isExists =false;//=mado.selectPwdCheck(memberId,pwd);
-			 * //System.out.println("json isExists-->"+ isExists );
-			 * 
-			 * 
-			 * JSONObject jsonObj= new JSONObject(); //{} jsonObj.put("isExists", isExists);
-			 * //{"isExists":true } 혹은{"isExists":false }
-			 * 
-			 * String json= jsonObj.toString(); //문자열형태인 "{"isExists":true }"
-			 * //혹은"{"isExists":false }" 으로 만들어준다 //System.out.println("확인용-- json--<"+
-			 * json);
-			 * 
-			 * //System.out.println("json-->"+json ); req.setAttribute("json", json);
-			 * //req.setAttribute("json", jsonObj);
-			 * 
-			 * //super.setRedirect(false); super.setViewPage("/jsp/common/jsonview.jsp");
-			 * 
-			 * 
-			 */
-		  
-		  
-		  //------------------------------------------------
-	/*	  
-		   
-		  
-		  
-			try {
-				int n = mdao.updateEditMember(member);
-				
-				if(n==1) {
-					
-					loginUser.setMemberId(memberId);
-					loginUser.setEmail(email);
-					loginUser.setGender(gender);
-					
-					 boolean isExists =true;//=mado.selectPwdCheck(memberId,pwd);
-					   //System.out.println("json isExists-->"+ isExists ); 
-					   
-					   
-					   JSONObject jsonObj= new JSONObject(); //{}
-					   jsonObj.put("isExists", isExists); 
-					   //{"isExists":true } 혹은{"isExists":false }
-					   
-					   String json= jsonObj.toString(); //문자열형태인 "{"isExists":true }"
-					   //혹은"{"isExists":false }" 으로 만들어준다 //System.out.println("확인용-- json--<"+ json);
-					   
-					   //System.out.println("json-->"+json );
-					  req.setAttribute("json", json);
-					  //req.setAttribute("json", jsonObj);
-					 
-					  //super.setRedirect(false); 
-					  super.setViewPage("/jsp/common/jsonview.jsp");
-					
-					//session 에 저장된 loginuser 를 변경된 사용자의 정보값으로 변경해야 한다.
-					
-					/*
-					 * 
-					 * HttpSession session = request.getSession(); MemverVO loginuser = (MemverVO)
-					 * session.getAttribute("loginuser");
-					 * 
-					 * loginuser.setName(name); loginuser.setPwd(pwd); loginuser.setEmail(email);
-					 * loginuser.setMobile(mobile); loginuser.setPostcode(postcode);
-					 * loginuser.setAddress(address); loginuser.setDetailaddress(detailaddress);
-					 * loginuser.setExtraaddress(extraaddress);
-					 * 
-					 
-					//message="회원정보 수정 성공";
-					//loc=request.getContextPath() +  "/index.up";//시작페이지로 이동한다.
-					
-					
-					
-				}
-				
-			}catch(SQLException e) {
-				
-				//message="SQL구문 에러발생";
-				//loc=  "javascript:history.back()";//자바스크립트를 이용한 이전페이지로 이동
-				
-				e.printStackTrace();
-			}
-			 
-		  */
-			/*
-			 * 
-			 * if (session.getAttribute("loginUser") != null) {
-			 * 
-			 * super.setViewPage(
-			 * "/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo.jsp");
-			 * 
-			 * }
-			 */
 		
-		//super.setViewPage("/jsp/member/editMemberInfo/memberInfo_accountSet_memberInfo.jsp");
 
 	}
 
