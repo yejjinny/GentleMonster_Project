@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String ctxPath = request.getContextPath();
 %>
@@ -31,7 +33,7 @@ String ctxPath = request.getContextPath();
 					<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--15 font--rg"> 위시리스트 </a>
 				</li>
 				<li class="page_menu_item link_item  selected">
-					<a href="" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
+					<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
 				</li>
 				<li class="page_menu_item link_item  ">
 					<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--15 font--rg"> 주문 </a>
@@ -72,11 +74,11 @@ String ctxPath = request.getContextPath();
 					<!-- exist address -->
 					<%--기본배송지 시작 --%>
 					<c:forEach var="addressVO" items="${requestScope.addressList}" varStatus="status">
-						<c:if test="${addressVO.isdefaultaddr eq '1'}">
+						<c:if test="${addressVO.isDefaultAddr eq '1'}">
 							<div id="exist_default" class="box_address">
 								<form method="post" id="form_114568" name="deleteFrm">
-									<input type="hidden" name="addressbookid" id="addressbookid" value="${addressVO.addressbookid}" />
-									<input type="hidden" name="btnDelAddrId" id="btnDelAddrId${status.index}" value="${addressVO.addressbookid}" />
+									<input type="hidden" name="addressbookid" id="addressbookid" value="${addressVO.addressBookId}" />
+									<input type="hidden" name="btnDelAddrId" id="btnDelAddrId${status.index}" value="${addressVO.addressBookId}" />
 									<div class="title font--kr font--13 font--bd">기본 배송지</div>
 									<div class="font--kr font--13 font--rg">
 										<input type="text" name="adr_id" value="114568" hidden="">
@@ -84,14 +86,14 @@ String ctxPath = request.getContextPath();
 										<input type="text" name="adr_firstname" value="예진" hidden="">
 									</div>
 									<div class="name font--kr font--13 font--rg">
-										<span>${addressVO.familyname}${addressVO.lastname}</span>
+										<span>${addressVO.familyName}${addressVO.lastName}</span>
 									</div>
 									<div class="font--kr font--13 font--rg">
 										<span>${addressVO.tel}</span>
 										<input type="text" name="adr_tel" value="010 1234 5678" hidden="">
 									</div>
 									<div class="font--kr font--13 font--rg">
-										<span>${addressVO.address} ${addressVO.detailaddress}</span>
+										<span>${addressVO.address} ${addressVO.detailAddress}</span>
 										<input type="text" name="adr_street" value="서울특별시 노원구 한글비석로 4" hidden="">
 									</div>
 									<div class="font--kr font--13 font--rg">
@@ -99,7 +101,7 @@ String ctxPath = request.getContextPath();
 										<input type="text" name="adr_country" value="KR" hidden="">
 									</div>
 									<div class="font--kr font--13 font--rg">
-										<span>${addressVO.postcode}</span>
+										<span>${addressVO.postCode}</span>
 										<input type="text" name="adr_postcode" value="01862 (000-000)" hidden="">
 									</div>
 									<div class="font--kr font--13 font--rg">
@@ -124,13 +126,13 @@ String ctxPath = request.getContextPath();
 						<%-- <c:if test="${addressVO.isdefaultaddr eq '1'}">
 						</c:if>	
 						--%>
-						<c:if test="${addressVO.isdefaultaddr ne '1'}">
+						<c:if test="${addressVO.isDefaultAddr ne '1'}">
 							<div class="box_address">
 								<form method="post" id="deleteFrmVal" name="deleteFrmVal">
 									<%--기본배송지 버튼을 누를시 회원아이디 와 주소록아이디 저장 시작--%>
-									<input type="hidden" name="fk_memberid" value="${addressVO.fk_memberid}" />
-									<input type="hidden" name="addressbookid" id="addressbookid" value="${addressVO.addressbookid}" />
-									<input type="hidden" name="btnDelAddrId" id="btnDelAddrId${status.index}" value="${addressVO.addressbookid}" />
+									<input type="hidden" name="fk_memberid" value="${addressVO.fk_memberId}" />
+									<input type="hidden" name="addressbookid" id="addressbookid" value="${addressVO.addressBookId}" />
+									<input type="hidden" name="btnDelAddrId" id="btnDelAddrId${status.index}" value="${addressVO.addressBookId}" />
 
 									<%--기본배송지 버튼을 누를시 회원아이디 와 주소록아이디 저장 끝--%>
 									<div class="font--kr font--13 font--rg">
@@ -140,7 +142,7 @@ String ctxPath = request.getContextPath();
 									<div class="name type2 font--kr font--13 font--rg">
 										<input type="text" name="adr_id" value="114569" hidden="">
 										<div>
-											<span>${addressVO.familyname}${addressVO.lastname}</span>
+											<span>${addressVO.familyName}${addressVO.lastName}</span>
 										</div>
 										<div>
 											<button type="submit" formaction="<%=ctxPath%>/address/addressBookDefaultCheck.gm" class="default-btn font--kr font--12 font--rg">기본 주소로 설정</button>
@@ -151,7 +153,7 @@ String ctxPath = request.getContextPath();
 										<input type="text" id="adr_tel" name="adr_tel" value="010 1235 6789" hidden="">
 									</div>
 									<div class="font--kr font--13 font--rg">
-										<span>${addressVO.address} ${addressVO.detailaddress}</span>
+										<span>${addressVO.address} ${addressVO.detailAddress}</span>
 										<input type="text" id="adr_street" name="adr_street" value="${addressVO.address}" hidden="">
 									</div>
 									<div class="font--kr font--13 font--rg">
@@ -159,7 +161,7 @@ String ctxPath = request.getContextPath();
 										<input type="text" id="adr_country_code" name="adr_country_code" value="KR" hidden="">
 									</div>
 									<div class="font--kr font--13 font--rg">
-										<span>${addressVO.postcode}</span>
+										<span>${addressVO.postCode}</span>
 										<input type="text" id="adr_postcode" name="adr_postcode" value="01862 (000-000)" hidden="">
 									</div>
 									<div class="font--kr font--13 font--rg">

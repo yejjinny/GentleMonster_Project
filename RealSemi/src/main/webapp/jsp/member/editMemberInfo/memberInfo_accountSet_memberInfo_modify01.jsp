@@ -45,7 +45,7 @@ String ctxPath = request.getContextPath();
 					<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--15 font--rg"> 위시리스트 </a>
 				</li>
 				<li class="page_menu_item link_item selected">
-					<a href="" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
+					<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
 				</li>
 				<li class="page_menu_item link_item">
 					<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--15 font--rg"> 주문 </a>
@@ -86,7 +86,7 @@ String ctxPath = request.getContextPath();
 					<div class="center-content">
 						<div class="input-box text_l">
 							<input type="hidden" id ="memberId" name="memberId" value ="${sessionScope.loginUser.memberId}"/>
-							<p class="password font--kr font--13 font--rg">비밀번호s ${ (sessionScope.loginUser).memberId }</p>
+							<p class="password font--kr font--13 font--rg">비밀번호</p>
 							<input type="password" class="width_100 padding_10" name="check_password_pw" id="check_password_pw" "> 
 						</div>
 						<button id="button_reset_password" type="button" class="btn btn-black font--kr font--13 font--rg btn-check-password">비밀번호 확인</button>

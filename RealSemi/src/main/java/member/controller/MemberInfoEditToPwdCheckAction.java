@@ -11,14 +11,15 @@ import member.domain.MemberVO;
 import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 import common.controller.AbstractController;
-
+/*
+ * 작성자 윤예인
+ * 계정설정-회원정보 Controller
+ */
 public class MemberInfoEditToPwdCheckAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
-		//String userid =req.getParameter("userid");
-		//String userid =(String) req.getAttribute("userid");
+		 
 		HttpSession session = req.getSession();
 		
 		//((MemberVO) session.getAttribute("loginUser")).getPwd();
@@ -43,17 +44,7 @@ public class MemberInfoEditToPwdCheckAction extends AbstractController {
 			
 			
 
-			//Map<String, Integer> paraMap = new HashMap<>();
-			//paraMap.put("memberId", loginUser.getMemberId());
-			//paraMap.put("pwd", pwd);
-			 
-			/*
-			 * Map<String, String> paraMap = new HashMap<>(); paraMap.put("memberId",
-			 * Integer.toString(loginUser.getMemberId() ) ); paraMap.put("pwd",
-			 * check_password_pw);
-			 * 
-			 * MemberDAO mdao= new MemberDAO_imple();
-			 */
+		 
 			//System.out.println("memberId: "+Integer.toString(loginUser.getMemberId() ));
 			//boolean IsMemberInfoEditPwdCheck = mdao.selectPwdCheck(paraMap);
 			

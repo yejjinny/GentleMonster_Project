@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String ctxPath = request.getContextPath();
 %>
@@ -13,7 +15,7 @@ String ctxPath = request.getContextPath();
 <title>Stores | GENTLE MONSTER Official Site</title>
 
 <jsp:include page="../../common/header.jsp" />
-<script src="<%=ctxPath%>/js/member/EditAddressBook2.js" type="text/javascript"></script>
+<script src="<%=ctxPath%>/js/member/EditAddressBook.js" type="text/javascript"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
@@ -37,7 +39,7 @@ String ctxPath = request.getContextPath();
 				<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--13 font--rg"> 위시리스트 </a>
 			</li>
 			<li class="page_menu_item link_item  selected">
-				<a href="" class="font--kr font--13 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
+				<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--13 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
 			</li>
 			<li class="page_menu_item link_item">
 				<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--13 font--rg"> 주문 </a>
@@ -75,8 +77,8 @@ String ctxPath = request.getContextPath();
 				<form   style="display: block" id="addressForm" name="addressForm">
 					<div>
 						<%--주소아이디와 회원아이디 히든 --%>
-						<input type="hidden" name="addressbookid" value="${requestScope.editAvo.addressbookid}"/>
-						<input type="hidden" name="fk_memberid" value="${requestScope.editAvo.fk_memberid}"/>
+						<input type="hidden" name="addressbookid" value="${requestScope.editAvo.addressBookId}"/>
+						<input type="hidden" name="fk_memberid" value="${requestScope.editAvo.fk_memberId}"/>
 						<input type="text" id="mb_adr_id" name="mb_adr_id" value="114564" hidden="">
 					</div>
 
@@ -84,11 +86,11 @@ String ctxPath = request.getContextPath();
 					<div class="box-group box-group-child-2">
 						<div class="input-box font--kr font--13 font--rg">
 							<label class="input-label font--kr font--13 font--rg">성</label>
-							<input type="text" class="width_100  padding_10 font--kr font--13 font--rg" name="familyname" id="login_id" required="" size="20" maxlength="2" value="${requestScope.editAvo.familyname}" placeholder="성"> <span class="_alert font--kr font--11 font--rg"></span>
+							<input type="text" class="width_100  padding_10 font--kr font--13 font--rg" name="familyname" id="familyname" required="" size="20" maxlength="2" value="${requestScope.editAvo.familyName}" placeholder="성"> <span class="_alert font--kr font--11 font--rg"></span>
 						</div>
 						<div class="input-box font--kr font--13 font--rg">
 							<label class="input-label font--kr font--13 font--rg">이름</label>
-							<input type="text" class="width_100  padding_10 font--kr font--13 font--rg" name="lastname" id="login_id" required="" size="20" maxlength="6" value="${requestScope.editAvo.lastname}" placeholder="이름"> <span class="_alert font--kr font--11 font--rg"></span>
+							<input type="text" class="width_100  padding_10 font--kr font--13 font--rg" name="lastname" id="lastname" required="" size="20" maxlength="6" value="${requestScope.editAvo.lastName}" placeholder="이름"> <span class="_alert font--kr font--11 font--rg"></span>
 						</div>
 					</div>
 
@@ -105,7 +107,7 @@ String ctxPath = request.getContextPath();
 							</div>
 						</div>
 						<%-- 우편번호 input--%>
-						<input type="hidden" id="edit_pcode" name ="edit_pcode" value="${requestScope.editAvo.postcode}"  />
+						<input type="hidden" id="edit_pcode" name ="edit_pcode" value="${requestScope.editAvo.postCode}"  />
 						<div class="input-box post_address font--kr font--13 font--rg">
 							<p class="input-label margin_b4 letter0 text_l font--kr font--13 font--rg">주소검색</p>
 							<!-- 검색 기능을 표시할 <div>를 생성한다 -->
@@ -122,7 +124,7 @@ String ctxPath = request.getContextPath();
 						</div>
 						<div class="input-box font--kr font--13 font--rg">
 							<p class="input-label margin_b4 letter0 text_l font--kr font--13 font--rg">상세주소</p>
-							<input type="text" id="edit_detailAddress" class="width_100  padding_10 font--kr font--13 font--rg" required="" value="${requestScope.editAvo.detailaddress}" name="detailaddress" placeholder="상세주소" style="border: 1px solid rgb(0, 0, 0);"> <span class="_alert font--kr font--11 font--rg"></span>
+							<input type="text" id="edit_detailAddress" class="width_100  padding_10 font--kr font--13 font--rg" required="" value="${requestScope.editAvo.detailAddress}" name="detailaddress" placeholder="상세주소" style="border: 1px solid rgb(0, 0, 0);"> <span class="_alert font--kr font--11 font--rg"></span>
 						</div>
 
 						<div class="input-box" style="display: none">
@@ -134,60 +136,28 @@ String ctxPath = request.getContextPath();
 						<div class="agreement-group font--kr font--13 font--rg">
 								<div class="input-box input-box-check">
 									<label for="is_set_default">
-										<input type="hidden" id="addrDefaultCheck" name="addrDefaultCheck" value="${requestScope.editAvo.isdefaultaddr}"/>	
-										<%-- <c:if test="${requestScope.editAvo.isdefaultaddr eq '1'}">
-											<input type="checkbox" id="is_set_default" name="is_set_default" class="checklistagree" checked="checked" style="border: 1px solid rgb(0, 0, 0);">
-											<div style="  border:solid 2px black; border-radius: 5px;   ">
-												<button type="button" id="btnDefault" style="background-color:black; color:black; " >버튼</button>
-											</div>
-											&nbsp;&nbsp;
-										</c:if>	
+										<input type="hidden" id="addrDefaultCheck" name="addrDefaultCheck" value="${requestScope.editAvo.isDefaultAddr}"/>	
 										
-										<c:if test="${requestScope.editAvo.isdefaultaddr eq '0'}">
-											<input type="checkbox" id="is_set_default" name="is_set_default" class="checklistagree" checked="checked" style="border: 1px solid rgb(0, 0, 0);">
-											<div style="  border:solid 2px black; border-radius: 5px;   ">
-												<button type="button" id="btnDefault" style="background-color: white; color:white; " >버튼</button>
-											</div>
-											&nbsp;&nbsp;
-										</c:if>	
-										 --%>
-										<!-- dsfsd
-										   <input type="checkbox" id="is_set_default" name="is_set_default" class="checklistagree" checked="checked" style="border: 1px solid rgb(0, 0, 0);">
-										<div style="  border:solid 2px black; border-radius: 5px;   ">
-											<button type="button" id="btnDefault" style="background-color: white; color:white; " >버튼</button>
-										</div>
-										&nbsp;&nbsp;  
-										 -->	
 										
 														
 														 
-											 <c:if test="${requestScope.editAvo.isdefaultaddr eq '1'}">
+											 <c:if test="${requestScope.editAvo.isDefaultAddr eq '1'}">
 												 
-													<input type="checkbox" id="is_set_default" name="is_set_default" class="input-box-check checklistagree"  value="${requestScope.editAvo.isdefaultaddr}" checked>
+													<input type="checkbox" id="is_set_default" name="is_set_default" class="input-box-check checklistagree"  value="${requestScope.editAvo.isDefaultAddr}" checked>
 													<div class="input-box-check-layer"></div>
 													<span class="font--kr font--13 font--rg">기본 배송지로 지정</span>
 											 
 												</c:if>	
 												
-												<c:if test="${requestScope.editAvo.isdefaultaddr eq '0'}">	
+												<c:if test="${requestScope.editAvo.isDefaultAddr eq '0'}">	
 												
-													<input type="checkbox" id="is_set_default" name="is_set_default" class="input-box-check checklistagree" value="${requestScope.editAvo.isdefaultaddr}" >
+													<input type="checkbox" id="is_set_default" name="is_set_default" class="input-box-check checklistagree" value="${requestScope.editAvo.isDefaultAddr}" >
 													<div class="input-box-check-layer"></div>
 													<span class="font--kr font--13 font--rg">기본 배송지로 지정</span>
 											 
 										
 												</c:if>
-										<!-- <input type="checkbox" id="is_set_default" name="is_set_default" class="checklistagree" checked="checked" style="border: 1px solid rgb(0, 0, 0);">
-										<div style="  border:solid 2px black; border-radius: 5px;   ">
-											<button type="button" id="btnDefault" style="background-color: white; color:white; " >버튼</button>
-										</div>
-										&nbsp;&nbsp; -->
-										<!-- <div  style="background-color:white; border:solid 1px red; width=120px; height=120px; "></div> -->
 										
-										
-										
-										
-										<%--  <span class="font--kr font--13 font--rg">기본 배송지로 d지정</span>  --%>
 									</label>
 								</div>
 							</div>

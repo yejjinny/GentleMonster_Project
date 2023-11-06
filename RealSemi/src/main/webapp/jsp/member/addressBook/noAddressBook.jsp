@@ -34,7 +34,7 @@ String ctxPath = request.getContextPath();
 				<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--13 font--rg"> 위시리스트 </a>
 			</li>
 			<li class="page_menu_item link_item  selected">
-				<a href="" class="font--kr font--13 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
+				<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--13 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
 			</li>
 			<li class="page_menu_item link_item  ">
 				<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--13 font--rg"> 주문 </a>

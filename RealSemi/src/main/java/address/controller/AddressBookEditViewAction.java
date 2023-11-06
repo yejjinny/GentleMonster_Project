@@ -8,7 +8,10 @@ import address.model.AddressDAO;
 import address.model.AddressDAO_imple;
 import common.controller.AbstractController;
  
-
+/*
+ * 작성자 윤예인
+ * 계정설정-주소록 Controller
+ */
 public class AddressBookEditViewAction extends AbstractController {
 
 	@Override
@@ -32,7 +35,7 @@ public class AddressBookEditViewAction extends AbstractController {
 				
 				req.setAttribute("editAvo", editAvo);
 				
-				System.out.println("성공");
+				System.out.println("editAvo성공"+editAvo.getIsDefaultAddr());
 				
 				super.setRedirect(false);
 				super.setViewPage("/jsp/member/addressBook/EditAddressBook.jsp");

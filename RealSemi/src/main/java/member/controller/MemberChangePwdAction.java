@@ -13,7 +13,10 @@ import org.json.JSONObject;
 import member.domain.MemberVO;
 import member.model.*;
 import common.controller.AbstractController;
-
+/*
+ * 작성자 윤예인
+ * 계정설정-비밀번호 변경 Controller
+ */
 public class MemberChangePwdAction extends AbstractController {
 
 	@Override

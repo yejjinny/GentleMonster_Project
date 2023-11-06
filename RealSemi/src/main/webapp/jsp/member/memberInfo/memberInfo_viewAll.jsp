@@ -43,7 +43,7 @@ String ctxPath = request.getContextPath();
 					<a href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--15 font--rg"> 위시리스트 </a>
 				</li>
 				<li class="page_menu_item link_item  ">
-					<a href="" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
+					<a href="<%=ctxPath%>/member/memberInfoEdit.gm" class="font--kr font--15 font--rg" data-category="account" data-action="account_setting" data-label=""> 계정 설정 </a>
 				</li>
 				<li class="page_menu_item link_item  ">
 					<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--15 font--rg"> 주문 </a>
@@ -103,16 +103,16 @@ String ctxPath = request.getContextPath();
 								<div class="address_empty">
 									<ul style="text-align: left">
 										<li class="font--kr font--13 font--rg">
-											<span class="value">${requestScope.addressDefault.familyname}${requestScope.addressDefault.lastname}</span>
+											<span class="value">${requestScope.addressDefault.familyName}${requestScope.addressDefault.lastName}</span>
 										</li>
 										<li class="font--kr font--13 font--rg">
-											<span class="value">${requestScope.addressDefault.address} ${requestScope.addressDefault.detailaddress}</span>
+											<span class="value">${requestScope.addressDefault.address} ${requestScope.addressDefault.detailAddress}</span>
 										</li>
 										<li class="font--kr font--13 font--rg">
 											<span class="value">대한민국</span>
 										</li>
 										<li class="font--kr font--13 font--rg">
-											<span class="value font--en font--13 font--rg">${requestScope.addressDefault.postcode}</span>
+											<span class="value font--en font--13 font--rg">${requestScope.addressDefault.postCode}</span>
 										</li>
 									</ul>
 								</div>
