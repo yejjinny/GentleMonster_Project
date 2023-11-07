@@ -16,47 +16,40 @@ public class MemberToChangePwdAction extends AbstractController {
 		 
 		HttpSession session = req.getSession();
 		String method=req.getMethod();  
+			 
+		 if("GET".equalsIgnoreCase(method)) {
+			 
+			
+			 
+			  if (session.getAttribute("userEmail") != null) {
+				  
+				  //super.setRedirect(false); 
+				  super.setViewPage("/jsp/member/editMemberInfo/changePwd_key.jsp");
+				  
+			  }
+			  else if (session.getAttribute("loginUser") != null) {
+				  
+				  
+				 // super.setRedirect(false); 
+				  super.setViewPage("/jsp/member/editMemberInfo/changePwd.jsp");
+				  
+			  }
+			  
 		
-		 
-			 
-			 
-			 if("GET".equalsIgnoreCase(method)) {
-				 
-				 if (session.getAttribute("userEmail") != null) {
-					 
-					 super.setRedirect(false); 
-					  super.setViewPage("/jsp/member/editMemberInfo/changePwd.jsp");
-					
-				 }
-				 else {
-						
-						  
-				    	  String message=" 로그인을 하세요!";
-						   String loc="javascript:history.back()";
-						   
-						   req.setAttribute("message", message);
-						   req.setAttribute("loc", loc);
-						   
-						   super.setRedirect(false);
-						   super.setViewPage("/jsp/common/msg.jsp");
-					    	 
-					 }
+		 }
+		 else {
+				// GET 방식이 아니라면
 				
-				 
-			 }
-			 else {
-					// GET 방식이 아니라면
-					
-					String message = "비정상적인 경로로 들어왔습니다.";
-				      String loc = "javascript:history.back()";
-				      
-				      req.setAttribute("message", message);
-				      req.setAttribute("loc", loc);
-				      
-				   //   super.setRedirect(false);
-				      super.setViewPage("/jsp/common/msg.jsp");
-				}
-			 
+				String message = "비정상적인 경로로 들어왔습니다.";
+			      String loc = "javascript:history.back()";
+			      
+			      req.setAttribute("message", message);
+			      req.setAttribute("loc", loc);
+			      
+			   //   super.setRedirect(false);
+			      super.setViewPage("/jsp/common/msg.jsp");
+			}
+		 
 		 
 		 
 		  
