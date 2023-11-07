@@ -28,6 +28,7 @@ public class ProductAction extends AbstractController {
 
 
 
+
 		if ("POST".equalsIgnoreCase(method)) {
 
 			/* System.out.println("post 방식으로 들어왔다."); */
