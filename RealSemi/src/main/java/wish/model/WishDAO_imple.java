@@ -17,7 +17,7 @@ import wish.domain.WishVO;
 
 public class WishDAO_imple implements WishDAO {
 
-	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.  
+	private DataSource ds;   
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -69,7 +69,7 @@ public class WishDAO_imple implements WishDAO {
 			
 			rs.next();
 			
-			totalWishCount = rs.getInt(1);
+			totalWishCount = rs.getInt(1);		 System.out.println(fk_memberid +"hhhhh"+ totalWishCount);
 			
 		} finally {
 			close();
@@ -208,6 +208,6 @@ public class WishDAO_imple implements WishDAO {
 		}
 
 		return num;
-	}
+	}// end of public int addWishItem(Map<String, String> paraMap) throws SQLException ----------------
 	
 }

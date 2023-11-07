@@ -5,10 +5,8 @@ public class StoreImgVO {
 	private int storeDetailImageId; // 매장디테일이미지ID
 	private int fk_storeId; // 매장ID
 	private String imageFile; // 매장디테일사진경로
-	// POSITION; // 사진위치 
-	private String type;
 	
-	
+	//////////////////////////////////////////////////////////
 	
 	public int getStoreDetailImageId() {
 		return storeDetailImageId;
@@ -27,12 +25,6 @@ public class StoreImgVO {
 	}
 	public void setimageFile(String imagefile) {
 		this.imageFile = imagefile;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
 	}
 	
 	

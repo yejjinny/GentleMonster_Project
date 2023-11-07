@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -15,7 +13,6 @@ import javax.sql.DataSource;
 
 import store.domain.StoreImgVO;
 import store.domain.StoreVO;
-import wish.domain.WishVO;
 
 public class StoreDAO_imple implements StoreDAO {
 
@@ -214,17 +211,13 @@ public class StoreDAO_imple implements StoreDAO {
 			try {
 				conn = ds.getConnection();
 				
-				String sql = " select STOREDETAILIMAGEID, FK_STOREID, IMAGEFILE, TYPE "
+				String sql = " select STOREDETAILIMAGEID, FK_STOREID, IMAGEFILE "
 						   + " from TBL_STOREDETIALIMAGE "
-						// + " where FK_STOREID = ? "
-					//	+ " where FK_STOREID = 1 "
 						   + " order by STOREDETAILIMAGEID ";
 						  
 				
 				pstmt = conn.prepareStatement(sql);
 				
-			//	pstmt.setString(1, storeid);
-
 				rs = pstmt.executeQuery();
 				
 				while (rs.next()) {
@@ -233,7 +226,6 @@ public class StoreDAO_imple implements StoreDAO {
 					simgvo.setStoreDetailImageId(rs.getInt("STOREDETAILIMAGEID"));
 					simgvo.setFk_storeId(rs.getInt("FK_STOREID"));
 					simgvo.setimageFile(rs.getString("imagefile"));
-					simgvo.setType(rs.getString("type"));
 					
 					storeImgList.add(simgvo);
 				} // end of while(rs.next())

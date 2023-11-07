@@ -2,8 +2,6 @@ let b_emailCheck = false;
 
 $(document).ready(function(){
 	
-	
-	
 	$("span.error").css({"visibility":"hidden"});
 	
 	
@@ -77,16 +75,11 @@ $(document).ready(function(){
 		emailCheck();
 	});	
 
-	/*if( $("input#email").val().trim() != "" && !b_emailCheck){ // email을 입력했는데 이메일중복확인 클릭을 하지 않았을 경우
-		alert("email 중복 확인을 해주세요");	
-	}*/
-
 	// 이메일값이 변경되면 가입하기 버튼을 클릭시 "이메일중복확인" 을 클릭했는지 클릭안했는지를 알아보기위한 용도 초기화 시키기 
 	$("input#email").bind("change", function(){ 
 		b_emailCheck = false;
 		$("span#emailCheckResult").html("");
 	});	
-	
 	
 	// 약관 모두선택
 	$("input[id='check_all']").change(function() {
@@ -100,18 +93,7 @@ $(document).ready(function(){
         }
 
     });
-    /*
-	if( $("input#agreement_age").is(':checked', true) &&
-		$("input#agreement_terms").is(':checked', true) &&
-		$("input#agreement_privacy_policy").is(':checked', true) &&
-		$("input#agreement_marketing_check").is(':checked', true) &&
-		$("input#agreement_marketing_info").is(':checked', true) ) {
-            $("input[id='check_all']").prop('checked', true);
-	}
-	else{
-		$("input[id='check_all']").prop('checked', false);
-	}*/
-	
+    
 	
 });// end of $(document).ready(function(){})----------------	
 
@@ -370,14 +352,10 @@ function emailCheck(){
 	
 	$.ajax({
 		 url:"emailDuplicateCheck.gm",			
-		 data:{"email":$("input#email").val()}, // data 속성은 http://localhost:9090/tempSemi/register/emailDuplicateCheck.gm 로 전송해야할 데이터를 말한다. 
-		 type:"post",  //  type 을 생략하면 type:"get" 이다.
-		 async:true,   // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
-     		           // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.   
-		 dataType:"json", // Javascript Standard Object Notation.  dataType은 /tempSemi/register/emailDuplicateCheck.gm 로 부터 실행되어진 결과물을 받아오는 데이터타입을 말한다. 
-     		              // 만약에 dataType:"xml" 으로 해주면 /tempSemi/register/emailDuplicateCheck.gm 로 부터 받아오는 결과물은 xml 형식이어야 한다. 
-     		              // 만약에 dataType:"json" 으로 해주면 /tempSemi/register/emailDuplicateCheck.gm 로 부터 받아오는 결과물은 json 형식이어야 한다. 
-		 	
+		 data:{"email":$("input#email").val()},  
+		 type:"post",  
+		 async:true,   
+		 dataType:"json",  
 		 success:function(json){
 			 
 			 if(json.isExists) {
@@ -405,13 +383,6 @@ function emailCheck(){
 	
 	
 }// end of function emailCheck()-------
-
-
-
-
-
-
-
 
 
 

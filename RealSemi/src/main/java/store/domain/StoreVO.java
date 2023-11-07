@@ -17,6 +17,7 @@ public class StoreVO {
 	private String registerday; 	// 등록일
 	private String updateday; 		// 업데이트일
 	
+	////////////////////////////////////////////////////////////
 	
 	public int getStoreId() {
 		return storeId;
