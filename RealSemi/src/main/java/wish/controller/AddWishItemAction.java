@@ -38,12 +38,12 @@ public class AddWishItemAction extends AbstractController {
 				WishDAO wdao = new WishDAO_imple();
 				int num = wdao.addWishItem(paraMap);
 				if (num == 1) {
-					// 삭제 되었을 경우
+					// 추가 되었을 경우
 					isAdd = true;
 					jsonObj.put("isAdd", isAdd);
 
 				} else {
-					// 삭제 되지 않았을 경우
+					// 추가 되지 않았을 경우
 					jsonObj.put("isAdd", isAdd);
 				}
 
