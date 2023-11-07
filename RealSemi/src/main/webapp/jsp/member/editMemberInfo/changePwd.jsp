@@ -8,6 +8,7 @@ String ctxPath = request.getContextPath();
 <title>GENTLE MONSTER Official Site</title>
 <jsp:include page="../../common/header.jsp" />
 <link rel="stylesheet" href="<%=ctxPath%>/css/member/editMemberInfo/changePwd.css">
+<link rel="stylesheet" type="text/css" href="<%=ctxPath%>/css/member/addressBook/addressBook.css" />
 <script src="<%=ctxPath%>/js/member/editMemberInfo/changePwd.js" type="text/javascript"></script>
 
 <div class="container_sq">
@@ -35,7 +36,7 @@ String ctxPath = request.getContextPath();
 			</ul>
 			<div class="topnav-right">
 				<div class="page_menu_item link_item">
-					<a class="font--kr font--15 font--rg" data-category="account" data-action="logout_click" data-label="" href="https://www.gentlemonster.com/kr/customer/logout">로그아웃</a>
+					<a class="font--kr font--15 font--rg" data-category="account" data-action="logout_click" data-label=""  href="<%= ctxPath%>/register/logout.gm">로그아웃</a>
 				</div>
 			</div>
 		</div>

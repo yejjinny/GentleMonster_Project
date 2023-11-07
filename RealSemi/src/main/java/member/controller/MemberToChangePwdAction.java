@@ -17,14 +17,30 @@ public class MemberToChangePwdAction extends AbstractController {
 		HttpSession session = req.getSession();
 		String method=req.getMethod();  
 		
-		 if (session.getAttribute("loginUser") != null) {
+		 
 			 
 			 
 			 if("GET".equalsIgnoreCase(method)) {
 				 
-				 
-				 super.setRedirect(false); 
-				  super.setViewPage("/jsp/member/editMemberInfo/changePwd.jsp");
+				 if (session.getAttribute("userEmail") != null) {
+					 
+					 super.setRedirect(false); 
+					  super.setViewPage("/jsp/member/editMemberInfo/changePwd.jsp");
+					
+				 }
+				 else {
+						
+						  
+				    	  String message=" 로그인을 하세요!";
+						   String loc="javascript:history.back()";
+						   
+						   req.setAttribute("message", message);
+						   req.setAttribute("loc", loc);
+						   
+						   super.setRedirect(false);
+						   super.setViewPage("/jsp/common/msg.jsp");
+					    	 
+					 }
 				
 				 
 			 }
@@ -41,21 +57,8 @@ public class MemberToChangePwdAction extends AbstractController {
 				      super.setViewPage("/jsp/common/msg.jsp");
 				}
 			 
-			 
-		 }
-		 else {
-				// 로그인한 사용자가 다른 사용자의 정보를 수정하려고 시도하는 경우
-				  
-		    	  String message=" 다른사용자의 접근은 불가합니다!!";
-				   String loc="javascript:history.back()";
-				   
-				   req.setAttribute("message", message);
-				   req.setAttribute("loc", loc);
-				   
-				   super.setRedirect(false);
-				   super.setViewPage("/jsp/common/msg.jsp");
-			    	 
-			 }
+		 
+		 
 		  
 	}
 
