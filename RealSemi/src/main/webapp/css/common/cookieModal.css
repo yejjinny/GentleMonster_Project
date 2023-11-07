@@ -1,0 +1,304 @@
+@charset "UTF-8";
+
+@media (max-width: 767px){
+.container-wrap.cms_page .box_content {
+    width: 100%;
+}
+}
+.container-wrap > div:nth-child(2) {
+    flex: 6;
+    text-align: left;
+}
+
+@media (max-width: 767px){
+.cms_page .box_content .contents {
+    min-height: auto !important;
+}}
+@media (max-width: 767px){
+.container-wrap .contents {
+    padding: 0 !important;
+}}
+
+.legal .contents {
+    word-break: inherit;
+}
+
+.contents {
+    width: 100%;
+    /* padding-top: 160px !important; */
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    text-align: left;
+}
+
+.h2-font {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.font--kr {
+    font-family: "Unica77LLWeb","SDGothicNeo", sans-serif;
+    word-break: keep-all;
+}
+.legal__container {
+    margin-top: 36px;
+    font-size: 13px;
+    line-height: 1.92;
+    word-break: inherit;
+}
+.legal__container *:not(.font--en, .font--cn) {
+    word-break: inherit;
+}
+.legal__row {
+    display: block;
+}
+.legal__container * {
+    line-height: inherit;
+}
+.legal__container *:not(.font--en, .font--cn) {
+    word-break: inherit;
+}
+.legal__title {
+    font-size: inherit;
+    font-weight: 500;
+}
+.legal__container * {
+    line-height: inherit;
+}
+.legal__container *:not(.font--en, .font--cn) {
+    word-break: inherit;
+}
+.legal__container * {
+    line-height: inherit;
+}
+.legal__row + .legal__row {
+    margin-top: 60px;
+}
+.legal__container *:not(.font--en, .font--cn) {
+    word-break: inherit;
+}
+.legal__row {
+    display: block;
+}
+.legal__container * {
+    line-height: inherit;
+}
+.legal__container *:not(.font--en, .font--cn) {
+    word-break: inherit;
+}
+.legal__title {
+    font-size: inherit;
+    font-weight: 500;
+}
+.legal__container * {
+    line-height: inherit;
+}
+.list-style--circle-number > li:nth-child(1) {
+    padding-left: 1.5rem;
+}
+.list-style--circle-number > li:nth-child(1):before {
+    content: "①";
+}
+.list-style li:before {
+    position: absolute;
+    left: 0;
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+.list-style--circle-number > li:nth-child(2) {
+    padding-left: 1.5rem;
+}
+.legal__container *:not(.font--en, .font--cn) {
+    word-break: inherit;
+}
+.list-style li {
+    position: relative;
+}
+.list-style--circle-number > li:nth-child(2):before {
+    content: "②";
+}
+.list-style li:before {
+    position: absolute;
+    left: 0;
+}
+.list-style--bracket-number, .list-style--decimal {
+    counter-reset: bracketNumber;
+}
+ul ul, ol ul, ul ol, ol ol {
+    margin-bottom: 0;
+}
+ul, ol {
+    list-style: none;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-cookie-policy-title {
+    margin-bottom: 1.2em;
+}
+#onetrust-banner-sdk div, #onetrust-banner-sdk span, #onetrust-banner-sdk h1, #onetrust-banner-sdk h2, #onetrust-banner-sdk h3, #onetrust-banner-sdk h4, #onetrust-banner-sdk h5, #onetrust-banner-sdk h6, #onetrust-banner-sdk p, #onetrust-banner-sdk img, #onetrust-banner-sdk svg, #onetrust-banner-sdk button, #onetrust-banner-sdk section, #onetrust-banner-sdk a, #onetrust-banner-sdk label, #onetrust-banner-sdk input, #onetrust-banner-sdk ul, #onetrust-banner-sdk li, #onetrust-banner-sdk nav, #onetrust-banner-sdk table, #onetrust-banner-sdk thead, #onetrust-banner-sdk tr, #onetrust-banner-sdk td, #onetrust-banner-sdk tbody, #onetrust-banner-sdk .ot-main-content, #onetrust-banner-sdk .ot-toggle, #onetrust-banner-sdk #ot-content, #onetrust-banner-sdk #ot-pc-content, #onetrust-banner-sdk .checkbox, #onetrust-pc-sdk div, #onetrust-pc-sdk span, #onetrust-pc-sdk h1, #onetrust-pc-sdk h2, #onetrust-pc-sdk h3, #onetrust-pc-sdk h4, #onetrust-pc-sdk h5, #onetrust-pc-sdk h6, #onetrust-pc-sdk p, #onetrust-pc-sdk img, #onetrust-pc-sdk svg, #onetrust-pc-sdk button, #onetrust-pc-sdk section, #onetrust-pc-sdk a, #onetrust-pc-sdk label, #onetrust-pc-sdk input, #onetrust-pc-sdk ul, #onetrust-pc-sdk li, #onetrust-pc-sdk nav, #onetrust-pc-sdk table, #onetrust-pc-sdk thead, #onetrust-pc-sdk tr, #onetrust-pc-sdk td, #onetrust-pc-sdk tbody, #onetrust-pc-sdk .ot-main-content, #onetrust-pc-sdk .ot-toggle, #onetrust-pc-sdk #ot-content, #onetrust-pc-sdk #ot-pc-content, #onetrust-pc-sdk .checkbox, #ot-sdk-cookie-policy div, #ot-sdk-cookie-policy span, #ot-sdk-cookie-policy h1, #ot-sdk-cookie-policy h2, #ot-sdk-cookie-policy h3, #ot-sdk-cookie-policy h4, #ot-sdk-cookie-policy h5, #ot-sdk-cookie-policy h6, #ot-sdk-cookie-policy p, #ot-sdk-cookie-policy img, #ot-sdk-cookie-policy svg, #ot-sdk-cookie-policy button, #ot-sdk-cookie-policy section, #ot-sdk-cookie-policy a, #ot-sdk-cookie-policy label, #ot-sdk-cookie-policy input, #ot-sdk-cookie-policy ul, #ot-sdk-cookie-policy li, #ot-sdk-cookie-policy nav, #ot-sdk-cookie-policy table, #ot-sdk-cookie-policy thead, #ot-sdk-cookie-policy tr, #ot-sdk-cookie-policy td, #ot-sdk-cookie-policy tbody, #ot-sdk-cookie-policy .ot-main-content, #ot-sdk-cookie-policy .ot-toggle, #ot-sdk-cookie-policy #ot-content, #ot-sdk-cookie-policy #ot-pc-content, #ot-sdk-cookie-policy .checkbox, #ot-sync-ntfy div, #ot-sync-ntfy span, #ot-sync-ntfy h1, #ot-sync-ntfy h2, #ot-sync-ntfy h3, #ot-sync-ntfy h4, #ot-sync-ntfy h5, #ot-sync-ntfy h6, #ot-sync-ntfy p, #ot-sync-ntfy img, #ot-sync-ntfy svg, #ot-sync-ntfy button, #ot-sync-ntfy section, #ot-sync-ntfy a, #ot-sync-ntfy label, #ot-sync-ntfy input, #ot-sync-ntfy ul, #ot-sync-ntfy li, #ot-sync-ntfy nav, #ot-sync-ntfy table, #ot-sync-ntfy thead, #ot-sync-ntfy tr, #ot-sync-ntfy td, #ot-sync-ntfy tbody, #ot-sync-ntfy .ot-main-content, #ot-sync-ntfy .ot-toggle, #ot-sync-ntfy #ot-content, #ot-sync-ntfy #ot-pc-content, #ot-sync-ntfy .checkbox {
+    font-family: inherit;
+    font-weight: normal;
+    -webkit-font-smoothing: auto;
+    letter-spacing: normal;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    border-radius: 0;
+    border: none;
+    clear: none;
+    float: none;
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    text-shadow: none;
+    text-transform: none;
+    white-space: normal;
+    background: none;
+    overflow: visible;
+    vertical-align: baseline;
+    visibility: visible;
+    z-index: auto;
+    box-shadow: none;
+}
+#onetrust-banner-sdk *, #onetrust-banner-sdk ::after, #onetrust-banner-sdk ::before, #onetrust-pc-sdk *, #onetrust-pc-sdk ::after, #onetrust-pc-sdk ::before, #ot-sdk-cookie-policy *, #ot-sdk-cookie-policy ::after, #ot-sdk-cookie-policy ::before, #ot-sync-ntfy *, #ot-sync-ntfy ::after, #ot-sync-ntfy ::before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+#cookie-policy-description, #cookie-policy-title {
+    font-size: 13px !important;
+    font-family: "Unica77LLWeb", "SDGothicNeo", "sans-serif" !important;
+    font-weight: 400 !important;
+    line-height: 1.92 !important;
+    color: #343434 !important;
+}
+.legal__container *:not(.font--en, .font--cn) {
+    word-break: inherit;
+}
+#onetrust-banner-sdk .ot-sdk-container:after, #onetrust-banner-sdk .ot-sdk-row:after, #onetrust-pc-sdk .ot-sdk-container:after, #onetrust-pc-sdk .ot-sdk-row:after, #ot-sdk-cookie-policy .ot-sdk-container:after, #ot-sdk-cookie-policy .ot-sdk-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#onetrust-banner-sdk *, #onetrust-banner-sdk ::after, #onetrust-banner-sdk ::before, #onetrust-pc-sdk *, #onetrust-pc-sdk ::after, #onetrust-pc-sdk ::before, #ot-sdk-cookie-policy *, #ot-sdk-cookie-policy ::after, #ot-sdk-cookie-policy ::before, #ot-sync-ntfy *, #ot-sync-ntfy ::after, #ot-sync-ntfy ::before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table .ot-host, #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table .ot-cookies-type {
+    width: 25%;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy #cookie-policy-description, #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-cookie-policy-group-desc, #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-table-header, #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy a, #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy span, #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy td {
+    font-size: .9em;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table th {
+    background-color: #F8F8F8;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table th, #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table td {
+    border-bottom: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;
+    border-left: 1px solid #d7d7d7;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table th {
+    border: 1px solid #d7d7d7 !important;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy th {
+    color: #696969;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy th {
+    min-width: 75px;
+}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-cookie-policy-group {
+    font-size: 1em;
+    margin-bottom: 0.6em;
+}
+#ot-sdk-cookie-policy .ot-sdk-cookie-policy-group, .ot-sdk-cookie-policy-group-desc {
+    font-size: 13px !important;
+    font-family: "Unica77LLWeb", "SDGothicNeo", "sans-serif" !important;
+    font-weight: 400 !important;
+    line-height: 1.92 !important;
+    color: #343434 !important;
+}
+@media (max-width: 767px){
+body #onetrust-banner-sdk .ot-sdk-container, body #onetrust-pc-sdk .ot-sdk-container, body #ot-sdk-cookie-policy .ot-sdk-container {
+    width: 100%;
+    padding: 0;
+}}
+#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy {
+    font-family: inherit;
+    font-size: 1rem;
+}
+@media (min-width: 550px){
+#onetrust-banner-sdk .ot-sdk-container, #onetrust-pc-sdk .ot-sdk-container, #ot-sdk-cookie-policy .ot-sdk-container {
+    width: 100%;
+}}
+@media (min-width: 400px){
+#onetrust-banner-sdk .ot-sdk-container, #onetrust-pc-sdk .ot-sdk-container, #ot-sdk-cookie-policy .ot-sdk-container {
+    width: 90%;
+    padding: 0;
+}}
+#onetrust-banner-sdk .ot-sdk-container, #onetrust-pc-sdk .ot-sdk-container, #ot-sdk-cookie-policy .ot-sdk-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+#onetrust-banner-sdk div, #onetrust-banner-sdk span, #onetrust-banner-sdk h1, #onetrust-banner-sdk h2, #onetrust-banner-sdk h3, #onetrust-banner-sdk h4, #onetrust-banner-sdk h5, #onetrust-banner-sdk h6, #onetrust-banner-sdk p, #onetrust-banner-sdk img, #onetrust-banner-sdk svg, #onetrust-banner-sdk button, #onetrust-banner-sdk section, #onetrust-banner-sdk a, #onetrust-banner-sdk label, #onetrust-banner-sdk input, #onetrust-banner-sdk ul, #onetrust-banner-sdk li, #onetrust-banner-sdk nav, #onetrust-banner-sdk table, #onetrust-banner-sdk thead, #onetrust-banner-sdk tr, #onetrust-banner-sdk td, #onetrust-banner-sdk tbody, #onetrust-banner-sdk .ot-main-content, #onetrust-banner-sdk .ot-toggle, #onetrust-banner-sdk #ot-content, #onetrust-banner-sdk #ot-pc-content, #onetrust-banner-sdk .checkbox, #onetrust-pc-sdk div, #onetrust-pc-sdk span, #onetrust-pc-sdk h1, #onetrust-pc-sdk h2, #onetrust-pc-sdk h3, #onetrust-pc-sdk h4, #onetrust-pc-sdk h5, #onetrust-pc-sdk h6, #onetrust-pc-sdk p, #onetrust-pc-sdk img, #onetrust-pc-sdk svg, #onetrust-pc-sdk button, #onetrust-pc-sdk section, #onetrust-pc-sdk a, #onetrust-pc-sdk label, #onetrust-pc-sdk input, #onetrust-pc-sdk ul, #onetrust-pc-sdk li, #onetrust-pc-sdk nav, #onetrust-pc-sdk table, #onetrust-pc-sdk thead, #onetrust-pc-sdk tr, #onetrust-pc-sdk td, #onetrust-pc-sdk tbody, #onetrust-pc-sdk .ot-main-content, #onetrust-pc-sdk .ot-toggle, #onetrust-pc-sdk #ot-content, #onetrust-pc-sdk #ot-pc-content, #onetrust-pc-sdk .checkbox, #ot-sdk-cookie-policy div, #ot-sdk-cookie-policy span, #ot-sdk-cookie-policy h1, #ot-sdk-cookie-policy h2, #ot-sdk-cookie-policy h3, #ot-sdk-cookie-policy h4, #ot-sdk-cookie-policy h5, #ot-sdk-cookie-policy h6, #ot-sdk-cookie-policy p, #ot-sdk-cookie-policy img, #ot-sdk-cookie-policy svg, #ot-sdk-cookie-policy button, #ot-sdk-cookie-policy section, #ot-sdk-cookie-policy a, #ot-sdk-cookie-policy label, #ot-sdk-cookie-policy input, #ot-sdk-cookie-policy ul, #ot-sdk-cookie-policy li, #ot-sdk-cookie-policy nav, #ot-sdk-cookie-policy table, #ot-sdk-cookie-policy thead, #ot-sdk-cookie-policy tr, #ot-sdk-cookie-policy td, #ot-sdk-cookie-policy tbody, #ot-sdk-cookie-policy .ot-main-content, #ot-sdk-cookie-policy .ot-toggle, #ot-sdk-cookie-policy #ot-content, #ot-sdk-cookie-policy #ot-pc-content, #ot-sdk-cookie-policy .checkbox, #ot-sync-ntfy div, #ot-sync-ntfy span, #ot-sync-ntfy h1, #ot-sync-ntfy h2, #ot-sync-ntfy h3, #ot-sync-ntfy h4, #ot-sync-ntfy h5, #ot-sync-ntfy h6, #ot-sync-ntfy p, #ot-sync-ntfy img, #ot-sync-ntfy svg, #ot-sync-ntfy button, #ot-sync-ntfy section, #ot-sync-ntfy a, #ot-sync-ntfy label, #ot-sync-ntfy input, #ot-sync-ntfy ul, #ot-sync-ntfy li, #ot-sync-ntfy nav, #ot-sync-ntfy table, #ot-sync-ntfy thead, #ot-sync-ntfy tr, #ot-sync-ntfy td, #ot-sync-ntfy tbody, #ot-sync-ntfy .ot-main-content, #ot-sync-ntfy .ot-toggle, #ot-sync-ntfy #ot-content, #ot-sync-ntfy #ot-pc-content, #ot-sync-ntfy .checkbox {
+    font-family: inherit;
+    font-weight: normal;
+    -webkit-font-smoothing: auto;
+    letter-spacing: normal;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    border-radius: 0;
+    border: none;
+    clear: none;
+    float: none;
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    text-shadow: none;
+    text-transform: none;
+    white-space: normal;
+    background: none;
+    overflow: visible;
+    vertical-align: baseline;
+    visibility: visible;
+    z-index: auto;
+    box-shadow: none;
+}
+#onetrust-banner-sdk *, #onetrust-banner-sdk ::after, #onetrust-banner-sdk ::before, #onetrust-pc-sdk *, #onetrust-pc-sdk ::after, #onetrust-pc-sdk ::before, #ot-sdk-cookie-policy *, #ot-sdk-cookie-policy ::after, #ot-sdk-cookie-policy ::before, #ot-sync-ntfy *, #ot-sync-ntfy ::after, #ot-sync-ntfy ::before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.legal__container *:not(.font--en, .font--cn) {
+    word-break: inherit;
+}

@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+String ctxPath = request.getContextPath();
+%>
+
 <footer class="footer w_o_w_footer">
 	<div class="footer_nav">
 		<div class="footer_section">
 			<div class="footer_section_title footer_section_mobile_title">
 				<button class="font--kr font--13 font--bd" type="button">
-					법적 고지 <span>+</span>
+					법적 고지
+					<span>+</span>
 				</button>
 			</div>
 			<div class="footer_group">
@@ -13,15 +18,17 @@
 						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="inform" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/inform"> 공지사항 </a>
 					</li>
 					<li class="footer_item ">
-						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="terms-conditions" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/terms"> 이용약관 </a>
+						<button type="button" class="footer_item_link font--kr font--13 font--rg" data-toggle="modal" data-target="#legalModal"> 이용약관 </button>
+						<!-- <a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="terms-conditions" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/terms"> 이용약관 </a> -->
 					</li>
 					<li class="footer_item ">
-						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="privacy-policy" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/privacy_policy"> 개인정보처리방침 </a>
+						<button type="button" class="footer_item_link font--kr font--13 font--rg" data-toggle="modal" data-target="#privacyModal"> 개인정보처리방침 </button>
+<!-- 						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="privacy-policy" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/privacy_policy"> 개인정보처리방침 </a> -->
 					</li>
 					<li class="footer_item ">
-						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="cookie-policy" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/cookie_policy"> 쿠키 정책 </a>
-					</li>
-					<!-- <li class="footer_item "><a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="giftcard-policy" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/giftcard"> 기프트카드 이용약관 </a></li> -->
+						<button type="button" class="footer_item_link font--kr font--13 font--rg" data-toggle="modal" data-target="#cookieModal"> 쿠키 정책 </button>
+<!-- 						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="cookie-policy" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/cookie_policy"> 쿠키 정책 </a>
+ -->					</li>
 				</ul>
 			</div>
 
@@ -29,7 +36,8 @@
 		<div class="footer_section">
 			<div class="footer_section_title footer_section_mobile_title">
 				<button class="font--kr font--13 font--bd" type="button">
-					소셜 미디어 <span>+</span>
+					소셜 미디어
+					<span>+</span>
 				</button>
 			</div>
 			<div class="footer_group">
@@ -81,17 +89,28 @@
 				<span class="between-bar">|</span>
 				<sapn class="font--kr">사업자번호</sapn>
 				<sapn class="font--en">: 119-86-38589</sapn>
-				<span class="between-bar">|</span> <span class="font--kr">통신판매신고번호: 제</span>
+				<span class="between-bar">|</span>
+				<span class="font--kr">통신판매신고번호: 제</span>
 				<sapn class="font--en">2014-</sapn>
 				<sapn class="font--kr">서울마포</sapn>
 				<sapn class="font--en">-1050</sapn>
 				<sapn class="font--kr">호</sapn>
 				<a href="http://www.ftc.go.kr/info/bizinfo/communicationList.jsp" target="_blank" class="font--kr">(사업자 정보 확인)</a>
-				<span class="between-bar">|</span><span class="font--kr"> 이메일 문의: </span>
+				<span class="between-bar">|</span>
+				<span class="font--kr"> 이메일 문의: </span>
 				<a href="mailto:cs@gentlemonster.com">
 					<span class="font--kr">cs@gentlemonster.com</span>
 				</a>
-				<span class="between-bar">|</span> <span class="font--kr">개인정보보호책임자: 정태호</span> <span class="between-bar">|</span> <span class="font--kr">주소: 서울특별시 마포구 어울마당로</span><span class="font--en">5</span>길 <span class="font--en">41</span> <span class="between-bar">|</span> <span class="font--kr">대표번호:</span> 1600-2126
+				<span class="between-bar">|</span>
+				<span class="font--kr">개인정보보호책임자: 정태호</span>
+				<span class="between-bar">|</span>
+				<span class="font--kr">주소: 서울특별시 마포구 어울마당로</span>
+				<span class="font--en">5</span>
+				길
+				<span class="font--en">41</span>
+				<span class="between-bar">|</span>
+				<span class="font--kr">대표번호:</span>
+				1600-2126
 			</div>
 			<div class="guarantee-text font--kr margin_t2">
 				고객님의 안전한 현금자산 거래를 위하여 하나은행과 채무지급보증계약을 체결하여 보장해드리고 있습니다.
@@ -127,5 +146,82 @@
 	</div>
 </div>
 
+<!-- 이용약관 Modal -->
+<!-- Modal 구성 요소는 현재 페이지 상단에 표시되는 대화 상자/팝업 창입니다. -->
+<div class="modal fade" id="legalModal">
+	<div class="modal-dialog" style="max-width: 600px;">
+		<div class="modal-content">
+
+			<!-- Modal header -->
+			<div class="modal-header">
+				<h5 class="modal-title font--kr">이용약관</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<iframe style="width: 100%; height: 600px; border:none;" src="<%=ctxPath%>/common/modal.gm?modalName=legalModal"> </iframe>
+			</div>
+
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 개인정보수집 Modal -->
+<!-- Modal 구성 요소는 현재 페이지 상단에 표시되는 대화 상자/팝업 창입니다. -->
+<div class="modal fade" id="privacyModal">
+	<div class="modal-dialog" style="max-width: 1000px;">
+		<div class="modal-content">
+
+			<!-- Modal header -->
+			<div class="modal-header">
+				<h5 class="modal-title font--kr">개인정보수집</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<iframe style="width: 100%; height: 500px; border:none;" src="<%=ctxPath%>/common/modal.gm?modalName=privacyModal"> </iframe>
+			</div>
+
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 쿠키 Modal -->
+<!-- Modal 구성 요소는 현재 페이지 상단에 표시되는 대화 상자/팝업 창입니다. -->
+<div class="modal fade" id="cookieModal">
+	<div class="modal-dialog" style="max-width: 800px;">
+		<div class="modal-content">
+
+			<!-- Modal header -->
+			<div class="modal-header">
+				<h5 class="modal-title font--kr">쿠키</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<iframe style="width: 100%; height: 500px; border:none;" src="<%=ctxPath%>/common/modal.gm?modalName=cookieModal"> </iframe>
+			</div>
+
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>

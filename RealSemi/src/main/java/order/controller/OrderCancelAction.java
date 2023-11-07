@@ -14,6 +14,10 @@ import member.domain.MemberVO;
 import order.model.OrderDAO;
 import order.model.OrderDAO_imple;
 
+/**
+ * 작성자 신예진
+ * 주문내용 취소 Controller
+ */
 public class OrderCancelAction extends AbstractController {
 
 	@Override
