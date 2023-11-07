@@ -121,7 +121,9 @@ public class ProductAction extends AbstractController {
 			// 소재 이름 가져오기
 			List<MaterialVO> getMaterial = pdao.getMaterial(paraMap);
 			req.setAttribute("getMaterial", getMaterial);
-
+			
+			
+	
 			/*
 			 * Object loginUserObj = session.getAttribute("loginUser");
 			 * 
@@ -134,6 +136,10 @@ public class ProductAction extends AbstractController {
 			}
 			if ("2".equals(req.getParameter("categoryId"))) {
 				setViewPage("/jsp/glasses/glasses_viewAll.jsp");
+			}
+			
+			if(req.getParameter("allView") != null) {
+				req.setAttribute("allView", true);
 			}
 
 		}

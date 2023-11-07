@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>	
-	
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <%
 String ctxPath = request.getContextPath();
 //    /tempSemi
@@ -20,8 +20,7 @@ String ctxPath = request.getContextPath();
 <title>안경 | Gentle Monster</title>
 <%-- header --%>
 <jsp:include page="../common/header.jsp" />
-<script type="text/javascript"
-	src="<%=ctxPath%>/js/glasses/glasses.js"></script>
+<script type="text/javascript" src="<%=ctxPath%>/js/glasses/glasses.js"></script>
 
 
 <%-- 본문 --%>
@@ -52,70 +51,74 @@ String ctxPath = request.getContextPath();
 				class="category__container jsCategory on swiper-container-horizontal"
 				data-break="9999">
 				<ul class="category__list  inline text-center">
-				<c:if test="${not empty requestScope.allView}">
-					<li
-						class="category__item category__item--View all relative swiper-slide current"
-						data-sub-category="NjE=" data-sub-category-all-view=""
-						data-category-name="전체보기" data-sub-category-url-key="view-all">
-						<a href="<%= ctxPath %>/product/product.gm?categoryId=2&allView=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="view-all"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/1.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">전체보기</span>
-					</a>
-					</li>
-				</c:if>	
-				<c:if test="${empty requestScope.allView}">
-					<li
-						class="category__item category__item--View all relative swiper-slide"
-						data-sub-category="NjE=" data-sub-category-all-view=""
-						data-category-name="전체보기" data-sub-category-url-key="view-all">
-						<a href="<%= ctxPath %>/product/product.gm?categoryId=2&allView=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="view-all"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/1.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">전체보기</span>
-					</a>
-					</li>
-				</c:if>	
-				
-				
-				
-				
-				<c:if test="${not empty requestScope.bestSeller}">
-					<li
-						class="category__item category__item--View all relative swiper-slide current"
-						data-sub-category="NjI=" data-sub-category-all-view=""
-						data-category-name="베스트셀러" data-sub-category-url-key="bestsellers">
-						<a href="<%= ctxPath %>/product/category.gm?bestSeller=1&categoryId=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="bestsellers"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/2.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">베스트셀러</span>
-					</a>
-					</li>
-				</c:if>	
-				<c:if test="${empty requestScope.bestSeller}">
-					<li
-						class="category__item category__item--View all relative swiper-slide"
-						data-sub-category="NjI=" data-sub-category-all-view=""
-						data-category-name="베스트셀러" data-sub-category-url-key="bestsellers">
-						<a href="<%= ctxPath %>/product/category.gm?bestSeller=1&categoryId=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="bestsellers"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/2.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">베스트셀러</span>
-					</a>
-					</li>
-				</c:if>	
-				
-				
-				
-				<c:if test="${not empty requestScope.isBluelight}">
+					<c:if test="${not empty requestScope.allView}">
+						<li
+							class="category__item category__item--View all relative swiper-slide current"
+							data-sub-category="NjE=" data-sub-category-all-view=""
+							data-category-name="전체보기" data-sub-category-url-key="view-all">
+							<a href="<%=ctxPath%>/product/product.gm?categoryId=2&allView=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="view-all"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/1.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">전체보기</span>
+						</a>
+						</li>
+					</c:if>
+					<c:if test="${empty requestScope.allView}">
+						<li
+							class="category__item category__item--View all relative swiper-slide"
+							data-sub-category="NjE=" data-sub-category-all-view=""
+							data-category-name="전체보기" data-sub-category-url-key="view-all">
+							<a href="<%=ctxPath%>/product/product.gm?categoryId=2&allView=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="view-all"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/1.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">전체보기</span>
+						</a>
+						</li>
+					</c:if>
+
+
+
+
+					<c:if test="${not empty requestScope.bestSeller}">
+						<li
+							class="category__item category__item--View all relative swiper-slide current"
+							data-sub-category="NjI=" data-sub-category-all-view=""
+							data-category-name="베스트셀러"
+							data-sub-category-url-key="bestsellers"><a
+							href="<%=ctxPath%>/product/category.gm?bestSeller=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="bestsellers"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/2.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">베스트셀러</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.bestSeller}">
+						<li
+							class="category__item category__item--View all relative swiper-slide"
+							data-sub-category="NjI=" data-sub-category-all-view=""
+							data-category-name="베스트셀러"
+							data-sub-category-url-key="bestsellers"><a
+							href="<%=ctxPath%>/product/category.gm?bestSeller=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="bestsellers"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/2.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">베스트셀러</span>
+						</a></li>
+					</c:if>
+
+
+
+					<c:if test="${not empty requestScope.isBluelight}">
 					<li
 						class="category__item category__item--View all relative swiper-slide current"
 						data-sub-category="NjQ=" data-sub-category-all-view=""
@@ -143,130 +146,140 @@ String ctxPath = request.getContextPath();
 								class="category__name font--kr font--11 font--md">블루라이트 차단</span>
 						</a></li>
 				</c:if>	
-				
-				
-				<c:if test="${not empty requestScope.isTint}">
+
+
+					<c:if test="${not empty requestScope.isTint}">
 						<li
 							class="category__item category__item--View all relative swiper-slide current"
-							data-sub-category="MTcw" data-sub-category-all-view="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
+							data-sub-category="MTcw"
+							data-sub-category-all-view="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"
 							data-category-name="틴트 렌즈"
-							data-sub-category-url-key="tinted-lenses"><a href="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
+							data-sub-category-url-key="tinted-lenses"><a
+							href="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"
 							class="category__link" onclick="return delCurrentScroll();"
 							data-category="category" data-action="tinted-lenses"> <span
 								class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/4.jpg"
-									alt="" class="category__img"></span> <span
+									src="<%=ctxPath%>/image/glasses/category/4.jpg" alt=""
+									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">틴트 렌즈</span>
 						</a></li>
-				</c:if>		
-				<c:if test="${empty requestScope.isTint}">
+					</c:if>
+					<c:if test="${empty requestScope.isTint}">
 						<li
 							class="category__item category__item--View all relative swiper-slide"
-							data-sub-category="MTcw" data-sub-category-all-view="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
+							data-sub-category="MTcw"
+							data-sub-category-all-view="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"
 							data-category-name="틴트 렌즈"
-							data-sub-category-url-key="tinted-lenses"><a href="<%= ctxPath %>/product/category.gm?isTint=1&categoryId=2"
+							data-sub-category-url-key="tinted-lenses"><a
+							href="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"
 							class="category__link" onclick="return delCurrentScroll();"
 							data-category="category" data-action="tinted-lenses"> <span
 								class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/4.jpg"
-									alt="" class="category__img"></span> <span
+									src="<%=ctxPath%>/image/glasses/category/4.jpg" alt=""
+									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">틴트 렌즈</span>
 						</a></li>
-				</c:if>	
-				
-				
-				
-				
-				
-				<c:if test="${not empty requestScope.isGift}">
+					</c:if>
+
+
+
+
+
+					<c:if test="${not empty requestScope.isGift}">
 						<li
 							class="category__item category__item--View all relative swiper-slide current"
 							data-sub-category="MTU5" data-sub-category-all-view=""
 							data-category-name="선물추천" data-sub-category-url-key="gifts">
-							<a href="<%= ctxPath %>/product/category.gm?isGift=1&categoryId=2" class="category__link"
-							onclick="return delCurrentScroll();" data-category="category"
-							data-action="gifts"> <span class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/5.jpg"
-									alt="" class="category__img"></span> <span
+							<a href="<%=ctxPath%>/product/category.gm?isGift=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="gifts"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/5.jpg" alt=""
+									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">선물추천</span>
 						</a>
 						</li>
-				</c:if>
-				<c:if test="${empty requestScope.isGift}">
+					</c:if>
+					<c:if test="${empty requestScope.isGift}">
 						<li
 							class="category__item category__item--View all relative swiper-slide"
 							data-sub-category="MTU5" data-sub-category-all-view=""
 							data-category-name="선물추천" data-sub-category-url-key="gifts">
-							<a href="<%= ctxPath %>/product/category.gm?isGift=1&categoryId=2" class="category__link"
-							onclick="return delCurrentScroll();" data-category="category"
-							data-action="gifts"> <span class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/5.jpg"
-									alt="" class="category__img"></span> <span
+							<a href="<%=ctxPath%>/product/category.gm?isGift=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="gifts"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/5.jpg" alt=""
+									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">선물추천</span>
 						</a>
 						</li>
-				</c:if>
-				
-				
-				<c:if test="${not empty requestScope.square}">
-					<li
-						class="category__item category__item--View all relative current swiper-slide"
-						data-sub-category="Njc=" data-sub-category-all-view=""
-						data-category-name="사각 프레임" data-sub-category-url-key="square">
-						<a href="<%= ctxPath %>/product/category.gm?square=1&categoryId=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="square"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/6.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">사각 프레임</span>
-					</a>
-					</li>
-				</c:if>
-				<c:if test="${empty requestScope.square}">
-					<li
-						class="category__item category__item--View all relative swiper-slide"
-						data-sub-category="Njc=" data-sub-category-all-view=""
-						data-category-name="사각 프레임" data-sub-category-url-key="square">
-						<a href="<%= ctxPath %>/product/category.gm?square=1&categoryId=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="square"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/6.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">사각 프레임</span>
-					</a>
-					</li>
-				</c:if>
-				
-				
-				
-				<c:if test="${not empty requestScope.round}">	
-					<li
-						class="category__item category__item--View all relative current swiper-slide"
-						data-sub-category="Njg=" data-sub-category-all-view=""
-						data-category-name="원형 프레임" data-sub-category-url-key="round">
-						<a href="<%= ctxPath %>/product/category.gm?round=3&categoryId=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="round"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/7.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">원형 프레임</span>
-					</a>
-					</li>
-				</c:if>	
-				<c:if test="${empty requestScope.round}">	
-					<li
-						class="category__item category__item--View all relative swiper-slide"
-						data-sub-category="Njg=" data-sub-category-all-view=""
-						data-category-name="원형 프레임" data-sub-category-url-key="round">
-						<a href="<%= ctxPath %>/product/category.gm?round=3&categoryId=2" class="category__link"
-						onclick="return delCurrentScroll();" data-category="category"
-						data-action="round"> <span class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/7.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">원형 프레임</span>
-					</a>
-					</li>
-				</c:if>	
+					</c:if>
+
+
+					<c:if test="${not empty requestScope.square}">
+						<li
+							class="category__item category__item--View all relative current swiper-slide"
+							data-sub-category="Njc=" data-sub-category-all-view=""
+							data-category-name="사각 프레임" data-sub-category-url-key="square">
+							<a href="<%=ctxPath%>/product/category.gm?square=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="square"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/6.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">사각 프레임</span>
+						</a>
+						</li>
+					</c:if>
+					<c:if test="${empty requestScope.square}">
+						<li
+							class="category__item category__item--View all relative swiper-slide"
+							data-sub-category="Njc=" data-sub-category-all-view=""
+							data-category-name="사각 프레임" data-sub-category-url-key="square">
+							<a href="<%=ctxPath%>/product/category.gm?square=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="square"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/6.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">사각 프레임</span>
+						</a>
+						</li>
+					</c:if>
+
+
+
+					<c:if test="${not empty requestScope.round}">
+						<li
+							class="category__item category__item--View all relative current swiper-slide"
+							data-sub-category="Njg=" data-sub-category-all-view=""
+							data-category-name="원형 프레임" data-sub-category-url-key="round">
+							<a href="<%=ctxPath%>/product/category.gm?round=3&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="round"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/7.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">원형 프레임</span>
+						</a>
+						</li>
+					</c:if>
+					<c:if test="${empty requestScope.round}">
+						<li
+							class="category__item category__item--View all relative swiper-slide"
+							data-sub-category="Njg=" data-sub-category-all-view=""
+							data-category-name="원형 프레임" data-sub-category-url-key="round">
+							<a href="<%=ctxPath%>/product/category.gm?round=3&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="round"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/7.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">원형 프레임</span>
+						</a>
+						</li>
+					</c:if>
 				</ul>
 				<span class="swiper-notification" aria-live="assertive"
 					aria-atomic="true"></span> <span class="swiper-notification"
@@ -302,24 +315,24 @@ String ctxPath = request.getContextPath();
 			안경/<span id="list-sub-category">전체보기</span><span
 				id="list-total-count">(${fn:length(requestScope.productList)})</span>
 		</div>
-		
+
 		<div class="list-btn content-top__right inline float-right">
-		  <c:if test="${empty requestScope.isCategorySearch}">
-			<button data-toggle="modal" data-target="#filterModal" type="button"
-				class="filter-toggle inline jsFilterBtn " data-category="filter"
-				data-action="click_filter_open" data-label="filter_open"
-				aria-label="Open Filter Popup" aria-expanded="false">
-				<span class="filter-toggle__icon relative"> <span
-					class="filter-toggle__bar filter-toggle__bar--first"></span> <span
-					class="filter-toggle__bar filter-toggle__bar--second"></span>
-				</span> <span class="filter-toggle__txt font--kr font--11 font--md"
-					data-default="필터" data-close="Filter Close"> </span>
-			</button>
-		   </c:if>
+			<c:if test="${empty requestScope.isCategorySearch}">
+				<button data-toggle="modal" data-target="#filterModal" type="button"
+					class="filter-toggle inline jsFilterBtn " data-category="filter"
+					data-action="click_filter_open" data-label="filter_open"
+					aria-label="Open Filter Popup" aria-expanded="false">
+					<span class="filter-toggle__icon relative"> <span
+						class="filter-toggle__bar filter-toggle__bar--first"></span> <span
+						class="filter-toggle__bar filter-toggle__bar--second"></span>
+					</span> <span class="filter-toggle__txt font--kr font--11 font--md"
+						data-default="필터" data-close="Filter Close"> </span>
+				</button>
+			</c:if>
 		</div>
 	</div>
 	<!-- Filter popup -->
-	
+
 	<!--// Filter popup -->
 </div>
 <div class="filter-popup-bg jsFilterPopupBG"></div>
@@ -342,7 +355,7 @@ String ctxPath = request.getContextPath();
 			<div class="modal-body">
 				<form name="filterFrm">
 					<div class="filter-popup__inner">
-					<input type="hidden" name="categoryId" value="2" />
+						<input type="hidden" name="categoryId" value="2" />
 
 						<!-- Filter content -->
 						<div class="filter-popup__content clearfix">
@@ -358,19 +371,21 @@ String ctxPath = request.getContextPath();
 								</button>
 								<div id="frame_color-list" class="filter" style="">
 									<ul class="filter__list inline">
-										<c:forEach var="frameColorVo" items="${requestScope.getFrameColor}" varStatus="status">
+										<c:forEach var="frameColorVo"
+											items="${requestScope.getFrameColor}" varStatus="status">
 											<li class="filter__item filter__item--inline relative">
 												<label for="frame_color[]_${status.index}"
 												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
-													
-													
+
+
 													<input type="checkbox" name="frame_color" class="n-radio "
-													value="${frameColorVo.frameColorId}" id="frame_color[]_${status.index}">
+													value="${frameColorVo.frameColorId}"
+													id="frame_color[]_${status.index}">
 													<div class="input-box-check-layer"></div>${frameColorVo.frameColorKor}
 											</label>
 											</li>
 										</c:forEach>
-										
+
 
 									</ul>
 								</div>
@@ -387,17 +402,20 @@ String ctxPath = request.getContextPath();
 								</button>
 								<div id="lens_color-list" class="filter" style="">
 									<ul class="filter__list inline">
-									 <c:forEach var="lenseColorVo" items="${requestScope.getLenseColor}" varStatus="status">	
-										<li class="filter__item filter__item--inline relative">
-											<label for="lens_color[]_${status.index}"
-											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
-												<input type="checkbox" name="lens_color" class="n-radio "
-												value="${lenseColorVo.lenseColorId}" id="lens_color[]_${status.index}">
-												<div class="input-box-check-layer"></div> ${lenseColorVo.lenseColorKor}
-										</label>
-										</li>
+										<c:forEach var="lenseColorVo"
+											items="${requestScope.getLenseColor}" varStatus="status">
+											<li class="filter__item filter__item--inline relative">
+												<label for="lens_color[]_${status.index}"
+												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
+													<input type="checkbox" name="lens_color" class="n-radio "
+													value="${lenseColorVo.lenseColorId}"
+													id="lens_color[]_${status.index}">
+													<div class="input-box-check-layer"></div>
+													${lenseColorVo.lenseColorKor}
+											</label>
+											</li>
 										</c:forEach>
-										
+
 									</ul>
 								</div>
 							</div>
@@ -412,19 +430,22 @@ String ctxPath = request.getContextPath();
 								</button>
 								<div id="materials-list" class="filter" style="">
 									<ul class="filter__list inline">
-									  <c:forEach var="materialVo" items="${requestScope.getMaterial}" varStatus="status">	
-										<li class="filter__item filter__item--inline relative"
-											data-category="filter" data-action="소재" data-label="아세테이트">
-											<label for="materials[]_${status.index}"
-											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
-												<input type="checkbox" name="materials" class="n-radio "
-												value="${materialVo.materialId}" id="materials[]_${status.index}">
-												<div class="input-box-check-layer"></div> ${materialVo.materialName}
-										</label>
-										</li>
-									  </c:forEach>	
-										
-								
+										<c:forEach var="materialVo"
+											items="${requestScope.getMaterial}" varStatus="status">
+											<li class="filter__item filter__item--inline relative"
+												data-category="filter" data-action="소재" data-label="아세테이트">
+												<label for="materials[]_${status.index}"
+												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
+													<input type="checkbox" name="materials" class="n-radio "
+													value="${materialVo.materialId}"
+													id="materials[]_${status.index}">
+													<div class="input-box-check-layer"></div>
+													${materialVo.materialName}
+											</label>
+											</li>
+										</c:forEach>
+
+
 									</ul>
 								</div>
 							</div>
@@ -478,7 +499,8 @@ String ctxPath = request.getContextPath();
 								</button>
 								<div id="filter_sort-list" class="filter" style="">
 									<ul class="filter__list inline">
-										<li class="filter__item filter__item-sort relative"><label for="order_newest"
+										<li class="filter__item filter__item-sort relative"><label
+											for="order_newest"
 											class="filter__label n-label font--kr font--12 font--rg">
 												<input type="radio" name="order"
 												class="n-radio n-radio--once " value="registerDay Desc"
@@ -486,7 +508,8 @@ String ctxPath = request.getContextPath();
 												class="filter__checkbox n-checkbox n-checkbox--radio"></span>
 												신상품순
 										</label></li>
-										<li class="filter__item filter__item-sort relative"><label for="order_low_price"
+										<li class="filter__item filter__item-sort relative"><label
+											for="order_low_price"
 											class="filter__label n-label font--kr font--12 font--rg">
 												<input type="radio" name="order"
 												class="n-radio n-radio--once " value="price Asc"
@@ -504,9 +527,9 @@ String ctxPath = request.getContextPath();
 												class="filter__checkbox n-checkbox n-checkbox--radio"></span>
 												높은가격순
 										</label></li>
-									
+
 									</ul>
-									
+
 								</div>
 							</div>
 							<!--// Filter : Sort -->
@@ -515,14 +538,15 @@ String ctxPath = request.getContextPath();
 						<div class="filter-popup__bottom inline text-right">
 							<button type="button"
 								class="filter-btn font--kr font--14 font--bd js-filter-form-reset jsFilterReset">
-								초기화 <span class="selected-count font--kr js-filter-count jsSelectedCount"></span>
+								초기화 <span
+									class="selected-count font--kr js-filter-count jsSelectedCount"></span>
 							</button>
 							<button type="button" id="filterSubmitBtn"
 								class="filter-btn filter-btn--black btn-ui--black gm-component__spinner-container font--kr font--14 font--bd">
 								<div class="gm-component__spinner-wrapper">
 									<div class="gm-component__spinner dark"></div>
 								</div>
-								<span class="result-count <?= $font ?> js-filter-result-count">상품보기</span> 
+								<span class="result-count <?= $font ?> js-filter-result-count">상품보기</span>
 							</button>
 						</div>
 					</div>
@@ -552,164 +576,179 @@ String ctxPath = request.getContextPath();
 					<c:if
 						test="${productVo.fk_productGroupId eq count.fk_productGroupId}">
 						<li data-id="8NX8YBQ7JSZW" role="listitem" data-product-index="0"
-							data-list-index="0">
-						  <c:if test="${productVo.isBlueLight eq 1}">
-							<div class="product">
-								<div class="product-image-swiper swiper"
-									data-sub-image="<%=ctxPath%>${productVo.mainImageFile}">
-									<a
-										class="product__link product-image-swiper__wrapper swiper-wrapper"
-										id="8NX8YBQ7JSZW" href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
-										product-name="${productVo.productName}"
-										product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-										product-bluelight="Blue Light Protection"
-										data-category="ecommerce" data-action="select_item"
-										tabindex="-1" aria-hidden="true">
-										<div class="product-image-swiper__slide swiper-slide">
-											<div class="product__image-wrapper">
-												<img data-src="" alt=""
-													src="<%=ctxPath%>${productVo.mainImageFile}">
+							data-list-index="0"><c:if
+								test="${productVo.isBlueLight eq 1}">
+								<div class="product">
+									<div class="product-image-swiper swiper"
+										data-sub-image="<%=ctxPath%>${productVo.mainImageFile}">
+										<a
+											class="product__link product-image-swiper__wrapper swiper-wrapper"
+											id="8NX8YBQ7JSZW"
+											href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
+											product-name="${productVo.productName}"
+											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
+											product-bluelight="Blue Light Protection"
+											data-category="ecommerce" data-action="select_item"
+											tabindex="-1" aria-hidden="true">
+											<div class="product-image-swiper__slide swiper-slide">
+												<div class="product__image-wrapper">
+													<img data-src="" alt=""
+														src="<%=ctxPath%>${productVo.mainImageFile}">
+												</div>
 											</div>
-										</div>
-									</a>
-									<div class="product-image-swiper__pagination swiper-pagination"></div>
-									<div
-										class="product-image-swiper__button product-image-swiper__button--prev swiper-button-prev"
-										product-name="${productVo.productName}"
-										product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-										product-bluelight="Blue Light Protection"
-										data-category="carousel" data-action="click_left"
-										data-label="view-all"></div>
-									<div
-										class="product-image-swiper__button product-image-swiper__button--next swiper-button-next"
-										product-name="${productVo.productName}"
-										product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-										product-bluelight="Blue Light Protection"
-										data-category="carousel" data-action="click_right"
-										data-label="view-all"></div>
-								</div>
-								<div class="product__info relative">
-									<div class="clearfix">
-										<div class="product__spec float-left">
-											<a class="product__link" id="product_8NX8YBQ7JSZW" href=""
-												product-name="${productVo.productName}"
-												product-sku="8NX8YBQ7JSZW"
-												product-price="${productVo.price}" data-category="ecommerce"
-												data-action="select_item">
-												<p class="product__blue-glasses font--kr font--11 font--rg">Blue
-													Light Protection</p>
-												<p class="product__name font--kr font--13 font--bd">${productVo.productName}
+										</a>
+										<div
+											class="product-image-swiper__pagination swiper-pagination"></div>
+										<div
+											class="product-image-swiper__button product-image-swiper__button--prev swiper-button-prev"
+											product-name="${productVo.productName}"
+											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
+											product-bluelight="Blue Light Protection"
+											data-category="carousel" data-action="click_left"
+											data-label="view-all"></div>
+										<div
+											class="product-image-swiper__button product-image-swiper__button--next swiper-button-next"
+											product-name="${productVo.productName}"
+											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
+											product-bluelight="Blue Light Protection"
+											data-category="carousel" data-action="click_right"
+											data-label="view-all"></div>
+									</div>
+									<div class="product__info relative">
+										<div class="clearfix">
+											<div class="product__spec float-left">
+												<a class="product__link" id="product_8NX8YBQ7JSZW"
+													href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
+													product-name="${productVo.productName}"
+													product-sku="8NX8YBQ7JSZW"
+													product-price="${productVo.price}"
+													data-category="ecommerce" data-action="select_item">
+													<p class="product__blue-glasses font--kr font--11 font--rg">Blue
+														Light Protection</p>
+													<p class="product__name font--kr font--13 font--bd">${productVo.productName}
 													</p>
-												<p class="product__price font--en font--12 font--rg"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productVo.price}" />원</p>
-												<p class="product__colors">
-													+<span class="color-count">${count.count}</span> Colors
-												</p>
-											</a>
-										</div>
-										<c:if test="${productVo.isWish eq 1}">
-											<button class="product__wish float-right jsBtnWish on">
-										</c:if>
+													<p class="product__price font--en font--12 font--rg">
+														<fmt:formatNumber type="number" maxFractionDigits="3"
+															value="${productVo.price}" />
+														원
+													</p>
+													<p class="product__colors">
+														+<span class="color-count">${count.count}</span> Colors
+													</p>
+												</a>
+											</div>
+											<c:if test="${productVo.isWish eq 1}">
+												<button class="product__wish float-right jsBtnWish on"
+													onclick="goDelete(${productVo.productDetailId});">
+											</c:if>
 
-										<c:if test="${productVo.isWish eq 0}">
-											<button class="product__wish float-right jsBtnWish">
-										</c:if>
-										<svg version="1.1" baseProfile="basic" id="레이어_1"
-											xmlns="http://www.w3.org/2000/svg"
-											xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-											viewBox="0 0 30 30" xml:space="preserve">
+											<c:if test="${productVo.isWish eq 0}">
+												<button class="product__wish float-right jsBtnWish"
+													onclick="goAdd(${productVo.productDetailId});">
+											</c:if>
+											<svg version="1.1" baseProfile="basic" id="레이어_1"
+												xmlns="http://www.w3.org/2000/svg"
+												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+												viewBox="0 0 30 30" xml:space="preserve">
 								                    <path fill="none" stroke-miterlimit="10"
-												d="M27.4,9.4c-0.4-3.3-3.2-5.9-6.6-5.9c-2.5,0-4.6,1.3-5.8,3.3
+													d="M27.4,9.4c-0.4-3.3-3.2-5.9-6.6-5.9c-2.5,0-4.6,1.3-5.8,3.3
 								                        c-1.2-2-3.3-3.3-5.8-3.3C5.8,3.5,3,6.1,2.6,9.4c-0.1,0.2-0.1,0.5-0.1,0.8C2.5,18,15,25.6,15,25.6S27.5,18,27.5,10.2
 								                        C27.5,9.9,27.4,9.6,27.4,9.4z"></path>
 								                    </svg>
-										</button>
+											</button>
 
+										</div>
+										<button class="product__cart font--kr font--14 font--md"
+											style="display: none;">쇼핑백에 추가</button>
 									</div>
-									<button class="product__cart font--kr font--14 font--md"
-										style="display: none;">쇼핑백에 추가</button>
 								</div>
-							</div>
-						  </c:if>	
-						  
-						  <c:if test="${productVo.isBlueLight eq 0}">
-							<div class="product">
-								<div class="product-image-swiper swiper"
-									data-sub-image="<%=ctxPath%>${productVo.mainImageFile}">
-									<a
-										class="product__link product-image-swiper__wrapper swiper-wrapper"
-										id="8NX8YBQ7JSZW" href=""
-										product-name="${productVo.productName}"
-										product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-										data-category="ecommerce" data-action="select_item"
-										tabindex="-1" aria-hidden="true">
-										<div class="product-image-swiper__slide swiper-slide">
-											<div class="product__image-wrapper">
-												<img data-src="" alt=""
-													src="<%=ctxPath%>${productVo.mainImageFile}">
+							</c:if> <c:if test="${productVo.isBlueLight eq 0}">
+								<div class="product">
+									<div class="product-image-swiper swiper"
+										data-sub-image="<%=ctxPath%>${productVo.mainImageFile}">
+										<a
+											class="product__link product-image-swiper__wrapper swiper-wrapper"
+											id="8NX8YBQ7JSZW"
+											href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
+											product-name="${productVo.productName}"
+											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
+											data-category="ecommerce" data-action="select_item"
+											tabindex="-1" aria-hidden="true">
+											<div class="product-image-swiper__slide swiper-slide">
+												<div class="product__image-wrapper">
+													<img data-src="" alt=""
+														src="<%=ctxPath%>${productVo.mainImageFile}">
+												</div>
 											</div>
-										</div>
-									</a>
-									<div class="product-image-swiper__pagination swiper-pagination"></div>
-									<div
-										class="product-image-swiper__button product-image-swiper__button--prev swiper-button-prev"
-										product-name="${productVo.productName}"
-										product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-										data-category="carousel" data-action="click_left"
-										data-label="view-all"></div>
-									<div
-										class="product-image-swiper__button product-image-swiper__button--next swiper-button-next"
-										product-name="${productVo.productName}"
-										product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-										data-category="carousel" data-action="click_right"
-										data-label="view-all"></div>
-								</div>
-								<div class="product__info relative">
-									<div class="clearfix">
-										<div class="product__spec float-left">
-											<a class="product__link" id="product_8NX8YBQ7JSZW" href=""
-												product-name="${productVo.productName}"
-												product-sku="8NX8YBQ7JSZW"
-												product-price="${productVo.price}" data-category="ecommerce"
-												data-action="select_item">
-												<p class="product__name font--kr font--13 font--bd">${productVo.productName}
+										</a>
+										<div
+											class="product-image-swiper__pagination swiper-pagination"></div>
+										<div
+											class="product-image-swiper__button product-image-swiper__button--prev swiper-button-prev"
+											product-name="${productVo.productName}"
+											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
+											data-category="carousel" data-action="click_left"
+											data-label="view-all"></div>
+										<div
+											class="product-image-swiper__button product-image-swiper__button--next swiper-button-next"
+											product-name="${productVo.productName}"
+											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
+											data-category="carousel" data-action="click_right"
+											data-label="view-all"></div>
+									</div>
+									<div class="product__info relative">
+										<div class="clearfix">
+											<div class="product__spec float-left">
+												<a class="product__link" id="product_8NX8YBQ7JSZW"
+													href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
+													product-name="${productVo.productName}"
+													product-sku="8NX8YBQ7JSZW"
+													product-price="${productVo.price}"
+													data-category="ecommerce" data-action="select_item">
+													<p class="product__name font--kr font--13 font--bd">${productVo.productName}
 													</p>
-												<p class="product__price font--en font--12 font--rg"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productVo.price}" />원</p>
-												<p class="product__colors">
-													+<span class="color-count">${count.count}</span> Colors
-												</p>
-											</a>
-										</div>
-										<c:if test="${productVo.isWish eq 1}">
-											<button class="product__wish float-right jsBtnWish on">
-										</c:if>
+													<p class="product__price font--en font--12 font--rg">
+														<fmt:formatNumber type="number" maxFractionDigits="3"
+															value="${productVo.price}" />
+														원
+													</p>
+													<p class="product__colors">
+														+<span class="color-count">${count.count}</span> Colors
+													</p>
+												</a>
+											</div>
+											<c:if test="${productVo.isWish eq 1}">
+												<button class="product__wish float-right jsBtnWish on"
+													onclick="goDelete(${productVo.productDetailId});">
+											</c:if>
 
-										<c:if test="${productVo.isWish eq 0}">
-											<button class="product__wish float-right jsBtnWish">
-										</c:if>
-										<svg version="1.1" baseProfile="basic" id="레이어_1"
-											xmlns="http://www.w3.org/2000/svg"
-											xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-											viewBox="0 0 30 30" xml:space="preserve">
+											<c:if test="${productVo.isWish eq 0}">
+												<button class="product__wish float-right jsBtnWish"
+													onclick="goAdd(${productVo.productDetailId});">
+											</c:if>
+											<svg version="1.1" baseProfile="basic" id="레이어_1"
+												xmlns="http://www.w3.org/2000/svg"
+												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+												viewBox="0 0 30 30" xml:space="preserve">
 								                    <path fill="none" stroke-miterlimit="10"
-												d="M27.4,9.4c-0.4-3.3-3.2-5.9-6.6-5.9c-2.5,0-4.6,1.3-5.8,3.3
+													d="M27.4,9.4c-0.4-3.3-3.2-5.9-6.6-5.9c-2.5,0-4.6,1.3-5.8,3.3
 								                        c-1.2-2-3.3-3.3-5.8-3.3C5.8,3.5,3,6.1,2.6,9.4c-0.1,0.2-0.1,0.5-0.1,0.8C2.5,18,15,25.6,15,25.6S27.5,18,27.5,10.2
 								                        C27.5,9.9,27.4,9.6,27.4,9.4z"></path>
 								                    </svg>
-										</button>
+											</button>
 
+										</div>
+										<button class="product__cart font--kr font--14 font--md"
+											style="display: none;">쇼핑백에 추가</button>
 									</div>
-									<button class="product__cart font--kr font--14 font--md"
-										style="display: none;">쇼핑백에 추가</button>
 								</div>
-							</div>
-						  </c:if>
-						</li>
+							</c:if></li>
 					</c:if>
-					
+
 				</c:forEach>
 			</c:forEach>
 		</ul>
-		
+
 		<div class="product-list__loading gm-component__spinner-container">
 			<div class="gm-component__spinner-wrapper">
 				<div class="gm-component__spinner"></div>
