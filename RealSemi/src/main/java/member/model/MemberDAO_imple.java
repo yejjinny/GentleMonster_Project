@@ -236,6 +236,37 @@ public class MemberDAO_imple implements MemberDAO {
 
 	} // end of int updateIsDeletedMember(int memberId) throws
 
+	
+	//비밀번호 찾기를 통해 이메일 인증 후 비밀번호를 변경할 때 사용 _ 예인
+	@Override
+	public int updateMemberPwdKey(Map<String, String> paraMap) throws SQLException {
+		
+		int result = 0;
+		 
+		String sql = "";
+
+		try {
+
+			conn = ds.getConnection();
+
+			sql = " update tbl_member set pwd=?"
+					+ "where email=? ";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Sha256.encrypt(paraMap.get("password")));
+			pstmt.setString(2, paraMap.get("email"));
+
+			result = pstmt.executeUpdate();
+			
+
+		} finally {
+			close();
+		}
+
+		return result;
+		
+		
+	}// end of int updateMemberPwdKey(Map<String, String> paraMap) 
 	/*
 	 * 예인 추가
 	 * -----------------------------------------------------------------------------
@@ -556,4 +587,6 @@ public class MemberDAO_imple implements MemberDAO {
 	}// end of public boolean emailDuplicateCheck(String email) throws
 		// SQLException------
 	/* 민경 추가 ----------------------------------------------------------------------------------------------------- */
+
+	
 }
