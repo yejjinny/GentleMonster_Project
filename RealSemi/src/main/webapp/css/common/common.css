@@ -963,11 +963,13 @@ input#search {
 	line-height: 25px;
 	width: 400px;
 	padding-left: 10px;
+	margin-top: 5px;
 }
 
 .searchFrmWrap {
 	display: table;
 	margin: 0 auto;
+	/* vertical-align: middle; */
 }
 
 svg#레이어_2 {
@@ -981,6 +983,7 @@ button.searchBtn {
 
 form.searchFrm {
 	margin-bottom: 5%;
+	/* display: -webkit-inline-box; */
 }
 
 
@@ -1338,4 +1341,14 @@ input[type=number] {
 /* footer modal 전용*/
 div#guarantee_modal .modal-body {
     margin: 0 auto;
+}
+/* 검색창 */
+.collection-cate__thumb:hover {
+    border: 1px solid black;
+}
+.collection-cate__name.font--kr.font--11.font--md {
+    font-weight: bolder;
+}
+.n-search-popup__title.font--kr.font--13.font--md {
+    font-weight: bold;
 }

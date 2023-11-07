@@ -20,8 +20,7 @@ String ctxPath = request.getContextPath();
 					</em>
 				</h1>
 				<div class="mm-title-area text-area__link-area text-area__link-flex">
-					<!-- 수정필 -->
-					<button type="button" onclick="location=href='수정필'" class="mm-common__style mm_link font--kr text-area__link font--13 font--13-m">구매하기</button>
+					<button type="button" onclick="location=href='<%=ctxPath%>/product/product.gm?categoryId=1'" class="mm-common__style mm_link font--kr text-area__link font--13 font--13-m">구매하기</button>
 				</div>
 			</div>
 		</article>

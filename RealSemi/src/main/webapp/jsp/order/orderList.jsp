@@ -39,7 +39,7 @@ String ctxPath = request.getContextPath();
 			</ul>
 			<div class="topnav-right">
 				<div class="page_menu_item link_item">
-					<a class="font--kr font--15 font--rg" href="수정필">로그아웃</a>
+					<a class="font--kr font--15 font--rg" href="<%=ctxPath%>/register/logout.gm">로그아웃</a>
 				</div>
 			</div>
 		</div>

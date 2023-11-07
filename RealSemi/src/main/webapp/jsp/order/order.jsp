@@ -303,7 +303,7 @@ String ctxPath = request.getContextPath();
 
 				<!-- Modal header -->
 				<div class="modal-header">
-					<h5 class="modal-title font--kr">이용약관</h5>
+					<h5 class="modal-title font--kr">개인정보수집</h5>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
