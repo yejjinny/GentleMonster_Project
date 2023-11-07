@@ -84,13 +84,10 @@ public class MemberDAO_imple implements MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, paraMap.get("memberId"));
 			pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd")));
-			// pstmt.setString(1, aes.encrypt( email )); //평문인 email을 받아서 암호화 시킨다. 그후 비교하기
-			// 위해
-
+			 
 			rs = pstmt.executeQuery();
 
-			isExists = rs.next(); // 행이 있으면(중복된 userid) true
-			// 행이 없으면(사용가능한 userid) false
+			isExists = rs.next();  
 
 		} finally {
 
@@ -117,15 +114,11 @@ public class MemberDAO_imple implements MemberDAO {
 
 			pstmt.setString(1, memberId);
 			pstmt.setString(2, pwd);
-			// pstmt.setString(2, Sha256.encrypt(pwd));
-			// pstmt.setString(1, aes.encrypt( email )); //평문인 email을 받아서 암호화 시킨다. 그후 비교하기
-			// 위해
+			 
 
 			rs = pstmt.executeQuery();
 
-			isExists = rs.next(); // 행이 있으면(중복된 userid) true
-			// 행이 없으면(사용가능한 userid) false
-			// System.out.println("확인 isExists : "+isExists );
+			isExists = rs.next(); 
 
 		} finally {
 
@@ -153,28 +146,13 @@ public class MemberDAO_imple implements MemberDAO {
 			pstmt.setString(1, member.getEmail());
 			pstmt.setInt(2, member.getGender());
 			pstmt.setInt(3, member.getMemberId());
-			// pstmt.setString(2, Sha256.encrypt( member.getPwd() ) ); //암호를 SHA256 알고리즘으로
-			// 단방향 암호화 시킨다.
-
-			/*
-			 * 
-			 * pstmt.setString(3, aes.encrypt(member.getEmail() ) ); //이메일을 AES256알고리즘으로 양방향
-			 * 시킨다. pstmt.setString(4, aes.encrypt(member.getMobile() ) ); //휴대번호을
-			 * AES256알고리즘으로 양방향 시킨다. pstmt.setString(5, member.getPostcode() );
-			 * pstmt.setString(6, member.getAddress() ); pstmt.setString(7,
-			 * member.getDetailaddress()); pstmt.setString(8, member.getExtraaddress() );
-			 * pstmt.setString(9, member.getUserid() );
-			 * 
-			 */
+			 
+			 
 			result = pstmt.executeUpdate();
 
 		}
 
-		/*
-		 * catch(GeneralSecurityException | UnsupportedEncodingException e ) {
-		 * 
-		 * e.printStackTrace(); }
-		 */
+		 
 		finally {
 
 			close();
@@ -248,12 +226,7 @@ public class MemberDAO_imple implements MemberDAO {
 			result = pstmt.executeUpdate();
 
 		}
-
-		/*
-		 * catch(GeneralSecurityException | UnsupportedEncodingException e ) {
-		 * 
-		 * e.printStackTrace(); }
-		 */
+ 
 		finally {
 
 			close();
@@ -273,169 +246,174 @@ public class MemberDAO_imple implements MemberDAO {
 	// ------------------------------------------------------------------------------------------
 
 	// 관리자_회원목록 총 페이지 수 취득
-	@Override
-	public int getTotalPage(Map<String, String> paraMap) throws SQLException {
+	   @Override
+	   public int getTotalPage(Map<String, String> paraMap) throws SQLException {
 
-		int totalPage = 0;
+	      int totalPage = 0;
 
-		try {
-			conn = ds.getConnection();
+	      try {
+	         conn = ds.getConnection();
 
-			String sql = "select ceil( count(*) / 2 ) from tbl_member where grade != 2 ";
+	         String sql = "select ceil( count(*) / 10 ) from tbl_member where grade != 2 ";
 
-			String colName = paraMap.get("colName");
-			String searchKeyword = paraMap.get("value");
+	         String colName = paraMap.get("colName");
+	         String searchKeyword = paraMap.get("value");
 
-			if ((colName != null && !colName.trim().isEmpty())
-					&& (searchKeyword != null && !searchKeyword.trim().isEmpty())) {
+	         if ((colName != null && !colName.trim().isEmpty())
+	               && (searchKeyword != null && !searchKeyword.trim().isEmpty())) {
 
-				sql += " and " + colName + " like '%' || ? || '%' ";
-			}
+	            sql += " and " + colName + " like '%' || ? || '%' ";
+	         }
 
-			pstmt = conn.prepareStatement(sql);
+	         pstmt = conn.prepareStatement(sql);
 
-			if ((colName != null && !colName.trim().isEmpty())
-					&& (searchKeyword != null && !searchKeyword.trim().isEmpty())) {
-				pstmt.setString(1, searchKeyword);
-			}
+	         if ((colName != null && !colName.trim().isEmpty())
+	               && (searchKeyword != null && !searchKeyword.trim().isEmpty())) {
+	            pstmt.setString(1, searchKeyword);
+	         }
 
-			rs = pstmt.executeQuery();
+	         rs = pstmt.executeQuery();
 
-			rs.next();
+	         rs.next();
 
-			totalPage = rs.getInt(1);
+	         totalPage = rs.getInt(1);
 
-		} finally {
-			close();
-		}
+	      } finally {
+	         close();
+	      }
 
-		return totalPage;
+	      return totalPage;
 
-	}
+	   }
 
-	// 관리자_회원목록 내용 취득
-	@Override
-	public List<MemberVO> getMemberList(int pageNum) throws SQLException {
-		List<MemberVO> memberList = new ArrayList<>();
+	   // 관리자_회원목록 내용 취득
+	   @Override
+	   public List<MemberVO> getMemberList(int pageNum) throws SQLException {
+	      List<MemberVO> memberList = new ArrayList<>();
 
-		try {
-			conn = ds.getConnection();
-			// 수정필
-			String sql = "select " + " rno, memberId, fullName, email, gender, isDeleted " + "from " + "(" + "select "
-					+ "row_number() over (order by memberId) as rno, memberId, familyName || lastName as fullName, email, gender, isDeleted "
-					+ "from  tbl_member " + "where grade != '2' " + ") "
-					+ "where rno between ((? * 2) - 1) and (? * 2)";
+	      try {
+	         conn = ds.getConnection();
+	         // 수정필
+	         String sql = "select " + " rno, memberId, fullName, email, gender, isDeleted " + "from " + "(" + "select "
+	               + "row_number() over (order by memberId) as rno, memberId, familyName || lastName as fullName, email, gender, isDeleted "
+	               + "from  tbl_member " + "where grade != '2' " + ") "
+	               + "where rno between ((? * 10) - 9) and (? * 10)";
 
-			pstmt = conn.prepareStatement(sql);
+	         pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, pageNum);
-			pstmt.setInt(2, pageNum);
+	         pstmt.setInt(1, pageNum);
+	         pstmt.setInt(2, pageNum);
 
-			rs = pstmt.executeQuery();
+	         rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				MemberVO mvo = new MemberVO();
-				mvo.setRno(rs.getLong("rno"));
-				mvo.setMemberId(rs.getInt("memberId"));
-				mvo.setFullName(rs.getString("fullName"));
-				mvo.setEmail(rs.getString("email"));
-				mvo.setGender(rs.getInt("gender"));
-				mvo.setIsDeleted(rs.getInt("isDeleted"));
+	         while (rs.next()) {
+	            MemberVO mvo = new MemberVO();
+	            mvo.setRno(rs.getLong("rno"));
+	            mvo.setMemberId(rs.getInt("memberId"));
+	            mvo.setFullName(rs.getString("fullName"));
+	            mvo.setEmail(rs.getString("email"));
+	            mvo.setGender(rs.getInt("gender"));
+	            mvo.setIsDeleted(rs.getInt("isDeleted"));
 
-				memberList.add(mvo);
-			} // while of while(rs.next())-----------------
+	            memberList.add(mvo);
+	         } // while of while(rs.next())-----------------
 
-		} finally {
-			close();
-		}
+	      } finally {
+	         close();
+	      }
 
-		return memberList;
-	}
+	      return memberList;
+	   }
 
-	// 관리자_회원목록 검색결과 취득
-	@Override
-	public List<MemberVO> searchMember(Map<String, String> paraMap) throws SQLException {
-		List<MemberVO> memberList = new ArrayList<>();
+	   // 관리자_회원목록 검색결과 취득
+	   @Override
+	   public List<MemberVO> searchMember(Map<String, String> paraMap) throws SQLException {
+	      List<MemberVO> memberList = new ArrayList<>();
 
-		try {
-			conn = ds.getConnection();
+	      try {
+	         conn = ds.getConnection();
 
-			String colName = paraMap.get("colName");
+	         String colName = paraMap.get("colName");
 
-			String searchKeyword = paraMap.get("value");
+	         String searchKeyword = paraMap.get("value");
 
-			if ("gender".equalsIgnoreCase(colName)) {
-				// 유저가 성별을 검색하고자 했다면
+	         if ("gender".equalsIgnoreCase(colName)) {
+	            // 유저가 성별을 검색하고자 했다면
 
-				if ("남성".equals(searchKeyword))
-					searchKeyword = "1";
+	            if ("남성".equals(searchKeyword))
+	               searchKeyword = "1";
 
-				if ("여성".equals(searchKeyword))
-					searchKeyword = "2";
+	            if ("여성".equals(searchKeyword))
+	               searchKeyword = "2";
 
-				if ("선택 안함".equals(searchKeyword))
-					searchKeyword = "";
-			}
+	            if ("선택 안함".equals(searchKeyword))
+	               searchKeyword = "3";
+	         }
 
-			if ("isDeleted".equalsIgnoreCase(colName)) {
-				// 유저가 탈퇴여부를 검색하고자 했다면
+	         if ("isDeleted".equalsIgnoreCase(colName)) {
+	            // 유저가 탈퇴여부를 검색하고자 했다면
 
-				if ("정상".equals(searchKeyword))
-					searchKeyword = "0";
+	            if ("정상".equals(searchKeyword))
+	               searchKeyword = "0";
 
-				if ("탈퇴".equals(searchKeyword))
-					searchKeyword = "1";
+	            if ("탈퇴".equals(searchKeyword))
+	               searchKeyword = "1";
 
-			}
+	         }
 
-			String order = paraMap.get("order");
+	         String order = paraMap.get("order");
 
-			// 수정필
-			String sql = "select " + "rno, memberId, fullName, email, gender, isDeleted " + "from " + "( " + "select "
-					+ "row_number() over (order by " + order + ") as rno, "
-					+ "memberId, familyName || lastName as fullName, email, gender, isDeleted " + "from  tbl_member "
-					+ "where grade != '2' ";
+	         // 수정필
+	         String sql = "select " 
+	               + "rno, memberId, fullName, email, gender, isDeleted " 
+	               + "from "
+	               + "( " 
+	               + "select "
+	               + "row_number() over (order by " + order + ") as rno, "
+	               + "memberId, familyName || lastName as fullName, email, gender, isDeleted " + "from  tbl_member "
+	               + "where grade != '2' ";
 
-			if ("gender".equalsIgnoreCase(colName) && "".equals(searchKeyword)) {
-				sql += "and " + colName + " IS NULL " + ") " + "where rno between ((? * 2) - 9 ) and (? * 2)";
+	         if ("gender".equalsIgnoreCase(colName) && "".equals(searchKeyword)) {
+	            sql += "and " + colName + " IS NULL " + ") " + "where rno between ((? * 10) - 9 ) and (? * 10)";
 
-				pstmt = conn.prepareStatement(sql);
+	            pstmt = conn.prepareStatement(sql);
 
-				pstmt.setInt(1, Integer.parseInt(paraMap.get("pageNum")));
-				pstmt.setInt(2, Integer.parseInt(paraMap.get("pageNum")));
+	            pstmt.setInt(1, Integer.parseInt(paraMap.get("pageNum")));
+	            pstmt.setInt(2, Integer.parseInt(paraMap.get("pageNum")));
 
-			} else {
+	         } else {
 
-				// 수정필
-				sql += "and " + colName + " like '%'|| ? ||'%' " + ") " + "where rno between ((? * 2) - 1) and (? * 2)";
+	            // 수정필
+	            sql += "and " + colName + " like '%'|| ? ||'%' " + ") " + "where rno between ((? * 10) - 9) and (? * 10)";
 
-				pstmt = conn.prepareStatement(sql);
+	            pstmt = conn.prepareStatement(sql);
 
-				pstmt.setString(1, searchKeyword);
-				pstmt.setInt(2, Integer.parseInt(paraMap.get("pageNum")));
-				pstmt.setInt(3, Integer.parseInt(paraMap.get("pageNum")));
-			}
+	            pstmt.setString(1, searchKeyword);
+	            pstmt.setInt(2, Integer.parseInt(paraMap.get("pageNum")));
+	            pstmt.setInt(3, Integer.parseInt(paraMap.get("pageNum")));
+	         }
 
-			rs = pstmt.executeQuery();
+	         rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				MemberVO mvo = new MemberVO();
-				mvo.setRno(rs.getLong("rno"));
-				mvo.setMemberId(rs.getInt("memberId"));
-				mvo.setFullName(rs.getString("fullName"));
-				mvo.setEmail(rs.getString("email"));
-				mvo.setGender(rs.getInt("gender"));
-				mvo.setIsDeleted(rs.getInt("isDeleted"));
+	         while (rs.next()) {
+	            MemberVO mvo = new MemberVO();
+	            mvo.setRno(rs.getLong("rno"));
+	            mvo.setMemberId(rs.getInt("memberId"));
+	            mvo.setFullName(rs.getString("fullName"));
+	            mvo.setEmail(rs.getString("email"));
+	            mvo.setGender(rs.getInt("gender"));
+	            mvo.setIsDeleted(rs.getInt("isDeleted"));
 
-				memberList.add(mvo);
-			} // while of while(rs.next())-----------------
+	            memberList.add(mvo);
+	         } // while of while(rs.next())-----------------
 
-		} finally {
-			close();
-		}
+	      } finally {
+	         close();
+	      }
 
-		return memberList;
-	}
+	      return memberList;
+	   }
+	
 	// end of 예진 추가_ 관리자 회원목록 정보
 	// ------------------------------------------------------------------------------------
 	

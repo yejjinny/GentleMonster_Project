@@ -41,7 +41,7 @@ String ctxPath = request.getContextPath();
 			</ul>
 			<div class="topnav-right">
 				<div class="page_menu_item link_item">
-					<a class="font--kr font--15 font--rg" data-category="account" data-action="logout_click" data-label="" href="https://www.gentlemonster.com/kr/customer/logout">로그아웃</a>
+					<a class="font--kr font--15 font--rg" data-category="account" data-action="logout_click" data-label="" href="<%= ctxPath%>/register/logout.gm">로그아웃</a>
 				</div>
 			</div>
 		</div>
