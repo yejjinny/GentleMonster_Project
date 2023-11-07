@@ -46,4 +46,7 @@ public interface OrderDAO {
 	
 	// 유저_회원정보 주문내역 취득
 	List<OrderVO> getOrderListInfo(int memberId) throws SQLException;
+	
+	// 유저_주문취소
+	int cancleOrder(Map<String, String> paraMap) throws SQLException;
 }

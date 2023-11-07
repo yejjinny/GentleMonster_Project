@@ -89,6 +89,8 @@ $(document).ready(function() {
 
 		// 유저가 데이터베이스에 등록해뒀던 이미지의 미리보기가 존재할 수 있으니 지운다
 		$("img.previewImg").attr("src", "")
+		$("video.previewImg").attr("src", "")
+		$("video.previewImg").hide();
 
 	})
 
@@ -140,18 +142,9 @@ $(document).ready(function() {
 
 		// 유저가 데이터베이스에 등록해뒀던 이미지의 미리보기가 존재할 수 있으니 지운다
 		$("img.previewImg").attr("src", "")
+		$("video.previewImg").attr("src", "")
+		$("video.previewImg").hide();
 
-		if ($(this).val() == 1) {
-			/* 선글라스라면 블루라이트 차단을 무로 고정한다*/
-
-			$("input:radio[name='isBlueLight']:radio[value='0']").prop('checked', true);
-			$("input:radio[name='isBlueLight']").attr("disabled", true);
-		} else {
-			/* 안경이라면 블루라이트 차단을 마음대로 설정할 수 있도록 한다 */
-
-			$("input:radio[name='isBlueLight']").prop("checked", false);
-			$("input:radio[name='isBlueLight']").attr("disabled", false);
-		}
 
 		/* 선택한 카테고리에 해당되는 상품명을 취득한다 */
 		if ($("#productName").length == 1) {
@@ -196,7 +189,21 @@ $(document).ready(function() {
 
 			$("#frameColor > option:selected").prop("selected", false);
 			$("#lenseColor > option:selected").prop("selected", false);
+
 			/* end of 기존에 입력해뒀던 상품의 값을 초기화 한다*/
+
+		}
+
+		if ($(this).val() == 1) {
+			/* 선글라스라면 블루라이트 차단을 무로 고정한다*/
+
+			$("input:radio[name='isBlueLight']:radio[value='0']").prop('checked', true);
+			$("input:radio[name='isBlueLight']").attr("disabled", true);
+		} else {
+			/* 안경이라면 블루라이트 차단을 마음대로 설정할 수 있도록 한다 */
+
+			$("input:radio[name='isBlueLight']").prop("checked", false);
+			$("input:radio[name='isBlueLight']").attr("disabled", false);
 		}
 	})
 
@@ -207,6 +214,8 @@ $(document).ready(function() {
 	$(document).on("change", "select#productName", function() {
 		// 유저가 데이터베이스에 등록해뒀던 이미지의 미리보기가 존재할 수 있으니 지운다
 		$("img.previewImg").attr("src", "")
+		$("video.previewImg").attr("src", "")
+		$("video.previewImg").hide();
 
 
 		/* 기존에 입력해뒀던 상품의 값을 초기화 한다*/
@@ -277,6 +286,8 @@ $(document).ready(function() {
 
 		// 유저가 데이터베이스에 등록해뒀던 이미지의 미리보기가 존재할 수 있으니 지운다
 		$("img.previewImg").attr("src", "")
+		$("video.previewImg").attr("src", "")
+		$("video.previewImg").hide();
 	});
 
 
@@ -407,6 +418,8 @@ $(document).ready(function() {
 						$("input[name='stock']").val("");
 
 						$("img.previewImg").attr("src", "");
+						$("video.previewImg").attr("src", "");
+						$("video.previewImg").hide();
 
 						// mainImageFile의 존재 여부를 체크하기 위함 
 						isExist = false;
@@ -520,7 +533,14 @@ $(document).ready(function() {
 						$("input#mainImageFile").siblings("img.previewImg").attr("src", contextPath + text.mainImageFile.substr(1, text.mainImageFile.length));
 
 						for (let i = 0; i < text.detailImageList.length; i++) {
-							$("input#imageFile" + (i + 1)).siblings("img.previewImg").attr("src", contextPath + text.detailImageList[i]['imageFile' + (i + 1)].substr(1, text.detailImageList[i]['imageFile' + (i + 1)].length))
+							
+							if(text.detailImageList[i]['imageFile'+ (i + 1)].includes("mp4")){
+								$("input#imageFile" + (i + 1)).siblings("video.previewImg").attr("src", contextPath + text.detailImageList[i]['imageFile' + (i + 1)].substr(1, text.detailImageList[i]['imageFile' + (i + 1)].length))
+								$("input#imageFile" + (i + 1)).siblings("video.previewImg").show();
+							}else{
+								$("input#imageFile" + (i + 1)).siblings("img.previewImg").attr("src", contextPath + text.detailImageList[i]['imageFile' + (i + 1)].substr(1, text.detailImageList[i]['imageFile' + (i + 1)].length))
+							}
+							
 						}
 
 
@@ -553,6 +573,8 @@ $(document).ready(function() {
 						$("input[name='stock']").val("");
 
 						$("img.previewImg").attr("src", "");
+						$("video.previewImg").attr("src", "");
+						$("video.previewImg").hide();
 
 						// mainImageFile의 존재 여부를 체크하기 위함 
 						isExist = false;
@@ -566,7 +588,7 @@ $(document).ready(function() {
 	})
 
 
-	
+
 	/* 상품 등록 버튼을 눌렀을 경우 */
 	$("button.addProductBtn").click(function() {
 		// 상품을 등록하기 전 필수 입력 및 입력내용 체크용 변수 / true = 문제 없다 , false = 문제 있다
@@ -798,7 +820,7 @@ $(document).ready(function() {
 
 		if (addCheck) {
 			// 체크 결과 문제 없을 경우
-			
+
 			$("input[type='radio']").attr("disabled", false);
 			$("input[type='text']").each(function() {
 				$(this).attr("disabled", false);
@@ -807,7 +829,7 @@ $(document).ready(function() {
 			const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 			const origin = window.location.origin;
 			const contextPath = origin + pathname;
-			
+
 			const frm = document.addProductFrm;
 			frm.action = contextPath + `admin/addProduct.gm`;
 			frm.method = "post";
@@ -828,7 +850,7 @@ $(document).ready(function() {
 		fileReader.onload = function(event) { // FileReader.onload --> 파일 읽기 완료 성공시에만 작동하도록 하는 것임.
 			imageFile.find("img.previewImg").attr("src", fileReader.result);
 		};
-	}); 
+	});
 	/* end of 제품이미지 또는 추가이미지 파일을 선택하면 화면에 이미지를 미리 보여주기 구현하기 */
-	
+
 }); // end of $(document).ready(function(){}) ----------------------------------------------------------------------------------------------------------

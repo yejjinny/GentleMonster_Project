@@ -102,7 +102,9 @@ String ctxPath = request.getContextPath();
 									<tr>
 										<th class="table-active">가격</th>
 										<td>
-											<input type="text" id="price" name="price" autocomplete="off" size="20" value="" placeholder="콤마(,)없이 숫자만 입력하세요"> 원 <span class="alert">콤마(,)를 제외한 숫자만 입력해주세요</span>
+											<input type="text" id="price" name="price" autocomplete="off" size="20" value="" placeholder="콤마(,)없이 숫자만 입력하세요">
+											원
+											<span class="alert">콤마(,)를 제외한 숫자만 입력해주세요</span>
 										</td>
 									</tr>
 									<tr>
@@ -118,89 +120,127 @@ String ctxPath = request.getContextPath();
 									<tr>
 										<th class="table-active">실루엣</th>
 										<td>
-											<input type="text" id="silhouette" name="silhouette" value="" placeholder="실루엣을 입력하세요"  autocomplete="off"> <span class="alert">실루엣을 입력해주세요</span>
+											<input type="text" id="silhouette" name="silhouette" value="" placeholder="실루엣을 입력하세요" autocomplete="off">
+											<span class="alert">실루엣을 입력해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">디테일</th>
 										<td>
-											<input type="text" id="detail" name="detail" value="" placeholder="디테일을 입력하세요" autocomplete="off"> <span class="alert">디테일을 입력해주세요</span>
+											<input type="text" id="detail" name="detail" value="" placeholder="디테일을 입력하세요" autocomplete="off">
+											<span class="alert">디테일을 입력해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">템플길이</th>
 										<td>
-											<input type="text" class="size" id="templeLength" name="templeLength" size="20" value=""  autocomplete="off"> mm <span class="alert">템플길이를 입력해주세요</span>
+											<input type="text" class="size" id="templeLength" name="templeLength" size="20" value="" autocomplete="off">
+											mm
+											<span class="alert">템플길이를 입력해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">렌즈 가로 사이즈</th>
 										<td>
-											<input type="text" class="size" id="lenseWidthSize" name="lenseWidthSize" size="20" value=""  autocomplete="off"> mm <span class="alert">렌즈 가로 사이즈를 입력해주세요</span>
+											<input type="text" class="size" id="lenseWidthSize" name="lenseWidthSize" size="20" value="" autocomplete="off">
+											mm
+											<span class="alert">렌즈 가로 사이즈를 입력해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">렌즈 높이 사이즈</th>
 										<td>
-											<input type="text" class="size" id="lenseHeightSize" name="lenseHeightSize" size="20" value=""  autocomplete="off"> mm <span class="alert">렌즈 높이 사이즈를 입력해주세요</span>
+											<input type="text" class="size" id="lenseHeightSize" name="lenseHeightSize" size="20" value="" autocomplete="off">
+											mm
+											<span class="alert">렌즈 높이 사이즈를 입력해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">프레임 사이즈</th>
 										<td>
-											<input type="text" class="size" id="frameSize" name="frameSize" size="20" value=""  autocomplete="off"> mm <span class="alert">프레임 사이즈를 입력해주세요</span>
+											<input type="text" class="size" id="frameSize" name="frameSize" size="20" value="" autocomplete="off">
+											mm
+											<span class="alert">프레임 사이즈를 입력해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">브릿지</th>
 										<td>
-											<input type="text" class="size" id="bridge" name="bridge" size="20" value=""  autocomplete="off"> mm <span class="alert">브릿지를 입력해주세요</span>
+											<input type="text" class="size" id="bridge" name="bridge" size="20" value="" autocomplete="off">
+											mm
+											<span class="alert">브릿지를 입력해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">젠더</th>
 										<td>
-											<input type="radio" id="gender1" name="gender" value="1"> <label for="gender1">남성</label> <input type="radio" id="gender2" name="gender" value="2"> <label for="gender2">여성</label> <input type="radio" id="gender3" name="gender" value="3"> <label for="gender3">관계 없음</label> <span class="alert">젠더를 선택해주세요</span>
+											<input type="radio" id="gender1" name="gender" value="1">
+											<label for="gender1">남성</label>
+											<input type="radio" id="gender2" name="gender" value="2">
+											<label for="gender2">여성</label>
+											<input type="radio" id="gender3" name="gender" value="3">
+											<label for="gender3">관계 없음</label>
+											<span class="alert">젠더를 선택해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">미러 여부</th>
 										<td>
-											<input type="radio" id="isMirror1" name="isMirror" value="1"> <label for="isMirror1">유</label> <input type="radio" id="isMirror2" name="isMirror" value="0"> <label for="isMirror2">무</label> <span class="alert">미러여부를 선택해주세요</span>
+											<input type="radio" id="isMirror1" name="isMirror" value="1">
+											<label for="isMirror1">유</label>
+											<input type="radio" id="isMirror2" name="isMirror" value="0">
+											<label for="isMirror2">무</label>
+											<span class="alert">미러여부를 선택해주세요</span>
 										</td>
 									</tr>
 
 									<tr>
 										<th class="table-active">틴트 여부</th>
 										<td>
-											<input type="radio" id="isTint1" name="isTint" value="1"> <label for="isTint1">유</label> <input type="radio" id="isTint2" name="isTint" value="0"> <label for="isTint2">무</label> <span class="alert">틴트여부를 선택해주세요</span>
+											<input type="radio" id="isTint1" name="isTint" value="1">
+											<label for="isTint1">유</label>
+											<input type="radio" id="isTint2" name="isTint" value="0">
+											<label for="isTint2">무</label>
+											<span class="alert">틴트여부를 선택해주세요</span>
 										</td>
 									</tr>
 
 									<tr>
 										<th class="table-active">블루라이트 차단 여부</th>
 										<td>
-											<input type="radio" id="isBlueLight1" name="isBlueLight" value="1"> <label for="isBlueLight1">유</label> <input type="radio" id="isBlueLight2" name="isBlueLight" value="0"> <label for="isBlueLight2">무</label> <span class="alert">블루라이트 차단 여부를 선택해주세요</span>
+											<input type="radio" id="isBlueLight1" name="isBlueLight" value="1">
+											<label for="isBlueLight1">유</label>
+											<input type="radio" id="isBlueLight2" name="isBlueLight" value="0">
+											<label for="isBlueLight2">무</label>
+											<span class="alert">블루라이트 차단 여부를 선택해주세요</span>
 										</td>
 									</tr>
 
 									<tr>
 										<th class="table-active">인덱스 상품 여부</th>
 										<td>
-											<input type="radio" id="isIndex1" name="isIndex" value="1" /> <label for="isIndex1">유</label> <input type="radio" id="isIndex2" name="isIndex" value="0"> <label for="isIndex2">무</label> <span class="alert">인덱스 상품 여부를 선택해주세요</span>
+											<input type="radio" id="isIndex1" name="isIndex" value="1" />
+											<label for="isIndex1">유</label>
+											<input type="radio" id="isIndex2" name="isIndex" value="0">
+											<label for="isIndex2">무</label>
+											<span class="alert">인덱스 상품 여부를 선택해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">선물 추천 여부</th>
 										<td>
-											<input type="radio" id="isGift1" name="isGift" value="1" /> <label for="isGift1">유</label> <input type="radio" id="isGift2" name="isGift" value="0"> <label for="isGift2">무</label> <span class="alert">선물 추천 여부를 선택해주세요</span>
+											<input type="radio" id="isGift1" name="isGift" value="1" />
+											<label for="isGift1">유</label>
+											<input type="radio" id="isGift2" name="isGift" value="0">
+											<label for="isGift2">무</label>
+											<span class="alert">선물 추천 여부를 선택해주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">소개</th>
 										<td>
 											<!-- 텍스트박스로 수정할지말지 한번 봐보기 -->
-											<textarea id="description" name="description" cols="105" rows="8"  autocomplete="off"></textarea>
+											<textarea id="description" name="description" cols="105" rows="8" autocomplete="off"></textarea>
 											<span class="alert">소개를 입력하여주세요</span>
 											<!-- <input type="text" id="description" name="description" size="100" value=""> -->
 										</td>
@@ -208,13 +248,16 @@ String ctxPath = request.getContextPath();
 									<tr>
 										<th class="table-active">재고</th>
 										<td>
-											<input type="number" id="stock" name="stock" value="" min="1"  autocomplete="off"/> 개 <span class="alert">재고를 입력하여주세요</span>
+											<input type="number" id="stock" name="stock" value="" min="1" autocomplete="off" />
+											개
+											<span class="alert">재고를 입력하여주세요</span>
 										</td>
 									</tr>
 									<tr>
 										<th class="table-active">대표사진</th>
 										<td>
-											<input type="file" accept="image/*" class="imageFile" id="mainImageFile" name="mainImageFile" /> <span class="alert">대표사진을 첨부하여주세요</span>
+											<input type="file" accept="image/*" class="imageFile" id="mainImageFile" name="mainImageFile" />
+											<span class="alert">대표사진을 첨부하여주세요</span>
 											<img class="previewImg" src="" />
 										</td>
 									</tr>
@@ -225,6 +268,9 @@ String ctxPath = request.getContextPath();
 										<td>
 											<input type="file" accept="image/*" class="imageFile" id="imageFile1" name="imageFile1" />
 											<img class="previewImg" src="" />
+											<video id="" class="previewImg" autoplay="" loop="" muted="" playsinline="" poster="" style="display:none">
+												<source src="" type="video/mp4">
+											</video>
 										</td>
 									</tr>
 									<tr>
@@ -234,6 +280,9 @@ String ctxPath = request.getContextPath();
 										<td>
 											<input type="file" accept="image/*" class="imageFile" id="imageFile2" name="imageFile2" />
 											<img class="previewImg" src="" />
+											<video id="" class="previewImg" autoplay="" loop="" muted="" playsinline="" poster="" style="display:none">
+												<source src="" type="video/mp4">
+											</video>
 										</td>
 									</tr>
 									<tr>
@@ -243,6 +292,9 @@ String ctxPath = request.getContextPath();
 										<td>
 											<input type="file" accept="image/*" class="imageFile" id="imageFile3" name="imageFile3" />
 											<img class="previewImg" src="" />
+											<video id="" class="previewImg" autoplay="" loop="" muted="" playsinline="" poster="" style="display:none">
+												<source src="" type="video/mp4">
+											</video>
 										</td>
 									</tr>
 									<tr>
@@ -252,6 +304,9 @@ String ctxPath = request.getContextPath();
 										<td>
 											<input type="file" accept="image/*" class="imageFile" id="imageFile4" name="imageFile4" />
 											<img class="previewImg" src="" />
+											<video id="" class="previewImg" autoplay="" loop="" muted="" playsinline="" poster="" style="display:none">
+												<source src="" type="video/mp4">
+											</video>
 										</td>
 									</tr>
 									<tr>
@@ -261,6 +316,9 @@ String ctxPath = request.getContextPath();
 										<td>
 											<input type="file" accept="image/*" class="imageFile" id="imageFile5" name="imageFile5" />
 											<img class="previewImg" src="" />
+											<video id="" class="previewImg" autoplay="" loop="" muted="" playsinline="" poster="" style="display:none">
+												<source src="" type="video/mp4">
+											</video>
 										</td>
 									</tr>
 									<tr>
@@ -270,6 +328,9 @@ String ctxPath = request.getContextPath();
 										<td>
 											<input type="file" accept="image/*" class="imageFile" id="imageFile6" name="imageFile6" />
 											<img class="previewImg" src="" />
+											<video id="" class="previewImg" autoplay="" loop="" muted="" playsinline="" poster="" style="display:none">
+												<source src="" type="video/mp4">
+											</video>
 										</td>
 									</tr>
 								</tbody>

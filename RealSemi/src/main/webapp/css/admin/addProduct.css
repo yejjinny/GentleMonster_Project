@@ -1498,3 +1498,8 @@ img.previewImg {
     margin-top: 10px;
     margin-bottom: 5px;
 }
+video.previewImg {
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}

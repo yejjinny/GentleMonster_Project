@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMessage;
 
 public class GoogleMail {
 
-	public void send_certification_code(String recipient, String data) throws Exception {
+	public void send_certification_code(String subject, String recipient, String data) throws Exception {
 
 		// 1. 정보를 담기 위한 객체
 		Properties prop = new Properties();
@@ -47,9 +47,7 @@ public class GoogleMail {
 
 		// 메일의 내용을 담기 위한 객체생성
 		MimeMessage msg = new MimeMessage(ses);
-
-		// 제목 설정
-		String subject = "[GENTLE MONSTER] 주문내역 안내";
+		
 		msg.setSubject(subject);
 
 		// 보내는 사람의 메일주소

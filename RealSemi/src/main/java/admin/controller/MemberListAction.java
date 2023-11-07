@@ -14,7 +14,8 @@ import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 
 /**
- * 작성자 신예진 관리자용 회원목록 Controller
+ * 작성자 신예진 
+ * 관리자용 회원목록 Controller
  */
 public class MemberListAction extends AbstractController {
 
