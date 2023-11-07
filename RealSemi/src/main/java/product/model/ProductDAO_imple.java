@@ -72,14 +72,15 @@ public class ProductDAO_imple implements ProductDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = " select " + " productDetailId, "
+			String sql = " select    productDetailId, "
 					+ " productGroupName||' '||frameColorEng as productName, pd.isbluelight,fk_productgroupid, "
-					+ " price, " + " mainImageFile, " + " nvl2(wishid, 1, 0) as isWish " + " from "
+					+ " price,    mainImageFile,    nvl2(wishid, 1, 0) as isWish, REGISTERDAY from "
 					+ " tbl_productGroup pg "
 					+ " join tbl_productDetail pd on pg.productGroupId = pd.fk_productGroupId "
 					+ " join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId "
 					+ " left join (select * from tbl_wishList where fk_memberId = ? ) w on pd.productDetailId = w.fk_productDetailId "
-					+ " where pg.FK_CATEGORYID = ? " + " order by 1 ";
+					+ " where pg.FK_CATEGORYID = ? "
+					+ " order by PRODUCTDETAILID desc ";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -103,6 +104,7 @@ public class ProductDAO_imple implements ProductDAO {
 				provo.setPrice(rs.getLong(5));
 				provo.setMainImageFile(rs.getString(6));
 				provo.setIsWish(rs.getInt(7));
+				provo.setRegisterDay(rs.getString(8));
 
 				// System.out.println("test => " + provo.getIsBlueLight());
 				/*
@@ -255,7 +257,7 @@ public class ProductDAO_imple implements ProductDAO {
 
 			// order by 정렬 처리하기
 
-			sql += " order by " + paraMap.get("order");
+			sql += " ORDER BY " + paraMap.get("order") + ", PRODUCTDETAILID DESC";
 
 			/* System.out.println("sql 확인 : " + sql); */
 
@@ -464,11 +466,17 @@ public class ProductDAO_imple implements ProductDAO {
 					+ " join tbl_productDetail pd on pg.productGroupId = pd.fk_productGroupId "
 					+ " join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId "
 					+ " left join (select * from tbl_wishList where fk_memberId = ? ) w on pd.productDetailId = w.fk_productDetailId "
-					+ " where pg.FK_CATEGORYID = ? and " + colName + "= ?  order by 1 ";
+					+ " where pg.FK_CATEGORYID = ? and " + colName + "= ?  order by PRODUCTDETAILID  desc ";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, paraMap.get("memberId"));
+			
+			if(paraMap.get("memberId") == 0) {
+				pstmt.setString(1,"");
+			}
+			else {
+				pstmt.setInt(1, paraMap.get("memberId"));
+			}
 
 			pstmt.setInt(2, paraMap.get("categoryId"));
 
@@ -1133,10 +1141,15 @@ public class ProductDAO_imple implements ProductDAO {
 		return pvo;
 	}
 
+
 	/*
 	 * end of 예진 추가_ 상품등록 정보
 	 * -----------------------------------------------------------------------------
 	 * -------
 	 */
 
+
+	
+	
+	
 }

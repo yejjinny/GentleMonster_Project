@@ -83,8 +83,7 @@ String ctxPath = request.getContextPath();
 							class="category__item category__item--View all relative swiper-slide swiper-slide-visible current"
 							style="width: 98px; border-color: #000;"><a
 							href="<%=ctxPath%>/product/category.gm?bestSeller=1&categoryId=1"
-							class="category__link" data-category="category"
-							data-action="bestsellers"> <span class="category__thumbnail"><img
+							class="category__link"> <span class="category__thumbnail"><img
 									src="<%=ctxPath%>/image/sunglasses/category/2.jpg"
 									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">베스트셀러</span>
@@ -270,14 +269,12 @@ String ctxPath = request.getContextPath();
 		<div class="list-btn content-top__right inline float-right">
 			<c:if test="${empty requestScope.isCategorySearch}">
 				<button data-toggle="modal" data-target="#filterModal" type="button"
-					class="filter-toggle inline jsFilterBtn " data-category="filter"
-					data-action="click_filter_open" data-label="filter_open"
-					aria-label="Open Filter Popup" aria-expanded="false">
+					class="filter-toggle inline jsFilterBtn">
 					<span class="filter-toggle__icon relative"> <span
 						class="filter-toggle__bar filter-toggle__bar--first"></span> <span
 						class="filter-toggle__bar filter-toggle__bar--second"></span>
 					</span> <span class="filter-toggle__txt font--kr font--11 font--md"
-						data-default="필터" data-close="Filter Close"> </span>
+						data-default="필터"> </span>
 				</button>
 			</c:if>
 		</div>
@@ -309,17 +306,15 @@ String ctxPath = request.getContextPath();
 
 						<!-- Filter content -->
 						<div class="filter-popup__content clearfix">
-							<div class="filter-popup__box float-left relative frame_color"
-								role="group" aria-labelledby="frame_color">
+							<div class="filter-popup__box float-left relative frame_color">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="frame_color-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="frame_color"
 										class="filter-subject__txt font--kr font--13 font--md">프레임
 										컬러</div>
 									<div class="filter-arrow n-arrow n-arrow--down jsFilterArrow"></div>
 								</button>
-								<div id="frame_color-list" class="filter" style="">
+								<div id="frame_color-list" class="filter">
 									<ul class="filter__list inline">
 										<c:forEach var="frameColorVo"
 											items="${requestScope.getFrameColor}" varStatus="status">
@@ -340,11 +335,9 @@ String ctxPath = request.getContextPath();
 									</ul>
 								</div>
 							</div>
-							<div class="filter-popup__box float-left relative lens_color"
-								role="group" aria-labelledby="lens_color">
+							<div class="filter-popup__box float-left relative lens_color">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="lens_color-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="lens_color"
 										class="filter-subject__txt font--kr font--13 font--md">렌즈
 										컬러</div>
@@ -369,21 +362,18 @@ String ctxPath = request.getContextPath();
 									</ul>
 								</div>
 							</div>
-							<div class="filter-popup__box float-left relative materials"
-								role="group" aria-labelledby="materials">
+							<div class="filter-popup__box float-left relative materials">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="materials-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="materials"
 										class="filter-subject__txt font--kr font--13 font--md">소재</div>
 									<div class="filter-arrow n-arrow n-arrow--down jsFilterArrow"></div>
 								</button>
-								<div id="materials-list" class="filter" style="">
+								<div id="materials-list" class="filter">
 									<ul class="filter__list inline">
 										<c:forEach var="materialVo"
 											items="${requestScope.getMaterial}" varStatus="status">
-											<li class="filter__item filter__item--inline relative"
-												data-category="filter" data-action="소재" data-label="아세테이트">
+											<li class="filter__item filter__item--inline relative">
 												<label for="materials[]_${status.index}"
 												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 													<input type="checkbox" name="materials" class="n-radio "
@@ -402,32 +392,28 @@ String ctxPath = request.getContextPath();
 							<div class="filter-popup__box float-left relative gender"
 								role="group" aria-labelledby="gender">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="gender-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="gender"
 										class="filter-subject__txt font--kr font--13 font--md">젠더</div>
 									<div class="filter-arrow n-arrow n-arrow--down jsFilterArrow"></div>
 								</button>
 								<div id="gender-list" class="filter" style="">
 									<ul class="filter__list inline">
-										<li class="filter__item filter__item--inline relative"
-											data-category="filter" data-action="젠더" data-label="남성"><label
+										<li class="filter__item filter__item--inline relative"><label
 											for="gender[]_0"
 											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 												<input type="checkbox" name="gender" class="n-radio "
 												value="1" id="gender[]_0">
 												<div class="input-box-check-layer"></div> 남성
 										</label></li>
-										<li class="filter__item filter__item--inline relative"
-											data-category="filter" data-action="젠더" data-label="여성"><label
+										<li class="filter__item filter__item--inline relative"><label
 											for="gender[]_1"
 											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 												<input type="checkbox" name="gender" class="n-radio "
 												value="2" id="gender[]_1">
 												<div class="input-box-check-layer"></div> 여성
 										</label></li>
-										<li class="filter__item filter__item--inline relative"
-											data-category="filter" data-action="젠더" data-label="유니섹스">
+										<li class="filter__item filter__item--inline relative">
 											<label for="gender[]_2"
 											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 												<input type="checkbox" name="gender[]" class="n-radio "
@@ -438,11 +424,9 @@ String ctxPath = request.getContextPath();
 									</ul>
 								</div>
 							</div>
-							<div class="filter-popup__box float-left relative" role="group"
-								aria-labelledby="filter_sort">
+							<div class="filter-popup__box float-left relative">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="filter_sort-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="filter_sort"
 										class="filter-subject__txt font--kr font--13 font--md">정렬</div>
 									<div class="filter-arrow n-arrow n-arrow--down jsFilterArrow"></div>
@@ -467,9 +451,7 @@ String ctxPath = request.getContextPath();
 												class="filter__checkbox n-checkbox n-checkbox--radio"></span>
 												낮은가격순
 										</label></li>
-										<li class="filter__item filter__item-sort relative"
-											data-category="filter" data-action="filter_option_click"
-											data-label="높은가격순"><label for="order_high_price"
+										<li class="filter__item filter__item-sort relative"><label for="order_high_price"
 											class="filter__label n-label font--kr font--12 font--rg">
 												<input type="radio" name="order"
 												class="n-radio n-radio--once " value="price Desc"
@@ -514,19 +496,16 @@ String ctxPath = request.getContextPath();
 <c:if test="${not empty requestScope.productList}">
 	<div id="product-list">
 
-		<ul id="filter-selected-result" class="product-list__wrapper inline"
-			role="list" aria-live="polite">
+		<ul id="filter-selected-result" class="product-list__wrapper inline">
 			<c:forEach var="productVo" items="${requestScope.productList}"
 				varStatus="status">
 				<c:forEach var="count" items="${requestScope.sunglassesCount}"
 					varStatus="status2">
 					<c:if
 						test="${productVo.fk_productGroupId eq count.fk_productGroupId}">
-						<li data-id="TW2WM9BHAYSR" role="listitem" data-product-index="44"
-							data-list-index="44">
+						<li>
 							<div class="product">
-								<div class="product-image-swiper swiper"
-									data-sub-image="https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_2.jpg,https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_3.jpg,https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_4.jpg">
+								<div class="product-image-swiper swiper">
 									<a
 										class="product__link product-image-swiper__wrapper swiper-wrapper"
 										href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
@@ -554,8 +533,7 @@ String ctxPath = request.getContextPath();
 											<a class="product__link" id="product_TW2WM9BHAYSR"
 												href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
 												product-name="${productVo.productName}"
-												product-price="${productVo.price}" data-category="ecommerce"
-												data-action="select_item">
+												product-price="${productVo.price}">
 												<p class="product__blue-glasses font--kr font--11 font--rg"></p>
 												<p class="product__name font--kr font--13 font--bd">${productVo.productName}</p>
 												<p class="product__price font--en font--12 font--rg">

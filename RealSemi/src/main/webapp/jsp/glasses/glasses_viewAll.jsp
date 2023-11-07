@@ -119,47 +119,45 @@ String ctxPath = request.getContextPath();
 
 
 					<c:if test="${not empty requestScope.isBluelight}">
-					<li
-						class="category__item category__item--View all relative swiper-slide current"
-						data-sub-category="NjQ=" data-sub-category-all-view=""
-						data-category-name="블루라이트 차단"
-						data-sub-category-url-key="blue-light-lenses"><a href="<%= ctxPath %>/product/category.gm?isBluelight=1&categoryId=2"
-						class="category__link" onclick="return delCurrentScroll();"
-						data-category="category" data-action="blue-light-lenses"> <span
-							class="category__thumbnail"><img
-								src="<%=ctxPath%>/image/glasses/category/3.jpg"
-								alt="" class="category__img"></span> <span
-							class="category__name font--kr font--11 font--md">블루라이트 차단</span>
-					</a></li>
-				</c:if>	
-				<c:if test="${empty requestScope.isBluelight}">
+						<li
+							class="category__item category__item--View all relative swiper-slide current"
+							data-sub-category="NjQ=" data-sub-category-all-view=""
+							data-category-name="블루라이트 차단"
+							data-sub-category-url-key="blue-light-lenses"><a
+							href="<%=ctxPath%>/product/category.gm?isBluelight=1&categoryId=2"
+							class="category__link" onclick="return delCurrentScroll();"
+							data-category="category" data-action="blue-light-lenses"> <span
+								class="category__thumbnail"><img
+									src="<%=ctxPath%>/image/glasses/category/3.jpg" alt=""
+									class="category__img"></span> <span
+								class="category__name font--kr font--11 font--md">블루라이트 차단</span>
+						</a></li>
+					</c:if>
+					<c:if test="${empty requestScope.isBluelight}">
 						<li
 							class="category__item category__item--View all relative swiper-slide"
 							data-sub-category="NjQ=" data-sub-category-all-view=""
 							data-category-name="블루라이트 차단"
-							data-sub-category-url-key="blue-light-lenses"><a href="<%= ctxPath %>/product/category.gm?isBluelight=1&categoryId=2"
+							data-sub-category-url-key="blue-light-lenses"><a
+							href="<%=ctxPath%>/product/category.gm?isBluelight=1&categoryId=2"
 							class="category__link" onclick="return delCurrentScroll();"
 							data-category="category" data-action="blue-light-lenses"> <span
 								class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/3.jpg"
-									alt="" class="category__img"></span> <span
+									src="<%=ctxPath%>/image/glasses/category/3.jpg" alt=""
+									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">블루라이트 차단</span>
 						</a></li>
-				</c:if>	
+					</c:if>
 
 
 					<c:if test="${not empty requestScope.isTint}">
 						<li
 							class="category__item category__item--View all relative swiper-slide current"
-							data-sub-category="MTcw"
-							data-sub-category-all-view="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"
-							data-category-name="틴트 렌즈"
-							data-sub-category-url-key="tinted-lenses"><a
+							data-sub-category-all-view="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"><a
 							href="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"
-							class="category__link" onclick="return delCurrentScroll();"
-							data-category="category" data-action="tinted-lenses"> <span
+							class="category__link"> <span
 								class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/4.jpg" alt=""
+									src="<%=ctxPath%>/image/glasses/category/4.jpg" 
 									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">틴트 렌즈</span>
 						</a></li>
@@ -167,15 +165,11 @@ String ctxPath = request.getContextPath();
 					<c:if test="${empty requestScope.isTint}">
 						<li
 							class="category__item category__item--View all relative swiper-slide"
-							data-sub-category="MTcw"
-							data-sub-category-all-view="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"
-							data-category-name="틴트 렌즈"
-							data-sub-category-url-key="tinted-lenses"><a
+							data-sub-category-all-view="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"><a
 							href="<%=ctxPath%>/product/category.gm?isTint=1&categoryId=2"
-							class="category__link" onclick="return delCurrentScroll();"
-							data-category="category" data-action="tinted-lenses"> <span
+							class="category__link"> <span
 								class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/4.jpg" alt=""
+									src="<%=ctxPath%>/image/glasses/category/4.jpg" 
 									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">틴트 렌즈</span>
 						</a></li>
@@ -188,11 +182,9 @@ String ctxPath = request.getContextPath();
 					<c:if test="${not empty requestScope.isGift}">
 						<li
 							class="category__item category__item--View all relative swiper-slide current"
-							data-sub-category="MTU5" data-sub-category-all-view=""
 							data-category-name="선물추천" data-sub-category-url-key="gifts">
 							<a href="<%=ctxPath%>/product/category.gm?isGift=1&categoryId=2"
-							class="category__link" onclick="return delCurrentScroll();"
-							data-category="category" data-action="gifts"> <span
+							class="category__link"> <span
 								class="category__thumbnail"><img
 									src="<%=ctxPath%>/image/glasses/category/5.jpg" alt=""
 									class="category__img"></span> <span
@@ -202,14 +194,11 @@ String ctxPath = request.getContextPath();
 					</c:if>
 					<c:if test="${empty requestScope.isGift}">
 						<li
-							class="category__item category__item--View all relative swiper-slide"
-							data-sub-category="MTU5" data-sub-category-all-view=""
-							data-category-name="선물추천" data-sub-category-url-key="gifts">
+							class="category__item category__item--View all relative swiper-slide">
 							<a href="<%=ctxPath%>/product/category.gm?isGift=1&categoryId=2"
-							class="category__link" onclick="return delCurrentScroll();"
-							data-category="category" data-action="gifts"> <span
+							class="category__link"> <span
 								class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/5.jpg" alt=""
+									src="<%=ctxPath%>/image/glasses/category/5.jpg" 
 									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">선물추천</span>
 						</a>
@@ -219,14 +208,11 @@ String ctxPath = request.getContextPath();
 
 					<c:if test="${not empty requestScope.square}">
 						<li
-							class="category__item category__item--View all relative current swiper-slide"
-							data-sub-category="Njc=" data-sub-category-all-view=""
-							data-category-name="사각 프레임" data-sub-category-url-key="square">
+							class="category__item category__item--View all relative current swiper-slide">
 							<a href="<%=ctxPath%>/product/category.gm?square=1&categoryId=2"
-							class="category__link" onclick="return delCurrentScroll();"
-							data-category="category" data-action="square"> <span
+							class="category__link"> <span
 								class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/6.jpg" alt=""
+									src="<%=ctxPath%>/image/glasses/category/6.jpg"
 									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">사각 프레임</span>
 						</a>
@@ -234,12 +220,9 @@ String ctxPath = request.getContextPath();
 					</c:if>
 					<c:if test="${empty requestScope.square}">
 						<li
-							class="category__item category__item--View all relative swiper-slide"
-							data-sub-category="Njc=" data-sub-category-all-view=""
-							data-category-name="사각 프레임" data-sub-category-url-key="square">
+							class="category__item category__item--View all relative swiper-slide">
 							<a href="<%=ctxPath%>/product/category.gm?square=1&categoryId=2"
-							class="category__link" onclick="return delCurrentScroll();"
-							data-category="category" data-action="square"> <span
+							class="category__link"> <span
 								class="category__thumbnail"><img
 									src="<%=ctxPath%>/image/glasses/category/6.jpg" alt=""
 									class="category__img"></span> <span
@@ -252,14 +235,11 @@ String ctxPath = request.getContextPath();
 
 					<c:if test="${not empty requestScope.round}">
 						<li
-							class="category__item category__item--View all relative current swiper-slide"
-							data-sub-category="Njg=" data-sub-category-all-view=""
-							data-category-name="원형 프레임" data-sub-category-url-key="round">
+							class="category__item category__item--View all relative current swiper-slide">
 							<a href="<%=ctxPath%>/product/category.gm?round=3&categoryId=2"
-							class="category__link" onclick="return delCurrentScroll();"
-							data-category="category" data-action="round"> <span
+							class="category__link"> <span
 								class="category__thumbnail"><img
-									src="<%=ctxPath%>/image/glasses/category/7.jpg" alt=""
+									src="<%=ctxPath%>/image/glasses/category/7.jpg" 
 									class="category__img"></span> <span
 								class="category__name font--kr font--11 font--md">원형 프레임</span>
 						</a>
@@ -267,12 +247,9 @@ String ctxPath = request.getContextPath();
 					</c:if>
 					<c:if test="${empty requestScope.round}">
 						<li
-							class="category__item category__item--View all relative swiper-slide"
-							data-sub-category="Njg=" data-sub-category-all-view=""
-							data-category-name="원형 프레임" data-sub-category-url-key="round">
+							class="category__item category__item--View all relative swiper-slide">
 							<a href="<%=ctxPath%>/product/category.gm?round=3&categoryId=2"
-							class="category__link" onclick="return delCurrentScroll();"
-							data-category="category" data-action="round"> <span
+							class="category__link"> <span
 								class="category__thumbnail"><img
 									src="<%=ctxPath%>/image/glasses/category/7.jpg" alt=""
 									class="category__img"></span> <span
@@ -287,7 +264,6 @@ String ctxPath = request.getContextPath();
 			</div>
 			<div
 				class="category__nav category__nav--next jsCateNext swiper-button-disabled"
-				tabindex="0" role="button" aria-label="Next slide"
 				aria-disabled="true">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 					viewBox="0 0 24 24">
@@ -319,14 +295,12 @@ String ctxPath = request.getContextPath();
 		<div class="list-btn content-top__right inline float-right">
 			<c:if test="${empty requestScope.isCategorySearch}">
 				<button data-toggle="modal" data-target="#filterModal" type="button"
-					class="filter-toggle inline jsFilterBtn " data-category="filter"
-					data-action="click_filter_open" data-label="filter_open"
-					aria-label="Open Filter Popup" aria-expanded="false">
+					class="filter-toggle inline jsFilterBtn ">
 					<span class="filter-toggle__icon relative"> <span
 						class="filter-toggle__bar filter-toggle__bar--first"></span> <span
 						class="filter-toggle__bar filter-toggle__bar--second"></span>
 					</span> <span class="filter-toggle__txt font--kr font--11 font--md"
-						data-default="필터" data-close="Filter Close"> </span>
+						data-default="필터"> </span>
 				</button>
 			</c:if>
 		</div>
@@ -359,17 +333,15 @@ String ctxPath = request.getContextPath();
 
 						<!-- Filter content -->
 						<div class="filter-popup__content clearfix">
-							<div class="filter-popup__box float-left relative frame_color"
-								role="group" aria-labelledby="frame_color">
+							<div class="filter-popup__box float-left relative frame_color">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="frame_color-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="frame_color"
 										class="filter-subject__txt font--kr font--13 font--md">프레임
 										컬러</div>
 									<div class="filter-arrow n-arrow n-arrow--down jsFilterArrow"></div>
 								</button>
-								<div id="frame_color-list" class="filter" style="">
+								<div id="frame_color-list" class="filter">
 									<ul class="filter__list inline">
 										<c:forEach var="frameColorVo"
 											items="${requestScope.getFrameColor}" varStatus="status">
@@ -393,8 +365,7 @@ String ctxPath = request.getContextPath();
 							<div class="filter-popup__box float-left relative lens_color"
 								role="group" aria-labelledby="lens_color">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="lens_color-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="lens_color"
 										class="filter-subject__txt font--kr font--13 font--md">렌즈
 										컬러</div>
@@ -419,11 +390,9 @@ String ctxPath = request.getContextPath();
 									</ul>
 								</div>
 							</div>
-							<div class="filter-popup__box float-left relative materials"
-								role="group" aria-labelledby="materials">
+							<div class="filter-popup__box float-left relative materials">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="materials-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="materials"
 										class="filter-subject__txt font--kr font--13 font--md">소재</div>
 									<div class="filter-arrow n-arrow n-arrow--down jsFilterArrow"></div>
@@ -432,8 +401,7 @@ String ctxPath = request.getContextPath();
 									<ul class="filter__list inline">
 										<c:forEach var="materialVo"
 											items="${requestScope.getMaterial}" varStatus="status">
-											<li class="filter__item filter__item--inline relative"
-												data-category="filter" data-action="소재" data-label="아세테이트">
+											<li class="filter__item filter__item--inline relative">
 												<label for="materials[]_${status.index}"
 												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 													<input type="checkbox" name="materials" class="n-radio "
@@ -449,35 +417,30 @@ String ctxPath = request.getContextPath();
 									</ul>
 								</div>
 							</div>
-							<div class="filter-popup__box float-left relative gender"
-								role="group" aria-labelledby="gender">
+							<div class="filter-popup__box float-left relative gender">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="gender-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="gender"
 										class="filter-subject__txt font--kr font--13 font--md">젠더</div>
 									<div class="filter-arrow n-arrow n-arrow--down jsFilterArrow"></div>
 								</button>
 								<div id="gender-list" class="filter" style="">
 									<ul class="filter__list inline">
-										<li class="filter__item filter__item--inline relative"
-											data-category="filter" data-action="젠더" data-label="남성"><label
+										<li class="filter__item filter__item--inline relative"><label
 											for="gender[]_0"
 											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 												<input type="checkbox" name="gender" class="n-radio "
 												value="1" id="gender[]_0">
 												<div class="input-box-check-layer"></div> 남성
 										</label></li>
-										<li class="filter__item filter__item--inline relative"
-											data-category="filter" data-action="젠더" data-label="여성"><label
+										<li class="filter__item filter__item--inline relative"><label
 											for="gender[]_1"
 											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 												<input type="checkbox" name="gender" class="n-radio "
 												value="2" id="gender[]_1">
 												<div class="input-box-check-layer"></div> 여성
 										</label></li>
-										<li class="filter__item filter__item--inline relative"
-											data-category="filter" data-action="젠더" data-label="유니섹스">
+										<li class="filter__item filter__item--inline relative">
 											<label for="gender[]_2"
 											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
 												<input type="checkbox" name="gender[]" class="n-radio "
@@ -488,11 +451,9 @@ String ctxPath = request.getContextPath();
 									</ul>
 								</div>
 							</div>
-							<div class="filter-popup__box float-left relative" role="group"
-								aria-labelledby="filter_sort">
+							<div class="filter-popup__box float-left relative">
 								<button type="button"
-									class="filter-subject relative jsFilterToggle"
-									aria-expanded="false" aria-controls="filter_sort-list">
+									class="filter-subject relative jsFilterToggle">
 									<div id="filter_sort"
 										class="filter-subject__txt font--kr font--13 font--md">정렬</div>
 									<div class="filter-arrow n-arrow n-arrow--down jsFilterArrow"></div>
@@ -517,9 +478,7 @@ String ctxPath = request.getContextPath();
 												class="filter__checkbox n-checkbox n-checkbox--radio"></span>
 												낮은가격순
 										</label></li>
-										<li class="filter__item filter__item-sort relative"
-											data-category="filter" data-action="filter_option_click"
-											data-label="높은가격순"><label for="order_high_price"
+										<li class="filter__item filter__item-sort relative"><label for="order_high_price"
 											class="filter__label n-label font--kr font--12 font--rg">
 												<input type="radio" name="order"
 												class="n-radio n-radio--once " value="price Desc"
@@ -561,12 +520,7 @@ String ctxPath = request.getContextPath();
 
 <%-- 메인메뉴 시작 --%>
 <c:if test="${not empty requestScope.productList}">
-	<div id="product-list" data-infinite-scroll="" data-is-loading="false"
-		data-is-append="false" data-is-last-page="false" data-page-index="1"
-		data-limit="20" data-category="NDU=" data-sub-category="NjE="
-		data-sub-category-url-key="view-all" data-sub-category-all-view="">
-
-
+	<div id="product-list">
 		<ul id="filter-selected-result" class="product-list__wrapper inline"
 			role="list" aria-live="polite">
 			<c:forEach var="productVo" items="${requestScope.productList}"
@@ -575,8 +529,7 @@ String ctxPath = request.getContextPath();
 					varStatus="status2">
 					<c:if
 						test="${productVo.fk_productGroupId eq count.fk_productGroupId}">
-						<li data-id="8NX8YBQ7JSZW" role="listitem" data-product-index="0"
-							data-list-index="0"><c:if
+						<li><c:if
 								test="${productVo.isBlueLight eq 1}">
 								<div class="product">
 									<div class="product-image-swiper swiper"
@@ -586,10 +539,8 @@ String ctxPath = request.getContextPath();
 											id="8NX8YBQ7JSZW"
 											href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
 											product-name="${productVo.productName}"
-											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-											product-bluelight="Blue Light Protection"
-											data-category="ecommerce" data-action="select_item"
-											tabindex="-1" aria-hidden="true">
+											product-price="${productVo.price}"
+											product-bluelight="Blue Light Protection">
 											<div class="product-image-swiper__slide swiper-slide">
 												<div class="product__image-wrapper">
 													<img data-src="" alt=""
@@ -602,17 +553,13 @@ String ctxPath = request.getContextPath();
 										<div
 											class="product-image-swiper__button product-image-swiper__button--prev swiper-button-prev"
 											product-name="${productVo.productName}"
-											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-											product-bluelight="Blue Light Protection"
-											data-category="carousel" data-action="click_left"
-											data-label="view-all"></div>
+											product-price="${productVo.price}"
+											product-bluelight="Blue Light Protection"></div>
 										<div
 											class="product-image-swiper__button product-image-swiper__button--next swiper-button-next"
 											product-name="${productVo.productName}"
-											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-											product-bluelight="Blue Light Protection"
-											data-category="carousel" data-action="click_right"
-											data-label="view-all"></div>
+											product-price="${productVo.price}"
+											product-bluelight="Blue Light Protection"></div>
 									</div>
 									<div class="product__info relative">
 										<div class="clearfix">
@@ -620,11 +567,8 @@ String ctxPath = request.getContextPath();
 												<a class="product__link" id="product_8NX8YBQ7JSZW"
 													href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
 													product-name="${productVo.productName}"
-													product-sku="8NX8YBQ7JSZW"
-													product-price="${productVo.price}"
-													data-category="ecommerce" data-action="select_item">
-													<p class="product__blue-glasses font--kr font--11 font--rg">Blue
-														Light Protection</p>
+													product-price="${productVo.price}">
+													<p class="product__blue-glasses font--kr font--11 font--rg">Blue Light Protection</p>
 													<p class="product__name font--kr font--13 font--bd">${productVo.productName}
 													</p>
 													<p class="product__price font--en font--12 font--rg">
@@ -656,7 +600,6 @@ String ctxPath = request.getContextPath();
 								                        C27.5,9.9,27.4,9.6,27.4,9.4z"></path>
 								                    </svg>
 											</button>
-
 										</div>
 										<button class="product__cart font--kr font--14 font--md"
 											style="display: none;">쇼핑백에 추가</button>
@@ -668,12 +611,9 @@ String ctxPath = request.getContextPath();
 										data-sub-image="<%=ctxPath%>${productVo.mainImageFile}">
 										<a
 											class="product__link product-image-swiper__wrapper swiper-wrapper"
-											id="8NX8YBQ7JSZW"
 											href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
 											product-name="${productVo.productName}"
-											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-											data-category="ecommerce" data-action="select_item"
-											tabindex="-1" aria-hidden="true">
+											product-price="${productVo.price}">
 											<div class="product-image-swiper__slide swiper-slide">
 												<div class="product__image-wrapper">
 													<img data-src="" alt=""
@@ -685,16 +625,12 @@ String ctxPath = request.getContextPath();
 											class="product-image-swiper__pagination swiper-pagination"></div>
 										<div
 											class="product-image-swiper__button product-image-swiper__button--prev swiper-button-prev"
-											product-name="${productVo.productName}"
-											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-											data-category="carousel" data-action="click_left"
-											data-label="view-all"></div>
+											product-name="${productVo.productName}" 
+											product-price="${productVo.price}"></div>
 										<div
 											class="product-image-swiper__button product-image-swiper__button--next swiper-button-next"
 											product-name="${productVo.productName}"
-											product-sku="8NX8YBQ7JSZW" product-price="${productVo.price}"
-											data-category="carousel" data-action="click_right"
-											data-label="view-all"></div>
+											product-price="${productVo.price}"></div>
 									</div>
 									<div class="product__info relative">
 										<div class="clearfix">
@@ -702,9 +638,7 @@ String ctxPath = request.getContextPath();
 												<a class="product__link" id="product_8NX8YBQ7JSZW"
 													href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
 													product-name="${productVo.productName}"
-													product-sku="8NX8YBQ7JSZW"
-													product-price="${productVo.price}"
-													data-category="ecommerce" data-action="select_item">
+													product-price="${productVo.price}">
 													<p class="product__name font--kr font--13 font--bd">${productVo.productName}
 													</p>
 													<p class="product__price font--en font--12 font--rg">

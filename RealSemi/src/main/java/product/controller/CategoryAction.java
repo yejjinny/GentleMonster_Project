@@ -21,10 +21,11 @@ public class CategoryAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
+		
 		String method = req.getMethod();
 
 		HttpSession session = req.getSession();
+
 
 
 
@@ -36,7 +37,12 @@ public class CategoryAction extends AbstractController {
 
 			Map<String, Integer> paraMap = new HashMap<>();
 			paraMap.put("categoryId", Integer.parseInt(req.getParameter("categoryId")));
-			paraMap.put("memberId", ((MemberVO) session.getAttribute("loginUser")).getMemberId());
+			
+			if (session.getAttribute("loginUser") != null) {
+				paraMap.put("memberId", ((MemberVO) session.getAttribute("loginUser")).getMemberId());
+			}else {
+				paraMap.put("memberId", 0);
+			}
 
 			// 선글라스 종류별 개수 알아오기
 			List<ProductVO> sunglassesCount = pdao.getSunglassesCount();
