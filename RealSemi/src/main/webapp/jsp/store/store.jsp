@@ -15,9 +15,6 @@
 
 
 
-
-
-
 <!-- Category 시작 -->
 <div class="row mx-auto my-auto">
 	<div id="recipeCarousel" class="carousel slide w-100">
@@ -97,8 +94,6 @@
 
 
 
-
-
 <!-- Contents 시작 -->
 <div id="storePage" class="store store--fs content-container">
 	<!-- Store Title & Filter -->
@@ -158,7 +153,6 @@
 										</video>
 										
 										<div class="carousel-caption d-none d-md-block">
-											<!-- d-none 은 display : none; 이므로 화면에 보이지 않다가, d-md-block 이므로 d-md-block 은 width 가 768px이상인 것에서만 display: block; 으로 보여라는 말이다.  -->
 										</div>
 									</div>
 									
@@ -169,37 +163,13 @@
 										<!-- 이프조건  -->
 										<c:if test="${storeVO.storeId eq storeImgVO.fk_storeId}">
 										
-											
 										 	<div class="carousel-item">
 												<img class="store__img d-block w-100" src="<%=ctxPath%>${storeImgVO.imageFile}" alt="">
 												<%-- <img class="store__img d-block w-100" src="<%=ctxPath%>/image/store/image/store_01_Hanam.jpg" alt=""> --%>
 												<!-- <img src="../images/Lighthouse.jpg" class="d-block w-100" alt="..."> -->
 												<div class="carousel-caption d-none d-md-block"></div>
 											</div>
-										 	<%-- 
-											<div class="carousel-item">
-												<img class="store__img d-block w-100" src="<%=ctxPath%>/image/store/store/Hannam_GM_image_01.jpg" alt="">
-												<!-- <img src="../images/Lighthouse.jpg" class="d-block w-100" alt="..."> -->
-												<div class="carousel-caption d-none d-md-block"></div>
-											</div>
-											<div class="carousel-item">
-												<img class="store__img d-block w-100" src="<%=ctxPath%>/image/store/store/Hannam_GM_image_02.jpg" alt="">
-												<div class="carousel-caption d-none d-md-block"></div>
-											</div>
-											<div class="carousel-item">
-												<img class="store__img d-block w-100" src="<%=ctxPath%>/image/store/store/Hannam_GM_image_03.jpg" alt="">
-												<div class="carousel-caption d-none d-md-block"></div>
-											</div>
-					
-											<div class="carousel-item">
-												<img class="store__img d-block w-100" src="<%=ctxPath%>/image/store/store/Hannam_GM_image_04.jpg" alt="">
-												<div class="carousel-caption d-none d-md-block"></div>
-											</div>
-											<div class="carousel-item">
-												<img class="store__img d-block w-100" src="<%=ctxPath%>/image/store/store/Hannam_GM_image_05.jpg" alt="">
-												<div class="carousel-caption d-none d-md-block"></div>
-											</div>
-											 --%>
+										 	
 										</c:if>
 									</c:forEach> 
 									<!-- 스토어 사진 보여주기 끝 -->
@@ -272,10 +242,12 @@
 			
 			<!-- 스토어(백화점/면세점) 존재하지 않을 경우 --> 
 			<c:if test="${empty requestScope.storeDepList}">
-				<div class="font--kr font--14 font--rg word-break word-break--kr">
-					스토어가 존재하지 않습니다.
+				<div class="store__item store__item--os">
+					<div class="font--kr font--14 font--rg word-break word-break--kr" id="noneDep">
+						스토어가 존재하지 않습니다.
+					</div>
+					<br><br><br><br><br>
 				</div>
-				<br><br><br><br><br>
 			</c:if>
 			
 			<!-- 스토어(백화점/면세점) 존재하는 경우 -->
@@ -287,7 +259,7 @@
 							<div class="store__address font--kr font--14 font--rg word-break word-break--kr">
 								${storeVO.address} <br> ${storeVO.tel}
 							</div>
-							<button type="button" class=" relative font--kr font--14 font--rg word-break word-break--kr jsTimeToggle" aria-expanded="false" aria-controls="moreCont_0" aria-describedby="storeName_0">영업 시간 : ${storeVO.openingHours}</button>
+							<button type="button" class="relative font--kr font--14 font--rg word-break word-break--kr jsTimeToggle" aria-expanded="false" aria-controls="moreCont_0" aria-describedby="storeName_0">영업 시간 : ${storeVO.openingHours}</button>
 							<div id="moreCont_0" class="store__more-content jsMoreCont" aria-hidden="true">
 								<div class="store__time font--kr font--14 font--rg word-break word-break--kr jsOpeningHour">
 									${storeVO.openingHours}

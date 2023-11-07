@@ -26,15 +26,9 @@ public class MemberRegisterAction extends AbstractController {
 			
 			String email = request.getParameter("email");
 			String pwd = request.getParameter("pwd");
-
-			//System.out.println(request.getParameter("gender"));
-			// int gender = Integer.parseInt(request.getParameter("gender"));
 			String gender = request.getParameter("gender");
-			
-			
 			String familyName = request.getParameter("familyName");
 			String lastName = request.getParameter("lastName");
-			
 			String mb_birth_year = request.getParameter("mb_birth_year");
 			String mb_birth_month = request.getParameter("mb_birth_month");
 			String mb_birth_day = request.getParameter("mb_birth_day");
@@ -53,33 +47,10 @@ public class MemberRegisterAction extends AbstractController {
 				mdao = new MemberDAO_imple();
 			}
 			
-	/* 지워 이거 우리는 자동로그인 할 거임 	
-			// === 회원가입이 성공되어지면 "회원가입 성공" 이라는 alert 를 띄우고 시작페이지로 이동한다. === //
-			String message = "";
-			String loc = "";
-			
-			try {
-				int n = mdao.registerMember(member);
-				
-				if(n==1) {
-					message = "회원가입 성공";
-					loc = request.getContextPath()+"/index.gm"; // 시작페이지로 이동한다.
-				}
-			} catch(SQLException e) {
-				message = "SQL구문 에러발생";
-				loc = "javascript:history.back()"; // 자바스크립트를 이용한 이전페이지로 이동하는 것. 
-				e.printStackTrace();
-			}
-			
-			request.setAttribute("message", message);
-			request.setAttribute("loc", loc);
-			
-			super.setRedirect(false); 
-			super.setViewPage("/jsp/common/msg.jsp");
-	*/		
 			
 			
-			// #### 회원가입이 성공되어지면 자동으로 로그인 되도록 하겠다. ### //
+			
+			// ========== 회원가입 성공시 자동로그인 ========== //
 			try {
 				int n = mdao.registerMember(member);
 				
@@ -94,12 +65,12 @@ public class MemberRegisterAction extends AbstractController {
 				e.printStackTrace();
 				
 				String message = "SQL구문 에러발생";
-				String loc = "javascript:history.back()"; // 자바스크립트를 이용한 이전페이지로 이동하는 것. 
+				String loc = "javascript:history.back()";
 				
 				request.setAttribute("message", message);
 				request.setAttribute("loc", loc);
 				
-				super.setRedirect(false); 
+			//	super.setRedirect(false); 
 				super.setViewPage("/jsp/common/msg.jsp");
 			}	
 			

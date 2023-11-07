@@ -16,15 +16,13 @@ public class StoreAction extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		
-		String countryid = request.getParameter("countryid"); // 왜 안 되는 거ㅣㅇㅁ???
-	//	String countryid = "";
+		String countryid = request.getParameter("countryid"); 
 	
 		if(countryid == null || countryid == "null" || countryid == "" ) {
 			countryid = "1";
 		}
 		
 		StoreDAO sdao = new StoreDAO_imple();
-	
 	
 		// --- 매장보기 중 '스토어' 보여주기 시작 --- //
 		int totalStoreCount = sdao.totalStoreCount(countryid); // 스토어(스토어) 개수를 알아온다.
@@ -48,7 +46,7 @@ public class StoreAction extends AbstractController {
 		// --- 매장보기 중 '백화점/면세점' 보여주기 끝 --- //
 		
 		
-		super.setRedirect(false);
+	//	super.setRedirect(false);
 		super.setViewPage("/jsp/store/store.jsp");
 
 		 

@@ -66,9 +66,3 @@ function goDelete(wishId) {
 }; // end of function goDelete(cartId) --------------------------------------------------------------------------------------------
 
 
-
-/* 화폐 세 자리마다 콤마 표시 (#,###) */
-function addComma(value) {
-	value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	return value;
-} // end of function addComma(value) ----------------------------------------------------
