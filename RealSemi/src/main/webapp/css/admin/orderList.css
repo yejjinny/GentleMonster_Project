@@ -3,7 +3,7 @@
 input {
 	border: none;
 	background: none;
-	-webkit-appearance: none;
+	/* -webkit-appearance: none; */
 }
 
 div,
@@ -811,7 +811,7 @@ input.searchInput {
 	text-align: center;
 }
 
-.memberListPagination {
+.orderListPagination {
     display: table;
     margin: 0 auto;
     margin-top: 40px;
@@ -841,9 +841,315 @@ select.orderSearchResult {
 select:focus {
 	outline: none;
 }
-tbody tr:hover {
+.orderList tbody tr:hover {
     background-color: #5454;
 }
 td {
     width: 200px;
+}
+
+
+
+
+
+
+
+
+
+/* 모달용 */
+.order_confirmation .center_wrap {
+    max-width: 440px;
+}
+.center_wrap {
+    display: table;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+.order_text_left {
+    text-align: left;
+}
+.content-wrap {
+    margin: 0 auto;
+    max-width: 1420px;
+    position: relative;
+    min-height: 700px;
+}
+.order_confirmation .head {
+    margin: 0 0 75px;
+}
+.order_p_b28 {
+    padding-bottom: 28px;
+}
+.info_customer .id_order {
+    display: flex;
+    justify-content: space-between;
+}
+.order_p_b7 {
+    padding-bottom: 7px;
+}
+.order_line_height {
+    line-height: 1.92;
+}
+.order_confirmation .label {
+    color: #343434;
+    text-align: left;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    line-height: 24px;
+}
+.label {
+    /* display: inline; */
+    /* padding: 0.2em 0.6em 0.3em; */
+    /* font-size: 75%; */
+    /* font-weight: bold; */
+    /* line-height: 1; */
+    /* color: #fff; */
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+}
+.info_shipment {
+    margin: 25px 0 0;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+.info_shipment .field {
+    /* width: 50%; */
+    text-align: left;
+    margin: 0 0 25px;
+    padding: 0 64px 0 0;
+}
+.order_confirmation .label {
+    color: #343434;
+    text-align: left;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    line-height: 24px;
+}
+.info_shipment .field {
+    /* width: 50%; */
+    text-align: left;
+    margin: 0 0 25px;
+    padding: 0 64px 0 0;
+}
+.order_confirmation .label {
+    color: #343434;
+    text-align: left;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    line-height: 24px;
+}
+.order_confirmation .label {
+    color: #343434;
+    text-align: left;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    line-height: 24px;
+}
+.order_product {
+    margin: 30px 0 0;
+}
+table {
+    border-collapse: collapse;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+table {
+    max-width: 100%;
+    background-color: transparent;
+}
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    /* border: 0; */
+    outline: 0;
+    /* font-size: 100%; */
+    /* background: transparent; */
+}
+table {
+    width: 100%;
+}
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    /* border: 0; */
+    outline: 0;
+    /* font-size: 100%; */
+    /* background: transparent; */
+}
+.order_product th.image {
+    min-width: 80px;
+    text-align: left;
+    width: 80px;
+}
+.order_product th, .order_product td {
+    border: 0;
+    padding: 20px 0 0;
+    text-align: left;
+}
+.order_product th {
+    border-bottom: 1px solid #858585;
+    text-align: left;
+    width: 25%;
+    font-size: 13px;
+    /* font-weight: normal; */
+    padding: 6px 0 20px 0;
+}
+.cart_wrapper th, .cart_wrapper td {
+    border: 0;
+}
+.order_product th.qty {
+    /* width: 50px; */
+    text-align: center;
+}
+.order_product th.subtotal {
+    text-align: right;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+img {
+    display: block;
+}
+.order_product td.product {
+    padding-left: 10px;
+}
+.order_product td.item.qty {
+    text-align: center;
+}
+.order_product td.subtotal {
+    text-align: right;
+}
+.center_wrap {
+    display: table;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+.order_margin_b174 {
+    margin-bottom: 50px !important;
+}
+.order_summary {
+    margin: 20px 0 0;
+    padding: 20px 0 0;
+    border-top: 1px solid #858585;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+ul, ol {
+    list-style: none;
+}
+.order_summary li.field_summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.order_summary li.field_summary .label {
+    text-align: left;
+    min-width: 95px;
+}
+.order_confirmation .label {
+    color: #343434;
+    text-align: left;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    line-height: 24px;
+}
+.order_summary li.field_summary .value {
+    min-width: 150px;
+    text-align: right;
+}
+.order_summary li.field_summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.order_summary li.field_summary .label {
+    text-align: left;
+    min-width: 95px;
+}
+.order_confirmation .label {
+    color: #343434;
+    text-align: left;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    line-height: 24px;
+}
+.order_summary li.field_summary .value {
+    min-width: 150px;
+    text-align: right;
+}
+.order_summary li.field_summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.order_summary li.field_summary .label {
+    text-align: left;
+    min-width: 95px;
+}
+.id_order.font--kr.font--15.font--bd.order_p_b28 {
+    font-size: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+p.label {
+    font-weight: bold !important;
+}
+div.email p.label {
+    padding-top: 15px;
+}
+div.inputRadioOrderStatus label {
+    padding-right: 10px;
+    font-size: 14px;
+    padding-left: 3px;
+}
+.inputRadioOrderStatus {
+    display: table;
+    margin: 0 auto;
+}
+form[name="updateOrderStatusFrm"]{
+    border-bottom: 1px solid #858585 !important;
+    padding-bottom: 15px;
+    border-top: 1px solid #858585 !important;
+    padding-top: 15px;
+}
+.orderStatusHtml {
+    font-size: 14px !important;
+    text-align: center;
+    padding-bottom: 15px !important;
+}
+.currentOrderStatus {
+    font-size: 14px;
+    text-align: center;
+    padding-bottom: 10px;
+    color: red;
+}
+button.goUpdate {
+    font-size: 12px;
+    padding-left: 10px;
 }

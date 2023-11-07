@@ -10,6 +10,7 @@ public class OrderVO {
 	private String familyName;       // 성
 	private String lastName;         // 이름
 	private String fullName;         // 풀네임
+	private String email;            // 이메일
 	private String tel;              // 전화번호
 	private String address;          // 주소
 	private String detailAddress;    // 상세주소
@@ -138,6 +139,12 @@ public class OrderVO {
 	}
 	public void setOrderDay(String orderDay) {
 		this.orderDay = orderDay;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

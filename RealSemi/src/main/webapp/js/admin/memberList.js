@@ -81,5 +81,58 @@ $(document).ready(function() {
 		}
 
 	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* contextPath 생성용 */
+	const pathname = "/" + window.location.pathname.split("/")[1];
+	const origin = window.location.origin;
+	const contextPath = origin + pathname;
+	/* end of contextPath 생성용 */
+
+	const tbodyHtml = $("div.order_product tbody").html();
+
+	/* 회원 상세보기용 */
+	$("tbody tr").each(function() {
+
+		$(this).click(function() {
+
+			$.ajax({
+				url: contextPath + "/admin/memberDetail.gm",
+				data: { "memberId": $(this).find("td").html() },
+				type: "post",
+				async: true,
+				dataType: "json",
+				success: function(text) {
+
+					$("div.id_member p").html("회원고유번호 #" + text.memberId);
+					$("div.fullName p.value").html(text.name);
+					$("div.email p.value").html(text.email);
+					$("div.birth p.value").html(text.birth);
+					$("div.gender p.value").html(text.gender);
+					$("div.registerDay p.value").html(text.registerDay);
+					
+				},
+				error: function(request, status, error) {
+					alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
+				}
+			});
+
+
+		})
+
+
+	})
 
 });

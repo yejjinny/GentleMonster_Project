@@ -49,4 +49,10 @@ public interface OrderDAO {
 	
 	// 유저_주문취소
 	int cancleOrder(Map<String, String> paraMap) throws SQLException;
+	
+	// 관리자_주문목록에서 주문현황 수정
+	int updateOrderStatus(Map<String, String> paraMap) throws SQLException;
+	
+	// 관리자_주문내역 상세용 OrderVO 취득
+	OrderVO getOrderOne(Map<String, String> paraMap) throws SQLException;
 }

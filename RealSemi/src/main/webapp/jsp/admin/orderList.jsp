@@ -27,16 +27,13 @@ String ctxPath = request.getContextPath();
 				</div>
 			</div>
 		</div>
-		<!--// Store Title -->
 	</div>
 
 
 
 
 	<div id="flagship_list">
-
 		<div class="store__item">
-			<!-- 이미지 수정하기 -->
 			<div class="flagship_list">
 				<div class="store__content store__content--fs clearfix">
 
@@ -80,7 +77,7 @@ String ctxPath = request.getContextPath();
 						</form>
 					</div>
 
-					<div class="memberList">
+					<div class="orderList">
 						<table class="table font--kr">
 							<thead>
 								<tr>
@@ -97,7 +94,7 @@ String ctxPath = request.getContextPath();
 							<tbody>
 								<c:if test="${not empty requestScope.orderList}">
 									<c:forEach var="orderVo" items="${requestScope.orderList}" varStatus="status">
-										<tr>
+										<tr data-toggle="modal" data-target="#detailModal">
 											<th>${orderVo.rno}</th>
 											<td>${orderVo.orderId}</td>
 											<td>${orderVo.orderStatus}</td>
@@ -106,7 +103,8 @@ String ctxPath = request.getContextPath();
 											<td>${orderVo.fullName}</td>
 											<td>${orderVo.productName}</td>
 											<td>
-												<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderVo.amount}" />원
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderVo.amount}" />
+												원
 											</td>
 										</tr>
 									</c:forEach>
@@ -119,10 +117,9 @@ String ctxPath = request.getContextPath();
 						</table>
 					</div>
 
-					<div class="memberListPagination">
+					<div class="orderListPagination">
 						<nav>
-							<ul class="pagination">
-								${requestScope.pageBar}
+							<ul class="pagination">${requestScope.pageBar}
 							</ul>
 						</nav>
 					</div>
@@ -131,6 +128,128 @@ String ctxPath = request.getContextPath();
 			</div>
 		</div>
 	</div>
+
+
+
+
+
+
+
+
+	<!-- 주문내역 상세용 Modal -->
+	<!-- Modal 구성 요소는 현재 페이지 상단에 표시되는 대화 상자/팝업 창입니다. -->
+	<div class="modal fade" id="detailModal">
+		<div class="modal-dialog" style="max-width: 600px;">
+			<div class="modal-content">
+
+				<!-- Modal header -->
+				<div class="modal-header">
+					<h5 class="modal-title font--kr">주문내역 상세</h5>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="container_sq">
+						<div class="order_confirmation center_wrap cart_wrapper mo_order_confirm order_max-width344">
+							<div class="contentswrap_top center_wrap ">
+								<div class="content-wrap order_text_left">
+									<div class="info_customer">
+										<div class="id_order font--kr font--15 font--bd order_p_b28">
+											<p></p>
+										</div>
+										<form name="updateOrderStatusFrm">
+											<div class="orderStatusHtml">주문현황 업데이트</div>
+											<div class="currentOrderStatus"></div>
+											<input type="hidden" name="orderId" value="" />
+											<div class="inputRadioOrderStatus">
+												<input type="radio" id="orderStatus2" name="orderStatus" value="2">
+												<label for="orderStatus2">상품 준비중</label>
+												<input type="radio" id="orderStatus3" name="orderStatus" value="3">
+												<label for="orderStatus3">배송중</label>
+												<input type="radio" id="orderStatus4" name="orderStatus" value="4">
+												<label for="orderStatus4">배송 완료</label>
+												<input type="radio" id="orderStatus5" name="orderStatus" value="5">
+												<label for="orderStatus5">주문취소</label>
+												<button type="button" class="goUpdate btn btn-secondary">수정</button>
+											</div>
+
+										</form>
+
+
+										<div class="email font--kr font--13 font--rg order_line_height order_p_b7 order_p_b18">
+											<p class="label">이메일</p>
+											<p class="value"></p>
+										</div>
+
+										<div class="info_shipment">
+											<div class="field address">
+												<p class="label font--kr font--13 font--rg order_line_height">배송주소</p>
+												<p class="value font--kr font--13 font--rg order_line_height"></p>
+											</div>
+											<div class="field phonenumber">
+												<p class="label font--kr font--13 font--rg order_line_height">전화번호</p>
+												<p class="value font--kr font--13 font--rg order_line_height"></p>
+											</div>
+										</div>
+									</div>
+
+									<div class="payment_method">
+										<p class="label font--kr font--13 font--rg order_line_height">결제방식</p>
+										<p class="font--kr font--13 font--rg order_line_height">카드</p>
+									</div>
+									<div class="order_product">
+										<table>
+											<tbody>
+												<tr class="font--kr font--13 font--md order_line_height">
+													<th class="image font--kr font--13 font--md order_line_height">제품명</th>
+													<th class="product"></th>
+													<th class="price font--kr font--13 font--md order_line_height" style="padding-left: 4px;">가격</th>
+													<th class="qty font--kr font--13 font--md order_line_height" style="padding-left: 10px;">수량</th>
+													<th class="subtotal font--kr font--13 font--md order_line_height">소계</th>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="order_summary order_margin_b174 order_margin_b100">
+										<ul>
+											<li class="field_summary subtotal" style="padding-bottom: 2px;">
+												<span class="label font--kr font--13 font--md order_line_height">소계</span>
+												<span class="value font--kr font--13 font--md order_line_height"></span>
+											</li>
+											<li class="field_summary discount" style="padding-bottom: 2px;">
+												<span class="label font--kr font--13 font--md order_line_height">배송비</span>
+												<span class="value font--kr font--13 font--md order_line_height">0 원</span>
+											</li>
+											<li class="field_summary discount" style="padding-bottom: 2px;">
+												<span class="label font--kr font--13 font--md order_line_height">총합계</span>
+												<span class="value font--kr font--13 font--md order_line_height"></span>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="contentswrap_top center_wrap ">
+							<div class="register-wrap"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
 </div>
 
 
