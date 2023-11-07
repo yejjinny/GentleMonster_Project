@@ -538,7 +538,12 @@ public class ProductDAO_imple implements ProductDAO {
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, paraMap.get("memberId"));
+			if(paraMap.get("memberId") == 0) {
+				pstmt.setString(1,"");
+			}
+			else {
+				pstmt.setInt(1, paraMap.get("memberId"));
+			}
 
 			pstmt.setInt(2, paraMap.get("categoryId"));
 
