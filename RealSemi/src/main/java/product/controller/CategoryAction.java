@@ -126,6 +126,9 @@ public class CategoryAction extends AbstractController {
 				req.setAttribute("allView", true);
 			}
 			
+			// 전체선택 외에 다른 카테고리 선택시 필터버튼없애기
+			req.setAttribute("productList", productList);
+			req.setAttribute("isCategorySearch", true);
 			
 			
 			

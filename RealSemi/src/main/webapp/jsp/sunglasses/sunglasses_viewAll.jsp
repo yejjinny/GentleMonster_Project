@@ -587,7 +587,7 @@ String ctxPath = request.getContextPath();
 </c:if>
 
 <c:if test="${empty requestScope.productList}">
-  등록된 상품이 없습니다.
+  <div style='font-size: 12pt;'>등록된 상품이 없습니다.</div>
 </c:if>
 
 
