@@ -87,7 +87,7 @@ String ctxPath = request.getContextPath();
 							<p class="font--kr font--13 font--rg">성별: ${sessionScope.loginUser.genderVal}</p>
 							<p class="font--kr font--13 font--rg">성: ${sessionScope.loginUser.familyName}</p>
 							<p class="font--kr font--13 font--rg">이름: ${sessionScope.loginUser.lastName}</p>
-							<p class="font--kr font--13 font--rg">생년월일: 19${sessionScope.loginUser.birthYear}-${sessionScope.loginUser.birthMonth}-${sessionScope.loginUser.birthDay}</p>
+							<p class="font--kr font--13 font--rg">생년월일: ${sessionScope.loginUser.birthYear}-${sessionScope.loginUser.birthMonth}-${sessionScope.loginUser.birthDay}</p>
 							<p class="font--kr font--13 font--rg">이메일: ${sessionScope.loginUser.email}</p>
 						</div>
 				 	</form> 
