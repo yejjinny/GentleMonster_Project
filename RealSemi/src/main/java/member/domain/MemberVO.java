@@ -118,7 +118,7 @@ public class MemberVO {
 	
 	//---예인추가
 	public String getBirthYear() {
-		return birth.substring(2,4);
+		return birth.substring(0,4);
 	}
 	public String getBirthMonth() {
 		return birth.substring(5,7);
