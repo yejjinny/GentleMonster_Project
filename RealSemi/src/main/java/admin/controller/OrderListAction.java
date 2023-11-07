@@ -63,6 +63,11 @@ public class OrderListAction extends AbstractController {
 					// 유저가 검색값을 입력하지 않았을 경우 혹은 잘못된 검색값을 입력하였을 경우
 					colName = "";
 				}
+				
+				if (value == null) {
+					// 유저가 검색값을 입력하지 않았을 경우 혹은 잘못된 검색값을 입력하였을 경우
+					value = "";
+				}
 
 				if (order == null || (!"orderIdUp".equals(order) && !"orderIdDown".equals(order)
 						&& !"orderDayUp".equals(order) && !"orderDayDown".equals(order) && !"fullNameUp".equals(order)
@@ -96,10 +101,6 @@ public class OrderListAction extends AbstractController {
 					break;
 				}
 
-				if (value == null || value.trim().isEmpty()) {
-					// 유저가 검색하지 않았을 경우 혹은 검색어에 빈 값을 설정하였을 경우
-					value = "";
-				}
 
 				// dao에 파라미터로 넘겨줄 값을 설정한다
 				Map<String, String> paraMap = new HashMap<>();

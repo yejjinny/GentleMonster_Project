@@ -25,9 +25,9 @@ public interface MemberDAO {
 	// 회원 비밀번호 일치하는지 확인하고, 일치하면 비밀번호 변경하는 메소드 _ 예인
 	int updateMemberPwd(Map<String, String> paraMap) throws SQLException;
 
-	//비밀번호 찾기를 통해 이메일 인증 후 비밀번호를 변경할 때 사용 _ 예인
-	int updateMemberPwdKey(Map<String, String> paraMap)throws SQLException;
-	
+	// 비밀번호 찾기를 통해 이메일 인증 후 비밀번호를 변경할 때 사용 _ 예인
+	int updateMemberPwdKey(Map<String, String> paraMap) throws SQLException;
+
 	// 관리자_회원목록 페이지 갯수 취듯 _ 예진
 	int getTotalPage(Map<String, String> paraMap) throws SQLException;
 
@@ -47,5 +47,7 @@ public interface MemberDAO {
 	// false 를 리턴한다) _ 민경
 	boolean emailDuplicateCheck(String email) throws SQLException;
 
-	
+	// 관리자_회원목록 회원 상세정보 취득 _ 예진
+	MemberVO getMemberOne(String memberId) throws SQLException;
+
 }

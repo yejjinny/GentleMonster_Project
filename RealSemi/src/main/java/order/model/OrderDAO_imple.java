@@ -19,7 +19,7 @@ import member.domain.MemberVO;
 import order.domain.OrderVO;
 
 /**
- * 작성자 신예진 
+ * 작성자 신예진
  */
 public class OrderDAO_imple implements OrderDAO {
 	private DataSource ds;
@@ -69,10 +69,8 @@ public class OrderDAO_imple implements OrderDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "select " 
-					+ "addressbookId, a.familyName, a.lastName, address, isDefaultAddr "
-					+ "from tbl_addressbook a "
-					+ "join tbl_member m on " + "a.fk_memberId = m.memberId "
+			String sql = "select " + "addressbookId, a.familyName, a.lastName, address, isDefaultAddr "
+					+ "from tbl_addressbook a " + "join tbl_member m on " + "a.fk_memberId = m.memberId "
 					+ "where fk_memberId = ? and a.isDeleted = 0 " + "order by a.registerday";
 
 			pstmt = conn.prepareStatement(sql);
@@ -98,6 +96,7 @@ public class OrderDAO_imple implements OrderDAO {
 		return addressBookList;
 	}
 
+	// 유저가 고른 주소록 정보를 return
 	@Override
 	public OrderVO getAddressOne(Map<String, Integer> paraMap) throws SQLException {
 		OrderVO ovo = new OrderVO();
@@ -107,11 +106,8 @@ public class OrderDAO_imple implements OrderDAO {
 
 			String sql = "select "
 					+ "addressbookId, fk_memberId, a.familyName, a.lastName, tel, address, detailAddress, "
-					+ "postCode, isDefaultAddr " 
-					+ "from tbl_addressbook a " 
-					+ "join tbl_member m on "
-					+ "a.fk_memberId = m.memberId " 
-					+ "where fk_memberId = ? and a.isDeleted = 0 and addressbookId = ? "
+					+ "postCode, isDefaultAddr " + "from tbl_addressbook a " + "join tbl_member m on "
+					+ "a.fk_memberId = m.memberId " + "where fk_memberId = ? and a.isDeleted = 0 and addressbookId = ? "
 					+ "order by a.registerday";
 
 			pstmt = conn.prepareStatement(sql);
@@ -140,6 +136,7 @@ public class OrderDAO_imple implements OrderDAO {
 		return ovo;
 	}
 
+	// 유저가 결제한 정보를 Order, OrderDetail테이블에 insert
 	@Override
 	public String insertOrderData(Map<String, Object> paraMap) throws SQLException {
 		String orderId = "";
@@ -256,6 +253,7 @@ public class OrderDAO_imple implements OrderDAO {
 		return orderId;
 	}
 
+	// 유저의 주문 정보를 읽어온다
 	@Override
 	public OrderVO getOrderCompleteList(Map<String, String> paraMap) throws SQLException {
 		OrderVO ovo = new OrderVO();
@@ -263,7 +261,10 @@ public class OrderDAO_imple implements OrderDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "select orderId, name, tel, address, detailAddress, postCode, amount, to_char(orderDay, 'yyyy-mm-dd') as orderDay from tbl_order o where orderId = ?";
+			String sql = "select " + "orderId, name, tel, email, address, detailAddress, postCode, amount, "
+					+ "to_char(orderDay, 'yyyy-mm-dd') as orderDay, "
+					+ "case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품 준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송 완료' when orderStatus = 5 then '주문취소' end as orderStatus "
+					+ "from tbl_order o " + "join tbl_member m on o.fk_memberId = m.memberId " + "where orderId = ?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -275,6 +276,8 @@ public class OrderDAO_imple implements OrderDAO {
 				ovo.setOrderId(rs.getString("orderId"));
 				ovo.setFullName(rs.getString("name"));
 				ovo.setTel(rs.getString("tel"));
+				ovo.setEmail(rs.getString("email"));
+				ovo.setOrderStatus(rs.getString("orderStatus"));
 				ovo.setAddress(rs.getString("address"));
 				ovo.setDetailAddress(rs.getString("detailAddress"));
 				ovo.setPostCode(rs.getString("postCode"));
@@ -289,6 +292,7 @@ public class OrderDAO_imple implements OrderDAO {
 		return ovo;
 	}
 
+	// 관리자_주문목록 페이지 갯수 취득
 	@Override
 	public int getTotalPage(Map<String, String> paraMap) throws SQLException {
 		int totalPage = 0;
@@ -326,6 +330,7 @@ public class OrderDAO_imple implements OrderDAO {
 		return totalPage;
 	}
 
+	// 관리자_주문목록 취득
 	@Override
 	public List<OrderVO> getOrderList(int currentPageNo) throws SQLException {
 		List<OrderVO> orderList = new ArrayList<>();
@@ -333,35 +338,21 @@ public class OrderDAO_imple implements OrderDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "select "
-					+ "rno, "
-					+ "orderId, "
+			String sql = "select " + "rno, " + "orderId, "
 					+ "case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품 준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송 완료' when orderStatus = 5 then '주문취소' end as orderStatus, "
-					+ "orderDay, fk_memberId, name, amount, productName "
-					+ "from "
-					+ "tbl_order o "
-					+ "join "
-					+ "( "
-					+ "WITH t AS ( "
-					+ "SELECT fk_orderId, "
-					+ "MIN(productGroupName || ' ' || frameColorEng) AS productName, "
-					+ "COUNT(*) CNT "
+					+ "orderDay, fk_memberId, name, amount, productName " + "from " + "tbl_order o " + "join " + "( "
+					+ "WITH t AS ( " + "SELECT fk_orderId, "
+					+ "MIN(productGroupName || ' ' || frameColorEng) AS productName, " + "COUNT(*) CNT "
 					+ "FROM tbl_orderDetail od "
 					+ "join tbl_productDetail pd on od.fk_productDetailId = pd.productDetailId "
 					+ "join tbl_productGroup pg on pd.fk_productGroupId = pg.productGroupId "
 					+ "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId "
-					+ "GROUP BY fk_orderId order by to_number(fk_orderId) desc "
-					+ ") "
-					+ "SELECT row_number() over (order by to_number(fk_orderId) desc) as rno, "
-					+ "fk_orderId, "
-					+ "CASE WHEN CNT = 1 "
-					+ "		THEN productName "
+					+ "GROUP BY fk_orderId order by to_number(fk_orderId) desc " + ") "
+					+ "SELECT row_number() over (order by to_number(fk_orderId) desc) as rno, " + "fk_orderId, "
+					+ "CASE WHEN CNT = 1 " + "		THEN productName "
 					+ "     ELSE productName || ' 포함 ' || CAST(CNT || '건' AS VARCHAR(20)) END AS productName "
-					+ "FROM t "
-					+ ") v "
-					+ "on o.orderId = v.fk_orderId "
-					+ "where rno between ((? * 10) - 9) and (? * 10) "
-					+ "order by rno";
+					+ "FROM t " + ") v " + "on o.orderId = v.fk_orderId "
+					+ "where rno between ((? * 10) - 9) and (? * 10) " + "order by rno";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -390,6 +381,7 @@ public class OrderDAO_imple implements OrderDAO {
 		return orderList;
 	}
 
+	// 관리자_주문목록 검색
 	@Override
 	public List<OrderVO> searchOrder(Map<String, String> paraMap) throws SQLException {
 		List<OrderVO> orderList = new ArrayList<>();
@@ -401,36 +393,25 @@ public class OrderDAO_imple implements OrderDAO {
 			String searchKeyword = paraMap.get("value");
 			String order = paraMap.get("order");
 
-			String sql = "select " 
-					+ "rno, o.orderId, " 
+			String sql = "select " + "rno, o.orderId, "
 					+ "case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품 준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송 완료' when orderStatus = 5 then '주문취소' end as orderStatus, "
-					+ "orderDay, memberId, o.name, amount, productName "
-					+ "from " 
-					+ "tbl_order o " 
-					+ "join " 
-					+ "( "
+					+ "orderDay, memberId, o.name, amount, productName " + "from " + "tbl_order o " + "join " + "( "
 					+ "WITH t AS ( "
 					+ "SELECT o.fk_memberId as memberid, fk_orderId as orderId, to_char(orderDay, 'yyyy/mm/dd') as orderDay, "
 					+ "orderStatus, name, MIN(productGroupName || ' ' || frameColorEng) AS productName, "
-					+ "COUNT(*) CNT " 
-					+ "FROM tbl_order o join tbl_orderDetail od on o.orderId = od.fk_orderId "
+					+ "COUNT(*) CNT " + "FROM tbl_order o join tbl_orderDetail od on o.orderId = od.fk_orderId "
 					+ "join tbl_productDetail pd on od.fk_productDetailId = pd.productDetailId "
 					+ "join tbl_productGroup pg on pd.fk_productGroupId = pg.productGroupId "
 					+ "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId "
-					+ "GROUP BY fk_orderId, o.fk_memberId, to_char(orderDay, 'yyyy/mm/dd'), orderStatus, name " 
-					+ ") "
+					+ "GROUP BY fk_orderId, o.fk_memberId, to_char(orderDay, 'yyyy/mm/dd'), orderStatus, name " + ") "
 					+ "SELECT row_number() over (order by " + order + ") as rno, orderId, memberId, name, "
-					+ "CASE WHEN CNT = 1 " 
-					+ "			 THEN productName "
+					+ "CASE WHEN CNT = 1 " + "			 THEN productName "
 					+ "          ELSE productName || ' 포함 ' || CAST(CNT || '건' AS VARCHAR(20)) END AS productName "
-					+ "FROM t " 
-					+ "where " + colName + " like '%'|| ? ||'%' " 
-					+ ") v " 
-					+ "on o.orderId = v.orderId "
+					+ "FROM t " + "where " + colName + " like '%'|| ? ||'%' " + ") v " + "on o.orderId = v.orderId "
 					+ "where rno between ((? * 10) - 9) and (? * 10)";
 
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, searchKeyword);
 			pstmt.setInt(2, Integer.parseInt(paraMap.get("pageNum")));
 			pstmt.setInt(3, Integer.parseInt(paraMap.get("pageNum")));
@@ -457,6 +438,7 @@ public class OrderDAO_imple implements OrderDAO {
 		return orderList;
 	}
 
+	// 유저_주문내역 페이지
 	@Override
 	public int getPersonalTotalPage(Map<String, String> paraMap) throws SQLException {
 		int totalPage = 0;
@@ -483,31 +465,23 @@ public class OrderDAO_imple implements OrderDAO {
 		return totalPage;
 	}
 
+	// 유저_주문내역 리스트 취득
 	@Override
 	public List<OrderVO> getPersonalOrderList(Map<String, String> paraMap) throws SQLException {
 		List<OrderVO> orderList = new ArrayList<>();
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select "
-					+ "rno," + "orderId, orderDay, orderStatus, quantity, mainImageFile "
-					+ "from "
-					+ "( " 
-					+ "select "
+			String sql = "select " + "rno," + "orderId, orderDay, orderStatus, quantity, mainImageFile " + "from "
+					+ "( " + "select "
 					+ "row_number() over (order by orderDay desc, to_number(orderId) desc) as rno, orderId, orderDay, orderStatus, o.quantity, mainImageFile "
-					+ "from "
-					+ "( "
-					+ "select "
-					+ "orderId, max(to_char(orderDay,'yyyy/mm/dd')) as orderDay, "
+					+ "from " + "( " + "select " + "orderId, max(to_char(orderDay,'yyyy/mm/dd')) as orderDay, "
 					+ "case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품 준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송 완료' when orderStatus = 5 then '주문취소' end as orderStatus, "
-					+ "sum(quantity) as quantity, max(mainImageFile) as mainImageFile "
-					+ "from tbl_order o "
+					+ "sum(quantity) as quantity, max(mainImageFile) as mainImageFile " + "from tbl_order o "
 					+ "join tbl_orderDetail od on o.orderId = od.fk_orderId "
 					+ "join tbl_productDetail pd on od.fk_productDetailId = pd.productDetailId "
-					+ "where fk_memberId = ? " 
-					+ "group by orderId, orderStatus order by orderDay desc, to_number(orderId) desc " 
-					+ ") o " 
-					+ ") "
+					+ "where fk_memberId = ? "
+					+ "group by orderId, orderStatus order by orderDay desc, to_number(orderId) desc " + ") o " + ") "
 					+ "where rno between ((? * 10) - 9) and (? * 10)";
 
 			pstmt = conn.prepareStatement(sql);
@@ -533,24 +507,18 @@ public class OrderDAO_imple implements OrderDAO {
 
 		return orderList;
 	}
-	
-	
+
+	// 유저_회원정보 주문내역 취득
 	@Override
 	public List<OrderVO> getOrderListInfo(int memberId) throws SQLException {
 		List<OrderVO> orderList = new ArrayList<>();
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select "
-					+ "rno, orderId, orderDay, amount "
-					+ "from "
-					+ "( "
-					+ "select "
+			String sql = "select " + "rno, orderId, orderDay, amount " + "from " + "( " + "select "
 					+ "rank() OVER (ORDER BY orderDay Desc) as rno, orderId, "
-					+ "to_char(orderDay, 'yyyy/mm/dd') as orderDay, amount "
-					+ "from tbl_order where fk_memberId = ? "
-					+ ") "
-					+ "where rno <= 5";
+					+ "to_char(orderDay, 'yyyy/mm/dd') as orderDay, amount " + "from tbl_order where fk_memberId = ? "
+					+ ") " + "where rno <= 5";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -573,19 +541,17 @@ public class OrderDAO_imple implements OrderDAO {
 		return orderList;
 	}
 
+	// 유저_주문내역 상세용 OrderVO 취득
 	@Override
 	public OrderVO getPersonalOrderOne(Map<String, String> paraMap) throws SQLException {
 		OrderVO ovo = new OrderVO();
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select " 
-					+ "orderId, to_char(orderDay,'yyyy/mm/dd') as orderDay, "
+			String sql = "select " + "orderId, to_char(orderDay,'yyyy/mm/dd') as orderDay, "
 					+ "case when orderStatus = 1 then '결제완료' when orderStatus = 2 then '상품 준비중' when orderStatus = 3 then '배송중' when orderStatus = 4 then '배송 완료' when orderStatus = 5 then '주문취소' end as orderStatus, "
-					+ "sum(quantity) as quantity, amount, "
-					+ "name, address, detailAddress, postCode " 
-					+ "from tbl_order o "
-					+ "join tbl_orderDetail od on o.orderId = od.fk_orderId "
+					+ "sum(quantity) as quantity, amount, " + "name, address, detailAddress, postCode "
+					+ "from tbl_order o " + "join tbl_orderDetail od on o.orderId = od.fk_orderId "
 					+ "where fk_memberId = ? and orderId = ? "
 					+ "group by orderId, orderDay, orderStatus, amount, name, address, detailAddress, postCode ";
 
@@ -615,20 +581,18 @@ public class OrderDAO_imple implements OrderDAO {
 		return ovo;
 	}
 
+	// 유저_주문내역 상세용 주문 상품 리스트 취득
 	@Override
 	public List<OrderVO> getPersonalOrderDetail(Map<String, String> paraMap) throws SQLException {
 		List<OrderVO> orderDetailList = new ArrayList<>();
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select "
-					+ "productGroupName || ' ' || frameColorEng as productName, "
-					+ "od.price, od.quantity, mainImageFile "
-					+ "from tbl_orderDetail od "
+			String sql = "select " + "productGroupName || ' ' || frameColorEng as productName, "
+					+ "od.price, od.quantity, mainImageFile " + "from tbl_orderDetail od "
 					+ "join tbl_productDetail pd on od.fk_productDetailId = pd.productDetailId "
 					+ "join tbl_productGroup pg on pd.fk_productGroupId = pg.productGroupId "
-					+ "join tbl_frameColor fc on pd.fk_frameColorId = fc.frameColorId "
-					+ "where fk_orderId = ?";
+					+ "join tbl_frameColor fc on pd.fk_frameColorId = fc.frameColorId " + "where fk_orderId = ?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -643,7 +607,7 @@ public class OrderDAO_imple implements OrderDAO {
 				ovo.setQuantity(rs.getInt("quantity"));
 				ovo.setMainImageFile(rs.getString("mainImageFile"));
 				orderDetailList.add(ovo);
-			} // while of while(rs.next())-----------------
+			} // end of while(rs.next())-----------------
 
 		} finally {
 			close();
@@ -652,6 +616,7 @@ public class OrderDAO_imple implements OrderDAO {
 		return orderDetailList;
 	}
 
+	// 유저_주문취소
 	@Override
 	public int cancleOrder(Map<String, String> paraMap) throws SQLException {
 		int num = 0;
@@ -668,11 +633,74 @@ public class OrderDAO_imple implements OrderDAO {
 
 			num = pstmt.executeUpdate();
 
+			// 트랜젝션 커밋
+			conn.commit();
 		} finally {
 			close();
 		}
 
 		return num;
+	}
+
+	// 관리자_주문목록에서 주문현황 수정
+	@Override
+	public int updateOrderStatus(Map<String, String> paraMap) throws SQLException {
+		int num = 0;
+
+		try {
+			conn = ds.getConnection();
+			conn.setAutoCommit(false);
+
+			String sql = "update tbl_order set orderStatus = ? where orderId = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, paraMap.get("orderStatus"));
+			pstmt.setString(2, paraMap.get("orderId"));
+
+			num = pstmt.executeUpdate();
+			
+			conn.commit();
+		} catch (Exception e) {
+			/// 트랜젝션 롤백
+			conn.rollback();
+		} finally {
+			close();
+		}
+
+		return num;
+	}
+	
+	// 관리자_주문내역 상세용 OrderVO 취득
+	@Override
+	public OrderVO getOrderOne(Map<String, String> paraMap) throws SQLException {
+		OrderVO ovo = new OrderVO();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select "
+					+ "orderId, name, tel, orderStatus "
+					+ "from tbl_order "
+					+ "where orderId = ? ";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, paraMap.get("orderId"));
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				ovo.setOrderId(rs.getString("orderId"));
+				ovo.setOrderStatus(rs.getString("orderStatus"));
+				ovo.setFullName(rs.getString("name"));
+				ovo.setTel(rs.getString("tel"));
+			} // while of while(rs.next())-----------------
+
+		} finally {
+			close();
+		}
+
+		return ovo;
 	}
 
 }

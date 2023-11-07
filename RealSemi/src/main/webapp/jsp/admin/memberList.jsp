@@ -95,7 +95,7 @@ String ctxPath = request.getContextPath();
 							<tbody>
 								<c:if test="${not empty requestScope.memberList}">
 									<c:forEach var="memberVo" items="${requestScope.memberList}" varStatus="status">
-										<tr>
+										<tr data-toggle="modal" data-target="#detailModal">
 											<th>${memberVo.rno}</th>
 											<td>${memberVo.memberId}</td>
 											<td>${memberVo.fullName}</td>
@@ -133,6 +133,85 @@ String ctxPath = request.getContextPath();
 						</nav>
 					</div>
 
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 회원정보 상세용 Modal -->
+	<!-- Modal 구성 요소는 현재 페이지 상단에 표시되는 대화 상자/팝업 창입니다. -->
+	<div class="modal fade" id="detailModal">
+		<div class="modal-dialog" style="max-width: 500px;">
+			<div class="modal-content">
+
+				<!-- Modal header -->
+				<div class="modal-header">
+					<h5 class="modal-title font--kr">회원정보 상세</h5>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="container_sq">
+						<div class="order_confirmation center_wrap cart_wrapper mo_order_confirm order_max-width344">
+							<div class="contentswrap_top center_wrap ">
+								<div class="content-wrap order_text_left">
+									<div class="info_customer">
+										<div class="id_member font--kr font--15 font--bd order_p_b28">
+											<p></p>
+										</div>
+										<div class="fullName font--kr font--13 font--rg order_line_height order_p_b7 order_p_b18">
+											<p class="label">회원명</p>
+											<p class="value"></p>
+										</div>
+										
+										<div class="email font--kr font--13 font--rg order_line_height order_p_b7 order_p_b18">
+											<p class="label">이메일</p>
+											<p class="value"></p>
+										</div>
+
+										<div class="birth font--kr font--13 font--rg order_line_height order_p_b7 order_p_b18">
+											<p class="label">생년월일</p>
+											<p class="value"></p>
+										</div>
+										
+										<div class="gender font--kr font--13 font--rg order_line_height order_p_b7 order_p_b18">
+											<p class="label">성별</p>
+											<p class="value"></p>
+										</div>
+										
+										<div class="registerDay font--kr font--13 font--rg order_line_height order_p_b7 order_p_b18">
+											<p class="label">가입일자</p>
+											<p class="value"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="contentswrap_top center_wrap ">
+							<div class="register-wrap"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>
