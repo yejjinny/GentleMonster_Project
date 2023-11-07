@@ -270,7 +270,9 @@ String ctxPath = request.getContextPath();
 		<div class="list-btn content-top__right inline float-right">
 			<c:if test="${empty requestScope.isCategorySearch}">
 				<button data-toggle="modal" data-target="#filterModal" type="button"
-					class="filter-toggle inline jsFilterBtn ">
+					class="filter-toggle inline jsFilterBtn " data-category="filter"
+					data-action="click_filter_open" data-label="filter_open"
+					aria-label="Open Filter Popup" aria-expanded="false">
 					<span class="filter-toggle__icon relative"> <span
 						class="filter-toggle__bar filter-toggle__bar--first"></span> <span
 						class="filter-toggle__bar filter-toggle__bar--second"></span>
@@ -279,11 +281,11 @@ String ctxPath = request.getContextPath();
 				</button>
 			</c:if>
 		</div>
+
+
 	</div>
-
-
 </div>
-
+<div class="filter-popup-bg jsFilterPopupBG"></div>
 
 
 <%-- 필터모달 시작 --%>
@@ -324,6 +326,8 @@ String ctxPath = request.getContextPath();
 											<li class="filter__item filter__item--inline relative">
 												<label for="frame_color[]_${status.index}"
 												class="filter__label n-label n-label--radio font--kr font--12 font--rg">
+
+
 													<input type="checkbox" name="frame_color" class="n-radio "
 													value="${frameColorVo.frameColorId}"
 													id="frame_color[]_${status.index}">
@@ -331,6 +335,8 @@ String ctxPath = request.getContextPath();
 											</label>
 											</li>
 										</c:forEach>
+
+
 									</ul>
 								</div>
 							</div>
@@ -523,7 +529,8 @@ String ctxPath = request.getContextPath();
 									data-sub-image="https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_2.jpg,https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_3.jpg,https://www-prd-kr.gentlemonster.com/media/catalog/product/1/1/11001_DE-FI-G2_4.jpg">
 									<a
 										class="product__link product-image-swiper__wrapper swiper-wrapper"
-										href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}" product-name="${productVo.productName}">
+										href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
+										product-name="${productVo.productName}">
 										<div class="product-image-swiper__slide swiper-slide">
 											<div class="product__image-wrapper">
 												<img data-src="" alt=""
@@ -544,7 +551,8 @@ String ctxPath = request.getContextPath();
 								<div class="product__info relative">
 									<div class="clearfix">
 										<div class="product__spec float-left">
-											<a class="product__link" id="product_TW2WM9BHAYSR" href="수정필"
+											<a class="product__link" id="product_TW2WM9BHAYSR"
+												href="<%=ctxPath%>/product/productDetail.gm?productDetailId=${productVo.productDetailId}"
 												product-name="${productVo.productName}"
 												product-price="${productVo.price}" data-category="ecommerce"
 												data-action="select_item">

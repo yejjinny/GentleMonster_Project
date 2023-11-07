@@ -1883,3 +1883,10 @@ input[type=checkbox]:checked ~ .input-box-check-layer:after {
 span.category__thumbnail:hover {
 	border: solid 1px  #000 !important;
 }
+
+
+
+
+.filter-toggle__bar--second::before, .filter-toggle.on .filter-toggle__bar--first::before {
+	left:16px !important;
+}

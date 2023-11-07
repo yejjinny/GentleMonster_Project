@@ -62,34 +62,52 @@ public class CategoryAction extends AbstractController {
 			String colName = "";
 			List<ProductVO> productList = null;
 
-			if (req.getParameter("frameId") != null) {
+
+			if (req.getParameter("square") != null) {
 				paraMap2.put("colName", "fk_frameId");
-				paraMap2.put("value", req.getParameter("frameId"));
+				paraMap2.put("value", req.getParameter("square"));
 				productList = pdao.searchCategoryList(paraMap2, paraMap);
+				req.setAttribute("square", true);
+			}
+			if (req.getParameter("cateye") != null) {
+				paraMap2.put("colName", "fk_frameId");
+				paraMap2.put("value", req.getParameter("cateye"));
+				productList = pdao.searchCategoryList(paraMap2, paraMap);
+				req.setAttribute("cateye", true);
+			}
+			if (req.getParameter("round") != null) {
+				paraMap2.put("colName", "fk_frameId");
+				paraMap2.put("value", req.getParameter("round"));
+				productList = pdao.searchCategoryList(paraMap2, paraMap);
+				req.setAttribute("round", true);
 			}
 			if (req.getParameter("isTint") != null) {
 				paraMap2.put("colName", "isTint");
 				paraMap2.put("value", req.getParameter("isTint"));
 			    productList = pdao.searchCategoryList(paraMap2, paraMap);
+			    req.setAttribute("isTint", true);
 			}
 			if (req.getParameter("isGift") != null) {
 				paraMap2.put("colName", "isGift");
 				paraMap2.put("value", req.getParameter("isGift"));
 				productList = pdao.searchCategoryList(paraMap2, paraMap);
+				req.setAttribute("isGift", true);
 			}
 			if (req.getParameter("isBluelight") != null) {
 				paraMap2.put("colName", "isBluelight");
 				paraMap2.put("value", req.getParameter("isBluelight"));
 				productList = pdao.searchCategoryList(paraMap2, paraMap);
+				req.setAttribute("isBluelight", true);
 			}
 			
-			
+		
 			
 			
 			// 베스트셀러 카테고리
 
 			if (req.getParameter("bestSeller") != null) {
 				productList = pdao.getBestSeller(paraMap);
+				req.setAttribute("bestSeller", true);
 			}
 
 			/*
@@ -98,11 +116,15 @@ public class CategoryAction extends AbstractController {
 			 */
 			/* System.out.println(req.getParameter("bestSeller")); */
 			
+			
+			// 카테고리 allView 추가해서 검정테두리 넣기
 			req.setAttribute("productList", productList);
-			req.setAttribute("isCategorySearch", true);
+			if(req.getParameter("allView") != null) {
+				req.setAttribute("allView", true);
+			}
 			
 			
-
+			
 			
 
 			if ("1".equals(req.getParameter("categoryId"))) {
