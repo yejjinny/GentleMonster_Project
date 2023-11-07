@@ -25,11 +25,8 @@ public class CategoryAction extends AbstractController {
 		String method = req.getMethod();
 
 		HttpSession session = req.getSession();
-		MemberVO loginUser = new MemberVO();
-		loginUser.setEmail("hi@naver.com");
-		loginUser.setMemberId(1234);
 
-		session.setAttribute("loginUser", loginUser);
+
 
 		if ("GET".equalsIgnoreCase(method)) {
 			// GET 방식으로 들어왔을 경우
