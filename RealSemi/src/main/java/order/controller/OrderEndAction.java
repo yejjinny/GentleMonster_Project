@@ -278,7 +278,7 @@ public class OrderEndAction extends AbstractController {
 					GoogleMail mail = new GoogleMail();
 
 					try {
-						mail.send_certification_code(((MemberVO)session.getAttribute("loginUser")).getEmail(), orderData);
+						mail.send_certification_code("[GENTLE MONSTER] 주문내역 안내", ((MemberVO)session.getAttribute("loginUser")).getEmail(), orderData);
 						sendMailSuccess = true; // 메일 전송 성공했음을 기록함
 					} catch (Exception e) {
 						//메일 전송이 실패한 경우

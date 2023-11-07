@@ -11,7 +11,7 @@ String ctxPath = request.getContextPath();
 <link rel="stylesheet" href="<%=ctxPath%>/css/order/orderDetail.css">
 <title>GENTLE MONSTER Official Site</title>
 <jsp:include page="../common/header.jsp" />
-
+<script src="<%=ctxPath%>/js/order/orderDetail.js"></script>
 
 
 
@@ -93,10 +93,14 @@ String ctxPath = request.getContextPath();
 							</c:forEach>
 
 						</div>
-						<div class="items-button btn-mttype01" hidden="">
-							<!-- 주문 취소 -->
-							<button id="do_cancel" class="ordercancel-item-button font--kr disable">취소하기</button>
-						</div>
+						<!-- 						<div class="items-button btn-mttype01" hidden=""> -->
+
+						<c:if test="${requestScope.orderOne.orderStatus eq '결제완료'}">
+							<div class="items-button btn-mttype01">
+								<!-- 주문 취소 -->
+								<button type="button" id="do_cancel" onClick="cancelOrder(${requestScope.orderOne.orderId})" class="ordercancel-item-button font--kr disable">취소하기</button>
+							</div>
+						</c:if>
 						<div class="ordercancel-announce">
 							<div class="text-style sub-title font--kr">주문 취소 안내</div>
 							<div class="footer-contents-text margin_36 customercare-s-font2 font--kr">
@@ -128,17 +132,17 @@ String ctxPath = request.getContextPath();
 									</li>
 									<li>
 										<span>•</span>
-										<em class="font--kr">주문 상태가 ‘배송 완료’일 경우 [회원정보] &gt; [주문] &gt; [주문 상세보기] 에서 반품접수 가능하며, ‘배송중’으로 보여질 경우 젠틀몬스터 고객서비스팀(1600-2126)으로 연락 주시기 바랍니다.</em>
+										<em class="font--kr">주문 상태가 ‘배송 완료’ 혹은 ‘배송중’으로 보여질 경우 젠틀몬스터 고객서비스팀(1600-2126)으로 연락 주시기 바랍니다.</em>
 									</li>
 									<li>
 										<span>•</span>
-										<em class="font--kr"> 반품 절차는 <button type="button" class="link" data-toggle="modal" data-target="#refundModal"> 교환 및 반품 규정 </button> 을 확인하시길 바랍니다.
+										<em class="font--kr"> 반품 절차는
+											<button type="button" class="link" data-toggle="modal" data-target="#refundModal">교환 및 반품 규정</button> 을 확인하시길 바랍니다.
 										</em>
 									</li>
 								</ul>
 							</div>
 						</div>
-						<!-- 220726 nrnr -->
 					</div>
 					<div class="ordercancel-payment-info">
 						<div class="shipping-method info-item">
@@ -184,8 +188,8 @@ String ctxPath = request.getContextPath();
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<!-- 교환반품 Modal -->
 	<!-- Modal 구성 요소는 현재 페이지 상단에 표시되는 대화 상자/팝업 창입니다. -->
 	<div class="modal fade" id="refundModal">
@@ -211,8 +215,8 @@ String ctxPath = request.getContextPath();
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 </div>
 
 

@@ -16,7 +16,7 @@ $(document).ready(function() {
 		
 		if ($("select[name='searchCategory']").val() == "gender") {
 			// 유저가 선택한 셀렉트값이 성별이라면
-			$("input[name='searchMemberInput']").attr("placeholder", "남성, 여성, 선택 안함 중 입력해주세요");
+			$("input[name='searchMemberInput']").attr("placeholder", "남성, 여성, 선택 안함");
 		}
 
 		if ($("select[name='searchCategory']").val() == "isDeleted") {

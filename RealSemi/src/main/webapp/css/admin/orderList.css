@@ -820,6 +820,7 @@ input.searchInput {
 .searchSelect{
     margin-right: 10px !important;
     text-align:center;
+    width: 120px;
 }
 
 a.page-link {

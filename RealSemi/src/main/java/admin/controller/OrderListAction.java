@@ -59,7 +59,7 @@ public class OrderListAction extends AbstractController {
 				String currentPageNo = req.getParameter("currentPageNo");
 
 				if (colName == null || (!"orderId".equals(colName) && !"orderDay".equals(colName)
-						&& !"memberId".equals(colName) && !"fullName".equals(colName))) {
+						&& !"memberId".equals(colName) && !"name".equals(colName))) {
 					// 유저가 검색값을 입력하지 않았을 경우 혹은 잘못된 검색값을 입력하였을 경우
 					colName = "";
 				}
@@ -106,7 +106,7 @@ public class OrderListAction extends AbstractController {
 				paraMap.put("colName", colName);
 				paraMap.put("value", value);
 				paraMap.put("order", order);
-
+				
 				// 페이징 처리를 위한 검색이 있는 또는 검색이 없는 회원에 대한 총 페이지 수 알아오기
 				int totalPage = odao.getTotalPage(paraMap);
 
