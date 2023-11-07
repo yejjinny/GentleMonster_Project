@@ -18,10 +18,15 @@ public class StoreAction extends AbstractController {
 		
 		String countryid = request.getParameter("countryid"); 
 	
-		if(countryid == null || countryid == "null" || countryid == "" ) {
+		try {
+			if( !(Integer.parseInt(countryid)>=1 && Integer.parseInt(countryid)<=7) ) {
+				countryid = "1";
+			}
+		}catch(NumberFormatException e) {
 			countryid = "1";
 		}
-		
+	
+	
 		StoreDAO sdao = new StoreDAO_imple();
 	
 		// --- 매장보기 중 '스토어' 보여주기 시작 --- //
