@@ -173,15 +173,18 @@
 										</c:if>
 									</c:forEach> 
 									<!-- 스토어 사진 보여주기 끝 -->
-										 
-							
+										
 								</div>
+								
+							<c:if test="${status.index eq 1}">	
 								<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 									<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span>
 								</a>
 								<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
 									<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span>
 								</a>
+							</c:if>	
+								
 							</div>
 							<!-- store__thumbnail 끝 -->
 							
@@ -226,7 +229,7 @@
 	<!-- ######################### 스토어(백화점/면세점) 시작 ######################### -->
 	<div class="store_page">
 		<!-- Department store Title -->
-		<div class="content-top-dummy relative jsContDummy" id="department_name_div" style="display: block;">
+		<div class="content-top relative jsContDummy" id="department_name_div" style="display: block;">
 			<div class="content-top jsContTop">
 				<div class="page-title font--kr font--16 font--bd float-left">
 					백화점 / 면세점<span class="item-count" id="department_cnt"> (${requestScope.totalDepStoreCount})</span>
