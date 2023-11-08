@@ -16,12 +16,15 @@ public class MemberToChangePwdAction extends AbstractController {
 		 
 		HttpSession session = req.getSession();
 		String method=req.getMethod();  
-			 
+		
+		
+		
+		
 		 if("GET".equalsIgnoreCase(method)) {
 			 
-			
+			  
 			 
-			  if (session.getAttribute("userEmail") != null) {
+			  if (session.getAttribute("userEmail") != null && session.getAttribute("loginUser") == null) {
 				  
 				  //super.setRedirect(false); 
 				  super.setViewPage("/jsp/member/editMemberInfo/changePwd_key.jsp");
