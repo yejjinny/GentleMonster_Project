@@ -40,7 +40,10 @@ public class MemberInfoDeleteAction extends AbstractController {
 					 
 					 if( result==1) {
 						 
-						 System.out.println("탈퇴성공");
+						 
+						 
+						 session.removeAttribute("loginUser");
+						 
 						 super.setRedirect(false);
 						 super.setViewPage("/jsp/common/index.jsp");
 							
