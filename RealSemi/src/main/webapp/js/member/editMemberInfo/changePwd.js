@@ -63,6 +63,7 @@
 						  
 						  if( json.isExists ){
 							  
+							  alert("비밀번호변경이 완료되었습니다. ");
 							 location.href=`memberInfoEdit.gm`;
 							 
 							  
