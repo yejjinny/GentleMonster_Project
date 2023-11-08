@@ -80,12 +80,7 @@ public class SearchDAO_imple implements SearchDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			if(!paraMap.get("memberId").isEmpty()) {
-				pstmt.setString(1, paraMap.get("memberId"));
-			}else {
-				pstmt.setString(1, "");
-			}
-			
+			pstmt.setString(1, paraMap.get("memberId"));			
 			pstmt.setString(2, paraMap.get("search"));
 			pstmt.setString(3, paraMap.get("search"));
 			

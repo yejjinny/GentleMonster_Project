@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	/* span.alert 태그 가리기 */
 	$(document).find("span.alert").hide();
 
@@ -15,13 +15,18 @@ $(document).ready(function() {
 	const summaryPrice = $("span.checkout-summary-price");
 	summaryPrice.html(" " + addComma(calculateAmount()) + "원 ");
 
-
+	/* 전화번호 숫자만 입력할 수 있도록한다 */
+	$("input[type=tel]").keyup(function() {
+		var replace_text = $(this).val().replace(/[^-0-9]/g, '');
+		$(this).val(replace_text);
+	});
+	
 	/* 유저가 인풋태그 값을 수정했을 경우 ----------------------------------------------*/
 	$("input[type=text]").change(function() {
-		
+
 		// 수정했다는 의미로 true를 준다
 		isChanged = true;
-		
+
 		// 새롭게 값이 변경되었기 때문에 addressBookId의 값을 ""로 바꾼다
 		$("input[name='addressBookId']").val("");
 	});
@@ -37,7 +42,7 @@ $(document).ready(function() {
 
 	/* 유저가 셀렉트리스트를 눌렀을 경우 */
 	$("div.select").click(function() {
-		
+
 		if (openSelectList) {
 			// 셀렉트리스트가 열려있다면
 
@@ -71,7 +76,7 @@ $(document).ready(function() {
 
 	/* 배송지 검색 버튼 누를 경우 */
 	$("button.search_button").click(function() {
-		
+
 		// 배송주소, 우편번호에 대해서 읽기 전용 해제함
 		$("input[name='mb_address']").removeAttr("readonly");
 		$("input[name='mb_zipcode']").removeAttr("readonly");
@@ -122,7 +127,7 @@ $(document).ready(function() {
 
 				// 참고항목을 읽기전용(readonly) 로 만들기
 				$("input[name='mb_address']").attr("readonly", true);
-				
+
 				// 버튼을 수정한다
 				$("button.search_button").css("display", "none");
 				$("button.delete_button").css("display", "block");
@@ -136,17 +141,17 @@ $(document).ready(function() {
 
 	/* 다음 단계로 버튼 눌렀을 경우 */
 	$("button#go_to_payment").click(function() {
-		
+
 		// 필수 사항 입력 체크용 / true = 입력에 문제가 없다, false = 입력에 문제가 있다
 		let check = true;
-		
-		
+
+
 		$("form#shipping-form").find("input[type=text]").each(function(index, item) {
-			
+
 			// 아무값없이 띄어쓰기만 있을 때도 빈 값으로 체크되도록 trim() 함수 호출
 			if ($(this).val().trim() == '') {
 				// 빈 값일 경우
-				
+
 				if ($(this).attr('id') == 'mb_addr-1') {
 					// 태그가 배송주소일 경우 에러 내용 표시
 					$(this).parent().parent().parent().find("span.alert").show();
@@ -156,10 +161,10 @@ $(document).ready(function() {
 				}
 
 				check = false;
-				
+
 			} else {
 				// 값이 입력되어 있을 경우
-				
+
 				if ($(this).attr('id') == 'mb_addr-1') {
 					// 태그가 배송주소일 경우 에러 내용 숨기기
 					$(this).parent().parent().parent().find("span.alert").hide();
@@ -187,11 +192,11 @@ $(document).ready(function() {
 			// 필수 체크사항 체크 안 되어있을 경우 에러용 클래스를 생성한다
 			$("input[name='privacy_policy']").parent().parent().addClass(" has-error");
 			check = false;
-		}else{
+		} else {
 			// 필수 체크사항 체크 되어있을 경우 에러용 클래스를 삭제한다
 			$("input[name='privacy_policy']").parent().parent().removeClass(" has-error");
 		}
-		
+
 		/* 유저가 인풋 태그 값을 변경했는지 확인 */
 		if (isChanged) {
 			// 변경 했을 경우
@@ -200,12 +205,12 @@ $(document).ready(function() {
 			// 변경 하지 않았을 경우
 			$("input[name='change_address']").val(0);
 		}
-		
-		
+
+
 		/* 필수 입력 사항이 다 통과되었는지 확인 */
 		if (check) {
 			// 문제 없는 경우 form을 submit한다
-			
+
 			const frm = document.shippingFrm;
 			frm.action = "orderPayment.gm";
 			frm.method = "post"
@@ -228,7 +233,7 @@ function clickAddress(addressBookId) {
 		async: true,
 		dataType: "json",
 		success: function(addressOne) {
-			
+
 			// 유저가 선택한 주소의 주소정보로 변경한다
 			$("input[name='addressBookId']").val(addressOne.addressbookId);
 			$("input[name='mb_lname']").val(addressOne.familyName);
