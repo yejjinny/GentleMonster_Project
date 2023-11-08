@@ -8,6 +8,74 @@ String ctxPath = request.getContextPath();
 
 <jsp:include page="../common/header_meta.jsp" />
 <link rel="stylesheet" href="<%=ctxPath%>/css/search/searchResult.css">
+<script type="text/javascript">
+   
+   $(document).ready(function(){
+       
+   });// end of $(document).ready(function(){})--------------
+   
+   
+   function goAdd(productDetailId) {
+
+         const pathname = "/" + window.location.pathname.split("/")[1] + "/";
+         const origin = window.location.origin;
+         const contextPath = origin + pathname;
+
+         /* 선택한 카트 상품을 삭제한다 */
+         $.ajax({
+            url: contextPath + "wish/addWishItem.gm",
+            data: { "productDetailId": productDetailId },
+            type: "post",
+            async: true,
+            dataType: "json",
+            success: function(text) {
+               if (text.isAdd) {
+                  // true일 경우 = 추가가 완료되었을경우
+                  $(location).attr("href", history.go(0));
+               } else {
+                  // false일 경우 = 추가되지 않았을 경우
+                  alert("삭제 실패! 정상적으로 작동되지 않았습니다. 원래 화면으로 돌아갑니다");
+                  $(location).attr("href", history.go(0));
+               }
+            },
+            error: function(request, status, error) {
+               alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
+            }
+         });
+      };
+
+
+      /* 삭제하기 버튼 눌렀을 경우 */
+      function goDelete(productDetailId) {
+
+         const pathname = "/" + window.location.pathname.split("/")[1] + "/";
+         const origin = window.location.origin;
+         const contextPath = origin + pathname;
+
+         /* 선택한 카트 상품을 삭제한다 */
+         $.ajax({
+            url: contextPath + "wish/deleteWishItem.gm",
+            data: { "productDetailId": productDetailId },
+            type: "post",
+            async: true,
+            dataType: "json",
+            success: function(text) {
+               if (text.isDelete) {
+                  // true일 경우 = 삭제가 완료되었을경우
+                  $(location).attr("href", history.go(0));
+               } else {
+                  // false일 경우 = 삭제되지 않았을 경우
+                  alert("삭제 실패! 정상적으로 작동되지 않았습니다. 원래 화면으로 돌아갑니다");
+                  $(location).attr("href", history.go(0));
+               }
+            },
+            error: function(request, status, error) {
+               alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
+            }
+         });
+      }; // end of function goDelete(cartId) --------------------------------------------------------------------------------------------
+   
+</script>
 <title>GENTLE MONSTER Official Site</title>
 <jsp:include page="../common/header.jsp" />
 
@@ -23,14 +91,15 @@ String ctxPath = request.getContextPath();
 			<div class="content-top-dummy relative jsContDummy">
 				<div class="content-top jsContTop">
 					<div class="page-title font--kr font--16 font--bd">
-						"${requestScope.searchKeyword}" <span id="list-total-count">(${fn:length(requestScope.productList)})</span>
+						"${requestScope.searchKeyword}"
+						<span id="list-total-count">(${fn:length(requestScope.productList)})</span>
 					</div>
 				</div>
 			</div>
 			<div id="product-list">
 				<c:if test="${not empty requestScope.productList}">
 					<ul class="product-list__wrapper inline">
-						<c:forEach var="productVo" items="${requestScope.productList}" >
+						<c:forEach var="productVo" items="${requestScope.productList}">
 
 
 							<li data-id="14E4P7JEU08QV">
@@ -55,13 +124,14 @@ String ctxPath = request.getContextPath();
 												</a>
 											</div>
 
-											<!-- 버튼 클릭시 위시리스트에 등록하는 건 민경언니가 할 것 -->
-											<c:if test="${productVo.isWish eq 1}">
-												<button class="product__wish float-right jsBtnWish on">
-											</c:if>
+											<c:if test="${not empty sessionScope.loginUser}">
+												<c:if test="${productVo.isWish eq 1}">
+													<button class="product__wish float-right jsBtnWish on" onclick="goDelete(${productVo.productDetailId});">
+												</c:if>
 
-											<c:if test="${productVo.isWish eq 0}">
-												<button class="product__wish float-right jsBtnWish">
+												<c:if test="${productVo.isWish eq 0}">
+													<button class="product__wish float-right jsBtnWish" onclick="goAdd(${productVo.productDetailId});">
+												</c:if>
 											</c:if>
 											<svg version="1.1" baseProfile="basic" id="레이어_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" xml:space="preserve">
 							                        <path fill="none" stroke-miterlimit="10" d="M27.4,9.4c-0.4-3.3-3.2-5.9-6.6-5.9c-2.5,0-4.6,1.3-5.8,3.3
