@@ -68,7 +68,7 @@ $(document).ready(function() {
 		/* 추가할 상품명 입력 인풋태그 생성 및 셀렉트박스 삭제*/
 		$(this).siblings("select#productName").remove();
 		$(this).parent().html(
-			`<input type="text" id="addProductNameInput" placeholder="추가할 상품명을 입력하세요" size="30" name="addProductNameInput" />
+			`<input type="text" id="addProductNameInput" placeholder="추가할 상품명을 입력하세요" size="30" name="addProductNameInput" autocomplete="off"/>
 			 <button type="button" class="selectProductNameBtn btn btn-secondary">상품명 선택으로 변경</button>
 			`);
 
@@ -533,14 +533,14 @@ $(document).ready(function() {
 						$("input#mainImageFile").siblings("img.previewImg").attr("src", contextPath + text.mainImageFile.substr(1, text.mainImageFile.length));
 
 						for (let i = 0; i < text.detailImageList.length; i++) {
-							
-							if(text.detailImageList[i]['imageFile'+ (i + 1)].includes("mp4")){
+
+							if (text.detailImageList[i]['imageFile' + (i + 1)].includes("mp4")) {
 								$("input#imageFile" + (i + 1)).siblings("video.previewImg").attr("src", contextPath + text.detailImageList[i]['imageFile' + (i + 1)].substr(1, text.detailImageList[i]['imageFile' + (i + 1)].length))
 								$("input#imageFile" + (i + 1)).siblings("video.previewImg").show();
-							}else{
+							} else {
 								$("input#imageFile" + (i + 1)).siblings("img.previewImg").attr("src", contextPath + text.detailImageList[i]['imageFile' + (i + 1)].substr(1, text.detailImageList[i]['imageFile' + (i + 1)].length))
 							}
-							
+
 						}
 
 
@@ -849,6 +849,8 @@ $(document).ready(function() {
 		fileReader.readAsDataURL(input_file.files[0]); //FileReader.readAsDataURL() --> 파일을 읽고, result속성에 파일을 나타내는 URL을 저장 시켜준다.
 		fileReader.onload = function(event) { // FileReader.onload --> 파일 읽기 완료 성공시에만 작동하도록 하는 것임.
 			imageFile.find("img.previewImg").attr("src", fileReader.result);
+			imageFile.find("video.previewImg").attr("src", "")
+			imageFile.find("video.previewImg").hide();
 		};
 	});
 	/* end of 제품이미지 또는 추가이미지 파일을 선택하면 화면에 이미지를 미리 보여주기 구현하기 */

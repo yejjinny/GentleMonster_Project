@@ -51,7 +51,7 @@ public class OrderStatusUpdateAction extends AbstractController {
 						HashMap<String, String> paraMapToSMS = new HashMap<>();
 						paraMapToSMS.put("to", ovo.getTel()); // 수신번호
 						paraMapToSMS.put("from", "01045807291"); // 발신번호
-						paraMapToSMS.put("type", "SMS"); // Message type ( SMS(단문), LMS(장문), MMS, ATA )
+						paraMapToSMS.put("type", "LMS"); // Message type ( SMS(단문), LMS(장문), MMS, ATA )
 						
 						String smsData = "[GENTLE MONSTER] " + ovo.getFullName() + "님 께서 주문하신 주문번호 #" + paraMap.get("orderId") + "는 현재 CJ대한통운 택배로 ";
 						if("3".equals(ovo.getOrderStatus())) {

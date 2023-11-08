@@ -14,8 +14,7 @@ import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 
 /**
- * 작성자 신예진 
- * 관리자용 회원목록 Controller
+ * 작성자 신예진 관리자용 회원목록 Controller
  */
 public class MemberListAction extends AbstractController {
 
@@ -99,6 +98,16 @@ public class MemberListAction extends AbstractController {
 					value = "";
 				}
 
+				if ("gender".equals(colName)) {
+					if ("남성".equals(value)) {
+						value = "1";
+					} else if ("여성".equals(value)) {
+						value = "2";
+					} else {
+						value = "3";
+					}
+				}
+
 				// dao에 파라미터로 넘겨줄 값을 설정한다
 				Map<String, String> paraMap = new HashMap<>();
 				paraMap.put("colName", colName);
@@ -156,16 +165,15 @@ public class MemberListAction extends AbstractController {
 					// **** [맨처음][이전] 만들기 ***** ///
 					// pageNo ==> 11
 
-					pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory")
-							+ "&searchMemberInput=" + value 
-							+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
-							+ "&currentPageNo=1'><<</a></li>";
+					pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory="
+							+ req.getParameter("searchCategory") + "&searchMemberInput=" + value + "&orderSearchResult="
+							+ req.getParameter("orderSearchResult") + "&currentPageNo=1'><<</a></li>";
 
 					if (pageNo != 1) {
-						pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory") 
-								+ "&searchMemberInput=" + value
-								+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
-								+ "&currentPageNo=" + (pageNo - 1) + "'>[이전]</a></li>";
+						pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory="
+								+ req.getParameter("searchCategory") + "&searchMemberInput=" + value
+								+ "&orderSearchResult=" + req.getParameter("orderSearchResult") + "&currentPageNo="
+								+ (pageNo - 1) + "'>[이전]</a></li>";
 					}
 
 					while (!(loop > blockSize || pageNo > totalPage)) {
@@ -174,10 +182,10 @@ public class MemberListAction extends AbstractController {
 							pageBar += "<li class='page-item active'><a class='page-link' href='#'>" + pageNo
 									+ "</a></li>";
 						} else {
-							pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory") 
-									+ "&searchMemberInput=" + value
-									+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
-									+ "&currentPageNo=" + pageNo + "'>" + pageNo + "</a></li>";
+							pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory="
+									+ req.getParameter("searchCategory") + "&searchMemberInput=" + value
+									+ "&orderSearchResult=" + req.getParameter("orderSearchResult") + "&currentPageNo="
+									+ pageNo + "'>" + pageNo + "</a></li>";
 						}
 						loop++; // 1 2 3 4 5 6 7 8 9 10
 
@@ -192,15 +200,14 @@ public class MemberListAction extends AbstractController {
 					// **** [다음][마지막] 만들기 ***** ///
 					// pageNo ==> 11
 					if (pageNo <= totalPage) {
-						pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory") 
-								+ "&searchMemberInput=" + value
-								+ "&orderSearchResult=" + req.getParameter("orderSearchResult") 
-								+ "&currentPageNo=" + pageNo + "'>[다음]</a></li>";
+						pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory="
+								+ req.getParameter("searchCategory") + "&searchMemberInput=" + value
+								+ "&orderSearchResult=" + req.getParameter("orderSearchResult") + "&currentPageNo="
+								+ pageNo + "'>[다음]</a></li>";
 					}
-					pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory=" + req.getParameter("searchCategory") 
-							+ "&searchMemberInput=" + value 
-							+ "&orderSearchResult=" + req.getParameter("orderSearchResult")
-							+ "&currentPageNo=" + totalPage + "'>>></a></li>";
+					pageBar += "<li class='page-item'><a class='page-link' href='memberList.gm?searchCategory="
+							+ req.getParameter("searchCategory") + "&searchMemberInput=" + value + "&orderSearchResult="
+							+ req.getParameter("orderSearchResult") + "&currentPageNo=" + totalPage + "'>>></a></li>";
 				}
 				req.setAttribute("pageBar", pageBar);
 				/// **** ==== 페이지바 만들기 끝 =====/// ***
@@ -237,7 +244,8 @@ public class MemberListAction extends AbstractController {
 			super.setRedirect(false);
 			super.setViewPage("/jsp/common/msg.jsp");
 
-		} // end of if (session.getAttribute("loginUser") != null) -----------------------------------------------------
+		} // end of if (session.getAttribute("loginUser") != null)
+			// -----------------------------------------------------
 
 	}
 

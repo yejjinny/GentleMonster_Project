@@ -13,7 +13,7 @@ String ctxPath = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="<%=ctxPath%>/css/common/product_viewDetail.css" />
 
 <!-- 상품명 수정필 -->
-<title>${requestScope.productDetail.productName} | GENTLEMONSTEROfficial Site</title>
+<title>${requestScope.productDetail.productName}| GENTLEMONSTEROfficial Site</title>
 <%-- header --%>
 <jsp:include page="../common/header.jsp" />
 <script src="<%=ctxPath%>/js/common/product_viewDetail.js"></script>
@@ -52,8 +52,8 @@ String ctxPath = request.getContextPath();
 								<div class="detail-imgs__content">
 									<c:if test="${fn:contains(pdImageVO.imageFile, 'mp4')}">
 										<video id="" class="detail-imgs__image" autoplay="" loop="" muted="" playsinline="" poster="">
-               								<source src="<%= ctxPath %>${pdImageVO.imageFile}" type="video/mp4">
-            							</video>
+											<source src="<%= ctxPath %>${pdImageVO.imageFile}" type="video/mp4">
+										</video>
 									</c:if>
 									<c:if test="${not fn:contains(pdImageVO.imageFile, 'mp4')}">
 										<img class="detail-imgs__image" src="<%= ctxPath %>${pdImageVO.imageFile}" alt="${requestScope.productDetail.productName}">
@@ -147,10 +147,11 @@ String ctxPath = request.getContextPath();
 						</div>
 
 
-						<!-- 민경언니 관련 js로 로그인 체크도 시켜주기 -->
-						<div class="detail__btn-list">
-							<button class="detail__btn btn-ui font--kr font--bd font--13 jsBtnWish" data-category="ecommerce" data-action="add_to_wishlist" data-id="8NX8YBQ7JSZW">관심상품 추가</button>
-						</div>
+						<c:if test="${not empty sessionScope.loginUser}">
+							<div class="detail__btn-list">
+								<button class="detail__btn btn-ui font--kr font--bd font--13 jsBtnWish" onclick="goAdd(${requestScope.productDetail.productDetailId})">관심상품 추가</button>
+							</div>
+						</c:if>
 					</div>
 
 					<!-- Service info -->

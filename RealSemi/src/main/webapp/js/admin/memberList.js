@@ -1,7 +1,4 @@
 $(document).ready(function() {
-	// 검색가기 전 필수입력 체크용 변수
-	let check = true;
-
 
 	$("input[name='searchMemberInput']").keydown(function(e) {
 		// 검색어 입력란에 엔터를 했을 경우 
@@ -13,15 +10,15 @@ $(document).ready(function() {
 
 	$("select[name='searchCategory']").change(function() {
 		// 유저가 선택한 셀렉트값이 변경된다면
-		
+
 		if ($("select[name='searchCategory']").val() == "gender") {
 			// 유저가 선택한 셀렉트값이 성별이라면
-			$("input[name='searchMemberInput']").attr("placeholder", "남성, 여성, 선택 안함");
+			$("input[name='searchMemberInput']").attr("placeholder", "ex) 남성, 여성, 선택 안함");
 		}
 
 		if ($("select[name='searchCategory']").val() == "isDeleted") {
 			// 유저가 선택한 셀렉트값이 성별이라면
-			$("input[name='searchMemberInput']").attr("placeholder", "정상, 탈퇴 중 입력해주세요");
+			$("input[name='searchMemberInput']").attr("placeholder", "ex) 정상, 탈퇴");
 		}
 
 	})
@@ -29,13 +26,14 @@ $(document).ready(function() {
 
 	/* 검색하기 아이콘이 눌렸을 경우 */
 	$("button.searchMemberBtn").click(function() {
+		// 검색가기 전 필수입력 체크용 변수
+		let check = true;
 
 		if ($("select[name='searchCategory']").val() == "") {
 			// 셀렉트 박스에서 전체를 클릭하였을 경우
 
 			alert("검색하실 컬럼명을 선택하십시오.")
 			check = false;
-			return;
 		}
 
 
@@ -81,20 +79,20 @@ $(document).ready(function() {
 		}
 
 	})
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/* contextPath 생성용 */
 	const pathname = "/" + window.location.pathname.split("/")[1];
 	const origin = window.location.origin;
@@ -122,7 +120,7 @@ $(document).ready(function() {
 					$("div.birth p.value").html(text.birth);
 					$("div.gender p.value").html(text.gender);
 					$("div.registerDay p.value").html(text.registerDay);
-					
+
 				},
 				error: function(request, status, error) {
 					alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);

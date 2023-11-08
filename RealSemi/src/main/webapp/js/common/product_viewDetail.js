@@ -73,3 +73,36 @@ $(document).ready(function() {
 
 });// end of $(document).ready(function(){})------------------
 
+
+
+
+/* 추가하기 버튼 눌렀을 경우 */
+function goAdd(productDetailId) {
+
+   const pathname = "/" + window.location.pathname.split("/")[1] + "/";
+   const origin = window.location.origin;
+   const contextPath = origin + pathname;
+   
+   /* 선택한 카트 상품을 추가한다 */
+   $.ajax({
+      url: contextPath + "wish/addWishItem.gm",
+      data: { "productDetailId": productDetailId },
+      type: "post",
+      async: true,
+      dataType: "json",
+      success: function(text) {
+         if (text.isAdd) {
+            // true일 경우 = 추가처리가 완료되었을경우
+            $(location).attr("href", history.go(0));
+         } else {
+            // false일 경우 = 추가되지 않았을 경우
+            alert("이미 위시리스트에 추가된 상품입니다.");
+            $(location).attr("href", history.go(0));
+         }
+      }
+      ,
+      error: function(request, status, error) {
+         alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
+      }
+   });
+};
