@@ -14,6 +14,10 @@ import wish.domain.WishVO;
 import wish.model.WishDAO;
 import wish.model.WishDAO_imple;
 
+/*
+작성자 김민경
+위시 Controller
+*/
 public class WishAction extends AbstractController {
 
 	@Override
@@ -33,7 +37,6 @@ public class WishAction extends AbstractController {
 			
 			int totalWishCount = wdao.totalWishCount(paraMap.get("memberId"));  // 위시리스트의 상품 전체개수를 알아온다.
 			request.setAttribute("totalWishCount", totalWishCount);	
-			System.out.println(totalWishCount);
 	    	
 			List<WishVO> wishList = wdao.getWishList(paraMap);
 			request.setAttribute("wishList", wishList);

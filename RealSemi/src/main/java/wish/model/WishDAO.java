@@ -6,6 +6,9 @@ import java.util.Map;
 
 import wish.domain.WishVO;
 
+/*
+작성자 김민경
+*/
 public interface WishDAO {
 
 	// 위시리스트의 상품 전체개수 알아오기

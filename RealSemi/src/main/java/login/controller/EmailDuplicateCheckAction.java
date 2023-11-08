@@ -9,6 +9,10 @@ import common.controller.AbstractController;
 import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 
+/*
+작성자 김민경
+로그인 Controller 이메일 중복확인
+*/
 public class EmailDuplicateCheckAction extends AbstractController {
 
 	@Override

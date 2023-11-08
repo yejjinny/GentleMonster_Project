@@ -13,6 +13,10 @@ import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 import my.util.GoogleMail;
 
+/*
+작성자 김민경
+로그인 Controller 비밀번호 찾기
+*/
 public class PwdFindAction extends AbstractController {
 
 	@Override

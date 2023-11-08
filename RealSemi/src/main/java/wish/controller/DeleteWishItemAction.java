@@ -14,6 +14,10 @@ import member.domain.MemberVO;
 import wish.model.WishDAO;
 import wish.model.WishDAO_imple;
 
+/*
+작성자 김민경
+위시 Controller 위시 삭제
+*/
 public class DeleteWishItemAction extends AbstractController {
 
 	@Override
@@ -40,8 +44,6 @@ public class DeleteWishItemAction extends AbstractController {
 				WishDAO wdao = new WishDAO_imple();
 				int num = wdao.deleteWishItem(paraMap);
 				
-				System.out.println(num);
-				System.out.println(request.getParameter("productDetailId"));
 				
 				if (num == 1) {
 					// 삭제 되었을 경우

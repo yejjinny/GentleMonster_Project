@@ -37,7 +37,7 @@
 		const contextPath = origin + pathname;
 		
 		window.closeModal();
-		window.location.href = contextPath + "member/memberInfoEditToPwd.gm";
+		window.location.href = contextPath + "member/memberToChangePwd.gm";
 	}
 	
 </script>

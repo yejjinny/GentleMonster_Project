@@ -14,6 +14,10 @@ import member.domain.MemberVO;
 import wish.model.WishDAO;
 import wish.model.WishDAO_imple;
 
+/*
+작성자 김민경
+위시 Controller 위시 추가
+*/
 public class AddWishItemAction extends AbstractController {
 
 	@Override
@@ -41,10 +45,12 @@ public class AddWishItemAction extends AbstractController {
 					// 추가 되었을 경우
 					isAdd = true;
 					jsonObj.put("isAdd", isAdd);
+					
 
 				} else {
 					// 추가 되지 않았을 경우
 					jsonObj.put("isAdd", isAdd);
+					
 				}
 
 				// jsonObj를 설정한다
