@@ -582,577 +582,591 @@ public class ProductDAO_imple implements ProductDAO {
 	
 	/* 명진 추가 --------------------------------------------------------------------------------------------------------------*/
 	
-
 	/*
-	 * 예진 추가_ 상세화면 정보
-	 * -----------------------------------------------------------------------------
-	 * -------------
-	 */
-	@Override
-	public ProductVO getProductDetail(Map<String, Integer> paraMap) throws SQLException {
-		ProductVO pvo = new ProductVO();
+	    * 예진 추가_ 상세화면 정보
+	    * -----------------------------------------------------------------------------
+	    * -------------
+	    */
+	   @Override
+	   public ProductVO getProductDetail(Map<String, Integer> paraMap) throws SQLException {
+	      ProductVO pvo = new ProductVO();
+
+	      try {
+	         conn = ds.getConnection();
+
+	         String sql = "select " + "productDetailId, productGroupId, "
+	               + "productGroupName || ' ' || frameColorEng as productName, description, "
+	               + "price, silhouette, detail, "
+	               + "frameSize, templeLength, lenseWidthSize, lenseHeightSize, bridge, "
+	               + "stock, isMirror, isBlueLight, " + "mainImageFile, " + "nvl2(wishid, 1, 0) as isWish "
+	               + "from tbl_productGroup pg "
+	               + "join tbl_productDetail pd on pg.productGroupId = pd.fk_productGroupId "
+	               + "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId "
+	               + "left join (select * from tbl_wishList where fk_memberId = ? ) w on pd.productDetailId = w.fk_productDetailId "
+	               + "where productDetailId = ?";
+//	         String sql = "select " + "productDetailId, productGroupId, "
+//	               + "productGroupName || ' ' || frameColorEng as productName, description, "
+//	               + "price, silhouette, detail, "
+//	               + "frameSize, templeLength, lenseWidthSize, lenseHeightSize, bridge, "
+//	               + "stock, isMirror, isBlueLight, " + "mainImageFile " + "from tbl_productGroup pg "
+//	               + "join tbl_productDetail pd on pg.productGroupId = pd.fk_productGroupId "
+//	               + "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId " + "where productDetailId = ?";
+
+	         pstmt = conn.prepareStatement(sql);
+	         
+	         if (paraMap.get("memberId") == null) {
+	            pstmt.setString(1, "");
+	         } else {
+	            pstmt.setInt(1, paraMap.get("memberId"));
+	         }
+	         pstmt.setInt(2, paraMap.get("productDetailId"));
+
+	         rs = pstmt.executeQuery();
+
+	         if (rs.next()) {
+	            pvo.setProductDetailId(rs.getInt("productDetailId"));
+	            pvo.setFk_productGroupId(rs.getInt("productGroupId"));
+	            pvo.setProductName(rs.getString("productName"));
+	            pvo.setDescription(rs.getString("description"));
+	            pvo.setPrice(rs.getLong("price"));
+	            pvo.setSilhouette(rs.getString("silhouette"));
+	            ;
+	            pvo.setDetail(rs.getString("detail"));
+	            pvo.setFrameSize(rs.getDouble("frameSize"));
+	            pvo.setTempleLength(rs.getDouble("templeLength"));
+	            pvo.setLenseWidthSize(rs.getDouble("lenseWidthSize"));
+	            pvo.setLenseHeightSize(rs.getDouble("lenseHeightSize"));
+	            pvo.setBridge(rs.getDouble("bridge"));
+	            pvo.setStock(rs.getInt("stock"));
+	            pvo.setIsMirror(rs.getInt("isMirror"));
+	            pvo.setIsBlueLight(rs.getInt("isBlueLight"));
+	            pvo.setMainImageFile(rs.getString("mainImageFile"));
+	            
+	            pvo.setIsWish(rs.getInt("isWish"));
+	         } // end of if(rs.next())-----------------
+
+	      } finally {
+	         close();
+	      }
+
+	      return pvo;
+	   }
+
+	   @Override
+	   public List<ProductDetailImageVO> getProductDetailImageList(Map<String, Integer> paraMap) throws SQLException {
+
+	      List<ProductDetailImageVO> pdiList = new ArrayList<>();
+
+	      try {
+	         conn = ds.getConnection();
+
+	         String sql = "select fk_productDetailId, imageFile from tbl_productDetailImage where fk_productDetailId = ? order by position";
+
+	         pstmt = conn.prepareStatement(sql);
+
+	         pstmt.setInt(1, paraMap.get("productDetailId"));
+
+	         rs = pstmt.executeQuery();
+
+	         while (rs.next()) {
+	            ProductDetailImageVO pdivo = new ProductDetailImageVO();
+	            pdivo.setProductDetailId(rs.getInt("fk_productDetailId"));
+	            pdivo.setImageFile(rs.getString("imageFile"));
+
+	            pdiList.add(pdivo);
+	         } // end of while(rs.next())-----------------
+
+	      } finally {
+	         close();
+	      }
+
+	      return pdiList;
+	   }
+
+	   @Override
+	   public List<ProductVO> getOtherProductList(Map<String, Integer> paraMap) throws SQLException {
+	      List<ProductVO> otherList = new ArrayList<>();
 
-		try {
-			conn = ds.getConnection();
+	      try {
+	         conn = ds.getConnection();
 
-			String sql = "select " + "productDetailId, productGroupId, "
-					+ "productGroupName || ' ' || frameColorEng as productName, description, "
-					+ "price, silhouette, detail, "
-					+ "frameSize, templeLength, lenseWidthSize, lenseHeightSize, bridge, "
-					+ "stock, isMirror, isBlueLight, " + "mainImageFile " + "from tbl_productGroup pg "
-					+ "join tbl_productDetail pd on pg.productGroupId = pd.fk_productGroupId "
-					+ "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId " + "where productDetailId = ?";
+	         String sql = "select " + "productDetailId, mainImageFile "
+	               + "from tbl_productdetail where fk_productgroupid = ? and productDetailId != ?";
 
-			pstmt = conn.prepareStatement(sql);
+	         pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, paraMap.get("productDetailId"));
+	         pstmt.setInt(1, paraMap.get("productGroupId"));
+	         pstmt.setInt(2, paraMap.get("productDetailId"));
 
-			rs = pstmt.executeQuery();
+	         rs = pstmt.executeQuery();
 
-			if (rs.next()) {
-				pvo.setProductDetailId(rs.getInt("productDetailId"));
-				pvo.setFk_productGroupId(rs.getInt("productGroupId"));
-				pvo.setProductName(rs.getString("productName"));
-				pvo.setDescription(rs.getString("description"));
-				pvo.setPrice(rs.getLong("price"));
-				pvo.setSilhouette(rs.getString("silhouette"));
-				;
-				pvo.setDetail(rs.getString("detail"));
-				pvo.setFrameSize(rs.getDouble("frameSize"));
-				pvo.setTempleLength(rs.getDouble("templeLength"));
-				pvo.setLenseWidthSize(rs.getDouble("lenseWidthSize"));
-				pvo.setLenseHeightSize(rs.getDouble("lenseHeightSize"));
-				pvo.setBridge(rs.getDouble("bridge"));
-				pvo.setStock(rs.getInt("stock"));
-				pvo.setIsMirror(rs.getInt("isMirror"));
-				pvo.setIsBlueLight(rs.getInt("isBlueLight"));
-				pvo.setMainImageFile(rs.getString("mainImageFile"));
-			} // end of if(rs.next())-----------------
+	         while (rs.next()) {
+	            ProductVO pvo = new ProductVO();
+	            pvo.setProductDetailId(rs.getInt("productDetailId"));
+	            pvo.setMainImageFile(rs.getString("mainImageFile"));
 
-		} finally {
-			close();
-		}
+	            otherList.add(pvo);
+	         } // end of while(rs.next())-----------------
 
-		return pvo;
-	}
+	      } finally {
+	         close();
+	      }
 
-	@Override
-	public List<ProductDetailImageVO> getProductDetailImageList(Map<String, Integer> paraMap) throws SQLException {
+	      return otherList;
+	   }
 
-		List<ProductDetailImageVO> pdiList = new ArrayList<>();
+	   /*
+	    * end of 예진 추가_ 상세화면 정보
+	    * -----------------------------------------------------------------------------
+	    * -------
+	    */
 
-		try {
-			conn = ds.getConnection();
+	   /*
+	    * 예진 추가_ 상품등록
+	    * 정보---------------------------------------------------------------------------
+	    * ---------------
+	    */
 
-			String sql = "select fk_productDetailId, imageFile from tbl_productDetailImage where fk_productDetailId = ? order by position";
+	   @Override
+	   public List<ProductVO> getProductNameList(String categoryId) throws SQLException {
+	      List<ProductVO> productNameList = new ArrayList<>();
 
-			pstmt = conn.prepareStatement(sql);
+	      try {
+	         conn = ds.getConnection();
 
-			pstmt.setInt(1, paraMap.get("productDetailId"));
+	         String sql = "select " + "productGroupId, productGroupName "
+	               + "from tbl_productGroup where isDeleted = 0 and fk_categoryId = ?";
 
-			rs = pstmt.executeQuery();
+	         pstmt = conn.prepareStatement(sql);
 
-			while (rs.next()) {
-				ProductDetailImageVO pdivo = new ProductDetailImageVO();
-				pdivo.setProductDetailId(rs.getInt("fk_productDetailId"));
-				pdivo.setImageFile(rs.getString("imageFile"));
+	         pstmt.setString(1, categoryId);
 
-				pdiList.add(pdivo);
-			} // end of while(rs.next())-----------------
+	         rs = pstmt.executeQuery();
 
-		} finally {
-			close();
-		}
+	         while (rs.next()) {
+	            ProductVO pvo = new ProductVO();
+	            pvo.setFk_productGroupId(rs.getInt("productGroupId"));
+	            pvo.setProductGroupName(rs.getString("productGroupName"));
+	            productNameList.add(pvo);
+	         } // end of while(rs.next())-----------------
 
-		return pdiList;
-	}
+	      } finally {
+	         close();
+	      }
 
-	@Override
-	public List<ProductVO> getOtherProductList(Map<String, Integer> paraMap) throws SQLException {
-		List<ProductVO> otherList = new ArrayList<>();
+	      return productNameList;
+	   }
 
-		try {
-			conn = ds.getConnection();
+	   @Override
+	   public ProductVO getProductGroupDetail(String productGroupId) throws SQLException {
+	      ProductVO pvo = new ProductVO();
 
-			String sql = "select " + "productDetailId, mainImageFile "
-					+ "from tbl_productdetail where fk_productgroupid = ? and productDetailId != ?";
+	      try {
+	         conn = ds.getConnection();
 
-			pstmt = conn.prepareStatement(sql);
+	         String sql = "select " + "fk_categoryId, fk_frameId, fk_materialId, " + "silhouette, detail, price, "
+	               + "frameSize, templeLength, " + "lensewidthsize, lenseheightsize, bridge "
+	               + "from tbl_productgroup " + "where productGroupId = ?";
 
-			pstmt.setInt(1, paraMap.get("productGroupId"));
-			pstmt.setInt(2, paraMap.get("productDetailId"));
+	         pstmt = conn.prepareStatement(sql);
 
-			rs = pstmt.executeQuery();
+	         pstmt.setString(1, productGroupId);
 
-			while (rs.next()) {
-				ProductVO pvo = new ProductVO();
-				pvo.setProductDetailId(rs.getInt("productDetailId"));
-				pvo.setMainImageFile(rs.getString("mainImageFile"));
+	         rs = pstmt.executeQuery();
 
-				otherList.add(pvo);
-			} // end of while(rs.next())-----------------
+	         if (rs.next()) {
+	            pvo.setCategoryId(rs.getInt("fk_categoryId"));
+	            pvo.setFrameId(rs.getInt("fk_frameId"));
+	            pvo.setPrice(rs.getLong("price"));
+	            pvo.setMaterialId(rs.getInt("fk_materialId"));
+	            pvo.setSilhouette(rs.getString("silhouette"));
+	            pvo.setDetail(rs.getString("detail"));
+	            pvo.setFrameSize(rs.getDouble("frameSize"));
+	            pvo.setTempleLength(rs.getDouble("templeLength"));
+	            pvo.setLenseWidthSize(rs.getDouble("lensewidthsize"));
+	            pvo.setLenseHeightSize(rs.getDouble("lenseheightsize"));
+	            pvo.setBridge(rs.getDouble("bridge"));
+	         } // end of while(rs.next())-----------------
 
-		} finally {
-			close();
-		}
+	      } finally {
+	         close();
+	      }
 
-		return otherList;
-	}
+	      return pvo;
+	   }
 
-	/*
-	 * end of 예진 추가_ 상세화면 정보
-	 * -----------------------------------------------------------------------------
-	 * -------
-	 */
+	   @Override
+	   public int insertProductDetail(Map<String, String> paraMap, List<ProductDetailImageVO> detailImageList)
+	         throws SQLException {
+	      int num = 0;
 
-	/*
-	 * 예진 추가_ 상품등록
-	 * 정보---------------------------------------------------------------------------
-	 * ---------------
-	 */
+	      try {
 
-	@Override
-	public List<ProductVO> getProductNameList(String categoryId) throws SQLException {
-		List<ProductVO> productNameList = new ArrayList<>();
+	         conn = ds.getConnection();
 
-		try {
-			conn = ds.getConnection();
+	         // 유저가 입력한 값이 이미 존재하고 있을 경우
+	         String sql = "select productDetailId, count(*) from tbl_productDetail where fk_productgroupid = ? and fk_framecolorid = ? and  fk_lensecolorid = ? group by productDetailId";
 
-			String sql = "select " + "productGroupId, productGroupName "
-					+ "from tbl_productGroup where isDeleted = 0 and fk_categoryId = ?";
+	         pstmt = conn.prepareStatement(sql);
 
-			pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, paraMap.get("productGroupId"));
+	         pstmt.setString(2, paraMap.get("frameColorId"));
+	         pstmt.setString(3, paraMap.get("lenseColorId"));
 
-			pstmt.setString(1, categoryId);
+	         rs = pstmt.executeQuery();
+	         int productDetailId = 0;
 
-			rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            num = rs.getInt(2);
+	            productDetailId = rs.getInt(1);
+	         }
 
-			while (rs.next()) {
-				ProductVO pvo = new ProductVO();
-				pvo.setFk_productGroupId(rs.getInt("productGroupId"));
-				pvo.setProductGroupName(rs.getString("productGroupName"));
-				productNameList.add(pvo);
-			} // end of while(rs.next())-----------------
+	         if (num == 1) {
+	            // 유저가 입력한 게 이미 존재할 경우 update를 실행한다
 
-		} finally {
-			close();
-		}
+	            pstmt.clearParameters();
 
-		return productNameList;
-	}
+	            if (paraMap.get("mainImageFile") != null && !paraMap.get("mainImageFile").isEmpty()) {
+	               // 유저가 메인이미지파일을 변경하려고 할 경우
 
-	@Override
-	public ProductVO getProductGroupDetail(String productGroupId) throws SQLException {
-		ProductVO pvo = new ProductVO();
+	               sql = "update tbl_productDetail set stock = ?, mainImageFile = ? where productDetailId = ? ";
+	               pstmt = conn.prepareStatement(sql);
 
-		try {
-			conn = ds.getConnection();
+	               pstmt.setString(1, paraMap.get("stock"));
+	               pstmt.setString(2, paraMap.get("mainImageFile"));
+	               pstmt.setInt(3, productDetailId);
 
-			String sql = "select " + "fk_categoryId, fk_frameId, fk_materialId, " + "silhouette, detail, price, "
-					+ "frameSize, templeLength, " + "lensewidthsize, lenseheightsize, bridge "
-					+ "from tbl_productgroup " + "where productGroupId = ?";
+	            } else {
 
-			pstmt = conn.prepareStatement(sql);
+	               sql = "update tbl_productDetail set stock = ? where productDetailId = ? ";
+	               pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, productGroupId);
+	               pstmt.setString(1, paraMap.get("stock"));
+	               pstmt.setInt(2, productDetailId);
+	            }
 
-			rs = pstmt.executeQuery();
+	            num = pstmt.executeUpdate();
 
-			if (rs.next()) {
-				pvo.setCategoryId(rs.getInt("fk_categoryId"));
-				pvo.setFrameId(rs.getInt("fk_frameId"));
-				pvo.setPrice(rs.getLong("price"));
-				pvo.setMaterialId(rs.getInt("fk_materialId"));
-				pvo.setSilhouette(rs.getString("silhouette"));
-				pvo.setDetail(rs.getString("detail"));
-				pvo.setFrameSize(rs.getDouble("frameSize"));
-				pvo.setTempleLength(rs.getDouble("templeLength"));
-				pvo.setLenseWidthSize(rs.getDouble("lensewidthsize"));
-				pvo.setLenseHeightSize(rs.getDouble("lenseheightsize"));
-				pvo.setBridge(rs.getDouble("bridge"));
-			} // end of while(rs.next())-----------------
+	            if (num != 0 && detailImageList.size() != 0) {
+	               // 업데이트 완료 및 상세이미지 수정 시 상세이미지 업데이트
 
-		} finally {
-			close();
-		}
+	               for (int i = 0; i < detailImageList.size(); i++) {
+	                  pstmt.clearParameters();
 
-		return pvo;
-	}
+	                  sql = "select count(*) from tbl_productDetailImage where fk_productDetailId = ? and position = ?";
+	                  pstmt = conn.prepareStatement(sql);
 
-	@Override
-	public int insertProductDetail(Map<String, String> paraMap, List<ProductDetailImageVO> detailImageList)
-			throws SQLException {
-		int num = 0;
+	                  pstmt.setInt(1, productDetailId);
+	                  pstmt.setInt(2, detailImageList.get(i).getPosition());
 
-		try {
+	                  rs = pstmt.executeQuery();
 
-			conn = ds.getConnection();
+	                  rs.next();
 
-			// 유저가 입력한 값이 이미 존재하고 있을 경우
-			String sql = "select productDetailId, count(*) from tbl_productDetail where fk_productgroupid = ? and fk_framecolorid = ? and  fk_lensecolorid = ? group by productDetailId";
+	                  num = rs.getInt(1);
 
-			pstmt = conn.prepareStatement(sql);
+	                  if (num != 0) {
+	                     // 이미 상세이미지가 등록이 되어있으니 업데이트문으로 수정해줘야한다
 
-			pstmt.setString(1, paraMap.get("productGroupId"));
-			pstmt.setString(2, paraMap.get("frameColorId"));
-			pstmt.setString(3, paraMap.get("lenseColorId"));
+	                     sql = "update tbl_productDetailImage set imageFile = ? where fk_productDetailId = ? and position = ?";
 
-			rs = pstmt.executeQuery();
-			int productDetailId = 0;
+	                     pstmt = conn.prepareStatement(sql);
 
-			if (rs.next()) {
-				num = rs.getInt(2);
-				productDetailId = rs.getInt(1);
-			}
+	                     pstmt.setString(1, detailImageList.get(i).getImageFile());
+	                     pstmt.setInt(2, productDetailId);
+	                     pstmt.setInt(3, detailImageList.get(i).getPosition());
 
-			if (num == 1) {
-				// 유저가 입력한 게 이미 존재할 경우 update를 실행한다
+	                     num = pstmt.executeUpdate();
+	                  } else {
+	                     // 상세 이미지가 등록되어있지 않으니 insert문으로 등록해줘야한다
 
-				pstmt.clearParameters();
+	                     sql = "insert into tbl_productDetailImage values (seq_productDetailImage.nextval, ?, ?, ?)";
 
-				if (paraMap.get("mainImageFile") != null && !paraMap.get("mainImageFile").isEmpty()) {
-					// 유저가 메인이미지파일을 변경하려고 할 경우
+	                     pstmt = conn.prepareStatement(sql);
 
-					sql = "update tbl_productDetail set stock = ?, mainImageFile = ? where productDetailId = ? ";
-					pstmt = conn.prepareStatement(sql);
+	                     pstmt.setInt(1, productDetailId);
+	                     pstmt.setString(2, detailImageList.get(i).getImageFile());
+	                     pstmt.setInt(3, detailImageList.get(i).getPosition());
 
-					pstmt.setString(1, paraMap.get("stock"));
-					pstmt.setString(2, paraMap.get("mainImageFile"));
-					pstmt.setInt(3, productDetailId);
+	                     num = pstmt.executeUpdate();
+	                  }
 
-				} else {
+	               }
 
-					sql = "update tbl_productDetail set stock = ? where productDetailId = ? ";
-					pstmt = conn.prepareStatement(sql);
+	            }
 
-					pstmt.setString(1, paraMap.get("stock"));
-					pstmt.setInt(2, productDetailId);
-				}
+	         } else {
+	            // 존재하지 않을 경우 (새로운 프레임컬러와 렌즈컬러를 설정했을 경우)
 
-				num = pstmt.executeUpdate();
+	            pstmt.clearParameters();
 
-				if (num != 0 && detailImageList.size() != 0) {
-					// 업데이트 완료 및 상세이미지 수정 시 상세이미지 업데이트
+	            sql = "insert into tbl_productDetail values (seq_productDetail.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, default, null)";
 
-					for (int i = 0; i < detailImageList.size(); i++) {
-						pstmt.clearParameters();
+	            pstmt = conn.prepareStatement(sql);
 
-						sql = "select count(*) from tbl_productDetailImage where fk_productDetailId = ? and position = ?";
-						pstmt = conn.prepareStatement(sql);
+	            pstmt.setString(1, paraMap.get("productGroupId"));
+	            pstmt.setString(2, paraMap.get("frameColorId"));
+	            pstmt.setString(3, paraMap.get("lenseColorId"));
+	            pstmt.setString(4, paraMap.get("gender"));
+	            pstmt.setString(5, paraMap.get("isMirror"));
+	            pstmt.setString(6, paraMap.get("description"));
+	            pstmt.setString(7, paraMap.get("isTint"));
+	            pstmt.setString(8, paraMap.get("isGift"));
+	            pstmt.setString(9, paraMap.get("isBlueLight"));
+	            pstmt.setString(10, paraMap.get("stock"));
+	            pstmt.setString(11, paraMap.get("isIndex"));
+	            pstmt.setString(12, paraMap.get("mainImageFile"));
 
-						pstmt.setInt(1, productDetailId);
-						pstmt.setInt(2, detailImageList.get(i).getPosition());
+	            num = pstmt.executeUpdate();
 
-						rs = pstmt.executeQuery();
+	            if (num == 1 && detailImageList.size() != 0) {
+	               // 상품 상세사진을 등록했을 경우
 
-						rs.next();
+	               pstmt.clearParameters();
 
-						num = rs.getInt(1);
+	               // 위에서 insert한 productDetailId를 가져오기 위해
+	               sql = "select productDetailId from tbl_productDetail where fk_productGroupId = ? and fk_frameColorId = ? and fk_lenseColorId = ?";
 
-						if (num != 0) {
-							// 이미 상세이미지가 등록이 되어있으니 업데이트문으로 수정해줘야한다
+	               pstmt = conn.prepareStatement(sql);
 
-							sql = "update tbl_productDetailImage set imageFile = ? where fk_productDetailId = ? and position = ?";
+	               pstmt.setString(1, paraMap.get("productGroupId"));
+	               pstmt.setString(2, paraMap.get("frameColorId"));
+	               pstmt.setString(3, paraMap.get("lenseColorId"));
 
-							pstmt = conn.prepareStatement(sql);
+	               rs = pstmt.executeQuery();
 
-							pstmt.setString(1, detailImageList.get(i).getImageFile());
-							pstmt.setInt(2, productDetailId);
-							pstmt.setInt(3, detailImageList.get(i).getPosition());
+	               rs.next();
 
-							num = pstmt.executeUpdate();
-						} else {
-							// 상세 이미지가 등록되어있지 않으니 insert문으로 등록해줘야한다
+	               productDetailId = rs.getInt(1);
 
-							sql = "insert into tbl_productDetailImage values (seq_productDetailImage.nextval, ?, ?, ?)";
+	               if (productDetailId != 0) {
 
-							pstmt = conn.prepareStatement(sql);
+	                  for (int i = 0; i < detailImageList.size(); i++) {
 
-							pstmt.setInt(1, productDetailId);
-							pstmt.setString(2, detailImageList.get(i).getImageFile());
-							pstmt.setInt(3, detailImageList.get(i).getPosition());
+	                     pstmt.clearParameters();
 
-							num = pstmt.executeUpdate();
-						}
+	                     sql = "insert into tbl_productDetailImage values (seq_productDetailImage.nextval, "
+	                           + productDetailId + ", ?, ?)";
 
-					}
+	                     pstmt = conn.prepareStatement(sql);
 
-				}
+	                     pstmt.setString(1, detailImageList.get(i).getImageFile());
+	                     pstmt.setInt(2, detailImageList.get(i).getPosition());
 
-			} else {
-				// 존재하지 않을 경우 (새로운 프레임컬러와 렌즈컬러를 설정했을 경우)
+	                     num = pstmt.executeUpdate();
 
-				pstmt.clearParameters();
+	                  }
 
-				sql = "insert into tbl_productDetail values (seq_productDetail.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, default, null)";
+	               }
 
-				pstmt = conn.prepareStatement(sql);
+	            }
+	         }
 
-				pstmt.setString(1, paraMap.get("productGroupId"));
-				pstmt.setString(2, paraMap.get("frameColorId"));
-				pstmt.setString(3, paraMap.get("lenseColorId"));
-				pstmt.setString(4, paraMap.get("gender"));
-				pstmt.setString(5, paraMap.get("isMirror"));
-				pstmt.setString(6, paraMap.get("description"));
-				pstmt.setString(7, paraMap.get("isTint"));
-				pstmt.setString(8, paraMap.get("isGift"));
-				pstmt.setString(9, paraMap.get("isBlueLight"));
-				pstmt.setString(10, paraMap.get("stock"));
-				pstmt.setString(11, paraMap.get("isIndex"));
-				pstmt.setString(12, paraMap.get("mainImageFile"));
+	      } finally {
+	         close();
+	      }
 
-				num = pstmt.executeUpdate();
+	      return num;
+	   }
 
-				if (num == 1 && detailImageList.size() != 0) {
-					// 상품 상세사진을 등록했을 경우
+	   @Override
+	   public int insertProductGroupAndDetail(Map<String, String> paraMap, List<ProductDetailImageVO> detailImageList)
+	         throws SQLException {
+	      // 상품명 추가로 새로운 상품을 등록하는 경우
+	      int num = 0;
 
-					pstmt.clearParameters();
+	      try {
+	         conn = ds.getConnection();
+	         // 같은 이름의 상품그룹명이 있는 지 확인
+	         String sql = "select count(*) from tbl_productgroup where productGroupName = ?";
 
-					// 위에서 insert한 productDetailId를 가져오기 위해
-					sql = "select productDetailId from tbl_productDetail where fk_productGroupId = ? and fk_frameColorId = ? and fk_lenseColorId = ?";
+	         pstmt = conn.prepareStatement(sql);
 
-					pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, paraMap.get("addProductNameInput"));
 
-					pstmt.setString(1, paraMap.get("productGroupId"));
-					pstmt.setString(2, paraMap.get("frameColorId"));
-					pstmt.setString(3, paraMap.get("lenseColorId"));
+	         rs = pstmt.executeQuery();
 
-					rs = pstmt.executeQuery();
+	         rs.next();
 
-					rs.next();
+	         num = rs.getInt(1);
 
-					productDetailId = rs.getInt(1);
+	         if (num == 1) {
+	            // 유저가 입력한 게 이미 존재할 경우 에러다
+	            num = 0;
+	            return num;
 
-					if (productDetailId != 0) {
+	         } else {
+	            // 존재하지 않을 경우 productGroup을 새로 등록한다
+	            pstmt.clearParameters();
 
-						for (int i = 0; i < detailImageList.size(); i++) {
+	            sql = "insert into tbl_productGroup values (seq_productGroup.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, default, null)";
 
-							pstmt.clearParameters();
+	            pstmt = conn.prepareStatement(sql);
 
-							sql = "insert into tbl_productDetailImage values (seq_productDetailImage.nextval, "
-									+ productDetailId + ", ?, ?)";
+	            pstmt.setString(1, paraMap.get("categoryId"));
+	            pstmt.setString(2, paraMap.get("addProductNameInput"));
+	            pstmt.setString(3, paraMap.get("price"));
+	            pstmt.setString(4, paraMap.get("frameId"));
+	            pstmt.setString(5, paraMap.get("materialId"));
+	            pstmt.setString(6, paraMap.get("silhouette"));
+	            pstmt.setString(7, paraMap.get("detail"));
+	            pstmt.setString(8, paraMap.get("frameSize"));
+	            pstmt.setString(9, paraMap.get("templeLength"));
+	            pstmt.setString(10, paraMap.get("lenseWidthSize"));
+	            pstmt.setString(11, paraMap.get("lenseHeightSize"));
+	            pstmt.setString(12, paraMap.get("bridge"));
 
-							pstmt = conn.prepareStatement(sql);
+	            num = pstmt.executeUpdate();
 
-							pstmt.setString(1, detailImageList.get(i).getImageFile());
-							pstmt.setInt(2, detailImageList.get(i).getPosition());
+	            if (num == 1) {
+	               // productDetail 테이블에 등록하기 위해 위에서 등록한 productGroupId를 가져오도록 한다
+	               pstmt.clearParameters();
 
-							num = pstmt.executeUpdate();
+	               sql = "select productGroupId from tbl_productGroup where productGroupName = ?";
 
-						}
+	               pstmt = conn.prepareStatement(sql);
 
-					}
+	               pstmt.setString(1, paraMap.get("addProductNameInput"));
 
-				}
-			}
+	               rs = pstmt.executeQuery();
+	               int productGroupId = 0;
+	               if (rs.next()) {
+	                  productGroupId = rs.getInt(1);
+	               }
 
-		} finally {
-			close();
-		}
+	               if (productGroupId != 0) {
+	                  // productGroup 테이블에서 productGroupId를 잘 가져왔다면 productDetail테이블에 등록한다
+	                  pstmt.clearParameters();
 
-		return num;
-	}
+	                  sql = "insert into tbl_productDetail values (seq_productDetail.nextval, " + productGroupId
+	                        + ", ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, default, null)";
 
-	@Override
-	public int insertProductGroupAndDetail(Map<String, String> paraMap, List<ProductDetailImageVO> detailImageList)
-			throws SQLException {
-		// 상품명 추가로 새로운 상품을 등록하는 경우
-		int num = 0;
+	                  pstmt = conn.prepareStatement(sql);
 
-		try {
-			conn = ds.getConnection();
-			// 같은 이름의 상품그룹명이 있는 지 확인
-			String sql = "select count(*) from tbl_productgroup where productGroupName = ?";
+	                  pstmt.setString(1, paraMap.get("frameColorId"));
+	                  pstmt.setString(2, paraMap.get("lenseColorId"));
+	                  pstmt.setString(3, paraMap.get("gender"));
+	                  pstmt.setString(4, paraMap.get("isMirror"));
+	                  pstmt.setString(5, paraMap.get("description"));
+	                  pstmt.setString(6, paraMap.get("isTint"));
+	                  pstmt.setString(7, paraMap.get("isGift"));
+	                  pstmt.setString(8, paraMap.get("isBlueLight"));
+	                  pstmt.setString(9, paraMap.get("stock"));
+	                  pstmt.setString(10, paraMap.get("isIndex"));
+	                  pstmt.setString(11, paraMap.get("mainImageFile"));
 
-			pstmt = conn.prepareStatement(sql);
+	                  num = pstmt.executeUpdate();
 
-			pstmt.setString(1, paraMap.get("addProductNameInput"));
+	                  if (num == 1 && detailImageList.size() != 0) {
 
-			rs = pstmt.executeQuery();
+	                     pstmt.clearParameters();
 
-			rs.next();
+	                     sql = "select productDetailId from tbl_productDetail where fk_productGroupId = "
+	                           + productGroupId + " and fk_frameColorId = ? and fk_lenseColorId = ?";
 
-			num = rs.getInt(1);
+	                     pstmt = conn.prepareStatement(sql);
 
-			if (num == 1) {
-				// 유저가 입력한 게 이미 존재할 경우 에러다
-				num = 0;
-				return num;
+	                     pstmt.setString(1, paraMap.get("frameColorId"));
+	                     pstmt.setString(2, paraMap.get("lenseColorId"));
 
-			} else {
-				// 존재하지 않을 경우 productGroup을 새로 등록한다
-				pstmt.clearParameters();
+	                     rs = pstmt.executeQuery();
 
-				sql = "insert into tbl_productGroup values (seq_productGroup.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, default, null)";
+	                     rs.next();
 
-				pstmt = conn.prepareStatement(sql);
+	                     int productDetailId = rs.getInt(1);
 
-				pstmt.setString(1, paraMap.get("categoryId"));
-				pstmt.setString(2, paraMap.get("addProductNameInput"));
-				pstmt.setString(3, paraMap.get("price"));
-				pstmt.setString(4, paraMap.get("frameId"));
-				pstmt.setString(5, paraMap.get("materialId"));
-				pstmt.setString(6, paraMap.get("silhouette"));
-				pstmt.setString(7, paraMap.get("detail"));
-				pstmt.setString(8, paraMap.get("frameSize"));
-				pstmt.setString(9, paraMap.get("templeLength"));
-				pstmt.setString(10, paraMap.get("lenseWidthSize"));
-				pstmt.setString(11, paraMap.get("lenseHeightSize"));
-				pstmt.setString(12, paraMap.get("bridge"));
+	                     if (productDetailId != 0) {
 
-				num = pstmt.executeUpdate();
+	                        for (int i = 0; i < detailImageList.size(); i++) {
+	                           pstmt.clearParameters();
 
-				if (num == 1) {
-					// productDetail 테이블에 등록하기 위해 위에서 등록한 productGroupId를 가져오도록 한다
-					pstmt.clearParameters();
+	                           sql = "insert into tbl_productDetailImage values (seq_productDetailImage.nextval, "
+	                                 + productDetailId + ", ?, ?)";
 
-					sql = "select productGroupId from tbl_productGroup where productGroupName = ?";
+	                           pstmt = conn.prepareStatement(sql);
 
-					pstmt = conn.prepareStatement(sql);
+	                           pstmt.setString(1, detailImageList.get(i).getImageFile());
+	                           pstmt.setInt(2, detailImageList.get(i).getPosition());
 
-					pstmt.setString(1, paraMap.get("addProductNameInput"));
+	                           num = pstmt.executeUpdate();
 
-					rs = pstmt.executeQuery();
-					int productGroupId = 0;
-					if (rs.next()) {
-						productGroupId = rs.getInt(1);
-					}
+	                        }
+	                     }
+	                  }
 
-					if (productGroupId != 0) {
-						// productGroup 테이블에서 productGroupId를 잘 가져왔다면 productDetail테이블에 등록한다
-						pstmt.clearParameters();
+	               }
 
-						sql = "insert into tbl_productDetail values (seq_productDetail.nextval, " + productGroupId
-								+ ", ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, default, null)";
+	            }
+	         }
 
-						pstmt = conn.prepareStatement(sql);
+	      } finally {
+	         close();
+	      }
 
-						pstmt.setString(1, paraMap.get("frameColorId"));
-						pstmt.setString(2, paraMap.get("lenseColorId"));
-						pstmt.setString(3, paraMap.get("gender"));
-						pstmt.setString(4, paraMap.get("isMirror"));
-						pstmt.setString(5, paraMap.get("description"));
-						pstmt.setString(6, paraMap.get("isTint"));
-						pstmt.setString(7, paraMap.get("isGift"));
-						pstmt.setString(8, paraMap.get("isBlueLight"));
-						pstmt.setString(9, paraMap.get("stock"));
-						pstmt.setString(10, paraMap.get("isIndex"));
-						pstmt.setString(11, paraMap.get("mainImageFile"));
+	      return num;
+	   }
 
-						num = pstmt.executeUpdate();
+	   @Override
+	   public ProductVO getProductGroupAndDetail(Map<String, String> paraMap) throws SQLException {
+	      ProductVO pvo = new ProductVO();
 
-						if (num == 1 && detailImageList.size() != 0) {
+	      try {
+	         conn = ds.getConnection();
 
-							pstmt.clearParameters();
+	         String sql = "select " + "productDetailId, fk_categoryId, fk_frameId, fk_materialId, "
+	               + "silhouette, detail, price, " + "frameSize, templeLength, "
+	               + "lensewidthsize, lenseheightsize, bridge, "
+	               + "gender, isMirror, isTint, isBlueLight, isIndex, isGift, description, stock, mainImageFile "
+	               + "from tbl_productgroup pg "
+	               + "join tbl_productDetail pd on pg.productGroupId = pd.fk_productGroupId "
+	               + "where fk_categoryId = ? and productGroupId = ? and fk_frameColorId = ? and fk_lenseColorId = ? ";
 
-							sql = "select productDetailId from tbl_productDetail where fk_productGroupId = "
-									+ productGroupId + " and fk_frameColorId = ? and fk_lenseColorId = ?";
+	         pstmt = conn.prepareStatement(sql);
 
-							pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, paraMap.get("categoryId"));
+	         pstmt.setString(2, paraMap.get("productGroupId"));
+	         pstmt.setString(3, paraMap.get("frameColorId"));
+	         pstmt.setString(4, paraMap.get("lenseColorId"));
 
-							pstmt.setString(1, paraMap.get("frameColorId"));
-							pstmt.setString(2, paraMap.get("lenseColorId"));
+	         rs = pstmt.executeQuery();
 
-							rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            pvo.setProductDetailId(rs.getInt("productDetailId"));
+	            pvo.setCategoryId(rs.getInt("fk_categoryId"));
+	            pvo.setFrameId(rs.getInt("fk_frameId"));
+	            pvo.setPrice(rs.getLong("price"));
+	            pvo.setMaterialId(rs.getInt("fk_materialId"));
+	            pvo.setSilhouette(rs.getString("silhouette"));
+	            pvo.setDetail(rs.getString("detail"));
+	            pvo.setFrameSize(rs.getDouble("frameSize"));
+	            pvo.setTempleLength(rs.getDouble("templeLength"));
+	            pvo.setLenseWidthSize(rs.getDouble("lensewidthsize"));
+	            pvo.setLenseHeightSize(rs.getDouble("lenseheightsize"));
+	            pvo.setBridge(rs.getDouble("bridge"));
 
-							rs.next();
+	            pvo.setGender(rs.getString("gender"));
+	            pvo.setIsMirror(rs.getInt("isMirror"));
+	            pvo.setIsTint(rs.getInt("isTint"));
+	            pvo.setIsBlueLight(rs.getInt("isBlueLight"));
+	            pvo.setIsIndex(rs.getInt("isIndex"));
+	            pvo.setIsGift(rs.getInt("isGift"));
+	            pvo.setDescription(rs.getString("description"));
+	            pvo.setStock(rs.getInt("stock"));
+	            pvo.setMainImageFile(rs.getString("mainImageFile"));
+	         } // end of while(rs.next())-----------------
 
-							int productDetailId = rs.getInt(1);
+	      } finally {
+	         close();
+	      }
 
-							if (productDetailId != 0) {
+	      return pvo;
+	   }
 
-								for (int i = 0; i < detailImageList.size(); i++) {
-									pstmt.clearParameters();
-
-									sql = "insert into tbl_productDetailImage values (seq_productDetailImage.nextval, "
-											+ productDetailId + ", ?, ?)";
-
-									pstmt = conn.prepareStatement(sql);
-
-									pstmt.setString(1, detailImageList.get(i).getImageFile());
-									pstmt.setInt(2, detailImageList.get(i).getPosition());
-
-									num = pstmt.executeUpdate();
-
-								}
-							}
-						}
-
-					}
-
-				}
-			}
-
-		} finally {
-			close();
-		}
-
-		return num;
-	}
-
-	@Override
-	public ProductVO getProductGroupAndDetail(Map<String, String> paraMap) throws SQLException {
-		ProductVO pvo = new ProductVO();
-
-		try {
-			conn = ds.getConnection();
-
-			String sql = "select " + "productDetailId, fk_categoryId, fk_frameId, fk_materialId, "
-					+ "silhouette, detail, price, " + "frameSize, templeLength, "
-					+ "lensewidthsize, lenseheightsize, bridge, "
-					+ "gender, isMirror, isTint, isBlueLight, isIndex, isGift, description, stock, mainImageFile "
-					+ "from tbl_productgroup pg "
-					+ "join tbl_productDetail pd on pg.productGroupId = pd.fk_productGroupId "
-					+ "where fk_categoryId = ? and productGroupId = ? and fk_frameColorId = ? and fk_lenseColorId = ? ";
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, paraMap.get("categoryId"));
-			pstmt.setString(2, paraMap.get("productGroupId"));
-			pstmt.setString(3, paraMap.get("frameColorId"));
-			pstmt.setString(4, paraMap.get("lenseColorId"));
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				pvo.setProductDetailId(rs.getInt("productDetailId"));
-				pvo.setCategoryId(rs.getInt("fk_categoryId"));
-				pvo.setFrameId(rs.getInt("fk_frameId"));
-				pvo.setPrice(rs.getLong("price"));
-				pvo.setMaterialId(rs.getInt("fk_materialId"));
-				pvo.setSilhouette(rs.getString("silhouette"));
-				pvo.setDetail(rs.getString("detail"));
-				pvo.setFrameSize(rs.getDouble("frameSize"));
-				pvo.setTempleLength(rs.getDouble("templeLength"));
-				pvo.setLenseWidthSize(rs.getDouble("lensewidthsize"));
-				pvo.setLenseHeightSize(rs.getDouble("lenseheightsize"));
-				pvo.setBridge(rs.getDouble("bridge"));
-
-				pvo.setGender(rs.getString("gender"));
-				pvo.setIsMirror(rs.getInt("isMirror"));
-				pvo.setIsTint(rs.getInt("isTint"));
-				pvo.setIsBlueLight(rs.getInt("isBlueLight"));
-				pvo.setIsIndex(rs.getInt("isIndex"));
-				pvo.setIsGift(rs.getInt("isGift"));
-				pvo.setDescription(rs.getString("description"));
-				pvo.setStock(rs.getInt("stock"));
-				pvo.setMainImageFile(rs.getString("mainImageFile"));
-			} // end of while(rs.next())-----------------
-
-		} finally {
-			close();
-		}
-
-		return pvo;
-	}
-
-
-	/*
-	 * end of 예진 추가_ 상품등록 정보
-	 * -----------------------------------------------------------------------------
-	 * -------
-	 */
-
+	   /*
+	    * end of 예진 추가_ 상품등록 정보
+	    * -----------------------------------------------------------------------------
+	    * -------
+	    */
 
 	
 	
