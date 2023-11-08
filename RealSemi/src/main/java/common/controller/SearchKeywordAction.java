@@ -33,6 +33,8 @@ public class SearchKeywordAction extends AbstractController {
 			
 			if (session.getAttribute("loginUser") != null) {
 				paraMap.put("memberId", String.valueOf(((MemberVO) session.getAttribute("loginUser")).getMemberId()));
+			}else {
+				paraMap.put("memberId", "");
 			}
 			
 			// 유저가 입력한 검색어를 dao에 넘겨주기 위해 저장한다

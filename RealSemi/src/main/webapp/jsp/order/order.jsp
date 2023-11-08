@@ -120,7 +120,7 @@ String ctxPath = request.getContextPath();
 
 								<div class="input-box mo-tel-mttype01">
 									<p class="input-label font--kr font--13 font--rg">전화번호</p>
-									<input type="tel" name="mb_hp" id="ship_tel" placeholder="전화번호" class="rg-input font--kr font--13" value="${requestScope.addressOne.tel}"> <span class="alert">전화번호는 필수입력사항입니다.</span>
+									<input type="tel" name="mb_hp" id="ship_tel" placeholder="전화번호 (하이픈X)" class="rg-input font--kr font--13" value="${requestScope.addressOne.tel}"> <span class="alert">전화번호는 필수입력사항입니다.</span>
 								</div>
 								<div class="input-box" hidden="">
 									<p class="input-label font--kr font--13 font--rg">우편번호</p>
