@@ -317,7 +317,7 @@ String ctxPath = request.getContextPath();
 											<div class="cart_item font--11 font--md">
 												<div class="cart_product_img">
 													<!-- 상품 상세화면으로 이동용  -->
-													<a href="수정필?productDetailId">
+													<a href="<%= ctxPath %>/product/productDetail.gm?productDetailId=${cartVo.productDetailId}">
 														<img src="<%= ctxPath %>${cartVo.mainImageFile}" alt="" title="">
 													</a>
 												</div>

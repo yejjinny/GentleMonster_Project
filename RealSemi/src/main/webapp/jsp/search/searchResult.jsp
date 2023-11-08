@@ -43,7 +43,7 @@ String ctxPath = request.getContextPath();
 									<div class="product__info relative">
 										<div class="clearfix">
 											<div class="product__spec float-left">
-												<a class="product__link" href="수정필">
+												<a class="product__link" href="<%= ctxPath %>/product/productDetail.gm?productDetailId=${cartVo.productDetailId}">
 													<c:if test="${productVo.isBlueLight eq 1}">
 														<div class="blue-glasses font--11 font--rg">Blue Light Protection</div>
 													</c:if>
