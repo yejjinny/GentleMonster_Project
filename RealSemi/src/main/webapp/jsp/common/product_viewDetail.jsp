@@ -13,7 +13,7 @@ String ctxPath = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="<%=ctxPath%>/css/common/product_viewDetail.css" />
 
 <!-- 상품명 수정필 -->
-<title>${requestScope.productDetail.productName} | GENTLEMONSTEROfficial Site</title>
+<title>${requestScope.productDetail.productName} | GENTLE MONSTER Official Site</title>
 <%-- header --%>
 <jsp:include page="../common/header.jsp" />
 <script src="<%=ctxPath%>/js/common/product_viewDetail.js"></script>
