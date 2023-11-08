@@ -303,10 +303,7 @@ public class AddProductAction extends AbstractController {
 								dir.mkdir();
 							}
 							long size = filePart.writeTo(dir);
-						} else {
-							// form type 이 file 이지만 비어있는 파라메터
-							System.out.println("file; name=" + name + "; EMPTY");
-						}
+						} 
 					}
 				}
 

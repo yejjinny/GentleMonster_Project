@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	// 검색가기 전 필수입력 체크용 변수
-	let check = true;
+
 
 
 	$("button.goUpdate").click(function() {
@@ -11,19 +10,10 @@ $(document).ready(function() {
 
 		if ($("input[name='orderStatus']").is(':checked')) {
 			const frm = document.updateOrderStatusFrm;
-				frm.action = contextPath + `/order/updateOrderStatus.gm`;
-				frm.method = "post";
-				frm.submit();
-			/*if (confirm("주문현황을 " + orderStatus + " 에서 " + updateOrderStatus + " (으)로 변경하시겠습니까?") == true) {
-				const frm = document.updateOrderStatusFrm;
-				frm.action = contextPath + `/order/updateOrderStatus.gm`;
-				frm.method = "post";
-				frm.submit();
-
-			} else {
-				return false;
-			}*/
-		}else{
+			frm.action = contextPath + `/order/updateOrderStatus.gm`;
+			frm.method = "post";
+			frm.submit();
+		} else {
 			alert("업데이트할 주문현황을 선택하세요")
 		}
 
@@ -43,7 +33,7 @@ $(document).ready(function() {
 
 		if ($("select[name='searchCategory']").val() == "orderDay") {
 			// 유저가 선택한 셀렉트값이 주문일자라면
-			$("input[name='searchOrderInput']").attr("placeholder", "yyyy/mm/dd로 입력하여주십시오");
+			$("input[name='searchOrderInput']").attr("placeholder", "ex) yyyy/mm/dd");
 		}
 
 
@@ -52,14 +42,15 @@ $(document).ready(function() {
 
 	/* 검색하기 아이콘이 눌렸을 경우 */
 	$("button.searchOrderBtn").click(function() {
-
+		// 검색가기 전 필수입력 체크용 변수
+		let check = true;
+		
 		if ($("select[name='searchCategory']").val() == "") {
 			// 셀렉트 박스에서 전체를 클릭하였을 경우
 
 			alert("검색하실 컬럼명을 선택하십시오.")
 			check = false;
 		}
-
 
 		if ($("select[name='searchCategory']").val() == "orderDay") {
 			// 유저가 선택한 셀렉트값이 성별이라면
@@ -94,6 +85,9 @@ $(document).ready(function() {
 			frm.action = contextPath + `admin/orderList.gm`;
 			frm.method = "get";
 			frm.submit();
+		} else {
+			//$(location).prop("href", location.href);
+			//location.href = contextPath + "admin/orderList.gm";
 		}
 
 	})

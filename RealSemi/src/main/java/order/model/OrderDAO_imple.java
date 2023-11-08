@@ -307,7 +307,13 @@ public class OrderDAO_imple implements OrderDAO {
 
 			if ((colName != null && !colName.trim().isEmpty())
 					&& (searchKeyword != null && !searchKeyword.trim().isEmpty())) {
-
+				
+				if("orderDay".equals(colName)){
+					colName = " to_char(" + colName + ", 'yyyy/mm/dd') ";
+				}else if("memberId".equals(colName)) {
+					colName = "fk_memberId";
+				}
+				
 				sql += " where " + colName + " like '%' || ? || '%' ";
 			}
 
