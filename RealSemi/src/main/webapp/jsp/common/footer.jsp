@@ -15,20 +15,17 @@ String ctxPath = request.getContextPath();
 			<div class="footer_group">
 				<ul class="footer_items">
 					<li class="footer_item ">
-						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="inform" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/inform"> 공지사항 </a>
+						<button type="button" class="footer_item_link font--kr font--13 font--rg" data-toggle="modal" data-target="#alertModal"> 공지사항 </button>
 					</li>
 					<li class="footer_item ">
 						<button type="button" class="footer_item_link font--kr font--13 font--rg" data-toggle="modal" data-target="#legalModal"> 이용약관 </button>
-						<!-- <a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="terms-conditions" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/terms"> 이용약관 </a> -->
 					</li>
 					<li class="footer_item ">
 						<button type="button" class="footer_item_link font--kr font--13 font--rg" data-toggle="modal" data-target="#privacyModal"> 개인정보처리방침 </button>
-<!-- 						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="privacy-policy" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/privacy_policy"> 개인정보처리방침 </a> -->
 					</li>
 					<li class="footer_item ">
 						<button type="button" class="footer_item_link font--kr font--13 font--rg" data-toggle="modal" data-target="#cookieModal"> 쿠키 정책 </button>
-<!-- 						<a class="footer_item_link font--kr font--13 font--rg" data-category="footer" data-action="cookie-policy" data-label="legal-area" href="https://www.gentlemonster.com/kr/legal/cookie_policy"> 쿠키 정책 </a>
- -->					</li>
+					</li>
 				</ul>
 			</div>
 
@@ -145,6 +142,34 @@ String ctxPath = request.getContextPath();
 		</div>
 	</div>
 </div>
+
+
+<!-- 공지사항 Modal -->
+<!-- Modal 구성 요소는 현재 페이지 상단에 표시되는 대화 상자/팝업 창입니다. -->
+<div class="modal fade" id="alertModal">
+	<div class="modal-dialog" style="max-width: 500px;">
+		<div class="modal-content">
+
+			<!-- Modal header -->
+			<div class="modal-header">
+				<h5 class="modal-title font--kr">공지사항</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<iframe style="width: 100%; height: 50px; border:none;" src="<%=ctxPath%>/common/modal.gm?modalName=alertModal"> </iframe>
+			</div>
+
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <!-- 이용약관 Modal -->
 <!-- Modal 구성 요소는 현재 페이지 상단에 표시되는 대화 상자/팝업 창입니다. -->
