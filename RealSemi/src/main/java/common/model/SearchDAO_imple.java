@@ -76,7 +76,7 @@ public class SearchDAO_imple implements SearchDAO {
 					+ "join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId "
 					+ "left join (select * from tbl_wishList where fk_memberId = ?  and isDeleted = 0) w on pd.productDetailId = w.fk_productDetailId "
 					+ "where (productGroupName like '%'|| ? ||'%'  or frameColorEng like '%'|| ? ||'%') and pd.isDeleted = 0 and  pg.isDeleted = 0 "
-					+ "order by pg.registerday ";
+					+ "order by pd.registerday ";
 			
 			pstmt = conn.prepareStatement(sql);
 			
