@@ -639,8 +639,6 @@ public class OrderDAO_imple implements OrderDAO {
 
 			num = pstmt.executeUpdate();
 
-			// 트랜젝션 커밋
-			conn.commit();
 		} finally {
 			close();
 		}

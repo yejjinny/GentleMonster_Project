@@ -65,10 +65,10 @@ String ctxPath = request.getContextPath();
 					<div class="ordercancel-items">
 						<div class="ordercancel-item-list">
 
-							<c:forEach var="orderDetailVo" items="${requestScope.orderDetailList}">
+							<c:forEach var="orderDetailVo" items="${requestScope.orderDetailList}" varStatus="status">
 
 								<div class="ordercancel-item">
-									<div class="item-position font--kr font--13 font--bd">주문 1</div>
+									<div class="item-position font--kr font--13 font--bd">주문 ${status.count}</div>
 									<div class="item-info-box">
 										<div class="item-image">
 											<img class="item-img" src="<%= ctxPath %>${orderDetailVo.mainImageFile}" alt="">
