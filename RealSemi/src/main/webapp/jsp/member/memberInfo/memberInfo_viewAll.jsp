@@ -143,7 +143,7 @@ String ctxPath = request.getContextPath();
 									</div>
 									<div class="action">
 										<c:if test="${not empty requestScope.orderList}">
-											<a href="<%=ctxPath%>/order/orderList.gm=order.controller.OrderListAction" class="font--kr font--13 font--rg">모두 보기</a>
+											<a href="<%=ctxPath%>/order/orderList.gm" class="font--kr font--13 font--rg">모두 보기</a>
 										</c:if>
 									</div>
 								</div>
