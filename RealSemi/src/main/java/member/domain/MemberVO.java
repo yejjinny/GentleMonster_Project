@@ -134,9 +134,12 @@ public class MemberVO {
 			return "남성";
 			
 		}
-		else {
+		else if(gender==2) {
 			
 			return "여성";
+		}
+		else {
+			return "선택안함";
 		}
 		
 	}

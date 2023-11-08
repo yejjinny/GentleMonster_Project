@@ -10,9 +10,13 @@
 		   
 		   $("#mb_gender").val("1").prop("selected",true);
 	  }
-	  else{
+	  else if (gender=='여성'){
 		  
 		   $("#mb_gender").val("2").prop("selected",true);
+	  }
+	  else{
+		 
+		   $("#mb_gender").val("3").prop("selected",true);
 	  }
 	   
 	  

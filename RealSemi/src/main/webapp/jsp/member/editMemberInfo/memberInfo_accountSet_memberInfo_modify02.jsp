@@ -18,7 +18,7 @@ String ctxPath = request.getContextPath();
 
 <%-- header --%>
 <jsp:include page="../../common/header.jsp" />
-<script type="text/javascript" src="<%=ctxPath%>/js/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify2.js"></script>
+<script type="text/javascript" src="<%=ctxPath%>/js/member/editMemberInfo/memberInfo_accountSet_memberInfo_modify02.js"></script>
  
 <%-- 본문 시작 --%>
 <div class="container_sq">
@@ -109,6 +109,7 @@ String ctxPath = request.getContextPath();
 										 
 										<option id="male" value="1" >남성</option>
 										<option id="female" value="2" >여성</option>
+										<option id="free" value="3" >선택안함</option>
 									</select>
 								</div>
 								
