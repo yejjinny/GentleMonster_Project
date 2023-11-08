@@ -68,7 +68,7 @@ String ctxPath = request.getContextPath();
 							</select>
 
 							<input type="text" style="display:none;" />
-							<input type="text" name="searchMemberInput" class="searchInput" placeholder="검색어를 입력하세요" value="${requestScope.value}" />
+							<input type="text" name="searchMemberInput" class="searchInput" placeholder="검색어를 입력하세요" value="${requestScope.value}" autocomplete="off"/>
 							<button type="button" class="searchMemberBtn n-header__search n-header__mo jsHeaderSearch">
 								<svg stroke="#000000" version="1.1" baseProfile="basic" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" xml:space="preserve">
                                 			<path d="M13.5,24.1c-5.8,0-10.6-4.8-10.6-10.6S7.7,2.9,13.5,2.9s10.6,4.8,10.6,10.6S19.3,24.1,13.5,24.1z M13.5,4.1
