@@ -413,14 +413,7 @@ String ctxPath = request.getContextPath();
 												value="2" id="gender[]_1">
 												<div class="input-box-check-layer"></div> 여성
 										</label></li>
-										<li class="filter__item filter__item--inline relative">
-											<label for="gender[]_2"
-											class="filter__label n-label n-label--radio font--kr font--12 font--rg">
-												<input type="checkbox" name="gender[]" class="n-radio "
-												value="3" id="gender[]_2">
-												<div class="input-box-check-layer"></div> 유니섹스
-										</label>
-										</li>
+										
 									</ul>
 								</div>
 							</div>
