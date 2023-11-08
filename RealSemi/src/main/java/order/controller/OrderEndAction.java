@@ -99,7 +99,7 @@ public class OrderEndAction extends AbstractController {
 							+ "										<div style='min-width: 320px; background-color: #ffffff; margin: 0px auto; padding: 0px; width: 100%; max-width: 520px; box-sizing: border-box; color: #000000; font-family: CircularXXWeb-Book, SDGothicNeo-eMd, Nanum Gothic, Malgum Gothic, sans-serif'>"
 							+ "											<div style='padding: 0; margin: 0; background-color: #ffffff'>"
 							+ "												<div style='margin: 0; padding: 0 42px; text-align: center'>"
-							+ "													<p style='margin-top: 0; margin-bottom: 10px; margin: 0; padding: 0 0 22px; font-size: 14px; line-height: 19px; font-weight: bold; font-family: 'SDGothicNeo-gBd', sans-serif'>" + ((MemberVO)session.getAttribute("loginUser")).getFullName() +" 고객님, 결제 안내드립니다.</p>"
+							+ "													<p style='margin-top: 0; margin-bottom: 10px; margin: 0; padding: 0 0 22px; font-size: 14px; line-height: 19px; font-weight: bold; font-family: 'SDGothicNeo-gBd', sans-serif'>" + ((MemberVO)session.getAttribute("loginUser")).getFamilyName() + ((MemberVO)session.getAttribute("loginUser")).getLastName() +" 고객님, 결제 안내드립니다.</p>"
 							+ "													<div style='margin: 0; padding: 89px 0 25px'>"
 							+ "														<p style='margin-top: 0; margin-bottom: 10px; margin: 0; padding: 0 0 24px; text-align: left; font-size: 13px; line-height: 1; font-weight: bold; font-family: CircularXXWeb-Bold, SDGothicNeo-gBd, sans-serif;'>"
 							+ "															주문번호"
