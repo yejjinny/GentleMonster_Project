@@ -1910,7 +1910,7 @@ input[type=checkbox] ~ .input-box-check-layer:after {
 
 
 /*예진 추가*/
-.input-box-check.required a, .input-box-check.has-error a {
+button.has-error{
     /* color: rgb(186, 41, 26); */
     /* border-color: rgb(186, 41, 26); */
     color: #ef480e;

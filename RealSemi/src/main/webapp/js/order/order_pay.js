@@ -13,11 +13,11 @@ $(document).ready(function() {
 		/* 필수 체크사항 체크 확인 */
 		if (!$("input[name='privacy_policy']").is(':checked')) {
 			// 필수 체크사항 체크 안 되어있을 경우 에러 관련 클래스 생성
-			$("input[name='privacy_policy']").parent().parent().addClass(" has-error");
+			$("input[name='privacy_policy']").parent().find("button.link").addClass(" has-error");
 
 		} else {
 			// 필수 체크사항 체크 되어있을 경우 에러 관련 클래스 삭제 및 결제 팝업창 로딩
-			$("input[name='privacy_policy']").parent().parent().removeClass(" has-error");
+			$("input[name='privacy_policy']").parent().find("button.link").removeClass(" has-error");
 			
 			const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 			const origin = window.location.origin;

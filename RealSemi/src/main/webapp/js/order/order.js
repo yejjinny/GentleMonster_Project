@@ -190,11 +190,11 @@ $(document).ready(function() {
 		/* 필수 체크사항 체크 확인 */
 		if (!$("input[name='privacy_policy']").is(':checked')) {
 			// 필수 체크사항 체크 안 되어있을 경우 에러용 클래스를 생성한다
-			$("input[name='privacy_policy']").parent().parent().addClass(" has-error");
+			$("input[name='privacy_policy']").parent().find("button.link").addClass(" has-error");
 			check = false;
 		} else {
 			// 필수 체크사항 체크 되어있을 경우 에러용 클래스를 삭제한다
-			$("input[name='privacy_policy']").parent().parent().removeClass(" has-error");
+			$("input[name='privacy_policy']").parent().find("button.link").removeClass(" has-error");
 		}
 
 		/* 유저가 인풋 태그 값을 변경했는지 확인 */

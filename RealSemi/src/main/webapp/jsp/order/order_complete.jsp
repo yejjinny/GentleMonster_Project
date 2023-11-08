@@ -22,7 +22,7 @@ String ctxPath = request.getContextPath();
 					<p class="font--kr font--13 font--rg order_line_height">주문해주셔서 감사합니다.<br> 주문내용을 이메일로 보내드렸습니다.<br> 아래의 주문 상세 내역을 확인해주세요.</p>
 
 					<div class="action">
-						<a class="button font--kr font--rg font--13" href="수정필">내 계정으로 가기</a>
+						<a class="button font--kr font--rg font--13" href="<%= ctxPath %>/member/memberInfoViewAll.gm">내 계정으로 가기</a>
 					</div>
 
 				</div>
