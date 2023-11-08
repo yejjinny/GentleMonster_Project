@@ -35,7 +35,7 @@ public class AddressBookEditViewAction extends AbstractController {
 				
 				req.setAttribute("editAvo", editAvo);
 				
-				System.out.println("editAvo성공"+editAvo.getIsDefaultAddr());
+				
 				
 				super.setRedirect(false);
 				super.setViewPage("/jsp/member/addressBook/EditAddressBook.jsp");

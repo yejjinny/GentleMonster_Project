@@ -58,7 +58,7 @@ public class AddressBookEditAction extends AbstractController {
 					 int result = dao.updateEditAddress(paraMap);
 					 
 					 if(result==1) { //기존 주소 수정에 성공한 경우
-						 System.out.println("수정성공");
+						 
 						 
 						 Map<String, String> paraMapList= new HashMap<>();
 						 paraMapList.put("memberId", fk_memberid);
