@@ -14,6 +14,9 @@ import javax.sql.DataSource;
 import store.domain.StoreImgVO;
 import store.domain.StoreVO;
 
+/*
+작성자 김민경
+*/
 public class StoreDAO_imple implements StoreDAO {
 
 	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.  

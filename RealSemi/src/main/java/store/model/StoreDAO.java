@@ -6,6 +6,9 @@ import java.util.*;
 import store.domain.StoreImgVO;
 import store.domain.StoreVO;
 
+/*
+작성자 김민경
+*/
 public interface StoreDAO {
 
 	// 스토어(스토어) 개수 알아오기

@@ -10,6 +10,10 @@ import store.domain.StoreImgVO;
 import store.domain.StoreVO;
 import store.model.*;
 
+/*
+작성자 김민경
+스토어 Controller 
+*/
 public class StoreAction extends AbstractController {
 
 	@Override

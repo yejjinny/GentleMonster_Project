@@ -8,6 +8,10 @@ import org.json.JSONObject;
 
 import common.controller.AbstractController;
 
+/*
+작성자 김민경
+로그인 Controller 인증코드
+*/
 public class VerifyCertificationAction extends AbstractController {
 
 	@Override

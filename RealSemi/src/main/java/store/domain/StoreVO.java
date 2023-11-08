@@ -1,5 +1,8 @@
 package store.domain;
 
+/*
+작성자 김민경
+*/
 public class StoreVO {
 
 	private int storeId; 			// 매장아이디	

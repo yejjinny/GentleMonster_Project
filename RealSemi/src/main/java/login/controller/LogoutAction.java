@@ -6,6 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import common.controller.AbstractController;
 
+/*
+작성자 김민경
+로그인 Controller 로그아웃
+*/
 public class LogoutAction extends AbstractController {
 
 	@Override

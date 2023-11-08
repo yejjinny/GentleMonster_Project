@@ -1,5 +1,8 @@
 package wish.domain;
 
+/*
+작성자 김민경
+*/
 public class WishVO {
 
 	private int wishId; 				// 위시리스트ID

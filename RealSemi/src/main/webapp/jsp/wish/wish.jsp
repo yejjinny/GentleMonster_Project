@@ -38,7 +38,7 @@ String ctxPath = request.getContextPath();
 				<li class="page_menu_item link_item  selected"><a
 					href="<%=ctxPath%>/wish/wish.gm" class="font--kr font--15 font--rg">
 						위시리스트 </a></li>
-				<li class="page_menu_item link_item  "><a href=""
+				<li class="page_menu_item link_item  "><a href="<%=ctxPath%>/member/memberInfoEdit.gm "
 					class="font--kr font--15 font--rg" data-category="account"
 					data-action="account_setting" data-label=""> 계정 설정 </a></li>
 				<li class="page_menu_item link_item  "><a
@@ -49,7 +49,7 @@ String ctxPath = request.getContextPath();
 				<div class="page_menu_item link_item">
 					<a class="font--kr font--15 font--rg" data-category="account"
 						data-action="logout_click" data-label=""
-						href="https://www.gentlemonster.com/kr/customer/logout">로그아웃</a>
+						href="<%=ctxPath%>/register/logout.gm">로그아웃</a>
 				</div>
 			</div>
 		</div>

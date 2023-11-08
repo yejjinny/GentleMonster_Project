@@ -10,6 +10,10 @@ import member.domain.MemberVO;
 import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 
+/*
+작성자 김민경
+로그인 Controller 회원가입
+*/
 public class MemberRegisterAction extends AbstractController {
 
 	@Override

@@ -15,6 +15,9 @@ import javax.sql.DataSource;
 
 import wish.domain.WishVO;
 
+/*
+작성자 김민경
+*/
 public class WishDAO_imple implements WishDAO {
 
 	private DataSource ds;   
@@ -69,7 +72,7 @@ public class WishDAO_imple implements WishDAO {
 			
 			rs.next();
 			
-			totalWishCount = rs.getInt(1);		 System.out.println(fk_memberid +"hhhhh"+ totalWishCount);
+			totalWishCount = rs.getInt(1);		
 			
 		} finally {
 			close();
