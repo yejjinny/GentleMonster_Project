@@ -15,7 +15,7 @@ a.product__link {
 	text-decoration: none;
 }
 
-svg#레이어_1 {
+svg#레이어_5 {
 	margin: 0 !important;
 }
 
@@ -1748,7 +1748,7 @@ body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fi
 button {
     overflow: visible;
 }
-svg#레이어_1 {
+svg#레이어_5 {
     width: 20px;
     height: 20px;
     margin: 26.2px 0;
@@ -1760,11 +1760,7 @@ svg:not(:root) {
     stroke: #000;
     stroke-width: 2px;
 }
-svg#레이어_1 {
-    width: 20px;
-    height: 20px;
-    margin: 26.2px 0;
-}
+
 svg:not(:root) {
     overflow: hidden;
 }
@@ -1890,3 +1886,4 @@ span.category__thumbnail:hover {
 .filter-toggle__bar--second::before, .filter-toggle.on .filter-toggle__bar--first::before {
 	left:16px !important;
 }
+

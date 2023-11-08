@@ -590,7 +590,7 @@ String ctxPath = request.getContextPath();
 												<button class="product__wish float-right jsBtnWish"
 													onclick="goAdd(${productVo.productDetailId});">
 											</c:if>
-											<svg version="1.1" baseProfile="basic" id="레이어_1"
+											<svg version="1.1" baseProfile="basic" id="레이어_5"
 												xmlns="http://www.w3.org/2000/svg"
 												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												viewBox="0 0 30 30" xml:space="preserve">
@@ -660,7 +660,7 @@ String ctxPath = request.getContextPath();
 												<button class="product__wish float-right jsBtnWish"
 													onclick="goAdd(${productVo.productDetailId});">
 											</c:if>
-											<svg version="1.1" baseProfile="basic" id="레이어_1"
+											<svg version="1.1" baseProfile="basic" id="레이어_5"
 												xmlns="http://www.w3.org/2000/svg"
 												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												viewBox="0 0 30 30" xml:space="preserve">
@@ -693,7 +693,7 @@ String ctxPath = request.getContextPath();
 </c:if>
 
 <c:if test="${empty requestScope.productList}">
-  <div style='font-size: 12pt;'>등록된 상품이 없습니다.</div>
+  <div style='font-size: 12pt;' class="text-center mb-5">등록된 상품이 없습니다.</div>
 </c:if>
 
 

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-svg#레이어_1 {
+svg#레이어_5 {
 	margin: 0 !important;
 }
 
@@ -1470,7 +1470,7 @@ body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fi
 button {
     overflow: visible;
 }
-svg#레이어_1 {
+svg#레이어_5 {
     width: 20px;
     height: 20px;
     margin: 26.2px 0;
@@ -1482,11 +1482,7 @@ svg:not(:root) {
     stroke: #000;
     stroke-width: 2px;
 }
-svg#레이어_1 {
-    width: 20px;
-    height: 20px;
-    margin: 26.2px 0;
-}
+
 svg:not(:root) {
     overflow: hidden;
 }
@@ -1604,5 +1600,6 @@ input[type=checkbox]:checked ~ .input-box-check-layer:after {
 span.category__thumbnail:hover {
 	border: solid 1px  #000 !important;
 }
+
 
 
