@@ -1602,4 +1602,7 @@ span.category__thumbnail:hover {
 }
 
 
+#filterModal > div > div.modal-content > div.modal-header > h5 {
+	margin-top: 1.5%;
+}
 

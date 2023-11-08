@@ -495,7 +495,7 @@ String ctxPath = request.getContextPath();
 						</div>
 						<!--// Filter content -->
 						<div class="filter-popup__bottom inline text-right">
-							<button type="button"
+							<button type="reset"
 								class="filter-btn font--kr font--14 font--bd js-filter-form-reset jsFilterReset">
 								초기화 <span
 									class="selected-count font--kr js-filter-count jsSelectedCount"></span>
