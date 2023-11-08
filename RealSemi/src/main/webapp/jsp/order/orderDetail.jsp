@@ -22,7 +22,7 @@ String ctxPath = request.getContextPath();
 		<div class="topnav">
 			<div class="topnav-left">
 				<div class="page_menu_item link_item font--kr font--15 font--bd">
-					<a class="title" href="수정필">회원정보</a>
+					<a class="title" href="<%= ctxPath %>/member/memberInfoViewAll.gm">회원정보</a>
 				</div>
 			</div>
 			<ul class="page_menu_items page_menu_pc_items">
@@ -41,7 +41,7 @@ String ctxPath = request.getContextPath();
 			</ul>
 			<div class="topnav-right">
 				<div class="page_menu_item link_item">
-					<a class="font--kr font--15 font--rg" data-category="account" data-action="logout_click" data-label="" href="https://www.gentlemonster.com/kr/customer/logout">로그아웃</a>
+					<a class="font--kr font--15 font--rg" data-category="account" data-action="logout_click" data-label="" href="<%=ctxPath%>/register/logout.gm">로그아웃</a>
 				</div>
 			</div>
 		</div>
