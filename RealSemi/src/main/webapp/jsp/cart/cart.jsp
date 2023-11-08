@@ -43,7 +43,7 @@ String ctxPath = request.getContextPath();
 												<%-- 상품대표이미지 --%>
 												<td class="sod_img">
 													<!-- 상품상세화면으로 가도록 -->
-													<a class="cursor_p" href="수정필?productDetailId=${cartVo.productDetailId}">
+													<a class="cursor_p" href="<%= ctxPath %>/product/productDetail.gm?productDetailId=${cartVo.productDetailId}">
 														<img src="<%= ctxPath %>${cartVo.mainImageFile}" alt="" title="">
 													</a>
 												</td>
