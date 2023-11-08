@@ -581,15 +581,19 @@ String ctxPath = request.getContextPath();
 													</p>
 												</a>
 											</div>
-											<c:if test="${productVo.isWish eq 1}">
-												<button class="product__wish float-right jsBtnWish on"
-													onclick="goDelete(${productVo.productDetailId});">
+											
+											<c:if test="${not empty sessionScope.loginUser}">	
+												<c:if test="${productVo.isWish eq 1}">
+													<button class="product__wish float-right jsBtnWish on"
+														onclick="goDelete(${productVo.productDetailId});">
+												</c:if>
+		
+												<c:if test="${productVo.isWish eq 0}">
+													<button class="product__wish float-right jsBtnWish"
+														onclick="goAdd(${productVo.productDetailId});">
+												</c:if>
 											</c:if>
-
-											<c:if test="${productVo.isWish eq 0}">
-												<button class="product__wish float-right jsBtnWish"
-													onclick="goAdd(${productVo.productDetailId});">
-											</c:if>
+											
 											<svg version="1.1" baseProfile="basic" id="레이어_5"
 												xmlns="http://www.w3.org/2000/svg"
 												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -651,15 +655,19 @@ String ctxPath = request.getContextPath();
 													</p>
 												</a>
 											</div>
-											<c:if test="${productVo.isWish eq 1}">
-												<button class="product__wish float-right jsBtnWish on"
-													onclick="goDelete(${productVo.productDetailId});">
+											
+											<c:if test="${not empty sessionScope.loginUser}">	
+												<c:if test="${productVo.isWish eq 1}">
+													<button class="product__wish float-right jsBtnWish on"
+														onclick="goDelete(${productVo.productDetailId});">
+												</c:if>
+		
+												<c:if test="${productVo.isWish eq 0}">
+													<button class="product__wish float-right jsBtnWish"
+														onclick="goAdd(${productVo.productDetailId});">
+												</c:if>
 											</c:if>
-
-											<c:if test="${productVo.isWish eq 0}">
-												<button class="product__wish float-right jsBtnWish"
-													onclick="goAdd(${productVo.productDetailId});">
-											</c:if>
+											
 											<svg version="1.1" baseProfile="basic" id="레이어_5"
 												xmlns="http://www.w3.org/2000/svg"
 												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -693,7 +701,7 @@ String ctxPath = request.getContextPath();
 </c:if>
 
 <c:if test="${empty requestScope.productList}">
-  <div style='font-size: 12pt;' class="text-center mb-5">등록된 상품이 없습니다.</div>
+  <div style="font-size: 12pt; margin-bottom: 20%; padding-top: 13%;" class="text-center">등록된 상품이 없습니다.</div>
 </c:if>
 
 
