@@ -1,2 +1,2 @@
-# RealSemi
-RealSemi 입니다.
+# GentleMonster_Project
+GentleMonster_Project 입니다.
