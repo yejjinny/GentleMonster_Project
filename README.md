@@ -1,2 +1,2 @@
-# GentleMonster Project
-GentleMonster Project 입니다.
+# GentleMonster_Project
+GentleMonster_Project 입니다.
