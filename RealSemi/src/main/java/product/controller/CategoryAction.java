@@ -31,7 +31,6 @@ public class CategoryAction extends AbstractController {
 
 		if ("GET".equalsIgnoreCase(method)) {
 			// GET 방식으로 들어왔을 경우
-			// System.out.println("확인용 여기맞습니다.");
 
 			ProductDAO pdao = new ProductDAO_imple();
 
@@ -113,12 +112,6 @@ public class CategoryAction extends AbstractController {
 				req.setAttribute("bestSeller", true);
 			}
 
-			/*
-			 * for (ProductVO pvo : productList) { System.out.println("확인용 : " +
-			 * pvo.getProductDetailId()); }
-			 */
-			/* System.out.println(req.getParameter("bestSeller")); */
-			
 			
 			// 카테고리 allView 추가해서 검정테두리 넣기
 			req.setAttribute("productList", productList);

@@ -12,7 +12,6 @@ String ctxPath = request.getContextPath();
 <!-- 직접 만든 CSS -->
 <link rel="stylesheet" type="text/css" href="<%=ctxPath%>/css/common/product_viewDetail.css" />
 
-<!-- 상품명 수정필 -->
 <title>${requestScope.productDetail.productName} | GENTLE MONSTER Official Site</title>
 <%-- header --%>
 <jsp:include page="../common/header.jsp" />

@@ -53,7 +53,6 @@ public class AddressBookDefaultCheckAction extends AbstractController {
 				 
 				 if( addressList.size()==0 ) { //등록된 주소가 없을경우
 					 
-					 System.out.println("주소없음");
 					 super.setRedirect(false);
 					 super.setViewPage("/jsp/member/addressBook/noAddressBook.jsp");
 					 

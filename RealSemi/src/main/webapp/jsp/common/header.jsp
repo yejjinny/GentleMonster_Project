@@ -167,13 +167,13 @@ String ctxPath = request.getContextPath();
 							<div class="n-search-popup__title font--kr font--13 font--md">최근검색어</div>
 							<div class="keywordHistory">
 								<ul id="keywordHistory__list" class="keywordHistory__list" role="list-box">
-									<c:if test="${not empty sessionScope.searchKeywordList}">
+									<%-- <c:if test="${not empty sessionScope.searchKeywordList}">
 										<c:forEach var="str" items="${sessionScope.searchKeywordList}">
 											<li class="keywordHistory_item">
 												<a href="<%= ctxPath %>/common/searchKeyword.gm?search=${str}" class="font--kr font--14 font--md">${str}</a>
 											</li>
 										</c:forEach>
-									</c:if>
+									</c:if> --%>
 								</ul>
 							</div>
 						</div>

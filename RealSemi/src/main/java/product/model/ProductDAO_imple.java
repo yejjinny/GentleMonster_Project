@@ -74,7 +74,7 @@ public class ProductDAO_imple implements ProductDAO {
 
 			String sql = " select    productDetailId, "
 					+ " productGroupName||' '||frameColorEng as productName, pd.isbluelight,fk_productgroupid, "
-					+ " price,    mainImageFile,    nvl2(wishid, 1, 0) as isWish, REGISTERDAY from "
+					+ " price,    mainImageFile,    nvl2(wishid, 1, 0) as isWish, pd.registerDay from "
 					+ " tbl_productGroup pg "
 					+ " join tbl_productDetail pd on pg.productGroupId = pd.fk_productGroupId "
 					+ " join tbl_frameColor fc on fc.frameColorId = pd.fk_frameColorId "
@@ -105,12 +105,6 @@ public class ProductDAO_imple implements ProductDAO {
 				provo.setMainImageFile(rs.getString(6));
 				provo.setIsWish(rs.getInt(7));
 				provo.setRegisterDay(rs.getString(8));
-
-				// System.out.println("test => " + provo.getIsBlueLight());
-				/*
-				 * System.out.println("test => " + provo.getProductDetailId());
-				 * System.out.println("test => " + provo.getProductName());
-				 */
 
 				productList.add(provo);
 			} // end of while(rs.next())-----------------
@@ -259,16 +253,6 @@ public class ProductDAO_imple implements ProductDAO {
 
 			sql += " ORDER BY " + paraMap.get("order") + ", PRODUCTDETAILID DESC";
 
-			/* System.out.println("sql 확인 : " + sql); */
-
-			// and ( Framecolorid = ? or Framecolorid = ? or Framecolorid = ? )
-			// and ( lenseColorId = ? or lenseColorId = ? or lenseColorId = ?)
-			// order by registerDay Desc
-			/*
-			 * fc.Framecolorid = 1 or fc.Framecolorid = 2 or lc_lenseColorId = 1 or
-			 * lc_lenseColorId = 2
-			 */
-
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, paraMap.get("memberId"));
@@ -339,9 +323,6 @@ public class ProductDAO_imple implements ProductDAO {
 
 				productList.add(provo);
 
-				/*
-				 * System.out.println("test => " + provo.getProductName());
-				 */
 
 			} // end of while(rs.next())-----------------
 
@@ -498,12 +479,6 @@ public class ProductDAO_imple implements ProductDAO {
 				provo.setIsTint(rs.getInt(9));
 				provo.setIsGift(rs.getInt(10));
 
-				/* System.out.println("test => " + provo.getIsBlueLight()); */
-				/*
-				 * System.out.println("test => " + provo.getProductDetailId());
-				 * System.out.println("test => " + provo.getProductName());
-				 */
-
 				productList.add(provo);
 			} // end of while(rs.next())-----------------
 
@@ -562,12 +537,6 @@ public class ProductDAO_imple implements ProductDAO {
 				provo.setFk_productGroupId(rs.getInt(8));
 
 				productList.add(provo);
-
-				/*
-				 * System.out.println("확인용" + provo.getMainImageFile());
-				 * System.out.println("확인용" + provo.getQuantity()); System.out.println("확인용" +
-				 * provo.getProductName()); System.out.println("확인용" + provo.getPrice());
-				 */
 
 			}
 

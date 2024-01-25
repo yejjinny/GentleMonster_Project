@@ -81,7 +81,6 @@ public class OrderPaymentAction extends AbstractController {
 			// 로그인한 유저가 아닐 경우
 			
 			String message = "주문은 로그인 한 후 이용해주세요. 로그인 화면으로 이동합니다.";
-			// 수정필
 			String loc = req.getContextPath() + "/register/login.gm";
 
 			req.setAttribute("message", message);

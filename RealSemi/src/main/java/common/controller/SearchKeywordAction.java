@@ -48,43 +48,6 @@ public class SearchKeywordAction extends AbstractController {
 			req.setAttribute("productList", productList);
 			req.setAttribute("searchKeyword", req.getParameter("search"));
 
-			List<String> searchKeywordList = new ArrayList<>();
-
-			if (session.getAttribute("searchKeywordList") != null) {
-				// 검색 기록이 이미 있을 경우
-				
-				searchKeywordList = (List<String>) session.getAttribute("searchKeywordList");
-				
-				
-				boolean check = true;
-				for(int i = 0 ; i < searchKeywordList.size() ; i++) {
-					if(searchKeywordList.get(i).equals(req.getParameter("search"))) {
-						// 이미 같은 검색어 값이 저장되어 있을 경우
-						check = false;
-						break;
-					}
-				}
-				
-				if(check) {
-					// 검색 모달창에서 보여줄 최근 검색어를 저장한다 
-					
-					if (searchKeywordList.size() >= 8) {
-						// 최대 기록할 수 있는 검색량은 9개까지라
-						searchKeywordList.remove(0);
-					}
-					
-					searchKeywordList.add(req.getParameter("search"));
-				}
-
-			}else {
-				searchKeywordList.add(req.getParameter("search"));
-			}
-			
-			
-			
-			
-			session.setAttribute("searchKeywordList", searchKeywordList);
-
 			super.setRedirect(false);
 			super.setViewPage("/jsp/search/searchResult.jsp");
 

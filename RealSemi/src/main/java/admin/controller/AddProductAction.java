@@ -356,7 +356,6 @@ public class AddProductAction extends AbstractController {
 			// 로그인하지 않았을 경우 혹은 관리자 등급이 아닐 경우
 
 			String message = "권한이 없습니다. 관리자 로그인 후 이용해주세요. 인덱스 화면으로 이동합니다.";
-			// path 수정필
 			String loc = req.getContextPath() + "/index.gm";
 
 			req.setAttribute("message", message);

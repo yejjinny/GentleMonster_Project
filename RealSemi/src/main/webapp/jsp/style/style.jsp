@@ -98,7 +98,7 @@ String ctxPath = request.getContextPath();
 								</div>
 								<div id="looks-popup-right" class="looks-popup__right flex">
 									<div class="product">
-										<a href="#" class="product__image-wrapper" >
+										<a href="" class="product__image-wrapper" >
 											<img src="" class="product__img" alt="">
 										</a>
 										<div class="product__info relative">
@@ -106,7 +106,7 @@ String ctxPath = request.getContextPath();
 												<p class="product__name font--kr font--13 font--bd"></p>
 												<p class="product__price font--kr font--12 font--rg"></p>
 												<p class="product__button">
-													<a href="" class="product__buy font--kr font--12 font--md text-center" data-category="ecommerce" data-action="select_item" product-name="Overwatch 2 - Tokki WM" product-sku="15671HLMELSL1" product-price="500000"> 구매하기 </a>
+													<a href="" class="product__buy font--kr font--12 font--md text-center"> 구매하기 </a>
 												</p>
 											</div>
 										</div>

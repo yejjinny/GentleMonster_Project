@@ -38,10 +38,8 @@ $(document).ready(function() {
    function(rsp) {
 	   if ( rsp.success ) { // 카드결제가 성공되었다면  
 		   
-		   console.log("결제 success");
 		   window.opener.goOrder_DB_Update();
- 
- 			
+	   
 		    self.close(); // 자신의 팝업창을 닫는 것이다.
 			
         } else { // 카드결제가 실패되었다면

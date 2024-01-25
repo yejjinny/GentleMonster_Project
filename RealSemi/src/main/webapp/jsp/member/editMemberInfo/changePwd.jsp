@@ -59,7 +59,7 @@ String ctxPath = request.getContextPath();
 					</div>
 				</div>
 				<div class="center-content">
-					<form name="changePassword" id="form_reset_password" action="수정필" method="post">
+					<form name="changePassword" id="form_reset_password" action="" method="post">
 						<input type="hidden" name="mb_email" value="email@naver.com">
 						<div class="input-box font--kr font--13 font--rg">
 							<label for="reg_mb_password_old" class="password input-label font--kr font--13 font--rg"> 현재 비밀번호</label>

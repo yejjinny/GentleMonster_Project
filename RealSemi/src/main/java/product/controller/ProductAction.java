@@ -31,7 +31,6 @@ public class ProductAction extends AbstractController {
 
 		if ("POST".equalsIgnoreCase(method)) {
 
-			/* System.out.println("post 방식으로 들어왔다."); */
 			ProductDAO pdao = new ProductDAO_imple();
 
 			Map<String, String> paraMap = new HashMap<>();
@@ -62,7 +61,6 @@ public class ProductAction extends AbstractController {
 			List<ProductVO> productList = pdao.getfilterlist(paraMap, paraArrMap);
 
 			req.setAttribute("productList", productList);
-			/* System.out.println("productList.size " + productList.size()); */
 			Map<String, Integer> paraMap2 = new HashMap<>();
 			
 			
@@ -90,7 +88,6 @@ public class ProductAction extends AbstractController {
 
 		} else {
 			// GET 방식으로 들어왔을 경우
-			/* System.out.println("확인용 여기맞습니다."); */
 
 			ProductDAO pdao = new ProductDAO_imple();
 
@@ -120,14 +117,6 @@ public class ProductAction extends AbstractController {
 			List<MaterialVO> getMaterial = pdao.getMaterial(paraMap);
 			req.setAttribute("getMaterial", getMaterial);
 			
-			
-	
-			/*
-			 * Object loginUserObj = session.getAttribute("loginUser");
-			 * 
-			 * if (loginUserObj != null) { MemberVO loginUser = (MemberVO) loginUserObj;
-			 * paraMap.put("memberId", loginUser.getMemberId()); }
-			 */
 
 			if ("1".equals(req.getParameter("categoryId"))) {
 				setViewPage("/jsp/sunglasses/sunglasses_viewAll.jsp");

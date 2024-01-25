@@ -527,8 +527,6 @@ public class MemberDAO_imple implements MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				// System.out.println("!!!!!!!!비밀번호 암호화"+Sha256.encrypt(paraMap.get("pwd")));
-				// System.out.println("!!!!!!!!이메일 암호화"+aes.encrypt(paraMap.get("email")));
 				member = new MemberVO();
 
 				member.setMemberId(rs.getInt(1));

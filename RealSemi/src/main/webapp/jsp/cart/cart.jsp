@@ -61,7 +61,6 @@ String ctxPath = request.getContextPath();
 														<c:if test="${cartVo.stock ne 0}">
 															<div class="field stockCheck">
 																<button type="button" class="subtract_qty" onclick="goUpdate(${cartVo.cartId}, 'subtract');">-</button>
-																<%-- readonly 확인 수정필 --%>
 																<input type="number" class="input_qty" id="cartQuantity${cartVo.cartId}" value="${cartVo.quantity}" min="1" max="10" readonly="false">
 																<button type="button" class="add_qty" onclick="goUpdate(${cartVo.cartId}, 'add');">+</button>
 															</div>

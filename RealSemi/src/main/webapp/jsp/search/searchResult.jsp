@@ -10,11 +10,6 @@ String ctxPath = request.getContextPath();
 <link rel="stylesheet" href="<%=ctxPath%>/css/search/searchResult.css">
 <script type="text/javascript">
    
-   $(document).ready(function(){
-       
-   });// end of $(document).ready(function(){})--------------
-   
-   
    function goAdd(productDetailId) {
 
          const pathname = "/" + window.location.pathname.split("/")[1] + "/";

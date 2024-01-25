@@ -1,5 +1,8 @@
 
 $(document).ready(function() {
+	
+	
+	
 	/* 쇼핑백 모달 화면 위한 처리 ------------------------------------------------------*/
 
 	const pathname = "/" + window.location.pathname.split("/")[1] + "/";
@@ -56,8 +59,64 @@ $(document).ready(function() {
 
 
 	/* 검색창 모달 화면 위한 처리 ------------------------------------------------------*/
+	
+	// 최근 검색어 값을 가져온다
+	let html = ``;
+	let searchKeywordList = JSON.parse(localStorage.getItem("searchKeywordList"));
+		
+	if (typeof searchKeywordList != 'undefined' && searchKeywordList != null && searchKeywordList.length != 0){
+		// 최근 검색어 값이 존재할 경우
+		
+		for(let i = 0 ; i < searchKeywordList.length ; i++){
+			html += `<li class="keywordHistory_item">
+				<a href="` + contextPath + `common/searchKeyword.gm?search=` + searchKeywordList[i] + `" class="font--kr font--14 font--md">` + searchKeywordList[i] + `</a>
+			</li>`;
+		}
+		
+		$("ul#keywordHistory__list").html(html);
+	}
+	
 
 	$("button.searchBtn").click(function() {
+		let searchWord = $("input#search").val().trim();
+		let isCheck = true;
+		let searchKeywordList = JSON.parse(localStorage.getItem("searchKeywordList"));
+		
+		
+		if (typeof searchKeywordList == 'undefined' || searchKeywordList == null || searchKeywordList.length == 0){
+			// 최근 검색값이 없을 경우
+			
+			isCheck = false;
+			
+			searchKeywordList = [];
+			searchKeywordList.push(searchWord);
+			
+		}else{
+			// 최근 검색값이 있을 경우
+			for(let i = 0 ; i < searchKeywordList.length ; i++){
+				if(searchKeywordList[i] == searchWord){
+					// 이미 같은 검색어 값이 저장되어 있을 경우
+					isCheck = false;
+					break;
+				}
+			}
+			
+		}
+		
+		if(isCheck) {
+			// 검색 모달창에서 보여줄 최근 검색어를 저장한다 
+			if (searchKeywordList.length >= 8) {
+				// 최대 기록할 수 있는 검색량은 9개까지라 맨 처음에 검색했던 값을 지운다
+				searchKeywordList.shift();
+			}
+			// 검색어를 저장한다
+			searchKeywordList.push(searchWord);
+			
+		}
+		// localStorage에 최근 검색어를 저장한다.
+		localStorage.setItem("searchKeywordList", JSON.stringify(searchKeywordList));
+		
+		
 		const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 		const origin = window.location.origin;
 		const contextPath = origin + pathname;

@@ -70,7 +70,6 @@ String ctxPath = request.getContextPath();
 						<div class="n-header__nav n-header__pc text-center kr">
 							<nav class="n-nav">
 								<ul class="n-nav__list inline">
-									<!-- 수정필 -->
 									<li class="n-nav__item">
 										<a href="<%=ctxPath%>/product/product.gm?categoryId=1" data-category="navigation" data-action="sunglasses" data-label="main-menu" class="n-nav__link font--kr font--13 font--bd" onclick="return delCurrentScroll();">선글라스</a>
 									</li>

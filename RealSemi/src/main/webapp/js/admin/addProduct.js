@@ -760,7 +760,7 @@ $(document).ready(function() {
 			$("input:radio[name='isTint']").siblings("span.alert").hide();
 		}
 
-		// 블루라이트차단 선택 여부 _ 선글라스를 선택했을 경우 무로 고정 및 alert 수정필---------------------------------
+		// 블루라이트차단 선택 여부 _ 선글라스를 선택했을 경우 무로 고정
 		if (!$("input:radio[name='isBlueLight']").is(':checked')) {
 			// 선택하지 않았다면
 			$("input:radio[name='isBlueLight']").siblings("span.alert").show();

@@ -48,7 +48,7 @@ $(document).ready(function() {
 		if ($("select[name='searchCategory']").val() == "") {
 			// 셀렉트 박스에서 전체를 클릭하였을 경우
 
-			alert("검색하실 컬럼명을 선택하십시오.")
+			alert("검색 대상을 선택하십시오.")
 			check = false;
 		}
 
@@ -85,10 +85,7 @@ $(document).ready(function() {
 			frm.action = contextPath + `admin/orderList.gm`;
 			frm.method = "get";
 			frm.submit();
-		} else {
-			//$(location).prop("href", location.href);
-			//location.href = contextPath + "admin/orderList.gm";
-		}
+		} 
 
 	})
 
@@ -112,7 +109,7 @@ $(document).ready(function() {
 	$("tbody tr").each(function() {
 
 		$(this).click(function() {
-
+			
 			$.ajax({
 				url: contextPath + "/admin/orderDetail.gm",
 				data: { "orderId": $(this).find("td").html() },
@@ -154,6 +151,7 @@ $(document).ready(function() {
 
 					}
 					$("div.order_product tbody").html(html);
+					$("input[name='orderStatus']:checked").prop("checked", false);
 
 					$("li.field_summary:first-child span.value").html(addComma(Number(text.amount)) + ` 원`);
 					$("li.field_summary:last-child span.value").html(addComma(Number(text.amount)) + ` 원`);
