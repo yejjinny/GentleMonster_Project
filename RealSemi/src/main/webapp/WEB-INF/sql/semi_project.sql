@@ -1024,3 +1024,62 @@ ALTER TABLE CART
 --------------------------------------------------------
 
    CREATE SEQUENCE  "SEQ_WISHLIST"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create or replace NONEDITIONABLE FUNCTION "ZBF_GET_BATCHKEY" (
+    p_type in varchar2
+) RETURN VARCHAR2
+AS
+     v_returnValue VARCHAR2(180);
+BEGIN
+
+    BEGIN
+
+        select TO_CHAR(SYSDATE, 'YYMMDD') || LPAD(SEQ_BATCHKEY.nextval, 5, 0) --currval로 바꾸기 가능
+          into v_returnValue
+          from dual;
+
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        v_returnValue := ' ';
+      WHEN OTHERS THEN
+        v_returnValue := ' ';
+    END;
+
+    RETURN v_returnValue;
+END;
+
+
+
+
+
+
+create or replace NONEDITIONABLE PROCEDURE "SZP_BATCHKEY_RESET" (SEQ_NAME IN VARCHAR2)
+IS
+    L_VAL NUMBER;
+BEGIN
+
+    EXECUTE IMMEDIATE 'SELECT '|| SEQ_NAME ||'.NEXTVAL FROM DUAL' INTO L_VAL;
+
+    EXECUTE IMMEDIATE 'ALTER SEQUENCE '|| SEQ_NAME ||' INCREMENT BY -'|| L_VAL ||' MINVALUE 0';
+
+    EXECUTE IMMEDIATE 'SELECT '|| SEQ_NAME ||'.NEXTVAL FROM DUAL' INTO L_VAL;
+
+    EXECUTE IMMEDIATE 'ALTER SEQUENCE '|| SEQ_NAME ||' INCREMENT BY 1 MINVALUE 0';
+
+END;
